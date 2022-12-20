@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "893582097322",
+    "firebase_url": "https://geosnapv1-default-rtdb.firebaseio.com",
+    "project_id": "geosnapv1",
+    "storage_bucket": "geosnapv1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:893582097322:android:3ee85d0f12a2ac750709d3",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.com.unity.template.mobile2D"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "893582097322-hmdm5hc7ripkkn8ci0gsggkni35junq5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlLgMRIy75f-ZwpUD-2DedpMnVnde7fjQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "893582097322-hmdm5hc7ripkkn8ci0gsggkni35junq5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
