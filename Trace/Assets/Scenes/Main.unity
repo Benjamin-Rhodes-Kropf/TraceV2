@@ -14667,7 +14667,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1196670845}
-  - component: {fileID: 1196670844}
+  - component: {fileID: 1196670846}
   m_Layer: 0
   m_Name: FirebaseManager
   m_TagString: Untagged
@@ -14675,19 +14675,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1196670844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196670843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0dee76844191e4f299b4ddd85d824c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _screenManager: {fileID: 1301840576}
 --- !u!4 &1196670845
 Transform:
   m_ObjectHideFlags: 0
@@ -14703,6 +14690,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1196670846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196670843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9ef0b6435fe6a4e8fa5eaa314fa5de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _storageReferenceUrl: gs://geosnapv1.appspot.com
+  _screenManager: {fileID: 1301840576}
+  autoLogin: 0
+  forceLogin: 1
+  useAdminForLogin: 0
+  adminUser: 
+  adminPass: 
+  userImageTexture: {fileID: 0}
+  rawImage: {fileID: 0}
+  testRawImage: {fileID: 0}
 --- !u!1 &1197118202
 GameObject:
   m_ObjectHideFlags: 0
