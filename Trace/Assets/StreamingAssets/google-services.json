@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "893582097322",
+    "firebase_url": "redacted",
+    "project_id": "geosnapv1",
+    "storage_bucket": "geosnapv1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "redacted",
+        "android_client_info": {
+          "package_name": "com.DefaultCompany.com.unity.template.mobile2D"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "redacted",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "redacted"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "redacted",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
