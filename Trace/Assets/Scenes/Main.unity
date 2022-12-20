@@ -14705,7 +14705,7 @@ MonoBehaviour:
   _storageReferenceUrl: gs://geosnapv1.appspot.com
   _screenManager: {fileID: 1301840576}
   autoLogin: 0
-  forceLogin: 1
+  forceLogin: 0
   useAdminForLogin: 0
   adminUser: 
   adminPass: 
