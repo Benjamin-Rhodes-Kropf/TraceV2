@@ -98,7 +98,7 @@ public class ScreenManager : MonoBehaviour
             history.Add(current); // add current screen to history
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
-            _screenSwitchAnimationManager.slideScreensFoward();
+            // _screenSwitchAnimationManager.slideScreensFoward();
         }
     }
     
