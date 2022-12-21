@@ -86,6 +86,22 @@ public class ScreenManager : MonoBehaviour
     {
         _popupAnimationManager.slidePopupOut();
     }
+    
+    public void ChangeScreenNoAnim(string ScreenID)
+    {
+        UIScreen newScreen = ScreenFromID(ScreenID);
+        if (newScreen != null)
+        {
+            //startScreen leaves the view and endScreen slides into view
+            history.Clear();
+            current.ScreenObject.SetParent(startParent, false); // set current screen parent for animation
+            history.Add(current); // add current screen to history
+            current = newScreen; // assign new as current
+            newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
+            _screenSwitchAnimationManager.slideScreensFoward();
+        }
+    }
+    
     public void ChangeScreenForwards(string ScreenID)
     {
         UIScreen newScreen = ScreenFromID(ScreenID);
