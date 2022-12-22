@@ -55,6 +55,9 @@ public class FbManager : MonoBehaviour
     //INITIALIZER
     void Awake()
     {
+        //makes sure nothing can use the db until its enabled
+        dependencyStatus = DependencyStatus.UnavailableUpdating;
+        
         if (instance != null)
         {Destroy(gameObject);}
         instance = this;
