@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class Camera : MonoBehaviour
 
     // Declare a RawImage to display the webcamTexture on a UI panel
     public RawImage image;
-    
+
     void OnEnable()
     {
         //make sure the game object is active
@@ -19,7 +20,7 @@ public class Camera : MonoBehaviour
         {
             return;
         }
-        
+
         // Get the default webcam
         WebCamDevice[] devices = WebCamTexture.devices;
         webcamTexture = new WebCamTexture(devices[0].name);
@@ -32,7 +33,7 @@ public class Camera : MonoBehaviour
 
         // Start playing the webcam video feed
         webcamTexture.Play();
-        
+
         // Set the size of the RawImage to match the size of the webcamTexture
         // rawImage.SetNativeSize();
         if (Screen.width > Screen.height)
@@ -43,5 +44,39 @@ public class Camera : MonoBehaviour
         {
             image.rectTransform.sizeDelta = new Vector2(Screen.width, Screen.width);
         }
+        
+        //Add Mesh Renderer to the GameObject to which this script is attached to
+        GetComponent<Renderer>().material.mainTexture = webcamTexture;
+    }
+
+    public void CatureImage()
+    {
+        StartCoroutine(TakePhoto());
+    }
+
+    void SaveTextureToFile (Texture2D texture, string filename) { 
+        System.IO.File.WriteAllBytes (filename, texture.EncodeToPNG());
+    }
+    
+    IEnumerator TakePhoto() // Start this Coroutine on some button click
+    {
+        // NOTE - you almost certainly have to do this here:
+
+        yield return new WaitForEndOfFrame();
+
+        // it's a rare case where the Unity doco is pretty clear,
+        // http://docs.unity3d.com/ScriptReference/WaitForEndOfFrame.html
+        // be sure to scroll down to the SECOND long example on that doco page 
+
+        Texture2D photo = new Texture2D(webcamTexture.width, webcamTexture.height);
+        photo.SetPixels(webcamTexture.GetPixels());
+        photo.Apply();
+        
+        //Encode to a PNG
+        byte[] bytes = photo.EncodeToPNG();
+        
+        
+        //Write out the PNG. Of course you have to substitute your_path for something sensible
+        File.WriteAllBytes("Assets/" + "photo.png", bytes);
     }
 }

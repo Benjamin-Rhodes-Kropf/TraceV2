@@ -83,12 +83,6 @@ public class ScreenManager : MonoBehaviour
         // _popupAnimationManager.slidePopupIn();
     }
     
-    public void OpenPopupNew(string PopUpID)
-    {
-        currentPopUp = PopupFromID(PopUpID);
-        currentPopUp.ScreenObject.SetParent(PopUpParent);
-    }
-    
     public void ClosePopup()
     {
         _popupAnimationManager.slidePopupOut();

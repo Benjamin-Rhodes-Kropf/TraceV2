@@ -19487,7 +19487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1513634339
 RectTransform:
   m_ObjectHideFlags: 0
@@ -67920,16 +67920,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1301840576}
-        m_TargetAssemblyTypeName: ScreenManager, Assembly-CSharp
-        m_MethodName: ChangeScreenNoAnim
-        m_Mode: 5
+      - m_Target: {fileID: 7512410195057915031}
+        m_TargetAssemblyTypeName: Camera, Assembly-CSharp
+        m_MethodName: CatureImage
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: View Capture
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &7512410195011218139
@@ -68048,6 +68048,7 @@ GameObject:
   - component: {fileID: 7512410195057915024}
   - component: {fileID: 7512410195057915032}
   - component: {fileID: 7512410195057915031}
+  - component: {fileID: 7512410195057915033}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -68095,6 +68096,48 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!23 &7512410195057915033
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7512410195057915030}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!222 &7512410195723455729
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -68965,7 +69008,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1301840576}
         m_TargetAssemblyTypeName: ScreenManager, Assembly-CSharp
-        m_MethodName: OpenPopupNew
+        m_MethodName: OpenPopup
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
