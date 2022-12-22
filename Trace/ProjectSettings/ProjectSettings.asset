@@ -474,8 +474,8 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: 
-  locationUsageDescription: 
+  cameraUsageDescription: Trace uses your camera
+  locationUsageDescription: Trace uses your location
   microphoneUsageDescription: 
   bluetoothUsageDescription: 
   switchNMETAOverride: 
