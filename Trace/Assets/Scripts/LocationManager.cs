@@ -9,7 +9,7 @@ public class LocationManager : MonoBehaviour
     private static LocationManager instance;
     
     // The latitude and longitude of the user's device
-    private double latitude;
+    [SerializeField]private double latitude;
     public double MyLatitude
     {
         get { return latitude; }
@@ -17,11 +17,11 @@ public class LocationManager : MonoBehaviour
     }
     
     
-    private double longitude;
+    [SerializeField]private double longitude;
     public double MyLongitude
     {
-        get { return latitude; }
-        private set { latitude = value; }
+        get { return longitude; }
+        private set { longitude = value; }
     }
     
     private void Awake()
