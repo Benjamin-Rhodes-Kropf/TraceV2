@@ -11,8 +11,8 @@ public class Popup : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDra
     [SerializeField]private RectTransform canvasRectTransform;
     [SerializeField]private RectTransform panelRectTransform;
     [SerializeField]private bool onDeploy, onFold = false;
-    [SerializeField]public bool isDeployed = false;
-    [SerializeField]public bool isFolded = true;
+    public bool isDeployed = false;
+    public bool isFolded = true;
     [SerializeField]public float homePositionOffset = 1f;
     [SerializeField]public bool disableOnFold = true;
     [SerializeField]private RectTransform inactiveParent;
@@ -35,7 +35,6 @@ public class Popup : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDra
         panelRectTransform.localPosition = new Vector3(panelRectTransform.localPosition.x,-homePositionOffset * canvasRectTransform.rect.height, panelRectTransform.localPosition.z);
         onDeploy = true;
     }
- 
     void Update()
     {      
         if (onDeploy)
@@ -119,7 +118,7 @@ public class Popup : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDra
             }
         }      
     }
- 
+
     public void OnDrag(PointerEventData data)
     {
         if (panelRectTransform == null)
@@ -159,6 +158,11 @@ public class Popup : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDra
             else
                 panelRectTransform.localPosition = newPos;
         }
+    }
+    
+    public void ClosePop()
+    {
+        onFold = true;
     }
 }
 
