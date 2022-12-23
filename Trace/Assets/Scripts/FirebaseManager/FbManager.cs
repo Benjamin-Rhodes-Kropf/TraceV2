@@ -82,6 +82,8 @@ public class FbManager : MonoBehaviour
     }
     private void InitializeFirebase()
     {
+        Debug.Log("initalizing firebase");
+        
         //Set the authentication instance object
         auth = FirebaseAuth.DefaultInstance;
         DBref = FirebaseDatabase.DefaultInstance.RootReference;
@@ -144,20 +146,21 @@ public class FbManager : MonoBehaviour
         Debug.Log("Auto Logging 0.4s");
         String savedUsername = PlayerPrefs.GetString("Username");
         String savedPassword = PlayerPrefs.GetString("Password");
+        
         Debug.Log("saved user:" +  PlayerPrefs.GetString("Username"));
-        if (savedUsername != "null" && savedPassword != "null")
+        if (savedUsername != "null" || savedPassword != "null")
         {
             Debug.Log("auto logging in");
             StartCoroutine(FbManager.instance.Login(savedUsername, savedPassword, (myReturnValue) => {
-                if (!myReturnValue.IsSuccessful)
-                {
-                    Debug.LogError("FbManager: failed to auto login");
-                    StartCoroutine(LogOut());
-                }
-                else
+                if (myReturnValue.IsSuccessful)
                 {
                     Debug.Log("FbManager: Logged in!");
                     _screenManager.ChangeScreenDown("HomeScreen");
+                }
+                else
+                {
+                    Debug.LogError("FbManager: failed to auto login");
+                    StartCoroutine(LogOut());
                 }
             }));
         }

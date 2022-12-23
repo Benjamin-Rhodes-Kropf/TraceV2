@@ -20,13 +20,16 @@ public class SignInCanvas : MonoBehaviour
 
     public void LoginButtonHit()
     {
-        StartCoroutine(fakeLoginTime());
-    }
-    
-    
-    IEnumerator fakeLoginTime()
-    {
-        yield return new WaitForSeconds(2f);
-        _screenManager.ChangeScreenDown("HomeScreen");
+        StartCoroutine(FbManager.instance.Login(username.text, password.text, (myReturnValue) => {
+            if (myReturnValue.IsSuccessful)
+            {
+                Debug.Log("FbManager: Logged in!");
+                _screenManager.ChangeScreenDown("HomeScreen");
+            }
+            else
+            {
+                Debug.LogError("FbManager: failed to auto login");
+            }
+        }));
     }
 }
