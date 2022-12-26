@@ -71,7 +71,7 @@ public class ScreenManager : MonoBehaviour
         history = new List<UIScreen>();
         UIScreen screen = ScreenFromID("Loading");
         current = screen;
-        current.ScreenObject.SetParent(startParent, false); // set current screen parent for animation
+        current.ScreenObject.SetParent(activeParent, false); // set current screen parent for animation
     }
     
     
@@ -99,7 +99,6 @@ public class ScreenManager : MonoBehaviour
             history.Add(current); // add current screen to history
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
-            //_screenSwitchAnimationManager.slideScreensFoward();
         }
     }
     

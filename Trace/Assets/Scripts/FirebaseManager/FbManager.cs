@@ -134,8 +134,8 @@ public class FbManager : MonoBehaviour
         //Todo: figure out which wait until to use...
         Debug.Log("Overiding Logging in");
         yield return new WaitForSeconds(0.5f); //has to wait until firebase async task is finished... (is there something better?)
-        Debug.Log("Logging 0.4s");
-        _screenManager.ChangeScreenDown("HomeScreen");
+        Debug.Log("Logging 0.5f");
+        _screenManager.ChangeScreenFade("HomeScreen");
     }
 
     public IEnumerator AutoLogin()
