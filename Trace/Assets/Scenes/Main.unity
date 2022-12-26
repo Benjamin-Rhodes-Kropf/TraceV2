@@ -55903,6 +55903,7 @@ GameObject:
   - component: {fileID: 6184113348114657127}
   - component: {fileID: 6184113348114657126}
   - component: {fileID: 6184113348114657125}
+  - component: {fileID: 6184113348114657128}
   m_Layer: 5
   m_Name: Friend 1
   m_TagString: Untagged
@@ -55996,7 +55997,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6184113348114657127}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6184113348114657128}
+        m_TargetAssemblyTypeName: SelectFriendButton, Assembly-CSharp
+        m_MethodName: ToggleSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6184113348114657127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56027,6 +56040,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 5
+--- !u!114 &6184113348114657128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184113348114657120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cfe0891d6b43498e8cbe3d4fdd3bc48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myImageBG: {fileID: 6184113348114657127}
+  myImageCircle: {fileID: 6184113348628377150}
+  unselectedBG: {fileID: 21300000, guid: f97b64f6f8b194b6ca0a08571865df81, type: 3}
+  selectedBG: {fileID: 21300000, guid: a5ee2644dedea4b28af3102c6e38784c, type: 3}
+  selectedCircle: {fileID: 21300000, guid: 4d1c0cb4cbed344318c4503d36e001d3, type: 3}
+  unselectedCircle: {fileID: 21300000, guid: b786a347d356e424e9588c51566439de, type: 3}
+  isSelected: 0
 --- !u!114 &6184113348145655380
 MonoBehaviour:
   m_ObjectHideFlags: 0
