@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class ScreenManager : MonoBehaviour
 {
+    //Dont Destroy
+    public static ScreenManager instance;
+    
     //custom screen switch manager and animator
     [SerializeField] private ScreenSwitchAnimationManager _screenSwitchAnimationManager;
     [SerializeField] private PopupAnimationManager _popupAnimationManager;
@@ -31,6 +34,12 @@ public class ScreenManager : MonoBehaviour
     //Reset Hierarchy
     void Awake()
     {
+        //dont destroy
+        if (instance != null)
+        {Destroy(gameObject);}
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+        
         // re-parent all screen transforms to hidden object
         foreach(var s in Screens)
         {

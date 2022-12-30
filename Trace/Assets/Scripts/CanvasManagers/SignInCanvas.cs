@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class SignInCanvas : MonoBehaviour
 {
-    [Header("Screen Manager")]
-    [SerializeField] private ScreenManager _screenManager;
-    
     [Header("Canvas Components")]
     [SerializeField] private TMP_InputField username;
     [SerializeField] private TMP_InputField password;
@@ -24,7 +21,7 @@ public class SignInCanvas : MonoBehaviour
             if (myReturnValue.IsSuccessful)
             {
                 Debug.Log("FbManager: Logged in!");
-                _screenManager.ChangeScreenDown("HomeScreen");
+                ScreenManager.instance.ChangeScreenDown("HomeScreen");
             }
             else
             {
