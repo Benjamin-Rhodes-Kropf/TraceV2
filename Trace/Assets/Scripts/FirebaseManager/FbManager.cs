@@ -34,9 +34,6 @@ public class FbManager : MonoBehaviour
     [Header("Firebase")]
     [SerializeField] private String _storageReferenceUrl;
 
-    [Header("ScreenManager")] 
-    [SerializeField] private ScreenManager _screenManager;
-
     [Header("Settings")] 
     [SerializeField] private bool autoLogin;
     [SerializeField] private bool forceLogin;
@@ -135,7 +132,7 @@ public class FbManager : MonoBehaviour
         Debug.Log("Overiding Logging in");
         yield return new WaitForSeconds(0.5f); //has to wait until firebase async task is finished... (is there something better?)
         Debug.Log("Logging 0.5f");
-        _screenManager.ChangeScreenFade("HomeScreen");
+        ScreenManager.instance.ChangeScreenFade("HomeScreen");
     }
 
     public IEnumerator AutoLogin()
@@ -155,7 +152,8 @@ public class FbManager : MonoBehaviour
                 if (myReturnValue.IsSuccessful)
                 {
                     Debug.Log("FbManager: Logged in!");
-                    _screenManager.ChangeScreenDown("HomeScreen");
+                    ScreenManager.instance.ChangeScreenFade("HomeScreen");
+                    // _screenManager.ChangeScreenDown("HomeScreen");
                 }
                 else
                 {
@@ -167,7 +165,7 @@ public class FbManager : MonoBehaviour
         else
         {
             Debug.Log("pulling up login options");
-            _screenManager.WelcomeScreen();
+            ScreenManager.instance.WelcomeScreen();
         }
     }
     public IEnumerator Login(string _email, string _password,  System.Action<CallbackObject> callback)
@@ -248,7 +246,7 @@ public class FbManager : MonoBehaviour
         userImageTexture = null;
         auth.SignOut();
         yield return new WaitForSeconds(0.8f);
-        _screenManager.WelcomeScreen();
+        ScreenManager.instance.WelcomeScreen();
         //_screenManager.PullUpOnboardingOptions();
     }
     #endregion

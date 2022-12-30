@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class Camera : MonoBehaviour
 {
+    //test
+    [SerializeField] private bool hasBeenActivated = false;
     // Declare a WebCamTexture to store the webcam video feed
     private WebCamTexture webcamTexture;
 
@@ -15,11 +17,14 @@ public class Camera : MonoBehaviour
 
     void OnEnable()
     {
-        //make sure the game object is active
-        if (!gameObject.activeInHierarchy)
+        //dosnt active camera on startup of app
+        if (!hasBeenActivated)
         {
+            hasBeenActivated = true;
             return;
         }
+        
+        Debug.Log("Camera: Camera is Being Activated");
 
         // Get the default webcam
         WebCamDevice[] devices = WebCamTexture.devices;
@@ -51,6 +56,7 @@ public class Camera : MonoBehaviour
 
     public void CatureImage()
     {
+        Debug.Log("Camera: CaptureImage");
         StartCoroutine(TakePhoto());
     }
 
@@ -62,7 +68,8 @@ public class Camera : MonoBehaviour
     {
         // NOTE - you almost certainly have to do this here:
 
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.01f);
+        Debug.Log("Camera: waited for seconds");
 
         // it's a rare case where the Unity doco is pretty clear,
         // http://docs.unity3d.com/ScriptReference/WaitForEndOfFrame.html
@@ -78,5 +85,9 @@ public class Camera : MonoBehaviour
         
         //Write out the PNG. Of course you have to substitute your_path for something sensible
         File.WriteAllBytes("Assets/" + "photo.png", bytes);
+        
+        webcamTexture.Stop();
+        Debug.Log("Camera: webcam texture stop");
+        ScreenManager.instance.ChangeScreenNoAnim("View Capture");
     }
 }

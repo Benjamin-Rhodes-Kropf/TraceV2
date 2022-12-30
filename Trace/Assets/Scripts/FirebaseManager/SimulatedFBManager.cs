@@ -7,10 +7,7 @@ public class SimulatedFBManager : MonoBehaviour
 {
     //Dont Destroy
     public static SimulatedFBManager instance;
-    
-    [Header("ScreenManager")] 
-    [SerializeField] private ScreenManager _screenManager;
-    
+
     private void Awake()
     {
         if (instance != null)
@@ -34,7 +31,7 @@ public class SimulatedFBManager : MonoBehaviour
         //_screenManager.Login();
         
         //user is not logged in
-        _screenManager.WelcomeScreen();
+        ScreenManager.instance.WelcomeScreen();
     }
 
     public void Register()
@@ -47,7 +44,7 @@ public class SimulatedFBManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Debug.Log("SimulatedFBManager: registered");
         //Succsesfully logged in
-        //_screenManager.Login();
+        //ScreenManager.instance.Login();
     }
 
     // Update is called once per frame
