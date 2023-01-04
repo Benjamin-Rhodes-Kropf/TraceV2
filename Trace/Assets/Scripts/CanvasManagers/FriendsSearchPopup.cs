@@ -50,7 +50,7 @@ public class FriendsSearchPopup : MonoBehaviour
             return;
         }
         //else make friend request
-        StartCoroutine(FbManager.instance.MakeFriendshipRequest(searchedUserID,  (callbackObject) => {
+        StartCoroutine(FbManager.instance.ActionFriendRequest(searchedUserID,  (callbackObject) => {
             if (!callbackObject.IsSuccessful)
             {
                 //todo: make visual for non-valid return

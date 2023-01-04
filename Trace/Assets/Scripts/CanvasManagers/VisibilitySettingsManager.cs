@@ -23,6 +23,9 @@ public class VisibilitySettingsManager : MonoBehaviour
         _viewRangeOptions[4-rangeValue].SetImageColorActive();
         int visability = PlayerPrefs.GetInt("TraceViewable");
         _visabilityOptions[1-visability].SetImageColorActive();
+        
+        //ScreenManager.instance.Invoke("CountTanks", 2);
+        StartCoroutine(PullUpFriendSelect());
     }
     
     private void OnDisable()
@@ -42,13 +45,17 @@ public class VisibilitySettingsManager : MonoBehaviour
         //_viewRangeOptions[range-1].SetImageColorActive();
         Debug.Log("VisibilitySettingsManager: visability range set to:" + range.ToString());
     }
-    
     public void SetVisability(int viewable)
     {
         PlayerPrefs.SetInt("TraceViewable", viewable);
         Debug.Log("VisibilitySettingsManager: trace viewability is set to:" + viewable.ToString());
     }
-    
+
+    IEnumerator PullUpFriendSelect()
+    {
+        yield return new WaitForSeconds(0.5f);
+        ScreenManager.instance.OpenPopup("Friend Select");
+    }
     
     // Start is called before the first frame update
     void Start()

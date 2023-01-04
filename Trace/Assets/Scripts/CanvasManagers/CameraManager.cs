@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Camera : MonoBehaviour
+public class CameraManager : MonoBehaviour
 {
     //test
     [SerializeField] private bool hasBeenActivated = false;
@@ -51,10 +51,10 @@ public class Camera : MonoBehaviour
         }
         
         //Add Mesh Renderer to the GameObject to which this script is attached to
-        GetComponent<Renderer>().material.mainTexture = webcamTexture;
+        image.GetComponent<Renderer>().material.mainTexture = webcamTexture;
     }
 
-    public void CatureImage()
+    public void CaptureImage()
     {
         Debug.Log("Camera: CaptureImage");
         StartCoroutine(TakePhoto());
