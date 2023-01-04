@@ -17,39 +17,32 @@ using Object = System.Object;
 
 public class FbManager : MonoBehaviour
 {
-    //Dont Destroy
+    [Header("Dont Destroy")]
     public static FbManager instance;
     
-    //Firebase References
-    private DependencyStatus dependencyStatus;
-    private FirebaseAuth auth;    
-    private FirebaseUser fbUser;
-    private DatabaseReference DBref;
-    private FirebaseStorage storage;
-    private StorageReference storageRef;
-    
-    //Trace User
-    private TraceUser traceUser;
-    
-    [Header("Firebase")]
-    [SerializeField] private String _storageReferenceUrl;
+    [Header("Firebase References")]
+    [SerializeField] private DependencyStatus dependencyStatus;
+    [SerializeField] private String firebaseStorageReferenceUrl;
+    [SerializeField] private FirebaseAuth _firebaseAuth;    
+    [SerializeField] private FirebaseUser _firebaseUser;
+    [SerializeField] private DatabaseReference _databaseReference;
+    [SerializeField] private FirebaseStorage _firebaseStorage;
+    [SerializeField] private StorageReference _firebaseStorageReference;
 
-    [Header("Settings")] 
+    [Header("Login Settings")] 
     [SerializeField] private bool autoLogin;
     [SerializeField] private bool forceLogin;
     [SerializeField] private bool useAdminForLogin;
     [SerializeField] private string adminUser;
     [SerializeField] private string adminPass;
-
     
-    [Header("Trace User Data")] 
+    [Header("User Data")] 
     public Texture userImageTexture;
     
     [Header("Database Test Assets")]
     public RawImage rawImage;
     public RawImage testRawImage;
     
-    //INITIALIZER
     void Awake()
     {
         //makes sure nothing can use the db until its enabled
@@ -60,8 +53,8 @@ public class FbManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
-        storage = FirebaseStorage.DefaultInstance;
-        storageRef = storage.GetReferenceFromUrl(_storageReferenceUrl);
+        _firebaseStorage = FirebaseStorage.DefaultInstance;
+        _firebaseStorageReference = _firebaseStorage.GetReferenceFromUrl(firebaseStorageReferenceUrl);
         
         //Check that all of the necessary dependencies for Firebase are present on the system
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
@@ -80,10 +73,8 @@ public class FbManager : MonoBehaviour
     private void InitializeFirebase()
     {
         Debug.Log("initalizing firebase");
-        
-        //Set the authentication instance object
-        auth = FirebaseAuth.DefaultInstance;
-        DBref = FirebaseDatabase.DefaultInstance.RootReference;
+        _firebaseAuth = FirebaseAuth.DefaultInstance;
+        _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
     }
     private void Start()
     {
@@ -118,9 +109,8 @@ public class FbManager : MonoBehaviour
         } 
     }
 
-    #region This User
-    
-    #region Valdiation Of User
+    #region Current User
+    #region -User Login/Logout
     
     public void LogOutOfAccount()
     {
@@ -134,7 +124,6 @@ public class FbManager : MonoBehaviour
         Debug.Log("Logging 0.5f");
         ScreenManager.instance.ChangeScreenFade("HomeScreen");
     }
-
     public IEnumerator AutoLogin()
     {
         //Todo: figure out which wait until to use...
@@ -173,7 +162,7 @@ public class FbManager : MonoBehaviour
         Debug.Log("Login Started");
         CallbackObject callbackObject = new CallbackObject();
         //Call the Firebase auth signin function passing the email and password
-        var LoginTask = auth.SignInWithEmailAndPasswordAsync(_email, _password);
+        var LoginTask = _firebaseAuth.SignInWithEmailAndPasswordAsync(_email, _password);
         
         yield return new WaitUntil(predicate: () => LoginTask.IsCompleted);
         
@@ -215,9 +204,9 @@ public class FbManager : MonoBehaviour
             yield break;
         }
 
-        fbUser = LoginTask.Result;
-        Debug.LogFormat("User signed in successfully: {0} ({1})", fbUser.DisplayName, fbUser.Email);
-        Debug.Log("logged In: user profile photo is: " + fbUser.PhotoUrl);
+        _firebaseUser = LoginTask.Result;
+        Debug.LogFormat("User signed in successfully: {0} ({1})", _firebaseUser.DisplayName, _firebaseUser.Email);
+        Debug.Log("logged In: user profile photo is: " + _firebaseUser.PhotoUrl);
         callbackObject.IsSuccessful = true;
         //Load User Profile Texture
         /*StartCoroutine(FbManager.instance.GetMyUserProfilePhoto((myReturnValue) => {
@@ -228,7 +217,7 @@ public class FbManager : MonoBehaviour
         }));*/
         
         //all database things that need to be activated
-        var DBTaskSetIsOnline = DBref.Child("users").Child(fbUser.UserId).Child("isOnline").SetValueAsync(true);
+        var DBTaskSetIsOnline = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("isOnline").SetValueAsync(true);
         yield return new WaitUntil(predicate: () => DBTaskSetIsOnline.IsCompleted);
         
         //stay logged in
@@ -244,19 +233,18 @@ public class FbManager : MonoBehaviour
         PlayerPrefs.SetString("Username", "null");
         PlayerPrefs.SetString("Password", "null");
         userImageTexture = null;
-        auth.SignOut();
+        _firebaseAuth.SignOut();
         yield return new WaitForSeconds(0.8f);
         ScreenManager.instance.WelcomeScreen();
-        //_screenManager.PullUpOnboardingOptions();
     }
     #endregion
-
-    #region Register New User
+    #region -User Registration
     private string GenerateUserProfileJson(string username, string name, string userPhotoLink, string email, string phone) {
-        TraceUser user = new TraceUser(username, name, userPhotoLink, email, phone);
-        string json = JsonUtility.ToJson(user);
+        TraceUserInfoStructure traceUserInfoStructure = new TraceUserInfoStructure(username, name, userPhotoLink, email, phone);
+        string json = JsonUtility.ToJson(traceUserInfoStructure);
         return json;
     }
+    
     public IEnumerator RegisterNewUser(string _email, string _password, string _username, string _phoneNumber,  System.Action<String> callback)
     {
         if (_username == "")
@@ -266,7 +254,7 @@ public class FbManager : MonoBehaviour
         }
 
         //Call the Firebase auth signin function passing the email and password
-        var RegisterTask = auth.CreateUserWithEmailAndPasswordAsync(_email, _password);
+        var RegisterTask = _firebaseAuth.CreateUserWithEmailAndPasswordAsync(_email, _password);
         //Wait until the task completes
         yield return new WaitUntil(predicate: () => RegisterTask.IsCompleted);
 
@@ -299,9 +287,9 @@ public class FbManager : MonoBehaviour
         }
 
         //User has now been created
-        fbUser = RegisterTask.Result;
+        _firebaseUser = RegisterTask.Result;
 
-        if (fbUser == null)
+        if (_firebaseUser == null)
         {
             Debug.LogWarning("User Null");
             yield break;
@@ -309,7 +297,7 @@ public class FbManager : MonoBehaviour
 
         //Create a user profile and set the username todo: set user profile image dynamically
         UserProfile profile = new UserProfile{DisplayName = _username, PhotoUrl = new Uri("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/ProfilePhotos%2FEmptyPhoto.jpg?alt=media&token=fbc8b18c-4bdf-44fd-a4ba-7ae881d3f063")};
-        var ProfileTask = fbUser.UpdateUserProfileAsync(profile);
+        var ProfileTask = _firebaseUser.UpdateUserProfileAsync(profile);
         yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
 
         if (ProfileTask.Exception != null)
@@ -320,7 +308,7 @@ public class FbManager : MonoBehaviour
             yield break;
         }
 
-        var user = auth.CurrentUser;
+        var user = _firebaseAuth.CurrentUser;
         if (user == null)
         {
             Debug.LogWarning("User Null");
@@ -347,15 +335,15 @@ public class FbManager : MonoBehaviour
         });
 
         var json = GenerateUserProfileJson( _username, "null", "null",_email, _phoneNumber);
-        DBref.Child("users").Child(fbUser.UserId.ToString()).SetRawJsonValueAsync(json);
+        _databaseReference.Child("users").Child(_firebaseUser.UserId.ToString()).SetRawJsonValueAsync(json);
         
-        var DBTaskSetUsernameLinkToId = DBref.Child("usernames").Child(_username).SetValueAsync(fbUser.UserId);
+        var DBTaskSetUsernameLinkToId = _databaseReference.Child("usernames").Child(_username).SetValueAsync(_firebaseUser.UserId);
         yield return new WaitUntil(predicate: () => DBTaskSetUsernameLinkToId.IsCompleted);
         
-        var DBTaskSetPhoneNumberLinkToId = DBref.Child("phoneNumbers").Child(fbUser.UserId).Child(_phoneNumber).SetValueAsync(fbUser.UserId);
+        var DBTaskSetPhoneNumberLinkToId = _databaseReference.Child("phoneNumbers").Child(_firebaseUser.UserId).Child(_phoneNumber).SetValueAsync(_firebaseUser.UserId);
         yield return new WaitUntil(predicate: () => DBTaskSetPhoneNumberLinkToId.IsCompleted);
 
-        var DBTaskSetUserFriends = DBref.Child("friendRequests").Child(fbUser.UserId).Child("null").SetValueAsync("null");
+        var DBTaskSetUserFriends = _databaseReference.Child("friendRequests").Child(_firebaseUser.UserId).Child("null").SetValueAsync("null");
         yield return new WaitUntil(predicate: () => DBTaskSetUserFriends.IsCompleted);
         
         //if nothing has gone wrong try logging in with new users information
@@ -372,12 +360,11 @@ public class FbManager : MonoBehaviour
         callback(null);
     }
     #endregion
-    
-    #region Edit This Users Information
+    #region -User Edit Information
     public IEnumerator SetUsername(string _username, System.Action<String> callback)
     {
         Debug.Log("Db SetUsername to :" + _username);
-        var DBTask = DBref.Child("users").Child(fbUser.UserId).Child("Username").SetValueAsync(_username);
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("Username").SetValueAsync(_username);
         
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -394,7 +381,7 @@ public class FbManager : MonoBehaviour
     {
         Debug.Log("Db update photoUrl to :" + _photoUrl);
         //Set the currently logged in user nickName in the database
-        var DBTask = DBref.Child("users").Child(fbUser.UserId).Child("userPhotoUrl").SetValueAsync(_photoUrl);
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("userPhotoUrl").SetValueAsync(_photoUrl);
         
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -411,7 +398,7 @@ public class FbManager : MonoBehaviour
     {
         Debug.Log("Db update nick to :" + _nickName);
         //Set the currently logged in user nickName in the database
-        var DBTask = DBref.Child("users").Child(fbUser.UserId).Child("NickName").SetValueAsync(_nickName);
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("NickName").SetValueAsync(_nickName);
         
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -426,7 +413,7 @@ public class FbManager : MonoBehaviour
     }
     public IEnumerator SetUserPhoneNumber(string _phoneNumber, System.Action<String> callback)
     {
-        var DBTask = DBref.Child("users").Child(fbUser.UserId).Child("phoneNumber").SetValueAsync(_phoneNumber);
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("phoneNumber").SetValueAsync(_phoneNumber);
         
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -440,15 +427,14 @@ public class FbManager : MonoBehaviour
         }
     }
     #endregion
-
-    #region Get This Users Components
+    #region -User Info
     public IEnumerator GetMyUserProfilePhoto(System.Action<Texture> callback)
     {
         var request = new UnityWebRequest();
         var url = "";
         
         Debug.Log("test:");
-        StorageReference pathReference = storage.GetReference("ProfilePhoto/"+fbUser.UserId+"/profile.png");
+        StorageReference pathReference = _firebaseStorage.GetReference("ProfilePhoto/"+_firebaseUser.UserId+"/profile.png");
         Debug.Log("path refrence:" + pathReference);
 
         pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task => {
@@ -480,7 +466,7 @@ public class FbManager : MonoBehaviour
     }
     public IEnumerator GetMyUserNickName(System.Action<String> callback)
     {
-        var DBTask = DBref.Child("users").Child(fbUser.UserId).Child("Friends").Child("nickName").GetValueAsync();
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("Friends").Child("nickName").GetValueAsync();
         
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
         
@@ -495,7 +481,7 @@ public class FbManager : MonoBehaviour
     }
     public IEnumerator GetMyUserPhoneNumber(System.Action<String> callback)
     {
-        var DBTask = DBref.Child("users").Child(fbUser.UserId).Child("Friends").Child("nickName").GetValueAsync();
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("Friends").Child("nickName").GetValueAsync();
         
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
         
@@ -508,19 +494,120 @@ public class FbManager : MonoBehaviour
             callback(DBTask.Result.ToString());
         }
     }
+    public List<string> GetMyFriendShipRequests()
+    {
+        List<string> listOfFriends = new List<string>();
+        FirebaseDatabase.DefaultInstance.GetReference("friendRequests").Child(_firebaseUser.UserId).GetValueAsync().ContinueWithOnMainThread(task => {
+            if (task.IsFaulted)
+            {
+                return;
+            }
+            else if (task.IsCompleted) {
+                DataSnapshot snapshot = task.Result;
+                foreach (var child in snapshot.Children)
+                {
+                    Debug.Log("data snapshot of friends child value:"+child.Value);
+                    listOfFriends.Add(child.Value.ToString());
+                }
+            }
+        });
+        return listOfFriends;
+    } //not sure if this works
     #endregion
-    
+    #region -User Actions
+    public IEnumerator ActionFriendRequest(string _userID, System.Action<CallbackObject> callback)
+    {
+        CallbackObject callbackObject = new CallbackObject();
+        
+        Debug.Log("Db making friendship reuest to:" + _userID);
+        
+        string key = _databaseReference.Child("friendRequests").Child(_firebaseUser.UserId).Push().Key;
+        Dictionary<string, Object> childUpdates = new Dictionary<string, Object>();
+        childUpdates["/friendRequests/" + _firebaseUser.UserId + "/" + key] = _userID;
+        _databaseReference.UpdateChildrenAsync(childUpdates);
+
+        yield return new WaitForSeconds(0.1f);
+        
+        callbackObject.IsSuccessful = true;
+        callbackObject.message = "";
+        callback(callbackObject);
+    }
+    private IEnumerator ActionAcceptFriend(string _username, string _nickName, System.Action<String> callback)
+    {
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("Friends").Child(_username).SetValueAsync(_nickName);
+        
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        
+        if (DBTask.IsFaulted)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            callback("Success");
+        }
+    }
+    #endregion
+    #region -User Subscriptions
+    public void SubscribeToFriendShipRequests()
+    {
+        var refrence = FirebaseDatabase.DefaultInstance.GetReference("friendRequests").Child(_firebaseUser.UserId);
+        refrence.ChildAdded += HandleChildAdded;
+        refrence.ChildChanged += HandleChildChanged;
+        refrence.ChildRemoved += HandleChildRemoved;
+        refrence.ChildMoved += HandleChildMoved;
+
+        void HandleChildAdded(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            // Do something with the data in args.Snapshot
+            Debug.Log("child added:" +args.Snapshot);
+            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+
+        void HandleChildChanged(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            // Do something with the data in args.Snapshot
+            Debug.Log("child changed:" +args.Snapshot);
+            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+
+        void HandleChildRemoved(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            // Do something with the data in args.Snapshot
+            Debug.Log("child removed:" +args.Snapshot);
+            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+
+        void HandleChildMoved(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            // Do something with the data in args.Snapshot
+            Debug.Log("child moved:" +args.Snapshot);
+            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+    }
+    #endregion
     #endregion
 
     #region Other User
-    
-    #region Query Database For User
+    #region -Search for User
     public IEnumerator SearchForUserIDByUsername(String username, System.Action<CallbackObject> callback)
     {
         CallbackObject callbackObject = new CallbackObject();
         
         Debug.Log("DB searching for username:" + username);
-        var DBTask = DBref.Child("usernames").Child(username).GetValueAsync();
+        var DBTask = _databaseReference.Child("usernames").Child(username).GetValueAsync();
         
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -574,8 +661,7 @@ public class FbManager : MonoBehaviour
         }));
     }
     #endregion
-
-    #region Query Database for Other Users Components
+    #region -Get User Info
     public IEnumerator GetUserProfilePhotoByUrl(string _url, System.Action<CallbackObject> callback)
     {
         CallbackObject callbackObject = new CallbackObject();
@@ -583,7 +669,7 @@ public class FbManager : MonoBehaviour
         var url = "";
         
         Debug.Log("test:");
-        StorageReference pathReference = storage.GetReference(_url);
+        StorageReference pathReference = _firebaseStorage.GetReference(_url);
         Debug.Log("path refrence:" + pathReference);
 
         pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task => {
@@ -620,7 +706,7 @@ public class FbManager : MonoBehaviour
         CallbackObject callbackObject = new CallbackObject();
         
         Debug.Log("DB searching for user photo:" + userID);
-        var DBTask = DBref.Child("users").Child(userID).Child("userPhotoUrl").GetValueAsync();
+        var DBTask = _databaseReference.Child("users").Child(userID).Child("userPhotoUrl").GetValueAsync();
         
         yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -653,105 +739,16 @@ public class FbManager : MonoBehaviour
     #endregion
     #endregion
     
-    #region Friend Requests
-    public IEnumerator MakeFriendshipRequest(string _userID, System.Action<CallbackObject> callback)
-    {
-        CallbackObject callbackObject = new CallbackObject();
-        
-        Debug.Log("Db making friendship reuest to:" + _userID);
-        
-        string key = DBref.Child("friendRequests").Child(fbUser.UserId).Push().Key;
-        Dictionary<string, Object> childUpdates = new Dictionary<string, Object>();
-        childUpdates["/friendRequests/" + fbUser.UserId + "/" + key] = _userID;
-        DBref.UpdateChildrenAsync(childUpdates);
-
-        yield return new WaitForSeconds(0.1f);
-        
-        callbackObject.IsSuccessful = true;
-        callbackObject.message = "";
-        callback(callbackObject);
-    }
-    
-    public List<string> GetFriendShipRequests()
-    {
-        List<string> listOfFriends = new List<string>();
-        FirebaseDatabase.DefaultInstance.GetReference("friendRequests").Child(fbUser.UserId).GetValueAsync().ContinueWithOnMainThread(task => {
-                if (task.IsFaulted)
-                {
-                    return;
-                }
-                else if (task.IsCompleted) {
-                    DataSnapshot snapshot = task.Result;
-                    foreach (var child in snapshot.Children)
-                    {
-                        Debug.Log("data snapshot of friends child value:"+child.Value);
-                        listOfFriends.Add(child.Value.ToString());
-                    }
-                }
-        });
-        return listOfFriends;
-    }
-    public void SubscribeToFriendShipRequests()
-    {
-        var refrence = FirebaseDatabase.DefaultInstance.GetReference("friendRequests").Child(fbUser.UserId);
-        refrence.ChildAdded += HandleChildAdded;
-        refrence.ChildChanged += HandleChildChanged;
-        refrence.ChildRemoved += HandleChildRemoved;
-        refrence.ChildMoved += HandleChildMoved;
-
-        void HandleChildAdded(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            // Do something with the data in args.Snapshot
-            Debug.Log("child added:" +args.Snapshot);
-            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-
-        void HandleChildChanged(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            // Do something with the data in args.Snapshot
-            Debug.Log("child changed:" +args.Snapshot);
-            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-
-        void HandleChildRemoved(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            // Do something with the data in args.Snapshot
-            Debug.Log("child removed:" +args.Snapshot);
-            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-
-        void HandleChildMoved(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            // Do something with the data in args.Snapshot
-            Debug.Log("child moved:" +args.Snapshot);
-            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-    }
-
-
+    //TESTING
     //Future Functions
     //GetFriendshipRequests
     //AcceptFriendshipRequest
     //getPhotos
     
-    
-    //TESTING
     public void AddFriend(String _username)
     {
         String _nickName = "null";
-        StartCoroutine(FbManager.instance.AcceptFriend(_username, _nickName, (myReturnValue) => {
+        StartCoroutine(FbManager.instance.ActionAcceptFriend(_username, _nickName, (myReturnValue) => {
             if (myReturnValue != "Success")
             {
                 Debug.LogError("failed to update freinds");
@@ -762,26 +759,6 @@ public class FbManager : MonoBehaviour
             }
         }));
     }
-    private IEnumerator AcceptFriend(string _username, string _nickName, System.Action<String> callback)
-    {
-        var DBTask = DBref.Child("users").Child(fbUser.UserId).Child("Friends").Child(_username).SetValueAsync(_nickName);
-        
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
-        
-        if (DBTask.IsFaulted)
-        {
-            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
-        }
-        else
-        {
-            callback("Success");
-        }
-    }
-    
-    #endregion
-    
-    
-    
     public void getTestImage()
     {
         StartCoroutine(GetTestImage((myReturnValue) => {
@@ -808,12 +785,10 @@ public class FbManager : MonoBehaviour
             callback(((DownloadHandlerTexture)request.downloadHandler).texture);
         }
     }
-    //
-
     private void DeleteFile(String _location) 
     { 
-        storageRef = storageRef.Child(_location);
-        storageRef.DeleteAsync().ContinueWithOnMainThread(task => {
+        _firebaseStorageReference = _firebaseStorageReference.Child(_location);
+        _firebaseStorageReference.DeleteAsync().ContinueWithOnMainThread(task => {
             if (task.IsCompleted) {
                 Debug.Log("File deleted successfully.");
             }
@@ -822,8 +797,6 @@ public class FbManager : MonoBehaviour
             }
         });
     }
-
-    //get firebase storage database
     public void DownloadImage() {
         StartCoroutine(GetMyUserProfilePhoto((myReturnValue) => {
             if (myReturnValue != null)
@@ -832,9 +805,8 @@ public class FbManager : MonoBehaviour
             }
         }));
     }
-    
     private IEnumerator TryLoadImage(string MediaUrl, System.Action<Texture> callback) {
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/"+ fbUser.UserId +"%2FnewFile.jpeg?alt=media"); //Create a request
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/"+ _firebaseUser.UserId +"%2FnewFile.jpeg?alt=media"); //Create a request
 
         yield return request.SendWebRequest(); //Wait for the request to complete
         if (request.isNetworkError || request.isHttpError)

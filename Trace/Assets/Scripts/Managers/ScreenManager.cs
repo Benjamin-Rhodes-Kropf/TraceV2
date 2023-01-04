@@ -68,10 +68,10 @@ public class ScreenManager : MonoBehaviour
             //startScreen leaves the view and endScreen slides into view
             history.Clear();
             current.ScreenObject.SetParent(startParent, false); // set current screen parent for animation
+            current.ScreenObject.GetComponent<FadeAnim>().FadeOut();
             history.Add(current); // add current screen to history
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
-            _screenSwitchAnimationManager.slideScreenDown();
         }
     }
     public void LoadingScreen()
