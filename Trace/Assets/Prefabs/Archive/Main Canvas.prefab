@@ -1674,7 +1674,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 979702912444274677}
         m_TargetAssemblyTypeName: Camera, Assembly-CSharp
-        m_MethodName: CatureImage
+        m_MethodName: CaptureImage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -18,7 +18,8 @@ public class FadeAnim : MonoBehaviour
     [Header("Fade Options")] 
     [SerializeField] private bool moveToDisabledChild;
     [SerializeField] private Transform disabledParent;
-    [SerializeField] private bool fadeInOnEnabked;
+    [SerializeField] private bool fadeInOnEnabled;
+    [SerializeField] private float waitBeforeFade;
     
     //Todo: fade out all children and child game object to inactive 
     //Todo: optimze this so that it dosnt store whole color and accses things less
@@ -64,6 +65,8 @@ public class FadeAnim : MonoBehaviour
     }
     private IEnumerator FadeOutCorutine()
     {
+        yield return new WaitForSeconds(waitBeforeFade);
+        
         float elapsedTime = 0f;
         
         while (elapsedTime < fadeDuration)

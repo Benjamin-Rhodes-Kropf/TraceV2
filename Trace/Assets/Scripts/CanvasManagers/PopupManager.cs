@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class Popup : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class PopupManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     [SerializeField]private Vector2 pointerOffset;
     [SerializeField]private Vector2 pointerDownPosition;

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SelectFriendButton : MonoBehaviour
+public class FriendSelectButton : MonoBehaviour
 {
     [SerializeField] private Image myImageBG;
     [SerializeField] private Image myImageCircle;
-    [SerializeField]private Sprite unselectedBG;
-    [SerializeField]private Sprite selectedBG;
-    [SerializeField]private Sprite selectedCircle;
-    [SerializeField]private Sprite unselectedCircle;
+    [SerializeField] private Sprite unselectedBG;
+    [SerializeField] private Sprite selectedBG;
+    [SerializeField] private Sprite selectedCircle;
+    [SerializeField] private Sprite unselectedCircle;
 
     public bool isSelected;
 
