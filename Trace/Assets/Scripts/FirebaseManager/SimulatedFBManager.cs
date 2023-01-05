@@ -20,7 +20,7 @@ public class SimulatedFBManager : MonoBehaviour
     {
         StartCoroutine(SimulatedLogin());
     }
-
+    
     IEnumerator SimulatedLogin()
     {
         Debug.Log("SimulatedFBManager: logging in...");
@@ -33,7 +33,6 @@ public class SimulatedFBManager : MonoBehaviour
         //user is not logged in
         ScreenManager.instance.WelcomeScreen();
     }
-
     public void Register()
     {
         StartCoroutine(SimulatedRegister());
@@ -45,11 +44,5 @@ public class SimulatedFBManager : MonoBehaviour
         Debug.Log("SimulatedFBManager: registered");
         //Succsesfully logged in
         //ScreenManager.instance.Login();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
