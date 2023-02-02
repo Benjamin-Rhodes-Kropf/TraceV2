@@ -7,7 +7,6 @@ using Firebase.Auth;
 using Firebase.Database;
 using TMPro;
 using System.Linq;
-using System.Threading.Tasks;
 using Firebase.Extensions;
 using Firebase.Storage;
 using Unity.VisualScripting;
