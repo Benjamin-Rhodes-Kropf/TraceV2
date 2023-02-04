@@ -385,7 +385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &32701903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &37520675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,7 +681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &44235961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,7 +829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &46563435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,7 +979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &47746075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,7 +1124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &58172382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1278,7 +1272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &65520554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1370,7 +1363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &104439424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1727,7 +1719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &150140875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1876,7 +1867,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &155281441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2025,7 +2015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Red
 --- !u!114 &185531896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2168,7 +2157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &193994313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2715,7 +2703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &219474000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2963,7 +2950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &225988314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3097,7 +3083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &228126607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3249,7 +3234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &229324428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3339,7 +3323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &231182094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3429,7 +3412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &235349038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3604,6 +3586,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239581340}
   m_CullTransparentMesh: 1
+--- !u!1 &252440525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 252440526}
+  - component: {fileID: 252440527}
+  m_Layer: 0
+  m_Name: Key Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &252440526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252440525}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1085486629}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &252440527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252440525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f768b7afd4612144a9575c4bfd210796, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amap: 
+  arcgisKey: 
+  bingMaps: 
+  googleMaps: 
+  hereApiKey: 
+  hereAppCode: 
+  hereAppID: 
+  mapboxAccessToken: 
+  openRouteService: 
+  qq: 
+  what3Words: 
 --- !u!1 &255965795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,7 +3696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &255965798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3751,7 +3787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &262714869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4115,7 +4150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &276075201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4303,7 +4337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &277277121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4452,7 +4485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &280475568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4658,7 +4690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &287925147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4841,7 +4872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &332397162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4934,7 +4964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &339444725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5082,7 +5111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &349972184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5268,7 +5296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &354558201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5403,7 +5430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &357740883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5677,7 +5703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &379239641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5882,7 +5907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &380769964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5972,7 +5996,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &385712527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6103,6 +6126,7 @@ RectTransform:
   m_Children:
   - {fileID: 1392854218}
   - {fileID: 7428875484557280943}
+  - {fileID: 1693931659}
   - {fileID: 8588874617216487449}
   - {fileID: 8588874615842536210}
   - {fileID: 8588874615986053774}
@@ -6229,7 +6253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &400070224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6363,7 +6386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &405957224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6556,7 +6578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &443232579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6706,7 +6727,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &448504889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7113,7 +7133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &475238693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7203,7 +7222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &485719572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7295,7 +7313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &489341688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7441,7 +7458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &490812601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7590,7 +7606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &491231834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7688,6 +7703,99 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491231831}
   m_CullTransparentMesh: 1
+--- !u!1 &491272875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 491272876}
+  - component: {fileID: 491272877}
+  - component: {fileID: 491272880}
+  - component: {fileID: 491272878}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &491272876
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491272875}
+  m_LocalRotation: {x: -0.000000030908623, y: 0.7071068, z: -0.7071068, w: -0.000000030908623}
+  m_LocalPosition: {x: -512, y: 1024, z: 512}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &491272877
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491272875}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 1}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 3072
+  field of view: 60
+  orthographic: 0
+  orthographic size: 100
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8400000, guid: 0c1a058bb75854bbbacfffd8a621c01f, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &491272878
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491272875}
+  m_Enabled: 1
+--- !u!124 &491272880
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491272875}
+  m_Enabled: 1
 --- !u!1 &494504373
 GameObject:
   m_ObjectHideFlags: 0
@@ -7998,7 +8106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &521103715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8147,7 +8254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &527836637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8299,7 +8405,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &548472644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8428,7 +8533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &562595158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8658,7 +8762,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!1 &603891001
 GameObject:
   m_ObjectHideFlags: 0
@@ -8717,7 +8820,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &603891004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8807,7 +8909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &605548590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8956,7 +9057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &607914099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9046,7 +9146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &610689096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9270,7 +9369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Red
 --- !u!114 &631812127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9497,7 +9595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &644464075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9884,7 +9981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &701198187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10033,7 +10129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &712771670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10186,7 +10281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &720648312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10414,7 +10508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &738948538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10507,7 +10600,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &740866666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10600,7 +10692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &749962321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10764,7 +10855,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &764909561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10854,7 +10944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &765335153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11003,7 +11092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &774206370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11153,7 +11241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &779472984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11289,7 +11376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &780754334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11483,7 +11569,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &793929320
 GameObject:
@@ -11589,7 +11675,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &797942360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11815,7 +11900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &800370151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11924,7 +12008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &811242858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12069,7 +12152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Red
 --- !u!114 &820325685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12359,7 +12441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &848405442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12681,7 +12762,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &865695864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12827,7 +12907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &866650527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13190,7 +13269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &884274577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13280,7 +13358,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &890674572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13429,7 +13506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &898371812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14546,7 +14622,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &968952800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14804,7 +14879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &980684587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14894,7 +14968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &989378848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15045,7 +15118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &990555584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15158,7 +15230,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1010828539
 MonoBehaviour:
@@ -15389,7 +15461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1021978052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15540,7 +15611,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Red
 --- !u!114 &1035694396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15762,7 +15832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1055948185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15913,7 +15982,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &1060686146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16211,7 +16279,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &1078816024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16519,6 +16586,269 @@ RectTransform:
   m_AnchoredPosition: {x: -0.46795654, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1085486628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1085486629}
+  - component: {fileID: 1085486630}
+  - component: {fileID: 1085486631}
+  - component: {fileID: 1085486634}
+  - component: {fileID: 1085486632}
+  - component: {fileID: 1085486633}
+  - component: {fileID: 1085486635}
+  - component: {fileID: 1085486636}
+  - component: {fileID: 1085486637}
+  m_Layer: 0
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1085486629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085486628}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 252440526}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1085486630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085486628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf484bb098da8c48973c6e0076a9e35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowRedraw: 1
+  blockAllInteractions: 0
+  countParentLevels: 5
+  customProviderURL: https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i{zoom}!2i{x}!3i{y}!4i256!2m3!1e0!2sm!3i393088596!3m14!2sru!3sUS!5e18!12m1!1e68!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcC52Om9uLHMuZTpsfHAudjpvZmZ8cC5zOi0xMDAscy5lOmwudC5mfHAuczozNnxwLmM6I2ZmMDAwMDAwfHAubDo0MHxwLnY6b2ZmLHMuZTpsLnQuc3xwLnY6b2ZmfHAuYzojZmYwMDAwMDB8cC5sOjE2LHMuZTpsLml8cC52Om9mZixzLnQ6MXxzLmU6Zy5mfHAuYzojZmYwMDAwMDB8cC5sOjIwLHMudDoxfHMuZTpnLnN8cC5jOiNmZjAwMDAwMHxwLmw6MTd8cC53OjEuMixzLnQ6NXxzLmU6Z3xwLmM6I2ZmMDAwMDAwfHAubDoyMCxzLnQ6NXxzLmU6Zy5mfHAuYzojZmY0ZDYwNTkscy50OjV8cy5lOmcuc3xwLmM6I2ZmNGQ2MDU5LHMudDo4MnxzLmU6Zy5mfHAuYzojZmY0ZDYwNTkscy50OjJ8cy5lOmd8cC5sOjIxLHMudDoyfHMuZTpnLmZ8cC5jOiNmZjRkNjA1OSxzLnQ6MnxzLmU6Zy5zfHAuYzojZmY0ZDYwNTkscy50OjN8cy5lOmd8cC52Om9ufHAuYzojZmY3ZjhkODkscy50OjN8cy5lOmcuZnxwLmM6I2ZmN2Y4ZDg5LHMudDo0OXxzLmU6Zy5mfHAuYzojZmY3ZjhkODl8cC5sOjE3LHMudDo0OXxzLmU6Zy5zfHAuYzojZmY3ZjhkODl8cC5sOjI5fHAudzowLjIscy50OjUwfHMuZTpnfHAuYzojZmYwMDAwMDB8cC5sOjE4LHMudDo1MHxzLmU6Zy5mfHAuYzojZmY3ZjhkODkscy50OjUwfHMuZTpnLnN8cC5jOiNmZjdmOGQ4OSxzLnQ6NTF8cy5lOmd8cC5jOiNmZjAwMDAwMHxwLmw6MTYscy50OjUxfHMuZTpnLmZ8cC5jOiNmZjdmOGQ4OSxzLnQ6NTF8cy5lOmcuc3xwLmM6I2ZmN2Y4ZDg5LHMudDo0fHMuZTpnfHAuYzojZmYwMDAwMDB8cC5sOjE5LHMudDo2fHAuYzojZmYyYjM2Mzh8cC52Om9uLHMudDo2fHMuZTpnfHAuYzojZmYyYjM2Mzh8cC5sOjE3LHMudDo2fHMuZTpnLmZ8cC5jOiNmZjI0MjgyYixzLnQ6NnxzLmU6Zy5zfHAuYzojZmYyNDI4MmIscy50OjZ8cy5lOmx8cC52Om9mZixzLnQ6NnxzLmU6bC50fHAudjpvZmYscy50OjZ8cy5lOmwudC5mfHAudjpvZmYscy50OjZ8cy5lOmwudC5zfHAudjpvZmYscy50OjZ8cy5lOmwuaXxwLnY6b2Zm!4e0
+  customTrafficProviderURL: http://localhost/{zoom}/{y}/{x}
+  defaultTileTexture: {fileID: 0}
+  dispatchEvents: 1
+  dragMarkerHoldingCTRL: 0
+  emptyColor: {r: 0.49803922, g: 0.49803922, b: 0.49803922, a: 1}
+  height: 512
+  labels: 1
+  language: en
+  lockRedraw: 0
+  needRedraw: 1
+  notInteractUnderGUI: 1
+  mapType: mapbox.map
+  osmServer: 0
+  proxyURL: http://service.infinity-code.com/redirect.php?
+  redrawOnPlay: 1
+  renderInThread: 0
+  resourcesPath: OnlineMapsTiles/{zoom}/{x}/{y}
+  streamingAssetsPath: OnlineMapsTiles/{zoom}/{x}/{y}.png
+  showMarkerTooltip: 0
+  source: 0
+  stopPlayingWhenScriptsCompile: 1
+  texture: {fileID: 0}
+  tooltipBackgroundTexture: {fileID: 2800000, guid: a8d1734e646100c4e83635fecf978e15, type: 3}
+  traffic: 0
+  trafficProviderID: googlemaps
+  useCurrentZoomTiles: 0
+  useProxy: 1
+  useSoftwareJPEGDecoder: 0
+  width: 512
+  _activeTypeSettings: 07User ID217214salmansaleem3206Map ID228225cld0ojrm7002e14o3c1nkshhw12Access
+    Token3101298pk.eyJ1Ijoic2FsbWFuc2FsZWVtMzIiLCJhIjoiY2xjaTNqOXBpMGJucjN5cGduOHpxZTRnYyJ9.wpcGL6HT4qLiQ92_HcDBzw
+  _zoom: 14
+  latitude: 41.8988037295194
+  longitude: 12.466664751143
+--- !u!114 &1085486631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085486628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b620559b752ba940a1eb34b10dfde7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeTexture: {fileID: 0}
+  allowZoom: 1
+  allowUserControl: 1
+  checkScreenSizeForWheelZoom: 1
+  drawingElementManager: {fileID: 0}
+  isMapDrag: 0
+  invertTouchZoom: 0
+  markerManager: {fileID: 0}
+  smoothZoom: 1
+  zoomInOnDoubleClick: 1
+  zoomMode: 0
+  zoomSensitivity: 1
+  activeCamera: {fileID: 491272877}
+  elevationManager: {fileID: 0}
+  marker2DMode: 0
+  marker2DSize: 100
+  marker3DManager: {fileID: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
+  originalScale: {x: 0, y: 0, z: 0}
+  checkMarker2DVisibility: 0
+  elevationResolution: 32
+  markerMaterial: {fileID: 0}
+  markerShader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
+  sizeInScene: {x: 1024, y: 1024}
+  colliderType: 1
+  compressTextures: 1
+  drawingsGameObject: {fileID: 0}
+  drawingMode: 0
+  drawingShader: {fileID: 4800000, guid: 07fd051d8972c7a4bac96bfa8038d08b, type: 3}
+  overlayFromParentTiles: 1
+  tileMaterial: {fileID: 0}
+  tilesetShader: {fileID: 4800000, guid: f65580aa9bbbd7e42b05adab01e1ca2d, type: 3}
+  _mipmapForTiles: 0
+--- !u!114 &1085486632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085486628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06f2cfe9365da3b4da8d6b60e10f8184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items: []
+  defaultScale: 1
+  allowAddMarker3DByN: 1
+  defaultPrefab: {fileID: 0}
+--- !u!114 &1085486633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085486628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3c476c58b6b054d9469cbe6c8fa060, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customCacheUnloadRate: 0.3
+  maxCustomCacheSize: 100
+  fileCacheLocation: 0
+  fileCacheCustomPath: 
+  fileCacheTilePath: TileCache/{pid}/{mid}/{lbs}/{lng}/{zoom}/{x}/{y}
+  fileCacheUnloadRate: 0.3
+  maxFileCacheSize: 100
+  useFileCache: 1
+  maxMemoryCacheSize: 10
+  memoryCacheUnloadRate: 0.3
+  useMemoryCache: 1
+--- !u!114 &1085486634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085486628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 442db0cd7f5047744a8c79880b32aad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items: []
+  defaultScale: 1
+  defaultTexture: {fileID: 2800000, guid: ea7eb0aa8eaab054a91d4219f9719f63, type: 3}
+  defaultAlign: 7
+  allowAddMarkerByM: 1
+--- !u!114 &1085486635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085486628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e647aef79998b6740a728a33d59d61ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 0}
+  duration: 0.3
+--- !u!114 &1085486636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085486628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906a57edadeceae499f4f1626c990b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adjustTo: 0
+  adjustToGameObject: {fileID: 0}
+  distance: 1000
+  maxRotationX: 80
+  rotation: {x: 0, y: 0}
+  speed: {x: 1, y: 1}
+  lockTilt: 0
+  lockPan: 0
+--- !u!114 &1085486637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085486628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f9052b8f1255a04b9d0402333b78a57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoStopUpdateOnInput: 1
+  compassThreshold: 8
+  createMarkerInUserPosition: 1
+  disableEmulatorInPublish: 1
+  emulatorCompass: 0
+  emulatorPosition: {x: 12.466664, y: 41.898804}
+  findLocationByIP: 0
+  lerpCompassValue: 1
+  markerScale: 1
+  markerTooltip: 
+  markerType: 1
+  marker2DAlign: 4
+  marker2DTexture: {fileID: 0}
+  marker3DPrefab: {fileID: 100000, guid: a85f02af30f3b1e4ba8512858f9c4316, type: 3}
+  marker3DSizeType: 0
+  maxPositionCount: 3
+  position: {x: 0, y: 0}
+  restoreAfter: 10
+  rotateCameraByCompass: 0
+  trueHeading: 0
+  updatePosition: 1
+  useCompassForMarker: 0
+  useGPSEmulator: 1
+  desiredAccuracy: 5
+  requestPermissionRuntime: 1
+  updateDistance: 5
 --- !u!1 &1085681408
 GameObject:
   m_ObjectHideFlags: 0
@@ -16865,7 +17195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1107715733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16956,7 +17285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1119704386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17104,7 +17432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &1125154462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17294,7 +17621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1135634387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17835,7 +18161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &1164683933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18201,7 +18526,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1196670846
 MonoBehaviour:
@@ -18276,7 +18601,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1197118205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18425,7 +18749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1202626593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19213,7 +19536,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &1266373104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19692,7 +20014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1300062204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19832,7 +20153,7 @@ RectTransform:
   - {fileID: 906833078}
   - {fileID: 1279216834}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -20001,7 +20322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1321727276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20150,7 +20470,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &1328778976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20244,7 +20563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1338512131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20596,7 +20914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1369038144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20821,7 +21138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1401476464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21006,7 +21322,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &1422012473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21329,7 +21644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1434997076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21481,7 +21795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1472019819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21571,7 +21884,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &1475304480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21661,7 +21973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1478843473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23009,7 +23320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1581471882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23152,7 +23462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1605803006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23562,7 +23871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &1613660082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23808,7 +24116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1623004464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23957,7 +24264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1640316877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24262,7 +24568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1641342759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24569,7 +24874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &1643419469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24820,7 +25124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1657355490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25110,7 +25413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1679600843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25200,7 +25502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1686156539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25238,6 +25539,79 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686156536}
+  m_CullTransparentMesh: 1
+--- !u!1 &1693931658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1693931659}
+  - component: {fileID: 1693931661}
+  - component: {fileID: 1693931660}
+  m_Layer: 5
+  m_Name: RenderTextureImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1693931659
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693931658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 391485338}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1693931660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693931658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 8400000, guid: 0c1a058bb75854bbbacfffd8a621c01f, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1693931661
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693931658}
   m_CullTransparentMesh: 1
 --- !u!1 &1706576045
 GameObject:
@@ -25624,7 +25998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1721287840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25972,7 +26345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1737806105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26106,7 +26478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &1747866766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26211,7 +26582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &1785856518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26654,7 +27024,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &1806332142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26842,7 +27211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1839810112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26993,7 +27361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &1874455679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27265,7 +27632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &1913049385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27576,7 +27942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!1 &1950818150
 GameObject:
   m_ObjectHideFlags: 0
@@ -27808,7 +28173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &1960492779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28049,7 +28413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &1980079549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28139,7 +28502,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &1982460825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28525,7 +28887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &2009420043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28713,7 +29074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &2021039312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29099,7 +29459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &2053162704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29289,7 +29648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &2074037430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29479,7 +29837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &2074692719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29625,7 +29982,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &2074808493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29811,7 +30167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &2079585985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29960,7 +30315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &2094547719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30111,7 +30465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Red
 --- !u!114 &2099708339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30257,7 +30610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &2100774675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30805,7 +31157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!114 &2130744332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30910,7 +31261,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2147120456
 GameObject:
@@ -30963,7 +31314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &2147120459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31721,7 +32071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!222 &1075378601127884270
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31742,7 +32091,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!222 &1210997070157397316
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -31922,7 +32270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!222 &1354859670377565261
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32242,7 +32589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!224 &3887554160416327380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32529,7 +32875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &5055486062893004056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32542,7 +32887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!224 &5055486062893004057
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32760,7 +33104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!222 &5055486062894395935
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32781,7 +33124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!224 &5055486062950472737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33066,7 +33408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &5055486063052221701
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33119,7 +33460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!222 &5055486063069894985
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -33140,7 +33480,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5055486063069894989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33153,7 +33492,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5055486063069894990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33448,7 +33786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!222 &5055486063108067287
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -33640,7 +33977,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &5055486063249777321
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33828,7 +34164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!224 &5055486063547385987
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33902,7 +34237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!224 &5055486063549255841
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34418,7 +34752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &5055486063713420495
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34470,7 +34803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!224 &5055486063723443325
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34912,7 +35244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5055486063824695552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34955,7 +35286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!222 &5055486063824695555
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35205,7 +35535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!224 &5055486063867593039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35238,7 +35567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!224 &5055486064054731173
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35405,7 +35733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &5055486064161632912
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35556,7 +35883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!222 &5055486064172823068
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35771,7 +36097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!224 &5055486064198643161
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35835,7 +36160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!1 &5055486064198643166
 GameObject:
   m_ObjectHideFlags: 0
@@ -35868,7 +36192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &5055486064247243394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36085,7 +36408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5055486064278274717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36098,7 +36420,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5055486064278274718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36155,7 +36476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!224 &5055486064287460448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36296,7 +36616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!222 &5055486064287460477
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36375,7 +36694,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!1 &5055486064301661447
 GameObject:
   m_ObjectHideFlags: 0
@@ -36708,7 +37026,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!224 &5055486064479602213
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36857,7 +37174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!224 &5055486064501849132
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37142,7 +37458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!224 &5055486064541547085
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37439,7 +37754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!222 &5055486064629658507
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37840,7 +38154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!222 &5055486064739456487
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -38016,7 +38329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &5055486064753314615
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38269,7 +38581,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!222 &5055486064943703514
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -38361,7 +38672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &5055486064944056917
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38721,7 +39031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &5055486064964232815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38882,7 +39191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!222 &5055486064975875933
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39288,7 +39596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5631449908927594463
 GameObject:
   m_ObjectHideFlags: 0
@@ -39358,7 +39665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &5631449908983229383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39464,7 +39770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909005144723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39722,7 +40027,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &5631449909038363925
 GameObject:
   m_ObjectHideFlags: 0
@@ -39857,7 +40161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!1 &5631449909043533243
 GameObject:
   m_ObjectHideFlags: 0
@@ -39985,7 +40288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!1 &5631449909073651477
 GameObject:
   m_ObjectHideFlags: 0
@@ -40088,7 +40390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!1 &5631449909158295447
 GameObject:
   m_ObjectHideFlags: 0
@@ -40128,7 +40429,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &5631449909186384473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40293,7 +40593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!1 &5631449909207494387
 GameObject:
   m_ObjectHideFlags: 0
@@ -40371,7 +40670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909210113027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40512,7 +40810,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5631449909222514081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40614,7 +40911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909229686373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40872,7 +41168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5631449909241304831
 GameObject:
   m_ObjectHideFlags: 0
@@ -40924,7 +41219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &5631449909250992979
 GameObject:
   m_ObjectHideFlags: 0
@@ -41156,7 +41450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!1 &5631449909300832631
 GameObject:
   m_ObjectHideFlags: 0
@@ -41261,7 +41554,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &5631449909338498883
 GameObject:
   m_ObjectHideFlags: 0
@@ -41507,7 +41799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5631449909354403199
 GameObject:
   m_ObjectHideFlags: 0
@@ -41547,7 +41838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &5631449909355624891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41696,7 +41986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &5631449909386725459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41816,7 +42105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &5631449909392461973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41914,7 +42202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909415484689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42087,7 +42374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!1 &5631449909427153747
 GameObject:
   m_ObjectHideFlags: 0
@@ -42165,7 +42451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909431164793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42423,7 +42708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5631449909463412473
 GameObject:
   m_ObjectHideFlags: 0
@@ -42591,7 +42875,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &5631449909591143441
 GameObject:
   m_ObjectHideFlags: 0
@@ -42727,7 +43010,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &5631449909629472704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42740,7 +43022,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &5631449909629472705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42947,7 +43228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!1 &5631449909651006581
 GameObject:
   m_ObjectHideFlags: 0
@@ -42987,7 +43267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5631449909689414285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43073,7 +43352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &5631449909690310673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43171,7 +43449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909694629781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43320,7 +43597,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &5631449909700857293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43578,7 +43854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5631449909701596269
 GameObject:
   m_ObjectHideFlags: 0
@@ -43618,7 +43893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5631449909753778025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43712,7 +43986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909754105947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43861,7 +44134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909777580533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44023,7 +44295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!1 &5631449909823117219
 GameObject:
   m_ObjectHideFlags: 0
@@ -44274,7 +44545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909848431744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44287,7 +44557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909848431745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44553,7 +44822,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5631449909880859591
 GameObject:
   m_ObjectHideFlags: 0
@@ -44623,7 +44891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &5631449909894079117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44729,7 +44996,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909898323037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44878,7 +45144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &5631449909898585285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44968,7 +45233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5631449909912753501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45101,7 +45365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449909980420223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45223,7 +45486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5631449910035849347
 GameObject:
   m_ObjectHideFlags: 0
@@ -45410,7 +45672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!1 &5631449910059504093
 GameObject:
   m_ObjectHideFlags: 0
@@ -45480,7 +45741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &5631449910085526365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45625,7 +45885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449910122895791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45735,7 +45994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5631449910126425469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45898,7 +46156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!1 &5631449910154908624
 GameObject:
   m_ObjectHideFlags: 0
@@ -45958,7 +46215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449910154908639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46060,7 +46316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &5631449910161351121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46217,7 +46472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5631449910165031211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46354,7 +46608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5631449910171461711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46418,7 +46671,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!1 &5631449910172606291
 GameObject:
   m_ObjectHideFlags: 0
@@ -46533,7 +46785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &5631449910276659249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46727,7 +46978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!1 &5631449910292839253
 GameObject:
   m_ObjectHideFlags: 0
@@ -46767,7 +47017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &5631449910316545635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47025,7 +47274,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &5631449910357517375
 GameObject:
   m_ObjectHideFlags: 0
@@ -47065,7 +47313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &5631449910445131621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47323,7 +47570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5631449910447164141
 GameObject:
   m_ObjectHideFlags: 0
@@ -47375,7 +47621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5631449910447326867
 GameObject:
   m_ObjectHideFlags: 0
@@ -47512,7 +47757,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &5631449910514909563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47602,7 +47846,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5631449910525068423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47805,7 +48048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &5631449910717261805
 GameObject:
   m_ObjectHideFlags: 0
@@ -47895,7 +48137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!1 &5631449910724915037
 GameObject:
   m_ObjectHideFlags: 0
@@ -47927,7 +48168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &5631449910755892961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48076,7 +48316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &5631449910790408673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48170,7 +48409,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &5631449910829901409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48260,7 +48498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &5631449910847389889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48473,7 +48710,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &5631449910899677658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48603,7 +48839,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5631449910899677663
 GameObject:
   m_ObjectHideFlags: 0
@@ -48697,7 +48932,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!1 &5631449910906536855
 GameObject:
   m_ObjectHideFlags: 0
@@ -48729,7 +48963,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &5631449910908392081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48936,7 +49169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &5631449911001913305
 GameObject:
   m_ObjectHideFlags: 0
@@ -48968,7 +49200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!114 &5631449911017886961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49096,7 +49327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Super Light Red
 --- !u!114 &5631449911027275963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49330,7 +49560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &5789459929652050331
 GameObject:
   m_ObjectHideFlags: 0
@@ -49560,7 +49789,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!1 &6102808264268529458
 GameObject:
   m_ObjectHideFlags: 0
@@ -49601,7 +49829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!224 &6102808264268529485
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49838,7 +50065,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113346969226979
 GameObject:
   m_ObjectHideFlags: 0
@@ -49987,7 +50213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113346986754451
 GameObject:
   m_ObjectHideFlags: 0
@@ -50116,7 +50341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113347026427753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50273,7 +50497,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113347029772047
 GameObject:
   m_ObjectHideFlags: 0
@@ -50572,7 +50795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113347075892179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50694,7 +50916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113347114198235
 GameObject:
   m_ObjectHideFlags: 0
@@ -50975,7 +51196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113347199208821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51144,7 +51364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &6184113347216554581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51208,7 +51427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!222 &6184113347216554586
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -51249,7 +51467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113347225067807
 GameObject:
   m_ObjectHideFlags: 0
@@ -51514,7 +51731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113347305736576
 GameObject:
   m_ObjectHideFlags: 0
@@ -51739,7 +51955,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &6184113347389535768
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51774,7 +51989,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!1 &6184113347389535771
 GameObject:
   m_ObjectHideFlags: 0
@@ -51909,7 +52123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113347391693047
 GameObject:
   m_ObjectHideFlags: 0
@@ -52283,7 +52496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!1 &6184113347457553391
 GameObject:
   m_ObjectHideFlags: 0
@@ -52587,7 +52799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113347495609464
 GameObject:
   m_ObjectHideFlags: 0
@@ -52647,7 +52858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &6184113347495609471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52807,7 +53017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113347500994623
 GameObject:
   m_ObjectHideFlags: 0
@@ -52886,7 +53095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113347511654335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53010,7 +53218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!1 &6184113347544411527
 GameObject:
   m_ObjectHideFlags: 0
@@ -53125,7 +53332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113347549725045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53378,7 +53584,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!222 &6184113347588035994
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -53627,7 +53832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113347614867809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53786,7 +53990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!1 &6184113347619607267
 GameObject:
   m_ObjectHideFlags: 0
@@ -54189,7 +54392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113347693931948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54202,7 +54404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &6184113347693931949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54467,7 +54668,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!222 &6184113347700983966
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -54700,7 +54900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113347774165573
 GameObject:
   m_ObjectHideFlags: 0
@@ -54849,7 +55048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113347793926428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54862,7 +55060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113347793926429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55135,7 +55332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &6184113347852099776
 RectTransform:
   m_ObjectHideFlags: 0
@@ -55168,7 +55364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113347852099779
 GameObject:
   m_ObjectHideFlags: 0
@@ -55344,7 +55539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113347872532063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55522,7 +55716,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113347881679617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55679,7 +55872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113347889346255
 GameObject:
   m_ObjectHideFlags: 0
@@ -55985,7 +56177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113347933627787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56158,7 +56349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!222 &6184113347953772266
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -56335,7 +56525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113347983727379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56566,7 +56755,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!1 &6184113348075943911
 GameObject:
   m_ObjectHideFlags: 0
@@ -56689,7 +56877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113348102200771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56881,7 +57068,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113348114657126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56999,7 +57185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113348145655381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57111,7 +57296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!1 &6184113348218901427
 GameObject:
   m_ObjectHideFlags: 0
@@ -57226,7 +57410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113348260461225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57413,7 +57596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &6184113348321723495
 GameObject:
   m_ObjectHideFlags: 0
@@ -57608,7 +57790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113348326146579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57864,7 +58045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113348448736219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58092,7 +58272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!222 &6184113348534996782
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -58193,7 +58372,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113348538631443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58304,7 +58482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113348555768729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58640,7 +58817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113348617260147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58762,7 +58938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113348625313155
 GameObject:
   m_ObjectHideFlags: 0
@@ -59047,7 +59222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113348710426295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59256,7 +59430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113348752231941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59444,7 +59617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!1 &6184113348823215527
 GameObject:
   m_ObjectHideFlags: 0
@@ -59559,7 +59731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6184113348859682081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59900,7 +60071,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!224 &6184113348907948884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59933,7 +60103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &6184113348907948887
 GameObject:
   m_ObjectHideFlags: 0
@@ -60274,7 +60443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113348939872224
 GameObject:
   m_ObjectHideFlags: 0
@@ -60367,7 +60535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6184113348939872231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60446,7 +60613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!1 &6184113348990730959
 GameObject:
   m_ObjectHideFlags: 0
@@ -60624,7 +60790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113349043223435
 GameObject:
   m_ObjectHideFlags: 0
@@ -60869,7 +61034,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!222 &6184113349062188770
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -60910,7 +61074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!1 &6184113349094163227
 GameObject:
   m_ObjectHideFlags: 0
@@ -61175,7 +61338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!114 &6304215426951608574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61347,7 +61509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &6409292611448650059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61526,7 +61687,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &6409292613059533512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61781,7 +61941,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!114 &6925748119828350952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61870,7 +62029,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!1 &6925748119934509160
 GameObject:
   m_ObjectHideFlags: 0
@@ -62083,7 +62241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!224 &6925748119941531374
 RectTransform:
   m_ObjectHideFlags: 0
@@ -62448,7 +62605,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &6925748120185837849
 RectTransform:
   m_ObjectHideFlags: 0
@@ -63108,7 +63264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!224 &6925748120802220068
 RectTransform:
   m_ObjectHideFlags: 0
@@ -63679,7 +63834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &6925748120974283324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63918,7 +64072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!224 &6925748121161802494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64115,7 +64268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Tone Grey
 --- !u!222 &6925748121251034545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -64225,7 +64377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &6925748121251034556
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64469,7 +64620,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!224 &6925748121274551215
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64502,7 +64652,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!224 &6925748121329528773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64689,7 +64838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Blue
 --- !u!224 &6925748121497513702
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64824,7 +64972,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Tone Grey
 --- !u!1 &6935572493856918839
 GameObject:
   m_ObjectHideFlags: 0
@@ -65284,7 +65431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!224 &7424510814891141033
 RectTransform:
   m_ObjectHideFlags: 0
@@ -65546,7 +65692,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!222 &7424510815472183899
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -65727,7 +65872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &7481568902912447142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65968,7 +66112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!224 &7512410195011218143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -66002,7 +66145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Grey
 --- !u!224 &7512410195057915025
 RectTransform:
   m_ObjectHideFlags: 0
@@ -66730,7 +66872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Dark Grey
 --- !u!114 &8356309804012128158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66889,7 +67030,7 @@ RectTransform:
   m_Children:
   - {fileID: 8588874617553812730}
   m_Father: {fileID: 391485338}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -67118,7 +67259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Light Blue
 --- !u!222 &8588874615977512410
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -67171,7 +67311,7 @@ RectTransform:
   m_Children:
   - {fileID: 8588874617552059652}
   m_Father: {fileID: 391485338}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -67398,7 +67538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!224 &8588874616795555027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -67519,7 +67658,7 @@ RectTransform:
   m_Children:
   - {fileID: 8588874615977512406}
   m_Father: {fileID: 391485338}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -67556,7 +67695,7 @@ RectTransform:
   m_Children:
   - {fileID: 8588874616795555027}
   m_Father: {fileID: 391485338}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -67749,7 +67888,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!222 &8588874617552059657
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -67839,7 +67977,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: Medium Dark Grey
 --- !u!222 &8588874617553812735
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -67888,7 +68025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _category: White
 --- !u!114 &8695063016240300561
 MonoBehaviour:
   m_ObjectHideFlags: 0
