@@ -196,7 +196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &491272876
 Transform:
   m_ObjectHideFlags: 0
@@ -411,7 +411,7 @@ MonoBehaviour:
   lockRedraw: 0
   needRedraw: 1
   notInteractUnderGUI: 1
-  mapType: arcgis.worldimagery
+  mapType: mapbox.map
   osmServer: 0
   proxyURL: http://service.infinity-code.com/redirect.php?
   redrawOnPlay: 1
@@ -429,7 +429,8 @@ MonoBehaviour:
   useProxy: 1
   useSoftwareJPEGDecoder: 0
   width: 512
-  _activeTypeSettings: 
+  _activeTypeSettings: 07User ID217214salmansaleem3206Map ID228225cld0ojrm7002e14o3c1nkshhw12Access
+    Token3101298pk.eyJ1Ijoic2FsbWFuc2FsZWVtMzIiLCJhIjoiY2xjaTNqOXBpMGJucjN5cGduOHpxZTRnYyJ9.wpcGL6HT4qLiQ92_HcDBzw
   _zoom: 14
   latitude: 41.8988037295194
   longitude: 12.466664751143
