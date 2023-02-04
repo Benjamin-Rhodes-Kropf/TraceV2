@@ -8,30 +8,27 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:893582097322:android:3ee85d0f12a2ac750709d3",
+        "mobilesdk_app_id": "1:893582097322:ios:7d2cf66fa57397dc0709d3",
         "android_client_info": {
-          "package_name": "com.DefaultCompany.com.unity.template.mobile2D"
+          "package_name": "com.TraceCo.Trace"
         }
       },
       "oauth_client": [
         {
-          "client_id": "893582097322-hmdm5hc7ripkkn8ci0gsggkni35junq5.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "893582097322-qtdugj24v6fq3nq4u49ei2p9au7dn6aq.apps.googleusercontent.com"
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDlLgMRIy75f-ZwpUD-2DedpMnVnde7fjQ"
+          "current_key": "AIzaSyD5CvwX-lW6K7UYaGTC84cW54Bd43CpWzc"
         }
       ],
       "services": {
+        "analytics_service": {
+          "status": 0
+        },
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "893582097322-hmdm5hc7ripkkn8ci0gsggkni35junq5.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1
         }
       }
     }
