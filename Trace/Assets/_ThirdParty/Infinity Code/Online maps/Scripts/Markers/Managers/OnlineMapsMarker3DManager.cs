@@ -1,4 +1,4 @@
-﻿/*         INFINITY CODE         */
+﻿      /*         INFINITY CODE         */
 /*   https://infinity-code.com   */
 
 using System;
