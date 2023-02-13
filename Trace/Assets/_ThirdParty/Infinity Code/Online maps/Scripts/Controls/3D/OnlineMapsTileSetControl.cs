@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 /// <summary>
@@ -79,6 +80,8 @@ public class OnlineMapsTileSetControl : OnlineMapsControlBaseDynamicMesh
     /// Shader of map.
     /// </summary>
     public Shader tilesetShader;
+
+    public LayerMask layersToInclude = -1;
 
 
     #endregion
@@ -233,6 +236,7 @@ public class OnlineMapsTileSetControl : OnlineMapsControlBaseDynamicMesh
 
     protected override bool GetCoordsInternal(out double lng, out double lat)
     {
+        Debug.Log("Fetching coordinates");
         Vector2 position = GetInputPosition();
         if (dragPlane == null) return GetCoords(position, out lng, out lat);
 
@@ -412,9 +416,20 @@ public class OnlineMapsTileSetControl : OnlineMapsControlBaseDynamicMesh
 #if NGUI
         if (UICamera.Raycast(position)) return false;
 #endif
+        
         Rect rect = currentCamera.rect;
         if (rect.width == 0 || rect.height == 0) return false;
-        return cl.Raycast(currentCamera.ScreenPointToRay(position), out lastRaycastHit, OnlineMapsUtils.maxRaycastDistance);
+
+        //TODO: add layer to skip the UI.
+        // return cl.Raycast(currentCamera.ScreenPointToRay(position), out lastRaycastHit, OnlineMapsUtils.maxRaycastDistance);
+        // layersToInclude &= ~(1 << 5);
+        Debug.Log(layersToInclude.value);
+
+        if (!Physics.Raycast(currentCamera.ScreenPointToRay(position), out lastRaycastHit,
+            OnlineMapsUtils.maxRaycastDistance, MyDebug.Instance.layerMaskForMapDetection)) return false;
+        Debug.Log("Last raycast Hit: " + lastRaycastHit.transform.name);
+        return true;
+
     }
 
     private void InitDrawingsMesh()

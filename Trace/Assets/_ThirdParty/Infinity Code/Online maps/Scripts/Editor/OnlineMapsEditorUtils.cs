@@ -138,14 +138,14 @@ public static class OnlineMapsEditorUtils
         if (warning != null && !warning.Show()) return;
         if (string.IsNullOrEmpty(assetPath))
         {
-            if (!string.IsNullOrEmpty(errorMessage)) Debug.LogError(errorMessage);
+            if (!string.IsNullOrEmpty(errorMessage)) UnityEngine.Debug.LogError(errorMessage);
             return;
         }
 
         string filaname = assetPath + "\\" + path;
         if (!File.Exists(filaname))
         {
-            if (!string.IsNullOrEmpty(errorMessage)) Debug.LogError(errorMessage);
+            if (!string.IsNullOrEmpty(errorMessage)) UnityEngine.Debug.LogError(errorMessage);
             return;
         }
 

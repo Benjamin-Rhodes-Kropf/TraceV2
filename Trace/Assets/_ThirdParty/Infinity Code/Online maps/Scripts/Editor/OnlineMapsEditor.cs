@@ -1074,7 +1074,7 @@ public class OnlineMapsEditor : Editor
         }
         catch (Exception e)
         {
-            Debug.Log(e.Message + "\n" + e.StackTrace);
+            UnityEngine.Debug.Log(e.Message + "\n" + e.StackTrace);
             //throw;
         }
         
@@ -1126,7 +1126,7 @@ public class OnlineMapsEditor : Editor
         }
         catch (Exception e)
         {
-            Debug.Log(e.Message + "\n" + e.StackTrace);
+            UnityEngine.Debug.Log(e.Message + "\n" + e.StackTrace);
             //throw;
         }
         
