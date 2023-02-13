@@ -81,9 +81,6 @@ public class OnlineMapsTileSetControl : OnlineMapsControlBaseDynamicMesh
     /// </summary>
     public Shader tilesetShader;
 
-    public LayerMask layersToInclude = -1;
-
-
     #endregion
 
     #region Private Fields
@@ -421,14 +418,14 @@ public class OnlineMapsTileSetControl : OnlineMapsControlBaseDynamicMesh
         if (rect.width == 0 || rect.height == 0) return false;
 
         //TODO: add layer to skip the UI.
-        // return cl.Raycast(currentCamera.ScreenPointToRay(position), out lastRaycastHit, OnlineMapsUtils.maxRaycastDistance);
+        return cl.Raycast(currentCamera.ScreenPointToRay(position), out lastRaycastHit, OnlineMapsUtils.maxRaycastDistance);
         // layersToInclude &= ~(1 << 5);
-        Debug.Log(layersToInclude.value);
-
-        if (!Physics.Raycast(currentCamera.ScreenPointToRay(position), out lastRaycastHit,
-            OnlineMapsUtils.maxRaycastDistance, MyDebug.Instance.layerMaskForMapDetection)) return false;
-        Debug.Log("Last raycast Hit: " + lastRaycastHit.transform.name);
-        return true;
+        // Debug.Log(layersToInclude.value);
+        //
+        // if (!Physics.Raycast(currentCamera.ScreenPointToRay(position), out lastRaycastHit,
+        //     OnlineMapsUtils.maxRaycastDistance, MyDebug.Instance.layerMaskForMapDetection)) return false;
+        // Debug.Log("Last raycast Hit: " + lastRaycastHit.transform.name);
+        // return true;
 
     }
 

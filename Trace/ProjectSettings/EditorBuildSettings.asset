@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_ThirdParty/Infinity Code/Online maps/Examples/Scenes/Controls/SpriteRenderer.unity
-    guid: 9ae0d70d9f007f14e95f7e40df528ee2
+    path: Assets/Scenes/Main_2D.unity
+    guid: c7ec07c852da049678408f9232a0230c
   m_configObjects: {}

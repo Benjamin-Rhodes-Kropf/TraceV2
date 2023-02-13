@@ -13,5 +13,5 @@ public class MyDebug : MonoBehaviour
         Instance = this;
     }
 
-    public LayerMask layerMaskForMapDetection;
+    //public LayerMask layerMaskForMapDetection;
 }
