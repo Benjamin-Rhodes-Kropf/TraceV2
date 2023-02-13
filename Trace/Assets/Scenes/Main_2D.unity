@@ -15227,7 +15227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   autoStopUpdateOnInput: 1
   compassThreshold: 8
-  createMarkerInUserPosition: 0
+  createMarkerInUserPosition: 1
   disableEmulatorInPublish: 1
   emulatorCompass: 0
   emulatorPosition: {x: 12.466664, y: 41.898804}
@@ -15237,12 +15237,12 @@ MonoBehaviour:
   markerTooltip: 
   markerType: 0
   marker2DAlign: 4
-  marker2DTexture: {fileID: 2800000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
+  marker2DTexture: {fileID: 2800000, guid: 3042b019b052942a1baf7aa49d7ca6bb, type: 3}
   marker3DPrefab: {fileID: 100000, guid: a85f02af30f3b1e4ba8512858f9c4316, type: 3}
   marker3DSizeType: 0
   maxPositionCount: 3
   position: {x: 0, y: 0}
-  restoreAfter: 10
+  restoreAfter: 0
   rotateCameraByCompass: 0
   trueHeading: 0
   updatePosition: 1
