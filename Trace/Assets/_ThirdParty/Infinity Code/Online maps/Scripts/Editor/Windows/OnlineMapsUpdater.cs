@@ -84,7 +84,7 @@ public class OnlineMapsUpdater : EditorWindow
         {
             if (response.Error != null)
             {
-                Debug.Log(response.Error.Message);
+                UnityEngine.Debug.Log(response.Error.Message);
                 return;
             }
 
@@ -104,7 +104,7 @@ public class OnlineMapsUpdater : EditorWindow
             }
             catch (Exception)
             {
-                Debug.Log("Automatic check for Online Maps updates: Bad response.");
+                UnityEngine.Debug.Log("Automatic check for Online Maps updates: Bad response.");
                 return;
             }
 
@@ -163,7 +163,7 @@ public class OnlineMapsUpdater : EditorWindow
         }
         catch(Exception exception)
         {
-            Debug.Log(exception.Message);
+            UnityEngine.Debug.Log(exception.Message);
             return;
         }
 
