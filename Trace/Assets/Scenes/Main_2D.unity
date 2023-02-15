@@ -4580,7 +4580,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &280585657
 MonoBehaviour:
@@ -7763,7 +7763,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0.1}
 --- !u!20 &491272877
 Camera:
@@ -11619,7 +11619,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &793929320
 GameObject:
@@ -15294,7 +15294,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1010828539
 MonoBehaviour:
@@ -18337,7 +18337,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1196670846
 MonoBehaviour:
@@ -31012,7 +31012,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2147120456
 GameObject:
@@ -32087,7 +32087,7 @@ Transform:
   m_Children:
   - {fileID: 1880831635636834783}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1880831634686314549
 GameObject:
@@ -32153,7 +32153,7 @@ MonoBehaviour:
   drawingsGameObject: {fileID: 0}
   drawingMode: 0
   drawingShader: {fileID: 4800000, guid: 07fd051d8972c7a4bac96bfa8038d08b, type: 3}
-  overlayFromParentTiles: 0
+  overlayFromParentTiles: 1
   tileMaterial: {fileID: 0}
   tilesetShader: {fileID: 4800000, guid: f65580aa9bbbd7e42b05adab01e1ca2d, type: 3}
   _mipmapForTiles: 0
@@ -32196,7 +32196,7 @@ MonoBehaviour:
   stopPlayingWhenScriptsCompile: 1
   texture: {fileID: 0}
   tooltipBackgroundTexture: {fileID: 2800000, guid: a8d1734e646100c4e83635fecf978e15, type: 3}
-  traffic: 1
+  traffic: 0
   trafficProviderID: googlemaps
   useCurrentZoomTiles: 0
   useProxy: 1
@@ -32224,10 +32224,10 @@ MonoBehaviour:
   fileCacheLocation: 0
   fileCacheCustomPath: 
   fileCacheTilePath: TileCache/{pid}/{mid}/{lbs}/{lng}/{zoom}/{x}/{y}
-  fileCacheUnloadRate: 0.3
-  maxFileCacheSize: 200
+  fileCacheUnloadRate: 0.5
+  maxFileCacheSize: 192
   useFileCache: 1
-  maxMemoryCacheSize: 100
+  maxMemoryCacheSize: 96
   memoryCacheUnloadRate: 0.3
   useMemoryCache: 1
 --- !u!114 &1880831634686314553
@@ -32258,7 +32258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e647aef79998b6740a728a33d59d61ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 0}
+  map: {fileID: 1880831634686314551}
   duration: 0.3
 --- !u!114 &1880831634686314555
 MonoBehaviour:
@@ -32306,7 +32306,7 @@ MonoBehaviour:
   marker3DSizeType: 0
   maxPositionCount: 3
   position: {x: 0, y: 0}
-  restoreAfter: 10
+  restoreAfter: 20
   rotateCameraByCompass: 0
   trueHeading: 0
   updatePosition: 1
