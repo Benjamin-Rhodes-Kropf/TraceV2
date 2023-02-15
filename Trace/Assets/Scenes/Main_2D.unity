@@ -15403,7 +15403,7 @@ MonoBehaviour:
   smoothZoom: 1
   zoomInOnDoubleClick: 1
   zoomMode: 0
-  zoomSensitivity: 1
+  zoomSensitivity: 0.5
 --- !u!114 &1009929998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15425,13 +15425,13 @@ MonoBehaviour:
   dispatchEvents: 1
   dragMarkerHoldingCTRL: 0
   emptyColor: {r: 0.49803922, g: 0.49803922, b: 0.49803922, a: 1}
-  height: 0
+  height: 512
   labels: 1
   language: en
   lockRedraw: 0
   needRedraw: 1
   notInteractUnderGUI: 1
-  mapType: virtualearth.road
+  mapType: mapbox.map
   osmServer: 0
   proxyURL: http://service.infinity-code.com/redirect.php?
   redrawOnPlay: 0
@@ -15448,11 +15448,12 @@ MonoBehaviour:
   useCurrentZoomTiles: 0
   useProxy: 1
   useSoftwareJPEGDecoder: 0
-  width: 0
-  _activeTypeSettings: 
+  width: 512
+  _activeTypeSettings: 07User ID217214salmansaleem3206Map ID228225cld0ojrm7002e14o3c1nkshhw12Access
+    Token3101298pk.eyJ1Ijoic2FsbWFuc2FsZWVtMzIiLCJhIjoiY2xjaTNqOXBpMGJucjN5cGduOHpxZTRnYyJ9.wpcGL6HT4qLiQ92_HcDBzw
   _zoom: 8
-  latitude: 33.921390533447266
-  longitude: -118.48310089111328
+  latitude: 41.8988037295194
+  longitude: 12.466664751143
 --- !u!65 &1009929999
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18623,9 +18624,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencyStatus: 0
   firebaseStorageReferenceUrl: gs://geosnapv1.appspot.com
-  autoLogin: 0
+  autoLogin: 1
   forceLogin: 0
-  useAdminForLogin: 0
+  useAdminForLogin: 1
   adminUser: test@gmail.com
   adminPass: test@gmail.com
   userImageTexture: {fileID: 0}
