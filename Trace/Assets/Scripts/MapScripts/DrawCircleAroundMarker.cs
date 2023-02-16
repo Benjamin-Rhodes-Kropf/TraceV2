@@ -10,7 +10,6 @@ public class DrawCircleAroundMarker : MonoBehaviour
         public float radiusKM = 0.1f;
 
         public int numOfCircles = 0;
-
         private void Awake()
         {
             numOfCircles = 0;
@@ -29,7 +28,7 @@ public class DrawCircleAroundMarker : MonoBehaviour
         /// 
         private void DrawCircle()
         {
-            if(Input.GetMouseButtonDown(0) && numOfCircles  < 3)
+            if(Input.GetKeyDown("space") && numOfCircles  < 3)
             {
                 numOfCircles++;
                 // Get the coordinates under cursor
@@ -37,8 +36,9 @@ public class DrawCircleAroundMarker : MonoBehaviour
                 OnlineMapsControlBase.instance.GetCoords(out lng, out lat);
 
                 // Create a new marker under cursor
-                OnlineMapsMarkerManager.CreateItem(lng, lat, "Marker " + OnlineMapsMarkerManager.CountItems);
-
+                OnlineMapsMarkerManager.CreateItem(lng, lat, new Texture2D(10,10),"marker number" + OnlineMapsMarkerManager.CountItems);
+                
+                
                 OnlineMaps map = OnlineMaps.instance;
 
                 // Get the coordinate at the desired distance
@@ -73,7 +73,7 @@ public class DrawCircleAroundMarker : MonoBehaviour
 
                 // Create a new polygon to draw a circle
                 OnlineMapsDrawingElement poly = OnlineMapsDrawingElementManager.AddItem
-                (new OnlineMapsDrawingPoly(points, Color.blue, 1, Color.blue));
+                (new OnlineMapsDrawingPoly(points, Color.blue, 1, new Color(0,255,255,50)));
                 poly.OnClick += OnCircleClick;
             }
         }

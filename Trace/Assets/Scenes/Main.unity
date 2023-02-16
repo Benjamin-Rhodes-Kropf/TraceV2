@@ -49736,6 +49736,7 @@ GameObject:
   - component: {fileID: 6068666308761308073}
   - component: {fileID: 6068666308761308080}
   - component: {fileID: 6068666308761308081}
+  - component: {fileID: 6068666308761308082}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -49945,9 +49946,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items: []
   defaultScale: 1
-  defaultTexture: {fileID: 2800000, guid: ea7eb0aa8eaab054a91d4219f9719f63, type: 3}
-  defaultAlign: 7
-  allowAddMarkerByM: 1
+  defaultTexture: {fileID: 2800000, guid: b786a347d356e424e9588c51566439de, type: 3}
+  defaultAlign: 4
+  allowAddMarkerByM: 0
 --- !u!114 &6068666308761308079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49993,6 +49994,19 @@ MonoBehaviour:
   circlePoint:
   - {x: 0, y: 0}
   drawCircle: 1
+--- !u!114 &6068666308761308082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068666308761308064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 176012c12beaa40cd9d896bd085f133e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  friction: 0.9
 --- !u!1 &6102808264268529458
 GameObject:
   m_ObjectHideFlags: 0
