@@ -65,7 +65,7 @@ using UnityEngine;
                 pz = map.floatZoom;
             }
             // If no interaction with the map.
-            else if (rsX * rsX + rsY * rsY > 0.01 || rsZ > 0.01)
+            else if (rsX * rsX + rsY * rsY > 0.001 || rsZ > 0.001)
             {
                 // Continue to move the map with the current speed.
                 ptx += rsX;
