@@ -32244,7 +32244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items: []
   defaultScale: 1
-  allowAddMarker3DByN: 1
+  allowAddMarker3DByN: 0
   defaultPrefab: {fileID: 0}
 --- !u!114 &1880831634686314554
 MonoBehaviour:
