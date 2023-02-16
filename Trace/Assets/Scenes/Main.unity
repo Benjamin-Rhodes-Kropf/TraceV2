@@ -49962,7 +49962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 6068666308761308066}
-  duration: 0.3
+  duration: 0.1
 --- !u!114 &6068666308761308080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50007,6 +50007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   friction: 0.9
+  maxSamples: 5
 --- !u!1 &6102808264268529458
 GameObject:
   m_ObjectHideFlags: 0
