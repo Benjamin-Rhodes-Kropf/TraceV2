@@ -229,6 +229,12 @@ public static class HelperMethods
 
         return _list;
     }
+
+    public static IEnumerator TimedActionFunction(float timer, Action callback)
+    {
+        yield return new WaitForSeconds(timer);
+        callback?.Invoke();
+    }
     
     public static IEnumerator LerpScroll(ScrollRect _scrollRect,float target, float overTime)
 	{
@@ -240,6 +246,7 @@ public static class HelperMethods
 		}
 		_scrollRect.verticalNormalizedPosition = target;
 	}
+
     public static void OpenLink(string _Link)
     {
 #if UNITY_WEBGL
