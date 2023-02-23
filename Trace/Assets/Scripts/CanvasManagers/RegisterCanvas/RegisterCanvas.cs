@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,14 +37,6 @@ namespace CanvasManagers
 
         #endregion
 
-
-        private void Register(string username, string email, string password, string confirmPassword)
-        {
-            StartCoroutine(FbManager.instance.RegisterNewUser(email, password, username, "", (response) =>
-            {
-                Debug.Log("Registered Response received from Firebase: " + response);
-            }));
-        }
 
         public void ShowMessage(string message)
         {
