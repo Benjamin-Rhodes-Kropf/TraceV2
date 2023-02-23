@@ -22170,7 +22170,6 @@ GameObject:
   - component: {fileID: 1513634343}
   - component: {fileID: 1513634342}
   - component: {fileID: 1513634341}
-  - component: {fileID: 1513634340}
   - component: {fileID: 1513634345}
   m_Layer: 5
   m_Name: Camera Screen
@@ -22200,28 +22199,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1513634340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513634338}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c77bf341413534d0ebfc681f7da3ade1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objects: []
-  imgs: []
-  txts: []
-  initalColor: []
-  targetColor: []
-  fadeDuration: 0
-  moveToDisabledChild: 1
-  disabledParent: {fileID: 1279216834}
-  fadeInOnEnabled: 0
-  waitBeforeFade: 0
 --- !u!114 &1513634341
 MonoBehaviour:
   m_ObjectHideFlags: 0
