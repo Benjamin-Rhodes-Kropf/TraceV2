@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace CanvasManagers
 {
     public class RegisterCanvasController
@@ -34,8 +36,18 @@ namespace CanvasManagers
             
             _view.passwordText.onEndEdit.AddListener(ValidatePassword);
             _view.retypePasswordText.onEndEdit.AddListener(ValidatePassword);
+            
+            _view.registerButton.onClick.AddListener(OnClickRegister);
         }
-        
+
+        private void OnClickRegister()
+        {
+            _view.StartCoroutine(FbManager.instance.RegisterNewUser(_view.emailText.text, _view.passwordText.text, _view.usernameText.text, "", (response) =>
+            {
+                Debug.Log("Registered Response received from Firebase: " + response);
+            }));
+        }
+
         private void UnbindEvents()
         {
             _view.usernameText.onEndEdit.RemoveAllListeners();
@@ -43,6 +55,8 @@ namespace CanvasManagers
             
             _view.passwordText.onEndEdit.RemoveAllListeners();
             _view.retypePasswordText.onEndEdit.RemoveAllListeners();
+            
+            _view.registerButton.onClick.RemoveAllListeners();
         }
 
         #endregion
