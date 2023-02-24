@@ -18421,9 +18421,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencyStatus: 0
   firebaseStorageReferenceUrl: gs://geosnapv1.appspot.com
-  autoLogin: 0
+  autoLogin: 1
   forceLogin: 0
-  useAdminForLogin: 0
+  useAdminForLogin: 1
   adminUser: test@gmail.com
   adminPass: test@gmail.com
   userImageTexture: {fileID: 0}
@@ -26300,9 +26300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b5f92b219d94f38921502841b16e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputField: {fileID: 6304215426951608574}
+  _numberInputField: {fileID: 0}
   _phoneNumberDisplay: {fileID: 150140875}
   lastLength: 0
+  verifyNumberButton: {fileID: 0}
 --- !u!1 &1785856515
 GameObject:
   m_ObjectHideFlags: 0
