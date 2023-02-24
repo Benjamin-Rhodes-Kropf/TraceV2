@@ -95,7 +95,7 @@ namespace CanvasManagers
             else
             {
                 _view.ShowMessage(passwordResponse);
-                _isEmailValidated = false;
+                _isPasswordValidated = false;
             }
 
             EnableRegistrationButtonCheck();
