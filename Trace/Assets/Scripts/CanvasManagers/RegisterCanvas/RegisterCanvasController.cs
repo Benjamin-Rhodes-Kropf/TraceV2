@@ -44,8 +44,11 @@ namespace CanvasManagers
         {
             _view.StartCoroutine(FbManager.instance.RegisterNewUser(_view.emailText.text, _view.passwordText.text, _view.usernameText.text, "", (response) =>
             {
+                _view.ShowMessage("This mail account is already in use.");
                 Debug.Log("Registered Response received from Firebase: " + response);
             }));
+            
+            // ScreenManager.instance.ChangeScreenForwards("PhoneNumber");
         }
 
         private void UnbindEvents()
@@ -105,6 +108,7 @@ namespace CanvasManagers
         private void ValidateUsername(string username)
         {
             _isUsernameValidated = !HelperMethods.isBadName(username);
+            
             EnableRegistrationButtonCheck();
         }
 

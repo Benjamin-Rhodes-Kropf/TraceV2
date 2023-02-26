@@ -179,7 +179,7 @@ public static class HelperMethods
             
             if (!passwordValidator.IsMatch(password))
             {
-                stringToReturn = "Invalid Password: Must include atleast 1 Small character, 1 Capital character, 1 Number, and 1 Special character";
+                stringToReturn = "Invalid Password: Must include atleast 1 Small character, \n1 Capital character, 1 Number, and 1 Special character";
             }
         }
         else
