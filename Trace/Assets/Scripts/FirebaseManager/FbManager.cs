@@ -245,15 +245,16 @@ public class FbManager : MonoBehaviour
         return json;
     }
 
-   public IEnumerator RegisterNewUser(string _email, string _password, string _username, string _phoneNumber,  System.Action<String> callback)
+   public IEnumerator RegisterNewUser(string _email, string _password, string _username, string _phoneNumber,  System.Action<String,AuthError> callback)
     {
         if (_username == "")
         {
-            callback("Missing Username"); //having a blank nickname is not really a DB error so I return a error here
+            callback("Missing Username", AuthError.None); //having a blank nickname is not really a DB error so I return a error here
             yield break;
         }
         Task<FirebaseUser> RegisterTask  =null;
-
+        string message = "";
+        AuthError errorCode =  AuthError.None;
         var creationTask =  _firebaseAuth.CreateUserWithEmailAndPasswordAsync(_email, _password).ContinueWith(task =>
         {
             RegisterTask = task;
@@ -263,9 +264,9 @@ public class FbManager : MonoBehaviour
                 //If there are errors handle them
                 Debug.LogWarning(message: $"Failed to register task with {RegisterTask.Exception}");        
                 FirebaseException firebaseEx = RegisterTask.Exception.GetBaseException() as FirebaseException;
-                AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
+                errorCode = (AuthError)firebaseEx.ErrorCode;
                 Debug.LogError("Error Code :: " + errorCode);
-                string message = "Register Failed!";
+                message = "Register Failed!";
                 switch (errorCode)
                 {
                     case AuthError.MissingEmail:
@@ -282,8 +283,6 @@ public class FbManager : MonoBehaviour
                         break;
                 }
                 Debug.LogWarning(message);
-                callback(message);
-                // yield break;
             }
            
             // Firebase user has been created.
@@ -293,12 +292,15 @@ public class FbManager : MonoBehaviour
         });
 
 
-
         while (!creationTask.IsCompleted)
             yield return new WaitForEndOfFrame();
-        
-        
 
+        if (RegisterTask.Exception != null)
+        {
+            callback(message,errorCode);
+            yield break; 
+        }
+        
         if (_firebaseUser == null)
         {
             Debug.LogError("User Null");
@@ -318,7 +320,7 @@ public class FbManager : MonoBehaviour
         {
             Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
             Debug.LogWarning("Username Set Failed!");
-            callback("Something Went Wrong, Sorry");
+            callback("Something Went Wrong, Sorry", errorCode);
             yield break;
         }
 
@@ -371,7 +373,7 @@ public class FbManager : MonoBehaviour
                 Debug.Log("Logged In!");
             }
         }));
-        callback(null);
+        callback(null, errorCode);
     }
 
 

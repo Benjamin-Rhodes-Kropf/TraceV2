@@ -1,3 +1,4 @@
+using Firebase.Auth;
 using UnityEngine;
 
 namespace CanvasManagers
@@ -42,13 +43,21 @@ namespace CanvasManagers
 
         private void OnClickRegister()
         {
-            _view.StartCoroutine(FbManager.instance.RegisterNewUser(_view.emailText.text, _view.passwordText.text, _view.usernameText.text, "", (response) =>
+            _view.LoadingState(true);
+            _view.StartCoroutine(FbManager.instance.RegisterNewUser(_view.emailText.text, _view.passwordText.text, _view.usernameText.text, "", (response, errorCode) =>
             {
-                _view.ShowMessage("This mail account is already in use.");
+                 _view.LoadingState(false);
                 Debug.Log("Registered Response received from Firebase: " + response);
+                if (errorCode == AuthError.EmailAlreadyInUse)
+                {
+                    _view.ShowMessage(response);
+                    
+                }
+                else
+                {
+                    ScreenManager.instance.ChangeScreenForwards("PhoneNumber");
+                }
             }));
-            
-            // ScreenManager.instance.ChangeScreenForwards("PhoneNumber");
         }
 
         private void UnbindEvents()

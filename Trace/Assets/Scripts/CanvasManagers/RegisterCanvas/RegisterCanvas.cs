@@ -13,6 +13,7 @@ namespace CanvasManagers
         public TMP_InputField retypePasswordText;
         public Button registerButton;
         public TMP_Text errorText;
+        public GameObject loadingSign;
 
 
         private RegisterCanvasController _controller;
@@ -37,7 +38,12 @@ namespace CanvasManagers
 
         #endregion
 
-
+        public void LoadingState(bool isLoading)
+        {
+            loadingSign.SetActive(isLoading);
+        }
+        
+        
         public void ShowMessage(string message)
         {
             errorText.text = message;
