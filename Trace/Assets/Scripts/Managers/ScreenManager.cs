@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -31,15 +33,21 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private UIScreen current;
     [SerializeField] private UIScreen currentPopUp;
     
+    public CameraManager camManager;
+
     //Reset Hierarchy
     void Awake()
     {
         //dont destroy
         if (instance != null)
-        {Destroy(gameObject);}
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
-        
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         // re-parent all screen transforms to hidden object
         foreach(var s in Screens)
         {
@@ -110,7 +118,14 @@ public class ScreenManager : MonoBehaviour
             newScreen.ScreenObject.SetParent(activeParent, false); // set new screen parent for animation
         }
     }
-    
+    public void LoadArScene() {
+        SceneManager.LoadScene("CemraWork");
+    }
+    public void LoadMainMenuScene()
+    {
+        SceneManager.LoadScene("Main");
+
+    }
     public void ChangeScreenForwards(string ScreenID)
     {
         UIScreen newScreen = ScreenFromID(ScreenID);
@@ -223,6 +238,8 @@ public class ScreenManager : MonoBehaviour
             p.ScreenObject.SetParent(inactiveParent, false);
         }
     }
+    
+
 }
 
 
