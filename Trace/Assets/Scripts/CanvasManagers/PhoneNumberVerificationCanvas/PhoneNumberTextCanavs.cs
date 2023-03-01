@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,7 +21,6 @@ namespace CanvasManagers
             var phoneNumber = _numberInputField.text;
             _phoneNumberDisplay.text = phoneNumber;
 
-            Debug.Log("PhoneNumberText: modifying phone number:" + _numberInputField.text);
 
             //first dash in phone number
             if (phoneNumber.Length > 3)
@@ -35,6 +35,7 @@ namespace CanvasManagers
                 _phoneNumberDisplay.text = phoneNumberVisual;
             }
 
+            
             //second dash in phone number
             // if (phoneNumber.Length == 7 && lastLength != 8)
             // {
@@ -45,8 +46,6 @@ namespace CanvasManagers
             // {
             //     _phoneNumberDisplay.text = _inputField.text.Substring(0, _inputField.text.Length - 1);
             // }
-
-
 
 
             //once at length deselect input field
@@ -63,6 +62,27 @@ namespace CanvasManagers
 
             lastLength = _numberInputField.text.Length;
         }
+
+        
+        #region UnityCallbacks
+
+        private void OnEnable()
+        {
+            Debug.Log("Register Canvas Enabled");
+
+            if (_controller == null)
+                _controller = new PhoneNumberCanvasController(this);
+            
+            _controller.Init();
+            // verifyNumberButton.interactable = false;
+        }
+
+        private void OnDisable()
+        {
+            _controller.Uninitilise();
+        }
+
+        #endregion
 
 
     }

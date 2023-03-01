@@ -2453,7 +2453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &205962690
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2540,6 +2540,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702161c0a95044d10b1973c5314a65ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _phoneNumberPreviewText: {fileID: 989378848}
+  _verificationCode: {fileID: 522398014770314744}
+  _submitButton: {fileID: 47746075}
+  _requestNewCodeButton: {fileID: 400070224}
 --- !u!1 &209913001
 GameObject:
   m_ObjectHideFlags: 0
@@ -14161,7 +14165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &906833078
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16909,13 +16913,14 @@ GameObject:
   - component: {fileID: 1085681411}
   - component: {fileID: 1085681410}
   - component: {fileID: 1085681412}
+  - component: {fileID: 1085681413}
   m_Layer: 5
   m_Name: Phone Number Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1085681409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16989,6 +16994,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Notes:
   - Nothing as of now!
+--- !u!114 &1085681413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085681408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b5f92b219d94f38921502841b16e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _numberInputField: {fileID: 6304215426951608574}
+  _phoneNumberDisplay: {fileID: 150140875}
+  lastLength: 0
+  verifyNumberButton: {fileID: 2074692719}
 --- !u!1 &1086812721
 GameObject:
   m_ObjectHideFlags: 0
@@ -26457,22 +26478,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1747866763}
   m_CullTransparentMesh: 1
---- !u!114 &1749098608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4426525134000736980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15b5f92b219d94f38921502841b16e69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _numberInputField: {fileID: 0}
-  _phoneNumberDisplay: {fileID: 150140875}
-  lastLength: 0
-  verifyNumberButton: {fileID: 0}
 --- !u!1 &1785856515
 GameObject:
   m_ObjectHideFlags: 0
@@ -31479,14 +31484,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 9
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 32
   m_CharacterLimit: 0
@@ -31510,7 +31515,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 205962694}
+        m_TargetAssemblyTypeName: CanvasManagers.EnterCodeCanvas, Assembly-CSharp
+        m_MethodName: OnEditVerificationCode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -32733,7 +32750,6 @@ GameObject:
   - component: {fileID: 4685408880587961401}
   - component: {fileID: 3116925249491520333}
   - component: {fileID: 973556380467509987}
-  - component: {fileID: 4685408880587961402}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -33014,7 +33030,6 @@ GameObject:
   - component: {fileID: 4654098315941762598}
   - component: {fileID: 6304215426951608574}
   - component: {fileID: 1094360067453080195}
-  - component: {fileID: 1749098608}
   m_Layer: 5
   m_Name: PhoneInput
   m_TagString: Untagged
@@ -33090,18 +33105,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4685408880587961402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2540806397241657604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 025a838f2bd902d4e9fa2b2e693b4fb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5055486062893004056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61645,8 +61648,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1749098608}
-        m_TargetAssemblyTypeName: PhoneNumberText, Assembly-CSharp
+      - m_Target: {fileID: 1085681413}
+        m_TargetAssemblyTypeName: CanvasManagers.PhoneNumberTextCanavs, Assembly-CSharp
         m_MethodName: editPhoneNumber
         m_Mode: 1
         m_Arguments:
