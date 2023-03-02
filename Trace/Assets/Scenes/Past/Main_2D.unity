@@ -2453,7 +2453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &205962690
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2467,8 +2467,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 219473998}
-  m_Father: {fileID: 906833078}
-  m_RootOrder: 4
+  m_Father: {fileID: 1085681409}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2544,6 +2544,7 @@ MonoBehaviour:
   _verificationCode: {fileID: 522398014770314744}
   _submitButton: {fileID: 47746075}
   _requestNewCodeButton: {fileID: 400070224}
+  _backButton: {fileID: 1119704386}
 --- !u!1 &209913001
 GameObject:
   m_ObjectHideFlags: 0
@@ -5272,7 +5273,7 @@ RectTransform:
   m_Children:
   - {fileID: 1679600841}
   m_Father: {fileID: 906833078}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6220,7 +6221,7 @@ RectTransform:
   - {fileID: 8588874615986053774}
   - {fileID: 8588874617467304092}
   m_Father: {fileID: 906833078}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -14182,7 +14183,6 @@ RectTransform:
   - {fileID: 1063987023}
   - {fileID: 302122005}
   - {fileID: 1085681409}
-  - {fileID: 205962690}
   - {fileID: 1965760000}
   - {fileID: 352910792}
   - {fileID: 1950818151}
@@ -15595,7 +15595,7 @@ RectTransform:
   - {fileID: 8695063016240300563}
   - {fileID: 8695063017092200443}
   m_Father: {fileID: 906833078}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -16920,7 +16920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1085681409
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16934,6 +16934,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 603891002}
+  - {fileID: 205962690}
   m_Father: {fileID: 906833078}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17010,6 +17011,9 @@ MonoBehaviour:
   _phoneNumberDisplay: {fileID: 150140875}
   lastLength: 0
   verifyNumberButton: {fileID: 2074692719}
+  _countryCodeInputField: {fileID: 1874455679}
+  _numberValidationView: {fileID: 205962694}
+  validationScreen: {fileID: 205962689}
 --- !u!1 &1086812721
 GameObject:
   m_ObjectHideFlags: 0
@@ -17397,19 +17401,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1119704387}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1301840576}
-        m_TargetAssemblyTypeName: ScreenManager, Assembly-CSharp
-        m_MethodName: ChangeScreenBackwards
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: PhoneNumber
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1119704387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19258,7 +19250,7 @@ RectTransform:
   m_Children:
   - {fileID: 7424510815363151428}
   m_Father: {fileID: 906833078}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -20259,8 +20251,6 @@ MonoBehaviour:
     ScreenObject: {fileID: 302122005}
   - Name: PhoneNumber
     ScreenObject: {fileID: 1085681409}
-  - Name: PhoneValidation
-    ScreenObject: {fileID: 205962690}
   - Name: Username
     ScreenObject: {fileID: 1965760000}
   - Name: TakePhoto
@@ -22437,7 +22427,7 @@ RectTransform:
   m_Children:
   - {fileID: 7512410196695163977}
   m_Father: {fileID: 906833078}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -22669,7 +22659,7 @@ RectTransform:
   - {fileID: 461098033}
   - {fileID: 1090377536}
   m_Father: {fileID: 906833078}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -26798,7 +26788,7 @@ RectTransform:
   m_Children:
   - {fileID: 6409292611448650057}
   m_Father: {fileID: 906833078}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -27921,7 +27911,7 @@ RectTransform:
   m_Children:
   - {fileID: 800370149}
   m_Father: {fileID: 906833078}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -28250,7 +28240,7 @@ RectTransform:
   m_Children:
   - {fileID: 811242856}
   m_Father: {fileID: 906833078}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -28678,7 +28668,7 @@ RectTransform:
   m_Children:
   - {fileID: 6925748121161802494}
   m_Father: {fileID: 906833078}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -29827,19 +29817,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2074692720}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1301840576}
-        m_TargetAssemblyTypeName: ScreenManager, Assembly-CSharp
-        m_MethodName: ChangeScreenForwards
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: PhoneValidation
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2074692720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31515,19 +31493,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 205962694}
-        m_TargetAssemblyTypeName: CanvasManagers.EnterCodeCanvas, Assembly-CSharp
-        m_MethodName: OnEditVerificationCode
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
