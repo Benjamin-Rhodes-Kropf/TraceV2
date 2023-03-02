@@ -44,7 +44,9 @@ namespace CanvasManagers
         private void OnClickRegister()
         {
             _view.LoadingState(true);
-            _view.StartCoroutine(FbManager.instance.RegisterNewUser(_view.emailText.text, _view.passwordText.text, _view.usernameText.text, "", (response, errorCode) =>
+            var email = _view.emailText.text.Replace('.', ',');
+            Debug.LogError("Email is ::  "+ email);
+            _view.StartCoroutine(FbManager.instance.RegisterNewUser(email, _view.passwordText.text, _view.usernameText.text, "", (response, errorCode) =>
             {
                  _view.LoadingState(false);
                 Debug.Log("Registered Response received from Firebase: " + response);
