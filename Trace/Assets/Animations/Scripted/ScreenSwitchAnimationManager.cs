@@ -39,7 +39,6 @@ public class ScreenSwitchAnimationManager : MonoBehaviour
         StartCoroutine(LerpX(_screenA, _middleScreenPosition, _horizontalSlideDuration,true));
         StartCoroutine(LerpX(_screenB, _leftScreenPosition, _horizontalSlideDuration, false));
     }
-    
     public void slideScreensBackward()
     {
         _screenA.transform.position = _leftScreenPosition.transform.position;
@@ -48,6 +47,50 @@ public class ScreenSwitchAnimationManager : MonoBehaviour
         Debug.Log("ScreenSwitchAnimationManager: sliding screens backwards");
         StartCoroutine(LerpX(_screenA, _middleScreenPosition, _horizontalSlideDuration, true));
         StartCoroutine(LerpX(_screenB, _rightScreenPosition, _horizontalSlideDuration, false));
+    }
+    
+    public void slideScreenForwardSlideOver()
+    {
+        _screenA.transform.position = _leftScreenPosition.transform.position;
+        _screenB.transform.position = _middleScreenPosition.transform.position;
+        
+        Debug.Log("ScreenSwitchAnimationManager: sliding screens forward");
+        StartCoroutine(LerpX(_screenA, _middleScreenPosition, _horizontalSlideDuration,true));
+        StartCoroutine(LerpX(_screenB, _middleScreenPosition, _horizontalSlideDuration, false));
+    }
+    public void slideScreenBackwardSlideOver()
+    {
+        _screenA.transform.position = _rightScreenPosition.transform.position;
+        _screenB.transform.position = _middleScreenPosition.transform.position;
+
+        Debug.Log("ScreenSwitchAnimationManager: sliding screens forward");
+        StartCoroutine(LerpX(_screenA, _middleScreenPosition, _horizontalSlideDuration, true));
+        StartCoroutine(LerpX(_screenB, _middleScreenPosition, _horizontalSlideDuration, false));
+    }
+    
+    public void slideScreenForwardSlideOff()
+    {
+        _screenA.transform.position = _middleScreenPosition.transform.position;
+        _screenB.transform.position = _middleScreenPosition.transform.position;
+        
+        //_screenA.GetComponentInChildren<Canvas>().sortingOrder = 0;
+        //_screenB.GetComponentInChildren<Canvas>().sortingOrder = 1;
+        
+        Debug.Log("ScreenSwitchAnimationManager: sliding screens forward");
+        StartCoroutine(LerpX(_screenA, _middleScreenPosition, _horizontalSlideDuration,true));
+        StartCoroutine(LerpX(_screenB, _leftScreenPosition, _horizontalSlideDuration, false));
+    }
+    public void slideScreenBackwardSlideOff()
+    {
+        _screenA.transform.position = _leftScreenPosition.transform.position;
+        _screenB.transform.position = _middleScreenPosition.transform.position;
+        
+        //_screenA.GetComponentInChildren<Canvas>().sortingOrder = 0;
+        //_screenB.GetComponentInChildren<Canvas>().sortingOrder = 1;
+        
+        Debug.Log("ScreenSwitchAnimationManager: sliding screens forward");
+        StartCoroutine(LerpX(_screenA, _middleScreenPosition, _horizontalSlideDuration, false));
+        //StartCoroutine(LerpX(_screenB, _leftScreenPosition, _horizontalSlideDuration, false));
     }
     
     public void slideScreenDown()
@@ -78,7 +121,7 @@ public class ScreenSwitchAnimationManager : MonoBehaviour
             timeElapsed += Time.deltaTime;
             yield return yieldInstruction;
         }
-        
+
         screen.transform.position = new Vector3(target.transform.position.x, startingPos.y, startingPos.z);
 
         if (isScreenA)
@@ -103,9 +146,6 @@ public class ScreenSwitchAnimationManager : MonoBehaviour
         
         while (timeElapsed < _dur)
         {
-            //Lerp Linear Version
-            //screen.transform.position = new Vector3(startingPos.x,Mathf.Lerp(initialStartValue.y, target.transform.position.y, timeElapsed / _dur), startingPos.z);
-
             //With Custom Curve
             screen.transform.position = new Vector3(startingPos.x, Mathf.Lerp(screen.transform.position.y, target.transform.position.y, slideDownCurve.Evaluate(timeElapsed / _dur)), screen.transform.position.z);
             timeElapsed += Time.deltaTime;
