@@ -6,7 +6,9 @@ namespace CanvasManagers
     public class PhoneNumberCanvasController
     {
         private PhoneNumberTextCanavs _view;
-        
+        private PhoneAuthProvider provider;
+        private string _verficationId;
+        private uint _autoVerifyTimeOut = 60 * 1000;
         public PhoneNumberCanvasController(PhoneNumberTextCanavs canvas)
         {
             _view = canvas;
@@ -16,12 +18,16 @@ namespace CanvasManagers
         {
             _view.verifyNumberButton.onClick.AddListener(OnVerifyNumberClicked);
             _view._numberInputField.onValueChanged.AddListener(EditPhoneNumber);
+            _view._numberValidationView._submitButton.onClick.AddListener(Varify_OTP);
+            _view._numberValidationView.gameObject.SetActive(false);
         }
 
         public void Uninitilise()
         {
             _view.verifyNumberButton.onClick.RemoveAllListeners();
             _view._numberInputField.onValueChanged.RemoveAllListeners();
+            _view._numberValidationView._submitButton.onClick.RemoveAllListeners();
+            _view._numberValidationView.gameObject.SetActive(true);
 
         }
 
@@ -29,9 +35,9 @@ namespace CanvasManagers
         {
             string phoneNumber = _view._countryCodeInputField.text.Trim()+_view._numberInputField.text.Trim();
             
-            PhoneAuthProvider provider = PhoneAuthProvider.GetInstance(FirebaseAuth.DefaultInstance);
+            provider = PhoneAuthProvider.GetInstance(FirebaseAuth.DefaultInstance);
             
-            provider.VerifyPhoneNumber(phoneNumber, 30, null,
+            provider.VerifyPhoneNumber(phoneNumber, _autoVerifyTimeOut, null,
                 verificationCompleted: (credential) => {
                     Debug.LogError(credential.Provider);
                     // Auto-sms-retrieval or instant validation has succeeded (Android only).
@@ -47,7 +53,7 @@ namespace CanvasManagers
                 codeSent: (id, token) => {
                     Debug.LogError(id);
                     Debug.LogError(token);
-
+                    _verficationId = id;
                     // Verification code was successfully sent via SMS.
                     // `id` contains the verification id that will need to passed in with
                     // the code from the user when calling GetCredential().
@@ -63,6 +69,43 @@ namespace CanvasManagers
                 });
 
             ActiveValidationWindow(phoneNumber);
+        }
+
+        public void Varify_OTP()
+        {
+            Debug.LogError("Verify_OTP Called");
+            Credential credential = provider.GetCredential(_verficationId, _view._numberValidationView._verificationCode.text);
+            
+            //////// Total 
+
+            var  isValid = credential.IsValid();
+            if (isValid)
+            {
+                
+            }
+            
+            
+            
+            
+            
+            FirebaseAuth.DefaultInstance.SignInWithCredentialAsync(credential).ContinueWith(task => {
+                if (task.IsFaulted) {
+                    Debug.LogError("SignInWithCredentialAsync encountered an error: " +
+                                   task.Exception);
+                    return;
+                }
+
+                FirebaseUser newUser = task.Result;
+                Debug.Log("User signed in successfully");
+                // This should display the phone number.
+                Debug.Log("Phone number: " + newUser.PhoneNumber);
+                // The phone number providerID is 'phone'.
+                Debug.Log("Phone provider ID: " + newUser.ProviderId);
+                //User Mail
+                Debug.Log("Email ID : "+newUser.Email);
+                
+                ScreenManager.instance.ChangeScreenForwards("Username");
+            });
         }
         
         

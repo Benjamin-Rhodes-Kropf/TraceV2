@@ -19,7 +19,6 @@ namespace CanvasManagers
 
         public void Init()
         {
-            this._view._submitButton.onClick.AddListener(OnSubmitButtonClick);
             this._view._requestNewCodeButton.onClick.AddListener(OnRequestNewCodeClick);
             this._view._verificationCode.onValueChanged.AddListener(OnEditVerificationCode);
             this._view._backButton.onClick.AddListener(OnBackButtonClick);
@@ -29,7 +28,6 @@ namespace CanvasManagers
 
         public void UnInit()
         {
-            this._view._submitButton.onClick.RemoveAllListeners();
             this._view._requestNewCodeButton.onClick.RemoveAllListeners();
             this._view._verificationCode.onValueChanged.RemoveAllListeners();
             this._view._backButton.onClick.RemoveAllListeners();
@@ -38,10 +36,6 @@ namespace CanvasManagers
         public void OnBackButtonClick()
         {
             this._view.gameObject.SetActive(false);
-        }
-
-        public void OnSubmitButtonClick()
-        {
         }
 
         public void OnRequestNewCodeClick()
