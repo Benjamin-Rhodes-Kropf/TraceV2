@@ -550,19 +550,23 @@ public class FbManager : MonoBehaviour
             callback("successfully updated nickName");
         }
     }
-    public IEnumerator SetUserPhoneNumber(string _phoneNumber, System.Action<String> callback)
+    public IEnumerator SetUserPhoneNumber(string _phoneNumber, System.Action<bool> callback)
     {
         var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("phoneNumber").SetValueAsync(_phoneNumber);
+
+        while (DBTask.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
         
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        // yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
         if (DBTask.Exception != null)
         {
             Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+            callback(false);
         }
         else
         {
-            callback("success");
+            callback(true);
         }
     }
     #endregion
