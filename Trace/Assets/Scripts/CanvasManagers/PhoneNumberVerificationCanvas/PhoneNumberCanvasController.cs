@@ -9,6 +9,7 @@ namespace CanvasManagers
         private PhoneAuthProvider provider;
         private string _verficationId;
         private uint _autoVerifyTimeOut = 60 * 1000;
+        private string phoneNumber = "";
         public PhoneNumberCanvasController(PhoneNumberTextCanavs canvas)
         {
             _view = canvas;
@@ -33,7 +34,7 @@ namespace CanvasManagers
 
         private void OnVerifyNumberClicked()
         {
-            string phoneNumber = _view._countryCodeInputField.text.Trim()+_view._numberInputField.text.Trim();
+            phoneNumber = _view._countryCodeInputField.text.Trim()+_view._numberInputField.text.Trim();
             
             provider = PhoneAuthProvider.GetInstance(FirebaseAuth.DefaultInstance);
             
@@ -76,36 +77,20 @@ namespace CanvasManagers
             Debug.LogError("Verify_OTP Called");
             Credential credential = provider.GetCredential(_verficationId, _view._numberValidationView._verificationCode.text);
             
-            //////// Total 
-
             var  isValid = credential.IsValid();
             if (isValid)
             {
-                
+                _view.StartCoroutine(FbManager.instance.SetUserPhoneNumber(phoneNumber, (isSuccess) =>
+                {
+                    if (isSuccess)
+                        ScreenManager.instance.ChangeScreenForwards("Username");
+                    else
+                        Debug.LogError("Failed to update phone");
+                }));
+                Debug.LogError("Valid Credentials");
             }
             
             
-            
-            
-            
-            FirebaseAuth.DefaultInstance.SignInWithCredentialAsync(credential).ContinueWith(task => {
-                if (task.IsFaulted) {
-                    Debug.LogError("SignInWithCredentialAsync encountered an error: " +
-                                   task.Exception);
-                    return;
-                }
-
-                FirebaseUser newUser = task.Result;
-                Debug.Log("User signed in successfully");
-                // This should display the phone number.
-                Debug.Log("Phone number: " + newUser.PhoneNumber);
-                // The phone number providerID is 'phone'.
-                Debug.Log("Phone provider ID: " + newUser.ProviderId);
-                //User Mail
-                Debug.Log("Email ID : "+newUser.Email);
-                
-                ScreenManager.instance.ChangeScreenForwards("Username");
-            });
         }
         
         
