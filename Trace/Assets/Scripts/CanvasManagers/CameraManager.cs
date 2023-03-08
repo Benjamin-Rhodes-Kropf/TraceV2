@@ -1,12 +1,6 @@
-using System;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR.ARFoundation.Samples;
 
 public class CameraManager : MonoBehaviour//PressInputBase
 {
@@ -17,15 +11,8 @@ public class CameraManager : MonoBehaviour//PressInputBase
     public RawImage imagePreview;
 
     public UIController uiManager;
-    void Awake()
-    {
-       
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-    
-    }
+
+    //for switching between the device cameras
     public void SwitchCamera() {
         uiManager.SwitchCamera();
     }
@@ -37,6 +24,12 @@ public class CameraManager : MonoBehaviour//PressInputBase
     {
         uiManager.CloseImagePreview();
 
+    }
+    public void BackToMainScene() {
+        //change the bool so that the main canavs can be enabled after the main scene is loaded
+        ScreenManager.instance.isComingFromCameraScene = true;
+        SceneManager.LoadScene(0);
+        ScreenManager.instance.camManager.cameraPanel.SetActive(false);//disabling the camera panel
     }
     //write sharing code here
     public void ShareVideo()
