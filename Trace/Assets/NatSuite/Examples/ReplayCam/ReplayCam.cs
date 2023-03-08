@@ -43,8 +43,7 @@ namespace NatSuite.Examples
        
         private IEnumerator Start()
         {
-            camManager = ScreenManager.instance.camManager;
-            //uiManager = camManager.uiManager;
+            
             // Start microphone
             microphoneSource = gameObject.GetComponent<AudioSource>();
             microphoneSource.mute = false;
@@ -53,7 +52,7 @@ namespace NatSuite.Examples
             microphoneSource.bypassListenerEffects = false;
             microphoneSource.clip = Microphone.Start(null, true, 1, AudioSettings.outputSampleRate);
             yield return new WaitUntil(() => Microphone.GetPosition(null) > 0);
-            microphoneSource.Play();
+            //microphoneSource.Play();
         }
 
         private void OnDestroy()
@@ -75,6 +74,7 @@ namespace NatSuite.Examples
         public void StartRecording()
         {
             // Start recording
+            microphoneSource.Play();
             var frameRate = 30;
             var sampleRate = recordMicrophone ? AudioSettings.outputSampleRate : 0;
             var channelCount = recordMicrophone ? (int)AudioSettings.speakerMode : 0;
@@ -95,10 +95,10 @@ namespace NatSuite.Examples
             // Stop recording
             audioInput?.Dispose();
             cameraInput.Dispose();
+            microphoneSource.Stop();
             var path = await recorder.FinishWriting();
             // Playback recording via unity player
             Debug.Log($"Saved recording to: {path}");
-
             //string imgName = "VID_" + System.DateTime.Now.ToString("yyyymmdd_HHmmss") + ".mp4";
             //NativeGallery.Permission permission = NativeGallery.SaveVideoToGallery(path, "TraceVideo", imgName, null);
             //Debug.Log("Permission result: " + permission);
@@ -107,15 +107,8 @@ namespace NatSuite.Examples
             camManager.uiManager.previewVideoPlayer.gameObject.SetActive(true);
             camManager.uiManager.previewVideoPlayer.url = path;
             camManager.uiManager.previewVideoPlayer.Play();
-
-
             //NativeGallery.SaveVideoToGallery(path,"Trace",)
             //Handheld.PlayFullScreenMovie($"file://{path}");
-
-
-
-
-
         }
     }
 }

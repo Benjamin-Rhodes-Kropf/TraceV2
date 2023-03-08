@@ -34,39 +34,57 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private UIScreen currentPopUp;
     
     public CameraManager camManager;
-
+    public GameObject mainCanvas;
+    public bool isComingFromCameraScene = false;
     //Reset Hierarchy
     void Awake()
     {
         //dont destroy
-        if (instance != null)
+        if (instance == null)
         {
-            Destroy(gameObject);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            Destroy(gameObject);
         }
+
         // re-parent all screen transforms to hidden object
-        foreach(var s in Screens)
+        foreach (var s in Screens)
         {
             s.ScreenObject.gameObject.SetActive(true);
             s.ScreenObject.transform.SetParent(inactiveParent, false);
         }
-        foreach(var s in PopUpScreens)
+        foreach (var s in PopUpScreens)
         {
             s.ScreenObject.gameObject.SetActive(true);
             s.ScreenObject.transform.SetParent(inactiveParent, false);
         }
-        
+
         LoadingScreen();
         activeParent.gameObject.SetActive(true);
         inactiveParent.gameObject.SetActive(false);
         inactivePopupParent.gameObject.SetActive(false);
     }
-    
-    
+    void Start()
+    {
+
+        // **** To fix the microphone bug by stoping the use of microphone in start scene**** //
+        Microphone.End(null);
+    }
+    //This function is called when scene scene is loded
+    private void OnLevelWasLoaded(int level)
+    {
+        //checking if the scene is loaded from the camera scene and if the scene is main scene
+        if (isComingFromCameraScene && level == 0)
+        {
+            //change the bool so that it runs one abd won't run until it is required
+            isComingFromCameraScene = false;
+            //this will turn on the main canvas from where we laave while coming to camera scene
+            mainCanvas.SetActive(true);
+        }
+    }
     //Call Custom Screen Display
     public void WelcomeScreen()
     {
@@ -104,9 +122,11 @@ public class ScreenManager : MonoBehaviour
     {
         _popupAnimationManager.slidePopupOut();
     }
+    //load camera scene
     public void LoadArScene() {
         SceneManager.LoadScene("CemraWork");
     }
+    //load main scene, used by the camera scene
     public void LoadMainMenuScene()
     {
         SceneManager.LoadScene("Main");

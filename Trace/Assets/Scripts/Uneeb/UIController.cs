@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
-using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR.ARFoundation.Samples;
@@ -15,13 +13,11 @@ public class UIController : PressInputBase
     
     bool isVideoPlayerOpenedForRestingTheSceneToClearGarbageValues = false;
     bool isImagePreviewOpenedForRestingTheSceneToClearGarbageValues = false;
-    CameraManager camManger;
+    public CameraManager camManger;
     // Start is called before the first frame update
     void Start()
     {
-        //asiging the reference from the main scene objects
-        camManger = ScreenManager.instance.camManager;
-        camManger.uiManager = this;
+        ScreenManager.instance.mainCanvas.SetActive(false);
     }
 
     public void CloseVideoPreview() {
@@ -31,7 +27,7 @@ public class UIController : PressInputBase
             camManger.videoPreviewPanel.SetActive(false);
             previewVideoPlayer.gameObject.SetActive(false);
             camManger.cameraPanel.SetActive(true);
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         // this will simply close the panel
         else
@@ -51,9 +47,11 @@ public class UIController : PressInputBase
         // app is reopened after minimising then reload the scene and close the panel
         if (isImagePreviewOpenedForRestingTheSceneToClearGarbageValues)
         {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             camManger.imagePreviewPanel.gameObject.SetActive(false);
             camManger.cameraPanel.SetActive(true);
+            //ScreenManager.instance.ChangeScreenNoAnim("HomeScreen");
         }
         // this will simply close the panel
         else
@@ -125,7 +123,7 @@ public class UIController : PressInputBase
         if (focus && (!camManger.videoPreviewPanel.activeInHierarchy && !camManger.imagePreviewPanel.activeInHierarchy))
         {
             Debug.Log("=========  Scene Reloaded on Focus Changed" + "  =========");
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         //if video player or image previewer was active last time then some flag
         //values will be set to reset the scenes on closing of previewers
