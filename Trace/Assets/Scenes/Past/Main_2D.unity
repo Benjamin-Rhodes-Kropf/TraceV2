@@ -10999,7 +10999,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750712608}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13014,19 +13014,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 865695865}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1301840576}
-        m_TargetAssemblyTypeName: ScreenManager, Assembly-CSharp
-        m_MethodName: ChangeScreenForwards
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: TakePhoto
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &865695865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28248,6 +28236,7 @@ GameObject:
   - component: {fileID: 1965760002}
   - component: {fileID: 1965760001}
   - component: {fileID: 1965760003}
+  - component: {fileID: 1965760004}
   m_Layer: 5
   m_Name: Whats your name Canvas
   m_TagString: Untagged
@@ -28328,6 +28317,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Notes:
   - dosnt work with all emojis
+--- !u!114 &1965760004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965759999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ed7878138544db499906c03e7dc8d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _displayNameInputField: {fileID: 7850560219034324727}
+  _submitButton: {fileID: 865695864}
 --- !u!1 &1980079546
 GameObject:
   m_ObjectHideFlags: 0
@@ -66858,14 +66861,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 5
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 5
   m_RegexValue: 
   m_GlobalPointSize: 32
   m_CharacterLimit: 0

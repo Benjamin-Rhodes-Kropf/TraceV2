@@ -45,15 +45,15 @@ namespace CanvasManagers
         {
             _view.LoadingState(true);
             string email = "";
+             email = _view.emailText.text;
 
 #if UNITY_EDITOR
-             email = _view.emailText.text;
 #else
-             email = _view.emailText.text.Replace('.', ',');
+             // email = _view.emailText.text.Replace('.', ',');
 #endif
             
             Debug.LogError("Email is ::  "+ email);
-            _view.StartCoroutine(FbManager.instance.RegisterNewUser(email, _view.passwordText.text, _view.usernameText.text, "+923407631749", (response, errorCode) =>
+            _view.StartCoroutine(FbManager.instance.RegisterNewUser(email, _view.passwordText.text, _view.usernameText.text, "", (response, errorCode) =>
             {
                  _view.LoadingState(false);
                 Debug.Log("Registered Response received from Firebase: " + response);
