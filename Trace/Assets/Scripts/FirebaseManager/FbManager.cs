@@ -533,26 +533,33 @@ public class FbManager : MonoBehaviour
             callback("success");
         }
     }
-    public IEnumerator SetUserNickName(string _nickName, System.Action<String> callback)
+    public IEnumerator SetUserNickName(string _nickName, System.Action<bool> callback)
     {
         Debug.Log("Db update nick to :" + _nickName);
         //Set the currently logged in user nickName in the database
         var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("NickName").SetValueAsync(_nickName);
         
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        //yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
+        while (DBTask.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+        
         if (DBTask.Exception != null)
         {
+            callback(false);
             Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
         }
         else
         {
-            callback("successfully updated nickName");
+            callback(true);
         }
     }
     public IEnumerator SetUserPhoneNumber(string _phoneNumber, System.Action<bool> callback)
     {
+        Debug.LogError("Is Database Reference is Null  ? "+ _databaseReference == null);
         var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("phoneNumber").SetValueAsync(_phoneNumber);
+
+        Debug.LogError("Is Database Completion is Null  ? "+ DBTask == null);
 
         while (DBTask.IsCompleted is false)
             yield return new WaitForEndOfFrame();
