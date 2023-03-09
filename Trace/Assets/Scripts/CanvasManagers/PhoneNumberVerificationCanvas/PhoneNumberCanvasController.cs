@@ -34,7 +34,7 @@ namespace CanvasManagers
 
         private void OnVerifyNumberClicked()
         {
-            phoneNumber = _view._countryCodeInputField.text.Trim()+_view._numberInputField.text.Trim();
+            phoneNumber = _view._countryCodeDropdown.captionText.text.Trim()+_view._numberInputField.text.Trim();
             
             provider = PhoneAuthProvider.GetInstance(FirebaseAuth.DefaultInstance);
             

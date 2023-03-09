@@ -644,6 +644,28 @@ public class FbManager : MonoBehaviour
             callback(DBTask.Result.ToString());
         }
     }
+
+    public List<string> GetAllUserNames()
+    {
+        List<string> allUserNames = new List<string>();
+        FirebaseDatabase.DefaultInstance.GetReference("users").GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsFaulted)
+            {
+                return;
+            }else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                foreach (var user in snapshot.Children)
+                {
+                }
+            }
+            
+            
+        });
+
+        return allUserNames;
+    }
     public List<string> GetMyFriendShipRequests()
     {
         List<string> listOfFriends = new List<string>();
