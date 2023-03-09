@@ -10,6 +10,7 @@ namespace CanvasManagers
     public class PhoneNumberTextCanavs : MonoBehaviour
     {
         public TMP_InputField _numberInputField;
+        public TMP_Dropdown _countryCodeDropdown;
         [SerializeField] public TMP_Text _phoneNumberDisplay;
         [SerializeField] private int lastLength;
         public Button verifyNumberButton;
