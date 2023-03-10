@@ -42,7 +42,10 @@ public class FbManager : MonoBehaviour
     [Header("Database Test Assets")]
     public RawImage rawImage;
     public RawImage testRawImage;
-    
+
+    [Header("Test Purpose Onle")] 
+    [SerializeField] private List<string> allUserNames;
+
     void Awake()
     {
         //makes sure nothing can use the db until its enabled
@@ -107,6 +110,7 @@ public class FbManager : MonoBehaviour
         { 
             StartCoroutine(AutoLogin());
         } 
+
     }
 
     #region Current User
@@ -225,6 +229,8 @@ public class FbManager : MonoBehaviour
         PlayerPrefs.SetString("Password", _password);
         PlayerPrefs.Save();
         
+       GetAllUserNames();
+
         callback(callbackObject);
     }
     private IEnumerator LogOut()
@@ -645,27 +651,60 @@ public class FbManager : MonoBehaviour
         }
     }
 
-    public List<string> GetAllUserNames()
+    private void GetAllUserNames()
     {
-        List<string> allUserNames = new List<string>();
-        FirebaseDatabase.DefaultInstance.GetReference("users").GetValueAsync().ContinueWith(task =>
+
+        // Create a list to store the usernames
+        List<string> usernames = new List<string>();
+
+        // Get a reference to the "users" node in the database
+        DatabaseReference usersRef = _databaseReference.Child("users");
+
+        
+        
+        // Attach a listener to the "users" node
+        usersRef.GetValueAsync().ContinueWith(task =>
         {
-            if (task.IsFaulted)
+             if (task.IsCompleted)
             {
-                return;
-            }else if (task.IsCompleted)
-            {
+                // Iterate through the children of the "users" node and add each username to the list
                 DataSnapshot snapshot = task.Result;
-                foreach (var user in snapshot.Children)
+                var  allUsersSnapshots = snapshot.Children.ToArrayPooled();
+                for (int userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
                 {
+                    string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
+                    usernames.Add(username);
+                    print("User Name : "+ username);
                 }
             }
-            
-            
+            if (task.IsFaulted)
+            {
+                Debug.LogError(task.Exception);
+                // Handle the error
+            }
         });
 
-        return allUserNames;
     }
+
+    // List<string> allUserNames = new List<string>();
+        // Debug.LogError("Is DataBase Reefereence NUll :: " + _databaseReference == null);
+        // var DBTask = _databaseReference.Child("users").GetValueAsync();
+        //
+        // while (DBTask.IsCompleted is  false)
+        //     yield return new WaitForEndOfFrame();
+        //
+        //
+        // if (DBTask.Exception !=  null)
+        // {
+        //     Debug.LogError("Couldn't load database due to : "+ DBTask.Exception);
+        // }
+        // else
+        // {
+        //     var allUsers = DBTask.Result;
+        //    print("Datasnapshot  Value is  Here in this  routine :: "+ allUsers.Value.ToString());
+        // }
+
+    //}
     public List<string> GetMyFriendShipRequests()
     {
         List<string> listOfFriends = new List<string>();
