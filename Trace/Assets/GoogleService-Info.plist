@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>893582097322-qtdugj24v6fq3nq4u49ei2p9au7dn6aq.apps.googleusercontent.com</string>
+	<string>893582097322-t6jffm3keortgt8vddrofmigjbs4qafl.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.893582097322-qtdugj24v6fq3nq4u49ei2p9au7dn6aq</string>
+	<string>com.googleusercontent.apps.893582097322-t6jffm3keortgt8vddrofmigjbs4qafl</string>
 	<key>API_KEY</key>
 	<string>AIzaSyD5CvwX-lW6K7UYaGTC84cW54Bd43CpWzc</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.TraceCo.Trace</string>
+	<string>com.traceco.tracesamplelocation</string>
 	<key>PROJECT_ID</key>
 	<string>geosnapv1</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:893582097322:ios:7d2cf66fa57397dc0709d3</string>
+	<string>1:893582097322:ios:16d3980e9a5683920709d3</string>
 	<key>DATABASE_URL</key>
 	<string>https://geosnapv1-default-rtdb.firebaseio.com</string>
 </dict>
