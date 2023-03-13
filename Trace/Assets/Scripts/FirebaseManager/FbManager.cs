@@ -15,6 +15,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using Object = System.Object;
 
+
 public class FbManager : MonoBehaviour
 {
     [Header("Dont Destroy")]
@@ -43,12 +44,12 @@ public class FbManager : MonoBehaviour
     public RawImage rawImage;
     public RawImage testRawImage;
 
-    public List<string> AllUsers
+    public List<UserModel> AllUsers
     {
-        get { return userNames; }
+        get { return users; }
     }
 
-    private List<string> userNames;
+    private List<UserModel> users;
     void Awake()
     {
         //makes sure nothing can use the db until its enabled
@@ -657,30 +658,37 @@ public class FbManager : MonoBehaviour
     private void GetAllUserNames()
     {
         // Create a list to store the usernames
-        List<string> usernames = new List<string>();
+        users = new List<UserModel>();
+        
         // Get a reference to the "users" node in the database
         DatabaseReference usersRef = _databaseReference.Child("users");
+        
         // Attach a listener to the "users" node
         usersRef.GetValueAsync().ContinueWith(task =>
         {
              if (task.IsCompleted)
-            {
-                // Iterate through the children of the "users" node and add each username to the list
-                DataSnapshot snapshot = task.Result;
-                var  allUsersSnapshots = snapshot.Children.ToArrayPooled();
-                for (int userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
-                {
-                    string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
-                    usernames.Add(username);
-                    print("User Name : "+ username);
-                }
-                this.userNames = userNames;
-            }
-            if (task.IsFaulted)
-            {
-                Debug.LogError(task.Exception);
-                // Handle the error
-            }
+             {
+                 // Iterate through the children of the "users" node and add each username to the list
+                 DataSnapshot snapshot = task.Result;
+                 var  allUsersSnapshots = snapshot.Children.ToArrayPooled();
+                 for (int userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
+                 {
+                     string email = allUsersSnapshots[userIndex].Child("email").Value.ToString();
+                     string frindCount = allUsersSnapshots[userIndex].Child("friendCount").Value.ToString();
+                     string displayName = allUsersSnapshots[userIndex].Child("name").Value.ToString();
+                     string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
+                     string phoneNumber = allUsersSnapshots[userIndex].Child("phone").Value.ToString();
+                     string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
+                     UserModel userData = new UserModel(email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
+                     users.Add(userData);
+                     print("Mail  Address :: "+ email);
+                 }
+             }
+             if (task.IsFaulted)
+             {
+                 Debug.LogError(task.Exception);
+                 // Handle the error
+             }
         });
     }
 

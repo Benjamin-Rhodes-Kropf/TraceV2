@@ -307,6 +307,7 @@ MonoBehaviour:
   _profilePic: {fileID: 613131686692650927}
   _nickName: {fileID: 3024221025636201238}
   _userName: {fileID: 3024221024201287032}
+  _buttonText: {fileID: 3024221025801320806}
   _addRemoveButton: {fileID: 3024221024930001410}
   _buttonBackground: {fileID: 3024221024930001409}
   _colors:
