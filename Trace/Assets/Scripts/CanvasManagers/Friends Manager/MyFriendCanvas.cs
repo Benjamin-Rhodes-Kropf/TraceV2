@@ -8,9 +8,11 @@ namespace CanvasManagers
 {
     public class MyFriendCanvas : MonoBehaviour
     {
+        public Friend _friendPrefab;
         public TMP_InputField _usernameInput;
         public TMP_Text _numberOfFriendsCount;
         public Transform _displayFrindsParent;
+        public List<Friend> _friendsList;
 
         private FriendCanvasController _controller;
 
