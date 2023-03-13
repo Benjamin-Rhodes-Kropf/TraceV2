@@ -20424,7 +20424,7 @@ MonoBehaviour:
   dependencyStatus: 0
   firebaseStorageReferenceUrl: gs://geosnapv1.appspot.com
   autoLogin: 1
-  forceLogin: 0
+  forceLogin: 1
   useAdminForLogin: 1
   adminUser: test@gmail.com
   adminPass: test@gmail.com
