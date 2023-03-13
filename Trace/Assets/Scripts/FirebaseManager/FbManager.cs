@@ -43,9 +43,12 @@ public class FbManager : MonoBehaviour
     public RawImage rawImage;
     public RawImage testRawImage;
 
-    [Header("Test Purpose Onle")] 
-    [SerializeField] private List<string> allUserNames;
+    public List<string> AllUsers
+    {
+        get { return userNames; }
+    }
 
+    private List<string> userNames;
     void Awake()
     {
         //makes sure nothing can use the db until its enabled
@@ -653,15 +656,10 @@ public class FbManager : MonoBehaviour
 
     private void GetAllUserNames()
     {
-
         // Create a list to store the usernames
         List<string> usernames = new List<string>();
-
         // Get a reference to the "users" node in the database
         DatabaseReference usersRef = _databaseReference.Child("users");
-
-        
-        
         // Attach a listener to the "users" node
         usersRef.GetValueAsync().ContinueWith(task =>
         {
@@ -676,6 +674,7 @@ public class FbManager : MonoBehaviour
                     usernames.Add(username);
                     print("User Name : "+ username);
                 }
+                this.userNames = userNames;
             }
             if (task.IsFaulted)
             {
@@ -683,28 +682,8 @@ public class FbManager : MonoBehaviour
                 // Handle the error
             }
         });
-
     }
 
-    // List<string> allUserNames = new List<string>();
-        // Debug.LogError("Is DataBase Reefereence NUll :: " + _databaseReference == null);
-        // var DBTask = _databaseReference.Child("users").GetValueAsync();
-        //
-        // while (DBTask.IsCompleted is  false)
-        //     yield return new WaitForEndOfFrame();
-        //
-        //
-        // if (DBTask.Exception !=  null)
-        // {
-        //     Debug.LogError("Couldn't load database due to : "+ DBTask.Exception);
-        // }
-        // else
-        // {
-        //     var allUsers = DBTask.Result;
-        //    print("Datasnapshot  Value is  Here in this  routine :: "+ allUsers.Value.ToString());
-        // }
-
-    //}
     public List<string> GetMyFriendShipRequests()
     {
         List<string> listOfFriends = new List<string>();
