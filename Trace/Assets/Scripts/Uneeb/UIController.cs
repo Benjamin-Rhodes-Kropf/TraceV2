@@ -3,12 +3,10 @@ using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR.ARFoundation.Samples;
 
-public class UIController : PressInputBase
+public class UIController : MonoBehaviour
 {
 
-    public ToggleCameraFacingDirectionOnPress cameraSwitch;
     public VideoPlayer previewVideoPlayer;
     
     bool isVideoPlayerOpenedForRestingTheSceneToClearGarbageValues = false;
@@ -39,7 +37,7 @@ public class UIController : PressInputBase
     }
     //for switching the camera
     public void SwitchCamera() {
-        cameraSwitch.ToggleCamera();
+
     }
     //It will close the image previewer
     public void CloseImagePreview()
