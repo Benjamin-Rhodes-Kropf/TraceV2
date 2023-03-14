@@ -32,9 +32,9 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private List<UIScreen> history;
     [SerializeField] private UIScreen current;
     [SerializeField] private UIScreen currentPopUp;
-    
+
+    public UIController uiController;
     public CameraManager camManager;
-    public GameObject mainCanvas;
     public bool isComingFromCameraScene = false;
     //Reset Hierarchy
     void Awake()
@@ -71,19 +71,19 @@ public class ScreenManager : MonoBehaviour
     {
 
         // **** To fix the microphone bug by stoping the use of microphone in start scene**** //
-        Microphone.End(null);
+        //Microphone.End(null);
     }
     //This function is called when scene scene is loded
     private void OnLevelWasLoaded(int level)
     {
-        //checking if the scene is loaded from the camera scene and if the scene is main scene
-        if (isComingFromCameraScene && level == 0)
-        {
-            //change the bool so that it runs one abd won't run until it is required
-            isComingFromCameraScene = false;
-            //this will turn on the main canvas from where we laave while coming to camera scene
-            mainCanvas.SetActive(true);
-        }
+        ////checking if the scene is loaded from the camera scene and if the scene is main scene
+        //if (isComingFromCameraScene && level == 0)
+        //{
+        //    //change the bool so that it runs one abd won't run until it is required
+        //    isComingFromCameraScene = false;
+        //    //this will turn on the main canvas from where we laave while coming to camera scene
+        //    mainCanvas.SetActive(true);
+        //}
     }
     //Call Custom Screen Display
     public void WelcomeScreen()
@@ -124,6 +124,7 @@ public class ScreenManager : MonoBehaviour
     }
     //load camera scene
     public void LoadArScene() {
+        ChangeScreenNoAnim("Camera Screen");
         SceneManager.LoadScene("CemraWork");
     }
     //load main scene, used by the camera scene
