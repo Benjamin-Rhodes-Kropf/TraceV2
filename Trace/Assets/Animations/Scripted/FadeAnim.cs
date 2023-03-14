@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Jobs;
 using UnityEngine.UI;
 
 public class FadeAnim : MonoBehaviour
@@ -14,8 +15,11 @@ public class FadeAnim : MonoBehaviour
     [SerializeField] private List<Color> initalColor = new List<Color>();
     [SerializeField] private List<Color> targetColor = new List<Color>();
     [SerializeField] private float fadeDuration;
-
+    private Canvas canvas;
+    
     [Header("Fade Options")] 
+    [SerializeField] private int startSortOrder;
+    [SerializeField] private int endSortOrder;
     [SerializeField] private bool moveToDisabledChild;
     [SerializeField] private Transform disabledParent;
     [SerializeField] private bool fadeInOnEnabled;
@@ -27,6 +31,10 @@ public class FadeAnim : MonoBehaviour
 
     private void Awake()
     {
+        canvas = GetComponent<Canvas>();
+        canvas.overrideSorting = true;
+        canvas.sortingOrder = startSortOrder;
+        
         foreach (var obj in objects)
         {
             var colorableImage = obj.GetComponent<Image>();
@@ -87,6 +95,7 @@ public class FadeAnim : MonoBehaviour
             yield return null;
         }
 
+        canvas.sortingOrder = endSortOrder;
         gameObject.transform.parent = disabledParent;
     }
     

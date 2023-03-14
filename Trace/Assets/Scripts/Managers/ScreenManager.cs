@@ -71,6 +71,11 @@ public class ScreenManager : MonoBehaviour
     public void WelcomeScreen()
     {
         UIScreen newScreen = ScreenFromID("Welcome");
+        if (PlayerPrefs.GetInt("NumberOfTimesLoggedIn") == 1)
+        {
+            newScreen = ScreenFromID("BigWelcome");
+        }
+        
         if ( newScreen != null)
         {
             //startScreen leaves the view and endScreen slides into view
@@ -110,7 +115,6 @@ public class ScreenManager : MonoBehaviour
     public void LoadMainMenuScene()
     {
         SceneManager.LoadScene("Main");
-
     }
     public void ChangeScreenNoAnim(string ScreenID)
     {
