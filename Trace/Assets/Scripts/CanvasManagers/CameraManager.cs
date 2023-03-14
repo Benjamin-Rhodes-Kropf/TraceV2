@@ -4,26 +4,33 @@ using UnityEngine.SceneManagement;
 
 public class CameraManager : MonoBehaviour//PressInputBase
 {
+    public ReplayCam replayCamera;
     public GameObject cameraPanel;
     public GameObject videoPreviewPanel;
     public GameObject imagePreviewPanel;
     public Image previewImagePlayer;
     public RawImage imagePreview;
 
-    public UIController uiManager;
+    //public UIController uiManager;
 
     //for switching between the device cameras
     public void SwitchCamera() {
-        uiManager.SwitchCamera();
+        ScreenManager.instance.uiController.SwitchCamera();
     }
+    //closing the video preview
     public void CloseVideoPreview()
     {
-        uiManager.CloseVideoPreview();
+        ScreenManager.instance.uiController.CloseVideoPreview();
     }
+    //closing the video Image preview
     public void CloseImagePreview()
     {
-        uiManager.CloseImagePreview();
+        ScreenManager.instance.uiController.CloseImagePreview();
 
+    }
+    public void SaveVideo()
+    {
+        ScreenManager.instance.uiController.SaveVideo();
     }
     public void BackToMainScene() {
         //change the bool so that the main canavs can be enabled after the main scene is loaded
@@ -40,10 +47,19 @@ public class CameraManager : MonoBehaviour//PressInputBase
     {
         Debug.Log("Pass Image To Firebase Manager Here");
     }
-
+    //For capturing the image
     public void CaputureImage()
     {
-        uiManager.CaputureImage();
+        ScreenManager.instance.uiController.CaputureImage();
     }
-    
+    //This was used for testing
+    public void StartRecording() {
+        ScreenManager.instance.uiController.vidRecorder.StartRecording();
+    }
+    //This was used for testing
+    public void StopRecording() {
+        ScreenManager.instance.uiController.vidRecorder.StopRecording();
+
+    }
+
 }
