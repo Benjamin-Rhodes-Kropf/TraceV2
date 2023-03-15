@@ -718,6 +718,7 @@ public class FbManager : MonoBehaviour
         CallbackObject callbackObject = new CallbackObject();
         
         Debug.Log("Db making friendship reuest to:" + _userID);
+        Debug.Log("Signed In User ID "+_firebaseUser.UserId);
         
         string key = _databaseReference.Child("friendRequests").Child(_firebaseUser.UserId).Push().Key;
         Dictionary<string, Object> childUpdates = new Dictionary<string, Object>();

@@ -22,6 +22,15 @@ public class Friend : MonoBehaviour
     [SerializeField] private Image _buttonBackground;
     [SerializeField] private Color[] _colors;
 
+    public string Username {
+        get
+        {
+            return _userName.text;
+        }
+        
+    }
+    
+    
 
     public void UpdateFrindData(UserModel user)
     {
