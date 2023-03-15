@@ -38,6 +38,7 @@ public class ScreenManager : MonoBehaviour
     //Reset Hierarchy
     void Awake()
     {
+        Debug.Log("ScreenManager:" + "Awake");
         //dont destroy
         if (instance != null)
         {
@@ -84,8 +85,7 @@ public class ScreenManager : MonoBehaviour
             current.ScreenObject.GetComponent<FadeAnim>().FadeOut();
             history.Add(current); // add current screen to history
             current = newScreen; // assign new as current
-            //current.ScreenObject.GetComponent<FadeAnim>().FadeIn();
-            newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
+            newScreen.ScreenObject.SetParent(activeParent, false); // set new screen parent for animation
         }
     }
     public void LoadingScreen()
