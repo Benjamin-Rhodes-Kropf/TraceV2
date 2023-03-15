@@ -36,9 +36,11 @@ public class FbManager : MonoBehaviour
     [SerializeField] private bool useAdminForLogin;
     [SerializeField] private string adminUser;
     [SerializeField] private string adminPass;
-    
+    [SerializeField] private bool resetPlayerPrefs;
+
     [Header("User Data")] 
     public Texture userImageTexture;
+    public bool firstTimeUsingTrace;
     
     [Header("Database Test Assets")]
     public RawImage rawImage;
@@ -52,6 +54,17 @@ public class FbManager : MonoBehaviour
     private List<UserModel> users;
     void Awake()
     {
+        if (resetPlayerPrefs)
+        {
+            PlayerPrefs.DeleteAll();
+        }
+        
+        PlayerPrefs.SetInt("NumberOfTimesLoggedIn", PlayerPrefs.GetInt("NumberOfTimesLoggedIn")+1);
+        if (PlayerPrefs.GetInt("NumberOfTimesLoggedIn") == 1)
+        {
+            Debug.Log("FbManager: First Time Logging In!");
+        }
+        
         //makes sure nothing can use the db until its enabled
         dependencyStatus = DependencyStatus.UnavailableUpdating;
         

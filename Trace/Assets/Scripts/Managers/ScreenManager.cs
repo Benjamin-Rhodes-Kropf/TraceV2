@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class ScreenManager : MonoBehaviour
 {
@@ -31,15 +33,22 @@ public class ScreenManager : MonoBehaviour
     [SerializeField] private UIScreen current;
     [SerializeField] private UIScreen currentPopUp;
     
+    public CameraManager camManager;
+
     //Reset Hierarchy
     void Awake()
     {
+        Debug.Log("ScreenManager:" + "Awake");
         //dont destroy
         if (instance != null)
-        {Destroy(gameObject);}
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
-        
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         // re-parent all screen transforms to hidden object
         foreach(var s in Screens)
         {
@@ -63,6 +72,11 @@ public class ScreenManager : MonoBehaviour
     public void WelcomeScreen()
     {
         UIScreen newScreen = ScreenFromID("Welcome");
+        if (PlayerPrefs.GetInt("NumberOfTimesLoggedIn") == 1)
+        {
+            newScreen = ScreenFromID("BigWelcome");
+        }
+        
         if ( newScreen != null)
         {
             //startScreen leaves the view and endScreen slides into view
@@ -71,7 +85,7 @@ public class ScreenManager : MonoBehaviour
             current.ScreenObject.GetComponent<FadeAnim>().FadeOut();
             history.Add(current); // add current screen to history
             current = newScreen; // assign new as current
-            newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
+            newScreen.ScreenObject.SetParent(activeParent, false); // set new screen parent for animation
         }
     }
     public void LoadingScreen()
@@ -96,7 +110,13 @@ public class ScreenManager : MonoBehaviour
     {
         _popupAnimationManager.slidePopupOut();
     }
-    
+    public void LoadArScene() {
+        SceneManager.LoadScene("CemraWork");
+    }
+    public void LoadMainMenuScene()
+    {
+        SceneManager.LoadScene("Main");
+    }
     public void ChangeScreenNoAnim(string ScreenID)
     {
         UIScreen newScreen = ScreenFromID(ScreenID);
@@ -110,7 +130,6 @@ public class ScreenManager : MonoBehaviour
             newScreen.ScreenObject.SetParent(activeParent, false); // set new screen parent for animation
         }
     }
-    
     public void ChangeScreenForwards(string ScreenID)
     {
         UIScreen newScreen = ScreenFromID(ScreenID);
@@ -125,6 +144,63 @@ public class ScreenManager : MonoBehaviour
             _screenSwitchAnimationManager.slideScreensFoward();
         }
     }
+    public void ChangeScreenForwardsSlideOver(string ScreenID)
+    {
+        UIScreen newScreen = ScreenFromID(ScreenID);
+        if ( newScreen != null)
+        {
+            //startScreen leaves the view and endScreen slides into view
+            history.Clear();
+            current.ScreenObject.SetParent(startParent, false); // set current screen parent for animation
+            history.Add(current); // add current screen to history
+            current = newScreen; // assign new as current
+            newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
+            _screenSwitchAnimationManager.slideScreenForwardSlideOver();
+        }
+    }
+    public void ChangeScreenBackwardsSlideOver(string ScreenID)
+    {
+        UIScreen newScreen = ScreenFromID(ScreenID);
+        if ( newScreen != null)
+        {
+            //startScreen leaves the view and endScreen slides into view
+            history.Clear();
+            current.ScreenObject.SetParent(startParent, false); // set current screen parent for animation
+            history.Add(current); // add current screen to history
+            current = newScreen; // assign new as current
+            newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
+            _screenSwitchAnimationManager.slideScreenBackwardSlideOver();
+        }
+    }
+    public void ChangeScreenForwardsSlideOff(string ScreenID)
+    {
+        UIScreen newScreen = ScreenFromID(ScreenID);
+        if ( newScreen != null)
+        {
+            //startScreen leaves the view and endScreen slides into view
+            history.Clear();
+            current.ScreenObject.SetParent(startParent, false); // set current screen parent for animation
+            history.Add(current); // add current screen to history
+            current = newScreen; // assign new as current
+            newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
+            _screenSwitchAnimationManager.slideScreenForwardSlideOff();
+        }
+    }
+    public void ChangeScreenBackwardsSlideOff(string ScreenID)
+    {
+        UIScreen newScreen = ScreenFromID(ScreenID);
+        if ( newScreen != null)
+        {
+            //startScreen leaves the view and endScreen slides into view
+            history.Clear();
+            current.ScreenObject.SetParent(startParent, false); // set current screen parent for animation
+            history.Add(current); // add current screen to history
+            current = newScreen; // assign new as current
+            newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
+            _screenSwitchAnimationManager.slideScreenBackwardSlideOff();
+        }
+    }
+
     public void ChangeScreenBackwards(string ScreenID)
     {
         UIScreen newScreen = ScreenFromID(ScreenID);
@@ -153,7 +229,6 @@ public class ScreenManager : MonoBehaviour
             _screenSwitchAnimationManager.slideScreenDown();
         }
     }
-    
     public void ChangeScreenFade(string ScreenID)
     {
         UIScreen newScreen = ScreenFromID(ScreenID);
@@ -167,7 +242,6 @@ public class ScreenManager : MonoBehaviour
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
         }
     }
-    
     public void GoBackScreen()
     {
         //Todo: Make work for more than one screen
@@ -224,8 +298,7 @@ public class ScreenManager : MonoBehaviour
         }
     }
 }
-
-
+    
 [System.Serializable]
 public class UIScreen
 {
