@@ -33,8 +33,7 @@ public class FadeAnim : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         canvas.overrideSorting = true;
-        canvas.sortingOrder = startSortOrder;
-        
+
         foreach (var obj in objects)
         {
             var colorableImage = obj.GetComponent<Image>();
@@ -68,6 +67,7 @@ public class FadeAnim : MonoBehaviour
     
     public void FadeOut()
     {
+        canvas.sortingOrder = startSortOrder;
         Debug.Log("FadeAnim: fading out");
         StartCoroutine(FadeOutCorutine());
     }

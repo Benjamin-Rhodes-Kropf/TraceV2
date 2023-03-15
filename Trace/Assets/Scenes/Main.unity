@@ -2199,9 +2199,9 @@ MonoBehaviour:
   fadeDuration: 1
   startSortOrder: 4
   endSortOrder: 1
-  moveToDisabledChild: 1
+  moveToDisabledChild: 0
   disabledParent: {fileID: 906833078}
-  fadeInOnEnabled: 1
+  fadeInOnEnabled: 0
   waitBeforeFade: 0
 --- !u!1 &185531893
 GameObject:
@@ -11218,7 +11218,7 @@ MonoBehaviour:
   fadeDuration: 1
   startSortOrder: 2
   endSortOrder: 1
-  moveToDisabledChild: 1
+  moveToDisabledChild: 0
   disabledParent: {fileID: 906833078}
   fadeInOnEnabled: 0
   waitBeforeFade: 0
@@ -14628,7 +14628,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 76185519291063013, guid: 99b12fbce1998456b91b2405784d4f1c, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 76185519291063013, guid: 99b12fbce1998456b91b2405784d4f1c, type: 3}
       propertyPath: m_OverrideSorting
@@ -14736,7 +14736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1450387828941674439, guid: 99b12fbce1998456b91b2405784d4f1c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99b12fbce1998456b91b2405784d4f1c, type: 3}
@@ -22121,7 +22121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1023150699719654143, guid: cda54dd8511b84d7c830d16ede7e0a45, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cda54dd8511b84d7c830d16ede7e0a45, type: 3}
