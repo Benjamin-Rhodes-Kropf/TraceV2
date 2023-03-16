@@ -11905,7 +11905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectSwipeOnlyAfterRelease: 0
-  minDistanceForSwipe: 20
+  minDistanceForSwipe: 40
 --- !u!1 &663853687
 GameObject:
   m_ObjectHideFlags: 0
@@ -23321,6 +23321,7 @@ MonoBehaviour:
   uiController: {fileID: 0}
   camManager: {fileID: 2355076385525282639}
   isComingFromCameraScene: 0
+  currentScreenName: 
 --- !u!222 &1301840579
 CanvasRenderer:
   m_ObjectHideFlags: 0
