@@ -36,6 +36,7 @@ public class ScreenManager : MonoBehaviour
     public UIController uiController;
     public CameraManager camManager;
     public bool isComingFromCameraScene = false;
+    public string currentScreenName = null;
     //Reset Hierarchy
     void Awake()
     {
@@ -146,6 +147,7 @@ public class ScreenManager : MonoBehaviour
             history.Add(current); // add current screen to history
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(activeParent, false); // set new screen parent for animation
+            currentScreenName = ScreenID;
         }
     }
     public void ChangeScreenForwards(string ScreenID)
@@ -160,6 +162,8 @@ public class ScreenManager : MonoBehaviour
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
             _screenSwitchAnimationManager.slideScreensFoward();
+            currentScreenName = ScreenID;
+
         }
     }
     public void ChangeScreenForwardsSlideOver(string ScreenID)
@@ -174,6 +178,8 @@ public class ScreenManager : MonoBehaviour
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
             _screenSwitchAnimationManager.slideScreenForwardSlideOver();
+            currentScreenName = ScreenID;
+
         }
     }
     public void ChangeScreenBackwardsSlideOver(string ScreenID)
@@ -188,6 +194,8 @@ public class ScreenManager : MonoBehaviour
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
             _screenSwitchAnimationManager.slideScreenBackwardSlideOver();
+            currentScreenName = ScreenID;
+
         }
     }
     public void ChangeScreenForwardsSlideOff(string ScreenID)
@@ -202,6 +210,8 @@ public class ScreenManager : MonoBehaviour
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
             _screenSwitchAnimationManager.slideScreenForwardSlideOff();
+            currentScreenName = ScreenID;
+
         }
     }
     public void ChangeScreenBackwardsSlideOff(string ScreenID)
@@ -216,6 +226,8 @@ public class ScreenManager : MonoBehaviour
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
             _screenSwitchAnimationManager.slideScreenBackwardSlideOff();
+            currentScreenName = ScreenID;
+
         }
     }
 
@@ -231,6 +243,8 @@ public class ScreenManager : MonoBehaviour
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
             _screenSwitchAnimationManager.slideScreensBackward();
+            currentScreenName = ScreenID;
+
         }
     }
     public void ChangeScreenDown(string ScreenID)
@@ -245,6 +259,8 @@ public class ScreenManager : MonoBehaviour
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
             _screenSwitchAnimationManager.slideScreenDown();
+            currentScreenName = ScreenID;
+
         }
     }
     public void ChangeScreenFade(string ScreenID)
@@ -258,6 +274,7 @@ public class ScreenManager : MonoBehaviour
             history.Add(current); // add current screen to history
             current = newScreen; // assign new as current
             newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
+            currentScreenName = ScreenID;
         }
     }
     public void GoBackScreen()
