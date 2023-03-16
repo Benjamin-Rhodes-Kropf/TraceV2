@@ -64,7 +64,14 @@ public class ScreenManager : MonoBehaviour
             s.ScreenObject.transform.SetParent(inactiveParent, false);
         }
 
-        LoadingScreen();
+        if (!isComingFromCameraScene)
+        {
+            LoadingScreen();
+        }
+        else
+        {
+            ChangeScreenNoAnim("HomeScreen");
+        }
         activeParent.gameObject.SetActive(true);
         inactiveParent.gameObject.SetActive(false);
         inactivePopupParent.gameObject.SetActive(false);
@@ -75,18 +82,7 @@ public class ScreenManager : MonoBehaviour
         // **** To fix the microphone bug by stoping the use of microphone in start scene**** //
         //Microphone.End(null);
     }
-    //This function is called when scene scene is loded
-    private void OnLevelWasLoaded(int level)
-    {
-        ////checking if the scene is loaded from the camera scene and if the scene is main scene
-        //if (isComingFromCameraScene && level == 0)
-        //{
-        //    //change the bool so that it runs one abd won't run until it is required
-        //    isComingFromCameraScene = false;
-        //    //this will turn on the main canvas from where we laave while coming to camera scene
-        //    mainCanvas.SetActive(true);
-        //}
-    }
+
     //Call Custom Screen Display
     public void WelcomeScreen()
     {
