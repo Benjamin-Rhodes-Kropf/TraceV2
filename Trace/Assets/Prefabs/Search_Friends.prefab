@@ -4307,6 +4307,7 @@ GameObject:
   - component: {fileID: 7400900334189507694}
   - component: {fileID: 7400900334189507689}
   - component: {fileID: 7400900334189507688}
+  - component: {fileID: 4357833470414846795}
   m_Layer: 5
   m_Name: Search_Friends
   m_TagString: Untagged
@@ -4405,6 +4406,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4357833470414846795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7400900334189507691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &7400900334217556231
 GameObject:
   m_ObjectHideFlags: 0

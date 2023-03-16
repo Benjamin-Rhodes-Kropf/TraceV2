@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,10 @@ public class CameraManager : MonoBehaviour//PressInputBase
     public RawImage imagePreview;
 
     //public UIController uiManager;
+    private void OnEnable()
+    {
+        cameraPanel.SetActive(true);
+    }
 
     //for switching between the device cameras
     public void SwitchCamera() {

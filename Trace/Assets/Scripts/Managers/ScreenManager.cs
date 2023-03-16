@@ -17,7 +17,7 @@ public class ScreenManager : MonoBehaviour
     
     // containers for currently displayed screen and hidden screens
     [SerializeField] private Transform PopUpParent;
-    [SerializeField] public Transform activeParent;
+    [SerializeField] private Transform activeParent;
     [SerializeField] private Transform inactiveParent;
     [SerializeField] private Transform inactivePopupParent;
     
@@ -39,6 +39,7 @@ public class ScreenManager : MonoBehaviour
     //Reset Hierarchy
     void Awake()
     {
+        Debug.Log("ScreenManager:" + "Awake");
         //dont destroy
         if (instance == null)
         {
@@ -53,6 +54,7 @@ public class ScreenManager : MonoBehaviour
         // re-parent all screen transforms to hidden object
         foreach (var s in Screens)
         {
+            Debug.Log("ScreenManager: Awake:" + s.ScreenObject.gameObject.name);
             s.ScreenObject.gameObject.SetActive(true);
             s.ScreenObject.transform.SetParent(inactiveParent, false);
         }
@@ -62,7 +64,14 @@ public class ScreenManager : MonoBehaviour
             s.ScreenObject.transform.SetParent(inactiveParent, false);
         }
 
-        LoadingScreen();
+        if (!isComingFromCameraScene)
+        {
+            LoadingScreen();
+        }
+        else
+        {
+            ChangeScreenNoAnim("HomeScreen");
+        }
         activeParent.gameObject.SetActive(true);
         inactiveParent.gameObject.SetActive(false);
         inactivePopupParent.gameObject.SetActive(false);
@@ -73,22 +82,16 @@ public class ScreenManager : MonoBehaviour
         // **** To fix the microphone bug by stoping the use of microphone in start scene**** //
         //Microphone.End(null);
     }
-    //This function is called when scene scene is loded
-    private void OnLevelWasLoaded(int level)
-    {
-        ////checking if the scene is loaded from the camera scene and if the scene is main scene
-        //if (isComingFromCameraScene && level == 0)
-        //{
-        //    //change the bool so that it runs one abd won't run until it is required
-        //    isComingFromCameraScene = false;
-        //    //this will turn on the main canvas from where we laave while coming to camera scene
-        //    mainCanvas.SetActive(true);
-        //}
-    }
+
     //Call Custom Screen Display
     public void WelcomeScreen()
     {
         UIScreen newScreen = ScreenFromID("Welcome");
+        if (PlayerPrefs.GetInt("NumberOfTimesLoggedIn") == 1)
+        {
+            newScreen = ScreenFromID("BigWelcome");
+        }
+        
         if ( newScreen != null)
         {
             //startScreen leaves the view and endScreen slides into view
@@ -97,7 +100,7 @@ public class ScreenManager : MonoBehaviour
             current.ScreenObject.GetComponent<FadeAnim>().FadeOut();
             history.Add(current); // add current screen to history
             current = newScreen; // assign new as current
-            newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
+            newScreen.ScreenObject.SetParent(activeParent, false); // set new screen parent for animation
         }
     }
     public void LoadingScreen()
@@ -131,7 +134,6 @@ public class ScreenManager : MonoBehaviour
     public void LoadMainMenuScene()
     {
         SceneManager.LoadScene("Main");
-
     }
     public void ChangeScreenNoAnim(string ScreenID)
     {
