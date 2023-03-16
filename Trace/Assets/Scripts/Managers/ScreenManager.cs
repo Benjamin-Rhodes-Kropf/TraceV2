@@ -54,6 +54,7 @@ public class ScreenManager : MonoBehaviour
         // re-parent all screen transforms to hidden object
         foreach (var s in Screens)
         {
+            Debug.Log("ScreenManager: Awake:" + s.ScreenObject.gameObject.name);
             s.ScreenObject.gameObject.SetActive(true);
             s.ScreenObject.transform.SetParent(inactiveParent, false);
         }
