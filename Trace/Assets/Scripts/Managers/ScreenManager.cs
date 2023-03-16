@@ -17,7 +17,7 @@ public class ScreenManager : MonoBehaviour
     
     // containers for currently displayed screen and hidden screens
     [SerializeField] private Transform PopUpParent;
-    [SerializeField] private Transform activeParent;
+    [SerializeField] public Transform activeParent;
     [SerializeField] private Transform inactiveParent;
     [SerializeField] private Transform inactivePopupParent;
     
