@@ -44,7 +44,7 @@ public class DrawCircleAroundMarker : MonoBehaviour{
     /// 
     private void DrawCircle()
     {
-        if(Input.GetKeyDown("space") && numOfCircles  < 3)
+        if(Input.GetKeyDown("space") && numOfCircles  < 7)
         {
             numOfCircles++;
             // Get the coordinates under cursor
@@ -88,7 +88,8 @@ public class DrawCircleAroundMarker : MonoBehaviour{
 
             // Create a new polygon to draw a circle
             OnlineMapsDrawingElement poly = OnlineMapsDrawingElementManager.AddItem
-            (new OnlineMapsDrawingPoly(points, colorPaterns[GetColorArrayIndex()].borderColor, colorPaterns[GetColorArrayIndex()].borderSize, colorPaterns[GetColorArrayIndex()].bgColor));
+            (new OnlineMapsDrawingPoly(points, colorPaterns[GetColorArrayIndex()].borderColor,
+            colorPaterns[GetColorArrayIndex()].borderSize, colorPaterns[GetColorArrayIndex()].bgColor));
             poly.OnClick += OnCircleClick;
         }
     }
