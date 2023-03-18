@@ -21,7 +21,8 @@ public class SignInCanvas : MonoBehaviour
             if (myReturnValue.IsSuccessful)
             {
                 Debug.Log("FbManager: Logged in!");
-                ScreenManager.instance.ChangeScreenDown("HomeScreen");
+                //could be changeScreenDown
+                ScreenManager.instance.ChangeScreenNoAnim("HomeScreen");
             }
             else
             {
