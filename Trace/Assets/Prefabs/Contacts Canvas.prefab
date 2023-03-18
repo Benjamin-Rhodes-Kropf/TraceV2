@@ -1307,7 +1307,7 @@ GameObject:
   - component: {fileID: 1969938028229811074}
   - component: {fileID: 1969938028229811077}
   m_Layer: 5
-  m_Name: Conctacts Scroll
+  m_Name: Coctacts Scroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19476,7 +19476,7 @@ RectTransform:
   m_Children:
   - {fileID: 4786457637181054315}
   m_Father: {fileID: 4786457636035088577}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -19564,7 +19564,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4786457635539661988}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5403826900519052025}
+        m_TargetAssemblyTypeName: ContactScreenManager, Assembly-CSharp
+        m_MethodName: OpenThisScrollerPanel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Contacts Scroll
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4786457635553789254
 GameObject:
   m_ObjectHideFlags: 0
@@ -20287,7 +20299,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5403826900519052025}
+        m_TargetAssemblyTypeName: ContactScreenManager, Assembly-CSharp
+        m_MethodName: OnSearchBarClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -20602,9 +20626,9 @@ RectTransform:
   - {fileID: 4786457635690074011}
   - {fileID: 4786457636837311515}
   - {fileID: 4786457635871466238}
+  - {fileID: 4786457635539661990}
   - {fileID: 4786457636520328343}
   - {fileID: 4786457636634982020}
-  - {fileID: 4786457635539661990}
   m_Father: {fileID: 4786457636642529792}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20973,7 +20997,7 @@ RectTransform:
   m_Children:
   - {fileID: 4786457635615192603}
   m_Father: {fileID: 4786457636035088577}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21061,7 +21085,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4786457636520328341}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5403826900519052025}
+        m_TargetAssemblyTypeName: ContactScreenManager, Assembly-CSharp
+        m_MethodName: OpenThisScrollerPanel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MyFriends Scroll
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4786457636634982023
 GameObject:
   m_ObjectHideFlags: 0
@@ -21095,7 +21131,7 @@ RectTransform:
   m_Children:
   - {fileID: 4786457635345442796}
   m_Father: {fileID: 4786457636035088577}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -21183,7 +21219,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4786457636634982026}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5403826900519052025}
+        m_TargetAssemblyTypeName: ContactScreenManager, Assembly-CSharp
+        m_MethodName: OpenThisScrollerPanel
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Request Scroll
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4786457636642529820
 GameObject:
   m_ObjectHideFlags: 0
@@ -21196,6 +21244,7 @@ GameObject:
   - component: {fileID: 4786457636642529795}
   - component: {fileID: 4786457636642529794}
   - component: {fileID: 4786457636642529821}
+  - component: {fileID: 5403826900519052025}
   m_Layer: 5
   m_Name: Contacts Canvas
   m_TagString: Untagged
@@ -21280,7 +21329,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4786457636642529821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21298,6 +21347,32 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5403826900519052025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4786457636642529820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6553506832746729be70b40090ec3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contactPanels:
+  - Name: Contacts Scroll
+    ScreenObject: {fileID: 1969938028229811076}
+    screenButton: {fileID: 4786457635539661991}
+  - Name: MyFriends Scroll
+    ScreenObject: {fileID: 3566176339666317651}
+    screenButton: {fileID: 4786457636520328340}
+  - Name: Request Scroll
+    ScreenObject: {fileID: 7877648875458244534}
+    screenButton: {fileID: 4786457636634982021}
+  startingScreenName: Contacts Scroll
+  selectedColor: {r: 0.5137255, g: 0.52156866, b: 0.5254902, a: 1}
+  notActiveColor: {r: 0.5137255, g: 0.52156866, b: 0.5254902, a: 0}
+  Search_Scroll: {fileID: 8504588453305172998}
 --- !u!1 &4786457636837311514
 GameObject:
   m_ObjectHideFlags: 0

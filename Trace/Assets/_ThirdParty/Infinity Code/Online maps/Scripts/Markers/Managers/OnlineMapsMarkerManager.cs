@@ -186,7 +186,10 @@ public class OnlineMapsMarkerManager : OnlineMapsMarkerManagerBase<OnlineMapsMar
             marker.Init();
         }
     }
-
+    public void GenerateMarker() {
+        double lng, lat;
+        if (map.control.GetCoords(out lng, out lat)) Create(lng, lat);
+    }
     protected override void Update()
     {
         base.Update();

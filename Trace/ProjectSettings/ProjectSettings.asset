@@ -181,6 +181,15 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -616,7 +625,7 @@ PlayerSettings:
   enableCrashReportAPI: 0
   cameraUsageDescription: Trace uses your camera
   locationUsageDescription: Trace uses your location
-  microphoneUsageDescription: Trace uses your microphone for recorind camera videos.
+  microphoneUsageDescription: Trace uses your microphone for recodring camera videos.
   bluetoothUsageDescription: 
   switchNMETAOverride: 
   switchNetLibKey: 
