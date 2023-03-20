@@ -523,20 +523,25 @@ public class FbManager : MonoBehaviour
 
     #endregion
     #region -User Edit Information
-    public IEnumerator SetUsername(string _username, System.Action<String> callback)
+    public IEnumerator SetUsername(string _username, System.Action<bool> callback)
     {
         Debug.Log("Db SetUsername to :" + _username);
-        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("Username").SetValueAsync(_username);
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("username").SetValueAsync(_username);
         
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        // yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
+        while (DBTask.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+        
+        
         if (DBTask.Exception != null)
         {
             Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+            callback(false);
         }
         else
         {
-            callback("successfully updated _username");
+            callback(true);
         }
     }
     public IEnumerator SetUserProfilePhotoUrl(string _photoUrl, System.Action<String> callback)
