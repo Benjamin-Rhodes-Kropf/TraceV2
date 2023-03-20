@@ -6,7 +6,6 @@ namespace CanvasManagers
     public class RegisterCanvasController
     {
         private bool _isEmailValidated = false;
-        private bool _isUsernameValidated = false;
         private bool _isPasswordValidated = false;
         private bool _isConfirmedPasswordValidated = false;
 
@@ -32,7 +31,7 @@ namespace CanvasManagers
 
         private void BindEvents()
         {
-            _view.usernameText.onEndEdit.AddListener(ValidateUsername);
+            // _view.usernameText.onEndEdit.AddListener(ValidateUsername);
             _view.emailText.onEndEdit.AddListener(ValidateEmail);
             
             _view.passwordText.onEndEdit.AddListener(ValidatePassword);
@@ -53,7 +52,7 @@ namespace CanvasManagers
 #endif
             
             Debug.LogError("Email is ::  "+ email);
-            _view.StartCoroutine(FbManager.instance.RegisterNewUser(email, _view.passwordText.text, _view.usernameText.text, "", (response, errorCode) =>
+            _view.StartCoroutine(FbManager.instance.RegisterNewUser(email, _view.passwordText.text, "UserName", "", (response, errorCode) =>
             {
                  _view.LoadingState(false);
                 Debug.Log("Registered Response received from Firebase: " + response);
@@ -71,7 +70,7 @@ namespace CanvasManagers
 
         private void UnbindEvents()
         {
-            _view.usernameText.onEndEdit.RemoveAllListeners();
+            // _view.usernameText.onEndEdit.RemoveAllListeners();
             _view.emailText.onEndEdit.RemoveAllListeners();
             
             _view.passwordText.onEndEdit.RemoveAllListeners();
@@ -123,18 +122,12 @@ namespace CanvasManagers
 
         }
  
-        private void ValidateUsername(string username)
-        {
-            _isUsernameValidated = !HelperMethods.isBadName(username);
-            
-            EnableRegistrationButtonCheck();
-        }
 
         #endregion
         
         private void EnableRegistrationButtonCheck()
         {
-            if (_isEmailValidated && _isPasswordValidated && _isUsernameValidated)
+            if (_isEmailValidated && _isPasswordValidated)
                 _view.registerButton.interactable = true;
             else
                 _view.registerButton.interactable = false;

@@ -7,7 +7,6 @@ public class UserDataManager
 {
     private static UserDataManager instance = null;
 
-
     public static UserDataManager Instance
     {
         get
@@ -39,6 +38,13 @@ public class UserDataManager
         selectedUsers.AddRange(_userSearchQuery);
 
         return selectedUsers;
+    }
 
+
+
+    public bool IsUsernameAvailable(string userName)
+    {
+        var users = GetUsersByLetters(userName);
+        return users.Count < 1;
     }
 }
