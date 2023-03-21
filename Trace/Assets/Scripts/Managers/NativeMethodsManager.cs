@@ -5,7 +5,7 @@ using UnityEngine;
 public class NativeMethodsManager
 {
     
-    public static void OpenCamera(NativeCamera.CameraCallback callback )
+    /*public static void OpenCamera(NativeCamera.CameraCallback callback )
     {
 
 #if UNITY_IOS
@@ -36,7 +36,7 @@ public class NativeMethodsManager
         if (permission == NativeGallery.Permission.Granted)
             NativeGallery.GetImageFromGallery(callback);
 #endif
-    }
+    }*/
   
 
 }

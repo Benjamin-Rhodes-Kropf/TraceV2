@@ -33,7 +33,7 @@ public class TakePhotoCanvasController
 
     private void OnCameraButtonClick()
     {
-        NativeMethodsManager.OpenCamera(TakePictureCallBack);
+        //NativeMethodsManager.OpenCamera(TakePictureCallBack);
     }
 
 
@@ -44,7 +44,7 @@ public class TakePhotoCanvasController
     
     private void OnGalleryClick()
     {
-        NativeMethodsManager.OpenGalleryToPickMedia(TakePictureFromGallery);
+        //NativeMethodsManager.OpenGalleryToPickMedia(TakePictureFromGallery);
     }
     
     private void TakePictureFromGallery(string path)
