@@ -15,6 +15,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using Object = System.Object;
 
+
 public class FbManager : MonoBehaviour
 {
     [Header("Dont Destroy")]
@@ -35,16 +36,35 @@ public class FbManager : MonoBehaviour
     [SerializeField] private bool useAdminForLogin;
     [SerializeField] private string adminUser;
     [SerializeField] private string adminPass;
-    
+    [SerializeField] private bool resetPlayerPrefs;
+
     [Header("User Data")] 
     public Texture userImageTexture;
+    public bool firstTimeUsingTrace;
     
     [Header("Database Test Assets")]
     public RawImage rawImage;
     public RawImage testRawImage;
-    
+
+    public List<UserModel> AllUsers
+    {
+        get { return users; }
+    }
+
+    private List<UserModel> users;
     void Awake()
     {
+        if (resetPlayerPrefs)
+        {
+            PlayerPrefs.DeleteAll();
+        }
+        
+        PlayerPrefs.SetInt("NumberOfTimesLoggedIn", PlayerPrefs.GetInt("NumberOfTimesLoggedIn")+1);
+        if (PlayerPrefs.GetInt("NumberOfTimesLoggedIn") == 1)
+        {
+            Debug.Log("FbManager: First Time Logging In!");
+        }
+        
         //makes sure nothing can use the db until its enabled
         dependencyStatus = DependencyStatus.UnavailableUpdating;
         
@@ -107,6 +127,7 @@ public class FbManager : MonoBehaviour
         { 
             StartCoroutine(AutoLogin());
         } 
+
     }
 
     #region Current User
@@ -225,6 +246,8 @@ public class FbManager : MonoBehaviour
         PlayerPrefs.SetString("Password", _password);
         PlayerPrefs.Save();
         
+       GetAllUserNames();
+
         callback(callbackObject);
     }
     private IEnumerator LogOut()
@@ -500,20 +523,25 @@ public class FbManager : MonoBehaviour
 
     #endregion
     #region -User Edit Information
-    public IEnumerator SetUsername(string _username, System.Action<String> callback)
+    public IEnumerator SetUsername(string _username, System.Action<bool> callback)
     {
         Debug.Log("Db SetUsername to :" + _username);
-        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("Username").SetValueAsync(_username);
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("username").SetValueAsync(_username);
         
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        // yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
+        while (DBTask.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+        
+        
         if (DBTask.Exception != null)
         {
             Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+            callback(false);
         }
         else
         {
-            callback("successfully updated _username");
+            callback(true);
         }
     }
     public IEnumerator SetUserProfilePhotoUrl(string _photoUrl, System.Action<String> callback)
@@ -644,6 +672,44 @@ public class FbManager : MonoBehaviour
             callback(DBTask.Result.ToString());
         }
     }
+
+    private void GetAllUserNames()
+    {
+        // Create a list to store the usernames
+        users = new List<UserModel>();
+        
+        // Get a reference to the "users" node in the database
+        DatabaseReference usersRef = _databaseReference.Child("users");
+        
+        // Attach a listener to the "users" node
+        usersRef.GetValueAsync().ContinueWith(task =>
+        {
+             if (task.IsCompleted)
+             {
+                 // Iterate through the children of the "users" node and add each username to the list
+                 DataSnapshot snapshot = task.Result;
+                 var  allUsersSnapshots = snapshot.Children.ToArrayPooled();
+                 for (int userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
+                 {
+                     string email = allUsersSnapshots[userIndex].Child("email").Value.ToString();
+                     string frindCount = allUsersSnapshots[userIndex].Child("friendCount").Value.ToString();
+                     string displayName = allUsersSnapshots[userIndex].Child("name").Value.ToString();
+                     string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
+                     string phoneNumber = allUsersSnapshots[userIndex].Child("phone").Value.ToString();
+                     string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
+                     UserModel userData = new UserModel(email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
+                     users.Add(userData);
+                     print("Mail  Address :: "+ email);
+                 }
+             }
+             if (task.IsFaulted)
+             {
+                 Debug.LogError(task.Exception);
+                 // Handle the error
+             }
+        });
+    }
+
     public List<string> GetMyFriendShipRequests()
     {
         List<string> listOfFriends = new List<string>();
@@ -670,6 +736,7 @@ public class FbManager : MonoBehaviour
         CallbackObject callbackObject = new CallbackObject();
         
         Debug.Log("Db making friendship reuest to:" + _userID);
+        Debug.Log("Signed In User ID "+_firebaseUser.UserId);
         
         string key = _databaseReference.Child("friendRequests").Child(_firebaseUser.UserId).Push().Key;
         Dictionary<string, Object> childUpdates = new Dictionary<string, Object>();

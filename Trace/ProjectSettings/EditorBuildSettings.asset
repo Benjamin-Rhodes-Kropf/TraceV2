@@ -8,4 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Past/Main_2D.unity
     guid: c7ec07c852da049678408f9232a0230c
-  m_configObjects: {}
+  m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: d8493d7946776431b87f6a3d55343699, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 6ca9fa5fd5b26479c8c9eec34a00d4e2, type: 2}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 0f324873fd5234909894504bd3b80cf0, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5cac28b34c96a4e9ea94244c803f5568, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 4cc24b4e70c6f49dbae02f68da29824a, type: 2}
