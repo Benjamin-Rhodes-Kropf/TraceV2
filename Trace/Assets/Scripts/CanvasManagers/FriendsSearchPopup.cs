@@ -41,8 +41,9 @@ public class FriendsSearchPopup : MonoBehaviour
         }));
     }
     
-    public void RequestFriendWithSearchedUser()
+    public void RequestFriendWithSearchedUser(string userName)
     {
+        searchedUserID = userName;
         if (searchedUserID == "")
         {
             //Todo: update visuals accordingly
