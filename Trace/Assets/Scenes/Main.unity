@@ -2018,7 +2018,7 @@ MonoBehaviour:
   targetColor: []
   fadeDuration: 1
   startSortOrder: 4
-  endSortOrder: 1
+  endSortOrder: 2
   moveToDisabledChild: 0
   disabledParent: {fileID: 906833078}
   fadeInOnEnabled: 0
@@ -2524,6 +2524,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 702161c0a95044d10b1973c5314a65ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _phoneNumberPreviewText: {fileID: 0}
+  _verificationCode: {fileID: 0}
+  _submitButton: {fileID: 0}
+  _requestNewCodeButton: {fileID: 0}
+  _backButton: {fileID: 0}
 --- !u!1 &209913001
 GameObject:
   m_ObjectHideFlags: 0
@@ -10832,8 +10837,8 @@ MonoBehaviour:
   initalColor: []
   targetColor: []
   fadeDuration: 1
-  startSortOrder: 2
-  endSortOrder: 1
+  startSortOrder: 4
+  endSortOrder: 2
   moveToDisabledChild: 0
   disabledParent: {fileID: 906833078}
   fadeInOnEnabled: 0
@@ -23274,6 +23279,7 @@ MonoBehaviour:
   uiController: {fileID: 0}
   camManager: {fileID: 2355076385525282639}
   isComingFromCameraScene: 0
+  currentScreenName: 
 --- !u!222 &1301840579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29991,9 +29997,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b5f92b219d94f38921502841b16e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputField: {fileID: 6304215426951608574}
+  _numberInputField: {fileID: 0}
+  _countryCodeDropdown: {fileID: 0}
   _phoneNumberDisplay: {fileID: 150140875}
   lastLength: 0
+  verifyNumberButton: {fileID: 0}
+  _countryCodeInputField: {fileID: 0}
+  _numberValidationView: {fileID: 0}
+  validationScreen: {fileID: 0}
 --- !u!1001 &1771993481
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59080,6 +59091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd45b893a9ce4dfa8d438a344293ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colorPaterns: []
   radiusKM: 5
   numOfCircles: 0
   segments: 500
