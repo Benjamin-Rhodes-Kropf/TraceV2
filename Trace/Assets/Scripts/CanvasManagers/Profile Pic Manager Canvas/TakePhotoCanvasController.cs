@@ -33,7 +33,7 @@ public class TakePhotoCanvasController
 
     private void OnCameraButtonClick()
     {
-        NativeMethodsManager.OpenCamera(TakePictureCallBack);
+        OnGalleryClick();
     }
 
 
