@@ -19,7 +19,7 @@ public class SwipeLogger : MonoBehaviour
         {
             ScreenManager.instance.ChangeScreenForwardsSlideOff("HomeScreen");
         }
-        else if (ScreenManager.instance.currentScreenName == "EdfitProfile" && data.Direction == SwipeDirection.Right)
+        else if (ScreenManager.instance.currentScreenName == "EditProfile" && data.Direction == SwipeDirection.Right)
         {
             ScreenManager.instance.ChangeScreenBackwardsSlideOff("HomeScreen");
         }
