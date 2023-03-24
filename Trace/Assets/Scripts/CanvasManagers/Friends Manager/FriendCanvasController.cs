@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Firebase.Messaging;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -65,7 +64,7 @@ namespace CanvasManagers
             string body = "You have a new friend request from " + friendId;
             string topic = friendId; // Send the notification to the friend's device
 
-            FirebaseMessage message = new FirebaseMessage();
+            // FirebaseMessage message = new FirebaseMessage();
 
         }
         

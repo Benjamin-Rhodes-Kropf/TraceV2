@@ -544,21 +544,23 @@ public class FbManager : MonoBehaviour
             callback(true);
         }
     }
-    public IEnumerator SetUserProfilePhotoUrl(string _photoUrl, System.Action<String> callback)
+    public IEnumerator SetUserProfilePhotoUrl(string _photoUrl, System.Action<bool> callback)
     {
         Debug.Log("Db update photoUrl to :" + _photoUrl);
         //Set the currently logged in user nickName in the database
         var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("userPhotoUrl").SetValueAsync(_photoUrl);
         
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        while (DBTask.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
 
         if (DBTask.Exception != null)
         {
             Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+            callback(false);
         }
         else
         {
-            callback("success");
+            callback(true);
         }
     }
     public IEnumerator SetUserNickName(string _nickName, System.Action<bool> callback)
@@ -604,6 +606,37 @@ public class FbManager : MonoBehaviour
             callback(true);
         }
     }
+
+
+    public IEnumerator UploadProfilePhoto(string _imagePath, System.Action<bool,string> callback)
+    {
+        // Read the image file as a byte array
+        byte[] imageBytes = System.IO.File.ReadAllBytes(_imagePath);
+        print("Is  Null :: "+ _firebaseStorage == null);
+        // Create a reference to the image file in Firebase Storage
+        StorageReference imageRef = _firebaseStorage.GetReference("ProfilePhoto/"+_firebaseUser.UserId+".png");
+
+        // Upload the image file to Firebase Storage
+        var task = imageRef.PutBytesAsync(imageBytes);
+
+        while (task.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+
+        if (task.IsFaulted || task.IsCanceled)
+        {
+            Debug.LogError("Task Faulted Due To :: "+ task.Exception.ToString());
+            callback(false,"");
+        }
+        else
+        {
+            Debug.LogError("Image Uploaded Successfully");
+            Debug.Log("Download URL: " + task.Result);
+            var url = task.Result.Path + "";
+            Debug.Log("Actual  URL: " + url);
+            callback(true,url);
+        }
+    }  
+
     #endregion
     #region -User Info
     public IEnumerator GetMyUserProfilePhoto(System.Action<Texture> callback)
