@@ -8583,7 +8583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4349171673829753911, guid: 260a7e2ac0d984bb2baeafc4570bacc3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4349171674166757963, guid: 260a7e2ac0d984bb2baeafc4570bacc3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -61949,6 +61949,7 @@ GameObject:
   - component: {fileID: 6068666308761308080}
   - component: {fileID: 6068666308761308081}
   - component: {fileID: 6068666308761308082}
+  - component: {fileID: 6068666308761308083}
   m_Layer: 5
   m_Name: Map
   m_TagString: Untagged
@@ -62200,9 +62201,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd45b893a9ce4dfa8d438a344293ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorPaterns: []
-  radiusKM: 5
-  numOfCircles: 0
+  colorPaterns:
+  - Name: CircleOne
+    borderColor: {r: 0.764151, g: 0.11894804, b: 0.11894804, a: 0}
+    bgColor: {r: 0.6415094, g: 0.52954787, b: 0.52954787, a: 0}
+    borderSize: 5
+  radiusKM: 1
+  numOfCircles: 1
   segments: 500
   circlePoint:
   - {x: 0, y: 0}
@@ -62221,6 +62226,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   friction: 0.9
   maxSamples: 5
+--- !u!114 &6068666308761308083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068666308761308064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34f698a97add4f88b9be4506a1a4847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circles:
+  - Name: CircleOne
+    circles: {fileID: 2800000, guid: 68deb2e1a5f12444ead27e5388e6e2f2, type: 3}
+  - Name: CircleTwo
+    circles: {fileID: 2800000, guid: 507e2b5d3989e456ebabf6c79f4a4b8f, type: 3}
+  - Name: BlueCircle
+    circles: {fileID: 2800000, guid: 0c5f518d1723f4f79b902589665df8c3, type: 3}
+  markerManager: {fileID: 6068666308761308078}
+  circleDrawingManager: {fileID: 6068666308761308081}
+  radiusKM: 0.3
 --- !u!1 &6102808264268529458
 GameObject:
   m_ObjectHideFlags: 0
