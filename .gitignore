@@ -15,7 +15,7 @@ Editor Default Resources/
 ExternalDependencyManager/
 Firebase/
 Parse/
-Plugins/
+
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
