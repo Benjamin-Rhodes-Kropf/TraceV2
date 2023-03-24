@@ -24,5 +24,4 @@ public class SelectorManager : MonoBehaviour
             selectorAnimator.Play("MoveUp");
         }
     }
-
 }
