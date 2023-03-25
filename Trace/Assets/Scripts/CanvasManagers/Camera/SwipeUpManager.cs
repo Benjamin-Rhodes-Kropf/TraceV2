@@ -77,7 +77,7 @@ public class SwipeUpManager : MonoBehaviour, IDragHandler, IEndDragHandler
 		}
 		Debug.Log("SwipeUpManager:" + "Switch To Selector Screen");
 		BackToMainScene();
-		yield return new WaitForSeconds(0.7f);
+		yield return new WaitForSeconds(0.25f);
 		ScreenManager.instance.ChangeScreenUpSlideOver("SelectFriends");
 	}
 	
