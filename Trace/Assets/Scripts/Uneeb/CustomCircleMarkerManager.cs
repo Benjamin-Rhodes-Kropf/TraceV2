@@ -51,7 +51,6 @@ public class CustomCircleMarkerManager : MonoBehaviour
             }
             //gerenrate the marker on map
             markerManager.GenerateMarker();
-
         }
     }
 }

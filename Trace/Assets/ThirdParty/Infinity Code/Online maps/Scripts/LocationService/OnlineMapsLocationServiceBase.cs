@@ -460,7 +460,8 @@ public abstract class OnlineMapsLocationServiceBase : MonoBehaviour, IOnlineMaps
                 if (!isPositionInited) positionChanged = true;
             }
             else UpdateCompassFromInput(ref compassChanged);
-
+            
+            //gets the input location
             UpdateSpeed();
 
             if (useGPSEmulator) UpdatePositionFromEmulator(ref positionChanged);
