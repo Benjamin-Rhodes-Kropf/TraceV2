@@ -38,6 +38,7 @@ namespace CanvasManagers
             _view.retypePasswordText.onEndEdit.AddListener(ValidatePassword);
             
             _view.registerButton.onClick.AddListener(OnClickRegister);
+            Debug.Log("Register events binded");
         }
 
         private void OnClickRegister()
@@ -45,6 +46,8 @@ namespace CanvasManagers
             _view.LoadingState(true);
             string email = "";
              email = _view.emailText.text;
+
+            Debug.Log("OnClickRegister");
 
 #if UNITY_EDITOR
 #else
