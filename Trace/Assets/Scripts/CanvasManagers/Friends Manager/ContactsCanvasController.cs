@@ -5,12 +5,12 @@ using UnityEngine.Playables;
 
 namespace CanvasManagers
 {
-    public class FriendCanvasController
+    public class ContactsCanvasController
     {
-        private MyFriendCanvas _view;
+        private ContactsCanvas _view;
         
 
-        public void Init(MyFriendCanvas view)
+        public void Init(ContactsCanvas view)
         {
             this._view = view;
             _view._usernameInput.onValueChanged.AddListener(OnInputValueChange);
