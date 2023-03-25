@@ -128,9 +128,15 @@ namespace CanvasManagers
         private void EnableRegistrationButtonCheck()
         {
             if (_isEmailValidated && _isPasswordValidated)
+            {
+                _view.registerButtonCanvasGroup.alpha = 1f;
                 _view.registerButton.interactable = true;
+            }
             else
+            {
+                _view.registerButtonCanvasGroup.alpha = 0.1f;
                 _view.registerButton.interactable = false;
+            }
         }
     }
 }
