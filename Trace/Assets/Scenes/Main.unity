@@ -1608,9 +1608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - Terms and service dosnt do anything
-  - icons could move around a bit
 --- !u!1 &117387659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,9 +2587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - Request New Code Dosnt Work
-  - '"It was sent to" dosnt work'
 --- !u!114 &205962694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2747,8 +2741,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - Screen Items could fade and slide at diffrent speeds before transition
 --- !u!114 &209913005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5328,8 +5320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - input fields blocked by keyboard
 --- !u!1 &339444722
 GameObject:
   m_ObjectHideFlags: 0
@@ -5680,10 +5670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - Need to be able to accsess photos
-  - need to be able to take photo
-  - need to be able to pan and scale photo inside circle to get best image
 --- !u!1 &354558198
 GameObject:
   m_ObjectHideFlags: 0
@@ -7407,8 +7393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - add ability to scroll and pan down
 --- !u!114 &454703718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8196,7 +8180,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!124 &491272880
@@ -14749,8 +14733,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - Make a simulated notification manager for use within the editor
 --- !u!114 &788658249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15280,8 +15262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - need to be able to retake photo
 --- !u!1 &811242855
 GameObject:
   m_ObjectHideFlags: 0
@@ -19924,9 +19904,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - inputs blocked by keyboard
-  - forgot username or password dosn't do anything
 --- !u!114 &1063987027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20392,8 +20369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - Nothing as of now!
 --- !u!1 &1086812721
 GameObject:
   m_ObjectHideFlags: 0
@@ -22532,8 +22507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - add ability to scroll and pan down
 --- !u!114 &1194610545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23348,8 +23321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - needs loading animation/logo
 --- !u!114 &1255949776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24022,8 +23993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - add ability to scroll and pan down
 --- !u!114 &1286609183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31839,8 +31808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - Needs loading Icon
 --- !u!114 &1802508907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34242,8 +34209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - dosnt work with all emojis
 --- !u!1 &1982460822
 GameObject:
   m_ObjectHideFlags: 0
@@ -35140,8 +35105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - needs loading animation/logo
 --- !u!114 &2009201893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40479,8 +40442,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - needs loading animation/logo
 --- !u!1 &2355076385525282628
 GameObject:
   m_ObjectHideFlags: 0
@@ -50559,8 +50520,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - needs loading animation/logo
 --- !u!114 &5255586671836309806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61950,6 +61909,8 @@ GameObject:
   - component: {fileID: 6068666308761308081}
   - component: {fileID: 6068666308761308082}
   - component: {fileID: 6068666308761308083}
+  - component: {fileID: 6068666308761308084}
+  - component: {fileID: 6068666308761308085}
   m_Layer: 5
   m_Name: Map
   m_TagString: Untagged
@@ -62054,7 +62015,7 @@ MonoBehaviour:
   marker3DManager: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
-  checkMarker2DVisibility: 0
+  checkMarker2DVisibility: 1
   elevationResolution: 16
   markerMaterial: {fileID: 0}
   markerShader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
@@ -62067,7 +62028,7 @@ MonoBehaviour:
   overlayFromParentTiles: 1
   tileMaterial: {fileID: 0}
   tilesetShader: {fileID: 4800000, guid: f65580aa9bbbd7e42b05adab01e1ca2d, type: 3}
-  _mipmapForTiles: 0
+  _mipmapForTiles: 1
 --- !u!114 &6068666308761308073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62100,12 +62061,12 @@ MonoBehaviour:
   restoreAfter: 20
   rotateCameraByCompass: 0
   trueHeading: 0
-  updatePosition: 1
+  updatePosition: 0
   useCompassForMarker: 0
   useGPSEmulator: 1
-  desiredAccuracy: 5
+  desiredAccuracy: 0
   requestPermissionRuntime: 1
-  updateDistance: 5
+  updateDistance: 0
 --- !u!114 &6068666308761308076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62159,7 +62120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items: []
   defaultScale: 1
-  defaultTexture: {fileID: 2800000, guid: d5ad14950dd46457f928bc98b12568bf, type: 3}
+  defaultTexture: {fileID: 2800000, guid: ea7eb0aa8eaab054a91d4219f9719f63, type: 3}
   defaultAlign: 4
   allowAddMarkerByM: 0
 --- !u!114 &6068666308761308079
@@ -62248,6 +62209,36 @@ MonoBehaviour:
   markerManager: {fileID: 6068666308761308078}
   circleDrawingManager: {fileID: 6068666308761308081}
   radiusKM: 0.3
+--- !u!114 &6068666308761308084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068666308761308064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d893786372564ab59b5ece4717121fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlineMapsLocationService: {fileID: 6068666308761308073}
+  userLocation: {x: 0, y: 0}
+  traceObjects: []
+  traceObjectsByDistanceToUser: []
+--- !u!114 &6068666308761308085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068666308761308064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a516d41d002b4f759d3bf824a203728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultZoom: 14
+  markerManager: {fileID: 6068666308761308078}
 --- !u!1 &6102808264268529458
 GameObject:
   m_ObjectHideFlags: 0
@@ -79270,8 +79261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Notes:
-  - needs loading animation/logo
 --- !u!114 &7424510815363151431
 MonoBehaviour:
   m_ObjectHideFlags: 0
