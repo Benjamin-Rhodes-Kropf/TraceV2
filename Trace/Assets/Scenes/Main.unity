@@ -40430,18 +40430,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &2355076385525282627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2355076385525282628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2355076385525282628
 GameObject:
   m_ObjectHideFlags: 0
@@ -40454,7 +40442,6 @@ GameObject:
   - component: {fileID: 2355076385525282638}
   - component: {fileID: 2355076385525282625}
   - component: {fileID: 2355076385525282624}
-  - component: {fileID: 2355076385525282627}
   - component: {fileID: 2355076385525282639}
   m_Layer: 5
   m_Name: Camera Screen
@@ -50482,7 +50469,6 @@ GameObject:
   - component: {fileID: 5255586671836309842}
   - component: {fileID: 5255586671836309843}
   - component: {fileID: 5255586671836309804}
-  - component: {fileID: 5255586671836309805}
   - component: {fileID: 5255586671836309806}
   m_Layer: 5
   m_Name: Camera Canvas
@@ -50508,18 +50494,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5255586671836309805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5255586671836309800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5255586671836309806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62015,7 +61989,7 @@ MonoBehaviour:
   marker3DManager: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   originalScale: {x: 0, y: 0, z: 0}
-  checkMarker2DVisibility: 1
+  checkMarker2DVisibility: 0
   elevationResolution: 16
   markerMaterial: {fileID: 0}
   markerShader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
