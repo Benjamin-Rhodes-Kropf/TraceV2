@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace CanvasManagers
 {
-    public class MyFriendCanvas : MonoBehaviour
+    public class ContactsCanvas : MonoBehaviour
     {
         public Friend _friendPrefab;
         public TMP_InputField _usernameInput;
@@ -14,7 +14,7 @@ namespace CanvasManagers
         public Transform _displayFrindsParent;
         public List<Friend> _friendsList;
 
-        private FriendCanvasController _controller;
+        private ContactsCanvasController _controller;
 
 
         #region UnityEvents
@@ -22,7 +22,7 @@ namespace CanvasManagers
         private void OnEnable()
         {
             if (_controller == null)
-                _controller = new FriendCanvasController();
+                _controller = new ContactsCanvasController();
             
             _controller.Init(this);
         }

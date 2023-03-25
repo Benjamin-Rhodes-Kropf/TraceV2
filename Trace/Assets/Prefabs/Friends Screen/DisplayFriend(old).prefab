@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 3024221024672472363}
   - component: {fileID: 9012651983926393874}
   m_Layer: 0
-  m_Name: DisplayFriend
+  m_Name: DisplayFriend(old)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
