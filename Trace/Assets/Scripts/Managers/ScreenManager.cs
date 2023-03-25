@@ -198,6 +198,21 @@ public class ScreenManager : MonoBehaviour
 
         }
     }
+    public void ChangeScreenUpSlideOver(string ScreenID)
+    {
+        UIScreen newScreen = ScreenFromID(ScreenID);
+        if ( newScreen != null)
+        {
+            //startScreen leaves the view and endScreen slides into view
+            history.Clear();
+            current.ScreenObject.SetParent(startParent, false); // set current screen parent for animation
+            history.Add(current); // add current screen to history
+            current = newScreen; // assign new as current
+            newScreen.ScreenObject.SetParent(endParent, false); // set new screen parent for animation
+            _screenSwitchAnimationManager.slideScreenUpSlideOver();
+            currentScreenName = ScreenID;
+        }
+    }
     public void ChangeScreenForwardsSlideOff(string ScreenID)
     {
         UIScreen newScreen = ScreenFromID(ScreenID);
@@ -230,7 +245,6 @@ public class ScreenManager : MonoBehaviour
 
         }
     }
-
     public void ChangeScreenBackwards(string ScreenID)
     {
         UIScreen newScreen = ScreenFromID(ScreenID);

@@ -67,6 +67,15 @@ public class ScreenSwitchAnimationManager : MonoBehaviour
         StartCoroutine(LerpX(_screenA, _middleScreenPosition, _horizontalSlideDuration, true));
         StartCoroutine(LerpX(_screenB, _middleScreenPosition, _horizontalSlideDuration, false));
     }
+    public void slideScreenUpSlideOver()
+    {
+        _screenA.transform.position = _bottomScreenPosition.transform.position;
+        _screenB.transform.position = _middleScreenPosition.transform.position;
+        
+        Debug.Log("ScreenSwitchAnimationManager: sliding screens forward");
+        StartCoroutine(LerpY(_screenA, _middleScreenPosition, _horizontalSlideDuration,true));
+        StartCoroutine(LerpY(_screenB, _middleScreenPosition, _horizontalSlideDuration, false));
+    }
     
     public void slideScreenForwardSlideOff()
     {

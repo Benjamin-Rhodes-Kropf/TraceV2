@@ -29,7 +29,6 @@ public class UIController : MonoBehaviour
         vidRecorder.videoBitRate = 10000000 / 2;
         //To show microphone prompt to avoid a conflict whic occurs once in start
         microPhoneAudioKit.StartRunning();
-
     }
 
     public void CloseVideoPreview() {
