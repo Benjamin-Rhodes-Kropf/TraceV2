@@ -31,8 +31,8 @@ public class CameraManager : MonoBehaviour//PressInputBase
     public void CloseImagePreview()
     {
         ScreenManager.instance.uiController.CloseImagePreview();
-
     }
+    
     public void SaveVideo()
     {
         ScreenManager.instance.uiController.SaveVideo();
