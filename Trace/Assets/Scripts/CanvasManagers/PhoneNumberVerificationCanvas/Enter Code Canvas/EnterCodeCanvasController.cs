@@ -53,15 +53,19 @@ namespace CanvasManagers
 
             if (vCode.Length == 6)
             {
-                _view._verificationCode.DeactivateInputField();
                 _view._submitButton.interactable = true;
+                _view._verificationCode.DeactivateInputField();
             }
 
             if (vCode.Length > 6)
             {
+                _view._submitButton.interactable = true;
                 _view._verificationCode.text =
                     _view._verificationCode.text.Substring(0, _view._verificationCode.text.Length - 1);
             }
+            
+            _view._submitButton.interactable = true;
+
         }
     }
 }
