@@ -35,7 +35,7 @@ namespace CanvasManagers
         {
             string username = "";
             username = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform
-                .GetComponentInParent<Friend>().Username;
+                .GetComponentInParent<FriendView>().Username;
             
             
             if (username == "")
@@ -70,6 +70,10 @@ namespace CanvasManagers
         
         private void OnInputValueChange(string inputText)
         {
+
+            if (inputText.Length <= 0)
+                PopulateFriendsList(0,null);
+            
             var canUpdate = inputText.Length > 2;
 
             if (!canUpdate) return;
@@ -83,12 +87,17 @@ namespace CanvasManagers
             }
 
             int allUsersCount = users.Count;
+            PopulateFriendsList(allUsersCount, users);
+        }
+
+        private void PopulateFriendsList(int allUsersCount, List<UserModel> users)
+        {
             int allFrindsTileCount = _view._friendsList.Count;
 
             bool isNeedToAddMoreTiles = allUsersCount > allFrindsTileCount;
-            
+
             int totalUsers = isNeedToAddMoreTiles ? allUsersCount : allFrindsTileCount;
-            
+
             for (int userIndex = 0; userIndex < totalUsers; userIndex++)
             {
                 if (isNeedToAddMoreTiles)
@@ -100,15 +109,14 @@ namespace CanvasManagers
                         friend.gameObject.SetActive(true);
                         friend._addRemoveButton.onClick.RemoveAllListeners();
                         friend._addRemoveButton.onClick.AddListener(SendFriendRequest);
-
                     }
                     else
                     {
-                         Friend friend = GameObject.Instantiate(_view._friendPrefab,_view._displayFrindsParent);
-                         _view._friendsList.Add(friend);
-                         friend.UpdateFrindData(users[userIndex]);
-                         friend._addRemoveButton.onClick.RemoveAllListeners();
-                         friend._addRemoveButton.onClick.AddListener(SendFriendRequest);
+                        FriendView friendView = GameObject.Instantiate(_view.friendViewPrefab, _view._displayFrindsParent);
+                        _view._friendsList.Add(friendView);
+                        friendView.UpdateFrindData(users[userIndex]);
+                        friendView._addRemoveButton.onClick.RemoveAllListeners();
+                        friendView._addRemoveButton.onClick.AddListener(SendFriendRequest);
                     }
                 }
                 else
@@ -116,11 +124,10 @@ namespace CanvasManagers
                     if (userIndex < users.Count)
                     {
                         var friend = _view._friendsList[userIndex];
-                        friend.UpdateFrindData(users[userIndex]);                        
+                        friend.UpdateFrindData(users[userIndex]);
                         friend.gameObject.SetActive(true);
                         friend._addRemoveButton.onClick.RemoveAllListeners();
                         friend._addRemoveButton.onClick.AddListener(SendFriendRequest);
-
                     }
                     else
                     {
@@ -130,7 +137,15 @@ namespace CanvasManagers
                     }
                 }
             }
-            
+        }
+
+        // TODO: Refactor it later
+        private void PopulateFriendUIObject(FriendView friendView, UserModel data)
+        {
+            friendView.UpdateFrindData(data);
+            friendView.gameObject.SetActive(true);
+            friendView._addRemoveButton.onClick.RemoveAllListeners();
+            friendView._addRemoveButton.onClick.AddListener(SendFriendRequest);
         }
     }
 }
