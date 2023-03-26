@@ -17,7 +17,7 @@ public class TakePhotoCanvasController
 
     public void Init()
     {
-        _view._cameraButton.onClick.AddListener(OnCameraButtonClick);
+        _view._cameraButton.onClick.AddListener(OnGalleryClick);
         _view._galleryButton.onClick.AddListener(OnGalleryClick);
     }
 

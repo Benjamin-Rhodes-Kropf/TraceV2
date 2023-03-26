@@ -21841,6 +21841,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 906833078}
     m_Modifications:
+    - target: {fileID: 8920020135296904404, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8920020135296904407, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -21855,7 +21859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920020135296904407, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -236.02501
+      value: -238.02501
       objectReference: {fileID: 0}
     - target: {fileID: 8920020135501156028, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -21871,7 +21875,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920020135501156028, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -352.49152
+      value: -356.49152
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020135501156029, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_text
+      value: Atleast 6 characters. Must include atleast 1 Small character, \n1 Capital
+        character, 1 Number, and 1 Special character
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020135501156029, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020135501156029, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020135501156029, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020135501156029, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020135670773825, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8920020135670773854, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -21889,6 +21918,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -68.675
       objectReference: {fileID: 0}
+    - target: {fileID: 8920020135670773855, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_ContentType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020135670773855, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_KeyboardType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020135670773855, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020135670773855, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_HideSoftKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020135670773855, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020136186319949, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_Spacing
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 8920020136790337472, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -21903,7 +21956,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8920020136790337472, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -468.958
+      value: -474.958
+      objectReference: {fileID: 0}
+    - target: {fileID: 8920020136790337473, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8920020137030009956, guid: c3cad71ec873d4303a1175c1c0ede64d, type: 3}
       propertyPath: m_Pivot.x
@@ -30980,6 +31037,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -428.675
       objectReference: {fileID: 0}
+    - target: {fileID: 550037733536261603, guid: 78c53f8c413384d77b81bcaccef03f6f, type: 3}
+      propertyPath: m_ContentType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 550037733536261603, guid: 78c53f8c413384d77b81bcaccef03f6f, type: 3}
+      propertyPath: m_KeyboardType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 550037733536261603, guid: 78c53f8c413384d77b81bcaccef03f6f, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 550037733536261603, guid: 78c53f8c413384d77b81bcaccef03f6f, type: 3}
+      propertyPath: m_HideSoftKeyboard
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 550037733536261603, guid: 78c53f8c413384d77b81bcaccef03f6f, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 550037733736016007, guid: 78c53f8c413384d77b81bcaccef03f6f, type: 3}
       propertyPath: m_Name
       value: Sign In
@@ -31175,6 +31252,10 @@ PrefabInstance:
     - target: {fileID: 550037735487832123, guid: 78c53f8c413384d77b81bcaccef03f6f, type: 3}
       propertyPath: m_ContentType
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 550037735487832123, guid: 78c53f8c413384d77b81bcaccef03f6f, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8964528763424043753, guid: 78c53f8c413384d77b81bcaccef03f6f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -33299,6 +33380,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -444.0119
       objectReference: {fileID: 0}
+    - target: {fileID: 7621909303795381846, guid: 9629ffb7afbf9435399b6ab5f1b97a86, type: 3}
+      propertyPath: m_ContentType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621909303795381846, guid: 9629ffb7afbf9435399b6ab5f1b97a86, type: 3}
+      propertyPath: m_KeyboardType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621909303795381846, guid: 9629ffb7afbf9435399b6ab5f1b97a86, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621909303795381846, guid: 9629ffb7afbf9435399b6ab5f1b97a86, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7621909303941640577, guid: 9629ffb7afbf9435399b6ab5f1b97a86, type: 3}
       propertyPath: m_Name
       value: Enter Code Canvas
@@ -34740,23 +34837,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 722203780810990439, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 722203781178997120, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203781178997120, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203781178997120, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203781178997120, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -429.83945
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203781664202973, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_TargetGraphic
@@ -34796,83 +34893,83 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 722203781664202974, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203781664202974, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203781664202974, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203781664202974, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1554.4822
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203782374048231, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203782374048231, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203782374048231, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 722203782374048231, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -625.65326
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074107122176247, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074107122176247, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074107122176247, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074107122176247, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -907.68207
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074107393618632, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074107393618632, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074107393618632, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074107393618632, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1297.6821
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074108276333119, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074108276333119, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074108276333119, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 400
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672074108276333119, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1671.2821
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ec43dd26bcd4435f8dd556c23e61fb8, type: 3}
@@ -35816,6 +35913,10 @@ PrefabInstance:
       propertyPath: _submitButton
       value: 
       objectReference: {fileID: 2069192809}
+    - target: {fileID: 3072017627648190025, guid: e17727b35b4f54d98ba79c9f4ed1564e, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7187496385914089906, guid: e17727b35b4f54d98ba79c9f4ed1564e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -35907,6 +36008,18 @@ PrefabInstance:
     - target: {fileID: 7187496385914089910, guid: e17727b35b4f54d98ba79c9f4ed1564e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187496386286620158, guid: e17727b35b4f54d98ba79c9f4ed1564e, type: 3}
+      propertyPath: m_ContentType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187496386286620158, guid: e17727b35b4f54d98ba79c9f4ed1564e, type: 3}
+      propertyPath: m_HideMobileInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187496386286620158, guid: e17727b35b4f54d98ba79c9f4ed1564e, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e17727b35b4f54d98ba79c9f4ed1564e, type: 3}
@@ -40727,14 +40840,14 @@ MonoBehaviour:
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_LayoutGroup: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 100
   m_CharacterLimit: 0
