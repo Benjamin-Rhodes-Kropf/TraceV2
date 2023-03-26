@@ -15,6 +15,9 @@ namespace CanvasManagers
             this._view = view;
             _view._usernameInput.onValueChanged.AddListener(OnInputValueChange);
             FrindsListInit();
+
+            _view._numberOfFriendsCountTitle.text = "0 Friends";
+            _view._numberOfFriendsCountScroll.text = "My Friends (0)";
         }
 
         public void UnInitialize()
@@ -31,9 +34,9 @@ namespace CanvasManagers
         }
 
 
-        private void SendFriendRequest(string username)
+        private void SendFriendRequest(FriendView friend)
         {
-            // string username = "";
+            string username = friend.Username;
             // username = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform
             //     .GetComponentInParent<FriendView>().Username;
             
@@ -48,11 +51,12 @@ namespace CanvasManagers
             _view.StartCoroutine(FbManager.instance.ActionFriendRequest(username,  (callbackObject) => {
                 if (!callbackObject.IsSuccessful)
                 {
-                    Debug.LogError("Friend Requested at : "+ username);
+                    Debug.LogError("Friend request failed at : "+ username);
                     //todo: make visual for non-valid return
                     return;
                 }
                 //todo: make visual for valid return
+                friend.UpdateRequestStatus(true);
                 Debug.Log("friend requested at:" + username);
             }));
         }
@@ -75,8 +79,10 @@ namespace CanvasManagers
                 PopulateFriendsList(0,null);
             
             var canUpdate = inputText.Length > 2;
-
+            
             if (!canUpdate) return;
+            
+            inputText = inputText.ToLower();
 
             var users = UserDataManager.Instance.GetUsersByLetters(inputText);
 
@@ -111,7 +117,7 @@ namespace CanvasManagers
                         friend._addRemoveButton.onClick.RemoveAllListeners();
                         friend._addRemoveButton.onClick.AddListener(() =>
                         {
-                            SendFriendRequest(friend.Username);
+                            SendFriendRequest(friend);
                         });
                     }
                     else
@@ -122,7 +128,7 @@ namespace CanvasManagers
                         friend._addRemoveButton.onClick.RemoveAllListeners();
                         friend._addRemoveButton.onClick.AddListener(() =>
                         {
-                            SendFriendRequest(friend.Username);
+                            SendFriendRequest(friend);
                         });
                     }
                 }
@@ -136,7 +142,7 @@ namespace CanvasManagers
                         friend._addRemoveButton.onClick.RemoveAllListeners();
                         friend._addRemoveButton.onClick.AddListener(() =>
                         {
-                            SendFriendRequest(friend.Username);
+                            SendFriendRequest(friend);
                         });
                     }
                     else

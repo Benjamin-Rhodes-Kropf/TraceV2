@@ -69,8 +69,22 @@ public class FriendView : MonoBehaviour
                 return ("Add", 0);
             case FriendButtonType.Remove:
                 return ("Remove", 1);
+            case FriendButtonType.Cancel:
+                return ("Cancel", 2);
             default:
                 return ("Add", 0);
+        }
+    }
+
+    public void UpdateRequestStatus(bool RequestSent)
+    {
+        if (RequestSent)
+        {
+            FriendButtonType buttonType = FriendButtonType.Cancel;
+
+            var buttonData = GetButtonData(buttonType);
+            _buttonBackground.color = _colors[buttonData.colorIndex];
+            _buttonText.text = buttonData.buttonText;
         }
     }
 }

@@ -11,7 +11,8 @@ namespace CanvasManagers
     {
         [FormerlySerializedAs("_friendPrefab")] public FriendView friendViewPrefab;
         public TMP_InputField _usernameInput;
-        public TMP_Text _numberOfFriendsCount;
+        public TMP_Text _numberOfFriendsCountTitle;
+        public TMP_Text _numberOfFriendsCountScroll;
         public Transform _displayFrindsParent;
         public List<FriendView> _friendsList;
 

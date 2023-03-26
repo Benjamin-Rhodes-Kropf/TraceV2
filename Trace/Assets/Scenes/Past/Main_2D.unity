@@ -9377,6 +9377,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 531839451}
     - target: {fileID: 345777891, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
+      propertyPath: _numberOfFriendsCountTitle
+      value: 
+      objectReference: {fileID: 1998920468}
+    - target: {fileID: 345777891, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
       propertyPath: _friendsList.Array.data[10]
       value: 
       objectReference: {fileID: 849804349}
@@ -9384,6 +9388,10 @@ PrefabInstance:
       propertyPath: _friendsList.Array.data[11]
       value: 
       objectReference: {fileID: 1256046388}
+    - target: {fileID: 345777891, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
+      propertyPath: _numberOfFriendsCountScroll
+      value: 
+      objectReference: {fileID: 1656180299}
     - target: {fileID: 120567584341739579, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -9479,6 +9487,10 @@ PrefabInstance:
     - target: {fileID: 3566176339700769323, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3566176341201424520, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3566176341201424521, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9635,6 +9647,10 @@ PrefabInstance:
     - target: {fileID: 4786457636642529820, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786457636958048646, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7118995193537610378, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
       propertyPath: m_AnchorMax.y
@@ -22297,9 +22313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencyStatus: 0
   firebaseStorageReferenceUrl: gs://geosnapv1.appspot.com
-  autoLogin: 1
+  autoLogin: 0
   forceLogin: 0
-  useAdminForLogin: 1
+  useAdminForLogin: 0
   adminUser: test@gmail.com
   adminPass: test@gmail.com
   resetPlayerPrefs: 0
@@ -29216,6 +29232,17 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1656180299 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3566176341201424534, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
+  m_PrefabInstance: {fileID: 531839450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1657355487
 GameObject:
   m_ObjectHideFlags: 0
@@ -33898,7 +33925,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   friendViewPrefab: {fileID: 9012651983926393874, guid: 4d6e8acfa64264fc89b04c5fae3df9dd, type: 3}
   _usernameInput: {fileID: 1046294938}
-  _numberOfFriendsCount: {fileID: 866650527}
+  _numberOfFriendsCountTitle: {fileID: 0}
+  _numberOfFriendsCountScroll: {fileID: 0}
   _displayFrindsParent: {fileID: 867276840}
   _friendsList:
   - {fileID: 1585355584}
@@ -34867,6 +34895,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraButton: {fileID: 1456957691}
   _galleryButton: {fileID: 2132125544}
+--- !u!114 &1998920468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4786457636958048644, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
+  m_PrefabInstance: {fileID: 531839450}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2009201889
 GameObject:
   m_ObjectHideFlags: 0
