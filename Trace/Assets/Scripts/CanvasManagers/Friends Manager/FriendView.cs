@@ -15,7 +15,7 @@ public class FriendView : MonoBehaviour
         Accept
     }
 
-    [SerializeField] private Image _profilePic;
+    [SerializeField] private RawImage _profilePic;
     [SerializeField] private TMP_Text _nickName;
     [SerializeField] private TMP_Text _userName;
     [SerializeField] private TMP_Text _buttonText;
@@ -44,10 +44,19 @@ public class FriendView : MonoBehaviour
         _buttonBackground.color = _colors[buttonData.colorIndex];
         _buttonText.text = buttonData.buttonText;
         
-        DownloadHandler.Instance.DownloadImage(user.PhotoURL, (texture) =>
+        FbManager.instance.GetProfilePhotoFromFirebaseStorage(user.userId, (texture) =>
         {
-            
+            _profilePic.texture = texture;
         });
+        
+        
+        // DownloadHandler.Instance.DownloadImage(user.PhotoURL, (texture) =>
+        // {
+        //     _profilePic.texture = texture;
+        // }, () =>
+        // {
+        //     Debug.Log("Error");
+        // });
 
     }
 

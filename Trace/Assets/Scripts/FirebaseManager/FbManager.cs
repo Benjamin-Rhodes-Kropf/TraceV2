@@ -13,6 +13,7 @@ using Firebase.Storage;
 using Unity.VisualScripting;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using DownloadHandler = Networking.DownloadHandler;
 using Object = System.Object;
 
 
@@ -567,7 +568,7 @@ public class FbManager : MonoBehaviour
     {
         Debug.Log("Db update nick to :" + _nickName);
         //Set the currently logged in user nickName in the database
-        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("NickName").SetValueAsync(_nickName);
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("name").SetValueAsync(_nickName);
         
         //yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -639,41 +640,44 @@ public class FbManager : MonoBehaviour
 
     #endregion
     #region -User Info
-    public IEnumerator GetMyUserProfilePhoto(System.Action<Texture> callback)
+    public IEnumerator GetProfilePhotoFromFirebaseStorageRoutine(string userId, System.Action<Texture> callback)
     {
-        var request = new UnityWebRequest();
+        // var request = new UnityWebRequest();
         var url = "";
         
         Debug.Log("test:");
-        StorageReference pathReference = _firebaseStorage.GetReference("ProfilePhoto/"+_firebaseUser.UserId+"/profile.png");
+        StorageReference pathReference = _firebaseStorage.GetReference("ProfilePhoto/"+userId+".png");
         Debug.Log("path refrence:" + pathReference);
 
-        pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task => {
-            if (!task.IsFaulted && !task.IsCanceled) {
-                Debug.Log("Download URL: " + task.Result);
-                url = task.Result + "";
-                Debug.Log("Actual  URL: " + url);
-            }
-            else
-            {
-                Debug.Log("task failed:" + task.Result);
-            }
-        });
-        
-        yield return new WaitForSecondsRealtime(1f); //hmm not sure why (needs to wait for GetDownloadUrlAsync to complete)
-        
-        request = UnityWebRequestTexture.GetTexture((url)+"");
-        
-        yield return request.SendWebRequest(); //Wait for the request to complete
-        
-        if (request.isNetworkError || request.isHttpError)
-        {
-            Debug.LogError("error:" + request.error);
+        var task = pathReference.GetDownloadUrlAsync();
+
+        while (task.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+
+        if (!task.IsFaulted && !task.IsCanceled) {
+            Debug.Log("Download URL: " + task.Result);
+            url = task.Result + "";
+            Debug.Log("Actual  URL: " + url);
         }
         else
         {
-            callback(((DownloadHandlerTexture)request.downloadHandler).texture);
+            Debug.Log("task failed:" + task.Result);
         }
+
+        DownloadHandler.Instance.DownloadImage(url, callback);
+        
+        // request = UnityWebRequestTexture.GetTexture((url)+"");
+        //
+        // yield return request.SendWebRequest(); //Wait for the request to complete
+        //
+        // if (request.isNetworkError || request.isHttpError)
+        // {
+        //     Debug.LogError("error:" + request.error);
+        // }
+        // else
+        // {
+        //     callback(((DownloadHandlerTexture)request.downloadHandler).texture);
+        // }
     }
     public IEnumerator GetMyUserNickName(System.Action<String> callback)
     {
@@ -724,13 +728,14 @@ public class FbManager : MonoBehaviour
                  var  allUsersSnapshots = snapshot.Children.ToArrayPooled();
                  for (int userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
                  {
+                     string userId = allUsersSnapshots[userIndex].Key; 
                      string email = allUsersSnapshots[userIndex].Child("email").Value.ToString();
                      string frindCount = allUsersSnapshots[userIndex].Child("friendCount").Value.ToString();
                      string displayName = allUsersSnapshots[userIndex].Child("name").Value.ToString();
                      string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
                      string phoneNumber = allUsersSnapshots[userIndex].Child("phone").Value.ToString();
                      string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
-                     UserModel userData = new UserModel(email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
+                     UserModel userData = new UserModel(userId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
                      users.Add(userData);
                      print("Mail  Address :: "+ email);
                  }
@@ -951,6 +956,8 @@ public class FbManager : MonoBehaviour
             callback(callbackObject);
         }
     }
+    
+    // TODO: Redundant function
     public IEnumerator GetUserProfilePhotoByUserID(String userID, System.Action<CallbackObject> callback)
     {
         CallbackObject callbackObject = new CallbackObject();
@@ -1047,11 +1054,11 @@ public class FbManager : MonoBehaviour
             }
         });
     }
-    public void DownloadImage() {
-        StartCoroutine(GetMyUserProfilePhoto((myReturnValue) => {
+    public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess) {
+        StartCoroutine(GetProfilePhotoFromFirebaseStorageRoutine(userId, (myReturnValue) => {
             if (myReturnValue != null)
             {
-                rawImage.texture = myReturnValue;
+                onSuccess?.Invoke(myReturnValue);
             }
         }));
     }

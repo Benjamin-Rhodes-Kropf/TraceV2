@@ -31,11 +31,11 @@ namespace CanvasManagers
         }
 
 
-        private void SendFriendRequest()
+        private void SendFriendRequest(string username)
         {
-            string username = "";
-            username = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform
-                .GetComponentInParent<FriendView>().Username;
+            // string username = "";
+            // username = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform
+            //     .GetComponentInParent<FriendView>().Username;
             
             
             if (username == "")
@@ -57,16 +57,16 @@ namespace CanvasManagers
             }));
         }
         
-        public void SendFriendRequest(string friendId)
-        {
-            // Send push notification to friend
-            string title = "New Friend Request";
-            string body = "You have a new friend request from " + friendId;
-            string topic = friendId; // Send the notification to the friend's device
-
-            // FirebaseMessage message = new FirebaseMessage();
-
-        }
+        // public void SendFriendRequest(string friendId)
+        // {
+        //     // Send push notification to friend
+        //     string title = "New Friend Request";
+        //     string body = "You have a new friend request from " + friendId;
+        //     string topic = friendId; // Send the notification to the friend's device
+        //
+        //     // FirebaseMessage message = new FirebaseMessage();
+        //
+        // }
         
         private void OnInputValueChange(string inputText)
         {
@@ -90,6 +90,7 @@ namespace CanvasManagers
             PopulateFriendsList(allUsersCount, users);
         }
 
+        // TODO: Need to refactor this method
         private void PopulateFriendsList(int allUsersCount, List<UserModel> users)
         {
             int allFrindsTileCount = _view._friendsList.Count;
@@ -108,15 +109,21 @@ namespace CanvasManagers
                         friend.UpdateFrindData(users[userIndex]);
                         friend.gameObject.SetActive(true);
                         friend._addRemoveButton.onClick.RemoveAllListeners();
-                        friend._addRemoveButton.onClick.AddListener(SendFriendRequest);
+                        friend._addRemoveButton.onClick.AddListener(() =>
+                        {
+                            SendFriendRequest(friend.Username);
+                        });
                     }
                     else
                     {
-                        FriendView friendView = GameObject.Instantiate(_view.friendViewPrefab, _view._displayFrindsParent);
-                        _view._friendsList.Add(friendView);
-                        friendView.UpdateFrindData(users[userIndex]);
-                        friendView._addRemoveButton.onClick.RemoveAllListeners();
-                        friendView._addRemoveButton.onClick.AddListener(SendFriendRequest);
+                        FriendView friend = GameObject.Instantiate(_view.friendViewPrefab, _view._displayFrindsParent);
+                        _view._friendsList.Add(friend);
+                        friend.UpdateFrindData(users[userIndex]);
+                        friend._addRemoveButton.onClick.RemoveAllListeners();
+                        friend._addRemoveButton.onClick.AddListener(() =>
+                        {
+                            SendFriendRequest(friend.Username);
+                        });
                     }
                 }
                 else
@@ -127,7 +134,10 @@ namespace CanvasManagers
                         friend.UpdateFrindData(users[userIndex]);
                         friend.gameObject.SetActive(true);
                         friend._addRemoveButton.onClick.RemoveAllListeners();
-                        friend._addRemoveButton.onClick.AddListener(SendFriendRequest);
+                        friend._addRemoveButton.onClick.AddListener(() =>
+                        {
+                            SendFriendRequest(friend.Username);
+                        });
                     }
                     else
                     {
@@ -145,7 +155,7 @@ namespace CanvasManagers
             friendView.UpdateFrindData(data);
             friendView.gameObject.SetActive(true);
             friendView._addRemoveButton.onClick.RemoveAllListeners();
-            friendView._addRemoveButton.onClick.AddListener(SendFriendRequest);
+            // friendView._addRemoveButton.onClick.AddListener(SendFriendRequest);
         }
     }
 }
