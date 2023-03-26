@@ -17,6 +17,7 @@ namespace CanvasManagers
 
         public void Init()
         {
+            _view._numberValidationView.gameObject.SetActive(true);
             _view.verifyNumberButton.onClick.AddListener(OnVerifyNumberClicked);
             _view._numberInputField.onValueChanged.AddListener(EditPhoneNumber);
             _view._numberValidationView._submitButton.onClick.AddListener(Varify_OTP);

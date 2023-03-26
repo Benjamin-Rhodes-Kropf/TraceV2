@@ -58,7 +58,17 @@ public class TakePhotoCanvasController
     
     private void TakePictureFromGallery(string path)
     {
-        Debug.LogError("Gallery Image Path :: "+ path);
+        // string path = Application.dataPath+"/chat.png";
+        Debug.LogError("Path :: "+ path);
+        _view.StartCoroutine(FbManager.instance.UploadProfilePhoto(path, (isSuccess, url) =>
+        {
+            if (isSuccess)
+            {
+                Debug.LogError("URL :: "+ url);
+                photoUrl = url;
+                ScreenManager.instance.ChangeScreenForwards("TookPhoto");
+            }
+        }));
     }
 
 }
