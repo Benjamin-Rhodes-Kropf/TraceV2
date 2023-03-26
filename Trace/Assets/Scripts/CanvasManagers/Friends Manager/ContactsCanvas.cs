@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CanvasManagers
 {
     public class ContactsCanvas : MonoBehaviour
     {
-        public Friend _friendPrefab;
+        [FormerlySerializedAs("_friendPrefab")] public FriendView friendViewPrefab;
         public TMP_InputField _usernameInput;
         public TMP_Text _numberOfFriendsCount;
         public Transform _displayFrindsParent;
-        public List<Friend> _friendsList;
+        public List<FriendView> _friendsList;
 
         private ContactsCanvasController _controller;
 

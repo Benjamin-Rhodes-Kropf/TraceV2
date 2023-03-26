@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Networking;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Friend : MonoBehaviour
+public class FriendView : MonoBehaviour
 {
     public enum FriendButtonType
     {
@@ -42,6 +43,11 @@ public class Friend : MonoBehaviour
         var buttonData = GetButtonData(buttonType);
         _buttonBackground.color = _colors[buttonData.colorIndex];
         _buttonText.text = buttonData.buttonText;
+        
+        DownloadHandler.Instance.DownloadImage(user.PhotoURL, (texture) =>
+        {
+            
+        });
 
     }
 
