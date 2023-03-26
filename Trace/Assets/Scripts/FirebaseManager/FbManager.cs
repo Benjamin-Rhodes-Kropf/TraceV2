@@ -390,9 +390,9 @@ public class FbManager : MonoBehaviour
         //     yield return new WaitForEndOfFrame();
         // // yield return new WaitUntil(predicate: () => DBTaskSetPhoneNumberLinkToId.IsCompleted);
         //
-        // var DBTaskSetUserFriends = _databaseReference.Child("friendRequests").Child(_firebaseUser.UserId).Child("null").SetValueAsync("null");
-        // while (DBTaskSetUserFriends.IsCompleted is false)
-        //     yield return new WaitForEndOfFrame();
+        var DBTaskSetUserFriends = _databaseReference.Child("friendRequests").Child(_firebaseUser.UserId).Child("null").SetValueAsync("null");
+        while (DBTaskSetUserFriends.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
         
         // yield return new WaitUntil(predicate: () => DBTaskSetUserFriends.IsCompleted);
         

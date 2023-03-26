@@ -37,7 +37,7 @@ public class DisplayNameCanvasController
         }
 
         var name = _view._displayNameInputField.text;
-        var username = _view._username.text;
+        var username = _view._username.text.ToLower();
         
         _view.StartCoroutine(FbManager.instance.SetUserNickName(name, (isSuccess) =>
         {
@@ -57,6 +57,7 @@ public class DisplayNameCanvasController
 
     private void ValidateUsername(string username)
     {
+        username = username.ToLower();
         _isUsernameValidated = !HelperMethods.isBadName(username);
 
         if (_isUsernameValidated)
