@@ -1014,6 +1014,48 @@ public class FbManager : MonoBehaviour
     //AcceptFriendshipRequest
     //getPhotos
     
+        public IEnumerator UploadTraceImage(string fileLocation)
+    {
+        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "photo");
+        //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
+        traceReference.PutFileAsync(fileLocation)
+            .ContinueWith((Task<StorageMetadata> task) => {
+                if (task.IsFaulted || task.IsCanceled) {
+                    Debug.Log(task.Exception.ToString());
+                    // Uh-oh, an error occurred!
+                }
+                else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    StorageMetadata metadata = task.Result;
+                    string md5Hash = metadata.Md5Hash;
+                    Debug.Log("Finished uploading...");
+                    Debug.Log("md5 hash = " + md5Hash);
+                }
+            });
+        yield return new WaitForSeconds(0.1f);
+    }
+    public IEnumerator UploadTraceVideo(string fileLocation)
+    {
+        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "video");
+        //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
+        traceReference.PutFileAsync(fileLocation)
+            .ContinueWith((Task<StorageMetadata> task) => {
+                if (task.IsFaulted || task.IsCanceled) {
+                    Debug.Log(task.Exception.ToString());
+                    // Uh-oh, an error occurred!
+                }
+                else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    StorageMetadata metadata = task.Result;
+                    string md5Hash = metadata.Md5Hash;
+                    Debug.Log("Finished uploading...");
+                    Debug.Log("md5 hash = " + md5Hash);
+                }
+            });
+        yield return new WaitForSeconds(0.1f);
+    }
+    
+    
     public void AddFriend(String _username)
     {
         String _nickName = "null";
