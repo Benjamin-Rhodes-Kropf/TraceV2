@@ -12,6 +12,7 @@ namespace CanvasManagers
         public TMP_InputField passwordText;
         public TMP_InputField retypePasswordText;
         public Button registerButton;
+        public CanvasGroup registerButtonCanvasGroup;
         public TMP_Text errorText;
         public GameObject loadingSign;
 
@@ -29,6 +30,7 @@ namespace CanvasManagers
             
             _controller.Init();
             registerButton.interactable = false;
+            registerButtonCanvasGroup.alpha = 0.1f;
         }
 
         private void OnDisable()

@@ -84,6 +84,7 @@ public class ScreenManager : MonoBehaviour
     //Call Custom Screen Display
     public void WelcomeScreen()
     {
+        HideLoadingScreen();
         UIScreen newScreen = ScreenFromID("Welcome");
         if (PlayerPrefs.GetInt("NumberOfTimesLoggedIn") == 1)
         {
@@ -109,7 +110,12 @@ public class ScreenManager : MonoBehaviour
         current = screen;
         current.ScreenObject.SetParent(activeParent, false); // set current screen parent for animation
     }
-    
+
+    public void HideLoadingScreen()
+    {
+        UIScreen screen = ScreenFromID("Loading");
+        screen.ScreenObject.gameObject.SetActive(false);
+    }
     
     //Change Screen Displayed
     public void OpenPopup(string PopUpID)

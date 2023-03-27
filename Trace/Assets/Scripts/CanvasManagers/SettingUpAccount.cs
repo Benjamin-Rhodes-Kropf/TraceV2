@@ -20,6 +20,6 @@ public class SettingUpAccount : MonoBehaviour
     IEnumerator fakeSetupTime()
     {
         yield return new WaitForSeconds(2f);
-        _screenManager.ChangeScreenFade("HomeScreen");
+        ScreenManager.instance.ChangeScreenFade("HomeScreen");
     }
 }

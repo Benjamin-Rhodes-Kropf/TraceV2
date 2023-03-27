@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Networking;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Friend : MonoBehaviour
+public class FriendView : MonoBehaviour
 {
     public enum FriendButtonType
     {
@@ -14,7 +15,7 @@ public class Friend : MonoBehaviour
         Accept
     }
 
-    [SerializeField] private Image _profilePic;
+    [SerializeField] private RawImage _profilePic;
     [SerializeField] private TMP_Text _nickName;
     [SerializeField] private TMP_Text _userName;
     [SerializeField] private TMP_Text _buttonText;
@@ -42,6 +43,20 @@ public class Friend : MonoBehaviour
         var buttonData = GetButtonData(buttonType);
         _buttonBackground.color = _colors[buttonData.colorIndex];
         _buttonText.text = buttonData.buttonText;
+        
+        FbManager.instance.GetProfilePhotoFromFirebaseStorage(user.userId, (texture) =>
+        {
+            _profilePic.texture = texture;
+        });
+        
+        
+        // DownloadHandler.Instance.DownloadImage(user.PhotoURL, (texture) =>
+        // {
+        //     _profilePic.texture = texture;
+        // }, () =>
+        // {
+        //     Debug.Log("Error");
+        // });
 
     }
 
@@ -54,8 +69,22 @@ public class Friend : MonoBehaviour
                 return ("Add", 0);
             case FriendButtonType.Remove:
                 return ("Remove", 1);
+            case FriendButtonType.Cancel:
+                return ("Cancel", 2);
             default:
                 return ("Add", 0);
+        }
+    }
+
+    public void UpdateRequestStatus(bool RequestSent)
+    {
+        if (RequestSent)
+        {
+            FriendButtonType buttonType = FriendButtonType.Cancel;
+
+            var buttonData = GetButtonData(buttonType);
+            _buttonBackground.color = _colors[buttonData.colorIndex];
+            _buttonText.text = buttonData.buttonText;
         }
     }
 }

@@ -38,6 +38,12 @@ namespace CanvasManagers
             _controller.Uninitilise();
         }
 
+
+        public void SubmitButton()
+        {
+            _controller.Varify_OTP();
+        }
+        
         #endregion
 
 

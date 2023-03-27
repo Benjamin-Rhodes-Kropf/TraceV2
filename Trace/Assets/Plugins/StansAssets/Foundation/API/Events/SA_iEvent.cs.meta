@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Trace/Assets/_ThirdParty/Infinity Code/Online maps/Scripts/Plugins/OnlineMapsPBR.cs.meta
+guid: 1a68ca43b2013634a8c61cf8fce61a8e
+timeCreated: 1547993672
+========
 guid: b01a72a8388f19e4fb320b5396ce3c7a
 timeCreated: 1521121058
+>>>>>>>> main:Trace/Assets/Plugins/StansAssets/Foundation/API/Events/SA_iEvent.cs.meta
 licenseType: Store
 MonoImporter:
-  externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0
