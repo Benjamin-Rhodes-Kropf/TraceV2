@@ -69,10 +69,7 @@ public class ScreenManager : MonoBehaviour
         {
             LoadingScreen();
         }
-        else
-        {
-            ChangeScreenNoAnim("HomeScreen");
-        }
+        
         activeParent.gameObject.SetActive(true);
         inactiveParent.gameObject.SetActive(false);
         inactivePopupParent.gameObject.SetActive(false);

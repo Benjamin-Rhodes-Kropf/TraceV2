@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections;
 using Newtonsoft.Json.Bson;
+using UnityEngine.Events;
 
+[Serializable]
 public class SwipeUpManager : MonoBehaviour, IDragHandler, IEndDragHandler
 {
+	[Header("CameraManager")] 
+	[SerializeField] private CameraManager cameraManager;
+	[SerializeField] private bool isSendingPhoto;
+	
+	[Header("Swipe Physics")]
 	RectTransform m_transform = null;
 	[SerializeField] private float initailYVal;
 	[SerializeField] private float changeInYVal;
@@ -21,6 +28,8 @@ public class SwipeUpManager : MonoBehaviour, IDragHandler, IEndDragHandler
 	[SerializeField] private bool isDragging;
 	[SerializeField] private AnimationCurve slideFrictionCurve;
 	[SerializeField] private AnimationCurve slideRestitutionCurve;
+
+
 
 	private void OnEnable()
 	{
@@ -52,7 +61,7 @@ public class SwipeUpManager : MonoBehaviour, IDragHandler, IEndDragHandler
 
 		if (changeInYVal > changeInYvalGoLimit && !hasBegunScreenSwitch && !isDragging && Dy > dyLimitForScreenSwitch)
 		{
-			StartCoroutine(SwitchToSelectUsersScreen());
+			StartCoroutine(TraceArrowSlidUp());
 			hasBegunScreenSwitch = true;
 		}
 	}
@@ -68,23 +77,39 @@ public class SwipeUpManager : MonoBehaviour, IDragHandler, IEndDragHandler
 	{
 		isDragging = false;
 	}
-	
-	IEnumerator SwitchToSelectUsersScreen()
+
+	private void Reset()
+	{
+		hasBegunScreenSwitch = false;
+		changeInYVal = 0;
+		Dy = 0;
+		m_transform.position = new Vector3(m_transform.position.x, initailYVal);
+	}
+
+	IEnumerator TraceArrowSlidUp()
 	{
 		//wait until arrow has exited the screen
 		while(changeInYVal < changeInYvalGoTrigger)  {
 			yield return null;
 		}
-		Debug.Log("SwipeUpManager:" + "Switch To Selector Screen");
+		//determine which function to call
+		if (isSendingPhoto)
+		{
+			cameraManager.ShareImage();
+		}
+		else
+		{
+			cameraManager.ShareVideo();
+		}
 		BackToMainScene();
-		yield return new WaitForSeconds(0.25f);
+		Reset();
 		ScreenManager.instance.ChangeScreenUpSlideOver("SelectFriends");
 	}
 	
 	public void BackToMainScene() {
 		//change the bool so that the main canavs can be enabled after the main scene is loaded
-		ScreenManager.instance.isComingFromCameraScene = true;
-		SceneManager.LoadScene(0);
+		//ScreenManager.instance.isComingFromCameraScene = true;
+		//SceneManager.LoadScene(0);
 		ScreenManager.instance.camManager.cameraPanel.SetActive(false);//disabling the camera panel
 	}
 }
