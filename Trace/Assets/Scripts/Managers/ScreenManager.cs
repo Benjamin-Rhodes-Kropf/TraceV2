@@ -116,8 +116,10 @@ public class ScreenManager : MonoBehaviour
 
     public void HideLoadingScreen()
     {
+        Debug.Log("Hiding loading screen");
         UIScreen screen = ScreenFromID("Loading");
         screen.ScreenObject.gameObject.SetActive(false);
+        screen.ScreenObject.GetComponent<GraphicRaycaster>().enabled = false;
     }
     
     //Change Screen Displayed
