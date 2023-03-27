@@ -1,0 +1,16 @@
+{
+    "name": "SA.iOS",
+    "references": [
+        "SA.Foundation",
+        "SA.iOS.XCode"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
