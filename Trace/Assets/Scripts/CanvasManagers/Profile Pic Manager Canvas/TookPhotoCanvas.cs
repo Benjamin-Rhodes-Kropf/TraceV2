@@ -7,6 +7,7 @@ public class TookPhotoCanvas : MonoBehaviour
 {
     public Button _moveBack;
     public Button _doneButton;
+    public Image _profilePicture;
 
     private TookPhotoCanvasController _controller;
 

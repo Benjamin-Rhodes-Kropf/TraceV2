@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace CanvasManagers
 {
@@ -16,6 +17,21 @@ namespace CanvasManagers
         public Transform _displayFrindsParent;
         public List<FriendView> _friendsList;
 
+
+
+        [Header("Toggle Panels")] 
+        public GameObject _contactsScroll;
+        public GameObject _friendsScroll;
+        public GameObject _requestsScroll;
+        public GameObject _searchScroll;
+
+
+        [Header("Panel Toggle Buttons")] 
+        public Button _contactsButton;
+        public Button _friendsButton;
+        public Button _requestsButton;
+        
+        
         private ContactsCanvasController _controller;
 
 

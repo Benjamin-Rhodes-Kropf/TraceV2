@@ -6,6 +6,7 @@ public class TakePhotoCanvasController
 {
     private TakePhotoCanvas _view;
     public static string photoUrl =  "";
+    public static string imagePath = "";
     
     
     public TakePhotoCanvasController(TakePhotoCanvas view)
@@ -60,12 +61,17 @@ public class TakePhotoCanvasController
     {
         // string path = Application.dataPath+"/chat.png";
         Debug.LogError("Path :: "+ path);
+
+        if (string.IsNullOrEmpty(path))
+            return;
+        
         _view.StartCoroutine(FbManager.instance.UploadProfilePhoto(path, (isSuccess, url) =>
         {
             if (isSuccess)
             {
                 Debug.LogError("URL :: "+ url);
-                photoUrl = url;
+                photoUrl = url;                
+                imagePath = path;
                 ScreenManager.instance.ChangeScreenForwards("TookPhoto");
             }
         }));
