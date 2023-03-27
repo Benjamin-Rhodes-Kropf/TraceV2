@@ -1,0 +1,22 @@
+{
+    "name": "SA.iOS.Editor",
+    "references": [
+        "SA.iOS",
+        "SA.iOS.XCode",
+        "SA.iOS.XCode.Editor",
+        "SA.Foundation",
+        "SA.Foundation.Editor",
+        "SA.Foundation.ThirdParty.Editor"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
