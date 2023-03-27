@@ -107,9 +107,9 @@ public class SwipeUpManager : MonoBehaviour, IDragHandler, IEndDragHandler
 	}
 	
 	public void BackToMainScene() {
-		//change the bool so that the main canavs can be enabled after the main scene is loaded
-		//ScreenManager.instance.isComingFromCameraScene = true;
-		//SceneManager.LoadScene(0);
 		ScreenManager.instance.camManager.cameraPanel.SetActive(false);//disabling the camera panel
+		ScreenManager.instance.camManager.videoPreviewPanel.SetActive(false);//disabling the camera panel
+		ScreenManager.instance.camManager.imagePreviewPanel.SetActive(false);//disabling the camera panel
+
 	}
 }
