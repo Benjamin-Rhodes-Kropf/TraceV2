@@ -5,10 +5,10 @@ using UnityEngine;
 public class TakePhotoCanvasController
 {
     private TakePhotoCanvas _view;
-
-
-
-
+    public static string photoUrl =  "";
+    public static string imagePath = "";
+    
+    
     public TakePhotoCanvasController(TakePhotoCanvas view)
     {
         _view = view;
@@ -18,7 +18,7 @@ public class TakePhotoCanvasController
 
     public void Init()
     {
-        _view._cameraButton.onClick.AddListener(OnCameraButtonClick);
+        _view._cameraButton.onClick.AddListener(OnGalleryClick);
         _view._galleryButton.onClick.AddListener(OnGalleryClick);
     }
 
@@ -33,7 +33,17 @@ public class TakePhotoCanvasController
 
     private void OnCameraButtonClick()
     {
-        //NativeMethodsManager.OpenCamera(TakePictureCallBack);
+        string path = Application.dataPath+"/chat.png";
+        Debug.LogError("Path :: "+ path);
+        _view.StartCoroutine(FbManager.instance.UploadProfilePhoto(path, (isSuccess, url) =>
+        {
+            if (isSuccess)
+            {
+                Debug.LogError("URL :: "+ url);
+                photoUrl = url;
+                ScreenManager.instance.ChangeScreenForwards("TookPhoto");
+            }
+        }));
     }
 
 
@@ -44,12 +54,27 @@ public class TakePhotoCanvasController
     
     private void OnGalleryClick()
     {
-        //NativeMethodsManager.OpenGalleryToPickMedia(TakePictureFromGallery);
+        NativeMethodsManager.OpenGalleryToPickMedia(TakePictureFromGallery);
     }
     
     private void TakePictureFromGallery(string path)
     {
-        Debug.LogError("Gallery Image Path :: "+ path);
+        // string path = Application.dataPath+"/chat.png";
+        Debug.LogError("Path :: "+ path);
+
+        if (string.IsNullOrEmpty(path))
+            return;
+        
+        _view.StartCoroutine(FbManager.instance.UploadProfilePhoto(path, (isSuccess, url) =>
+        {
+            if (isSuccess)
+            {
+                Debug.LogError("URL :: "+ url);
+                photoUrl = url;                
+                imagePath = path;
+                ScreenManager.instance.ChangeScreenForwards("TookPhoto");
+            }
+        }));
     }
 
 }

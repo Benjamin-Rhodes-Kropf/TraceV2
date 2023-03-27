@@ -4,24 +4,6 @@ using UnityEngine;
 
 public class NativeMethodsManager
 {
-    
-    /*public static void OpenCamera(NativeCamera.CameraCallback callback )
-    {
-
-#if UNITY_IOS
-        NativeCamera.Permission permission = NativeCamera.CheckPermission(true);
-
-        if (permission== NativeCamera.Permission.Denied)
-            NativeCamera.OpenSettings();
-        if (permission == NativeCamera.Permission.ShouldAsk)
-            NativeCamera.RequestPermission(true);
-        
-        if (permission == NativeCamera.Permission.Granted)
-            NativeCamera.TakePicture(callback, 512, true);
-#endif
-    }
-
-
 
     public static void OpenGalleryToPickMedia(NativeGallery.MediaPickCallback callback)
     {
@@ -36,7 +18,7 @@ public class NativeMethodsManager
         if (permission == NativeGallery.Permission.Granted)
             NativeGallery.GetImageFromGallery(callback);
 #endif
-    }*/
+    }
   
 
 }

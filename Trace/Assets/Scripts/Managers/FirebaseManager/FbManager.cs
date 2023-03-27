@@ -13,6 +13,7 @@ using Firebase.Storage;
 using Unity.VisualScripting;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using DownloadHandler = Networking.DownloadHandler;
 using Object = System.Object;
 
 
@@ -41,6 +42,10 @@ public class FbManager : MonoBehaviour
     [Header("User Data")] 
     public Texture userImageTexture;
     public bool firstTimeUsingTrace;
+    
+    [Header("Database Test Assets")]
+    public RawImage rawImage;
+    public RawImage testRawImage;
 
     public List<UserModel> AllUsers
     {
@@ -329,57 +334,69 @@ public class FbManager : MonoBehaviour
         {
             print("User Email :: "+_firebaseUser.Email);
         }
-
-        //Create a user profile and set the username todo: set user profile image dynamically
-        UserProfile profile = new UserProfile{DisplayName = _username, PhotoUrl = new Uri("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/ProfilePhotos%2FEmptyPhoto.jpg?alt=media&token=fbc8b18c-4bdf-44fd-a4ba-7ae881d3f063")};
-        var ProfileTask = _firebaseUser.UpdateUserProfileAsync(profile);
-        yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
-
-        if (ProfileTask.Exception != null)
-        {
-            Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
-            Debug.LogWarning("Username Set Failed!");
-            callback("Something Went Wrong, Sorry", errorCode);
-            yield break;
-        }
-
-        var user = _firebaseAuth.CurrentUser;
-        if (user == null)
-        {
-            Debug.LogWarning("User Null");
-            yield break;
-        }
-
-        Firebase.Auth.UserProfile userProfile = new Firebase.Auth.UserProfile
-        {
-            DisplayName = user.DisplayName,
-        };
-       
-        user.UpdateUserProfileAsync(userProfile).ContinueWith(task =>
-        {
-            if (task.IsCanceled)
-            {
-                Debug.LogError("UpdateUserProfileAsync was canceled.");
-                return;
-            }
-
-            if (task.IsFaulted)
-            {
-                Debug.LogError("UpdateUserProfileAsync encountered an error: " + task.Exception);
-            }
-        });
-
+        
+        
+        
+        // //Create a user profile and set the username todo: set user profile image dynamically
+        // UserProfile profile = new UserProfile{DisplayName = _username, PhotoUrl = new Uri("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/ProfilePhotos%2FEmptyPhoto.jpg?alt=media&token=fbc8b18c-4bdf-44fd-a4ba-7ae881d3f063")};
+        // var ProfileTask = _firebaseUser.UpdateUserProfileAsync(profile);
+        // yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
+        //
+        // if (ProfileTask.Exception != null)
+        // {
+        //     Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
+        //     Debug.LogWarning("Username Set Failed!");
+        //     callback("Something Went Wrong, Sorry", errorCode);
+        //     yield break;
+        // }
+        //
+        // var user = _firebaseAuth.CurrentUser;
+        // if (user == null)
+        // {
+        //     Debug.LogWarning("User Null");
+        //     yield break;
+        // }
+        //
+        // Firebase.Auth.UserProfile userProfile = new Firebase.Auth.UserProfile
+        // {
+        //     DisplayName = user.DisplayName,
+        // };
+        //
+        // user.UpdateUserProfileAsync(userProfile).ContinueWith(task =>
+        // {
+        //     if (task.IsCanceled)
+        //     {
+        //         Debug.LogError("UpdateUserProfileAsync was canceled.");
+        //         return;
+        //     }
+        //
+        //     if (task.IsFaulted)
+        //     {
+        //         Debug.LogError("UpdateUserProfileAsync encountered an error: " + task.Exception);
+        //     }
+        // });
+        
         var json = GenerateUserProfileJson( _username, "null", "null",_email, _phoneNumber);
         _databaseReference.Child("users").Child(_firebaseUser.UserId.ToString()).SetRawJsonValueAsync(json);
-        
-        var DBTaskSetUsernameLinkToId = _databaseReference.Child("usernames").Child(_username).SetValueAsync(_firebaseUser.UserId);
-        yield return new WaitUntil(predicate: () => DBTaskSetUsernameLinkToId.IsCompleted);
-        
-        var DBTaskSetPhoneNumberLinkToId = _databaseReference.Child("phoneNumbers").Child(_firebaseUser.UserId).Child(_phoneNumber).SetValueAsync(_firebaseUser.UserId);
-        yield return new WaitUntil(predicate: () => DBTaskSetPhoneNumberLinkToId.IsCompleted);
-
+        //
+        // var DBTaskSetUsernameLinkToId = _databaseReference.Child("usernames").Child(_username).SetValueAsync(_firebaseUser.UserId);
+        // while (DBTaskSetUsernameLinkToId.IsCompleted is false)
+        //     yield return new WaitForEndOfFrame();
+        //
+        // // yield return new WaitUntil(predicate: () => DBTaskSetUsernameLinkToId.IsCompleted);
+        //
+        // var DBTaskSetPhoneNumberLinkToId = _databaseReference.Child("phoneNumbers").Child(_firebaseUser.UserId).Child(_phoneNumber).SetValueAsync(_firebaseUser.UserId);
+        // while (DBTaskSetPhoneNumberLinkToId.IsCompleted is false)
+        //     yield return new WaitForEndOfFrame();
+        // // yield return new WaitUntil(predicate: () => DBTaskSetPhoneNumberLinkToId.IsCompleted);
+        //
         var DBTaskSetUserFriends = _databaseReference.Child("friendRequests").Child(_firebaseUser.UserId).Child("null").SetValueAsync("null");
-        yield return new WaitUntil(predicate: () => DBTaskSetUserFriends.IsCompleted);
+        while (DBTaskSetUserFriends.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+        
+        // yield return new WaitUntil(predicate: () => DBTaskSetUserFriends.IsCompleted);
+        
+        
         
         //if nothing has gone wrong try logging in with new users information
         StartCoroutine(Login(_email, _password, (myReturnValue) => {
@@ -540,28 +557,30 @@ public class FbManager : MonoBehaviour
             callback(true);
         }
     }
-    public IEnumerator SetUserProfilePhotoUrl(string _photoUrl, System.Action<String> callback)
+    public IEnumerator SetUserProfilePhotoUrl(string _photoUrl, System.Action<bool> callback)
     {
         Debug.Log("Db update photoUrl to :" + _photoUrl);
         //Set the currently logged in user nickName in the database
         var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("userPhotoUrl").SetValueAsync(_photoUrl);
         
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        while (DBTask.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
 
         if (DBTask.Exception != null)
         {
             Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+            callback(false);
         }
         else
         {
-            callback("success");
+            callback(true);
         }
     }
     public IEnumerator SetUserNickName(string _nickName, System.Action<bool> callback)
     {
         Debug.Log("Db update nick to :" + _nickName);
         //Set the currently logged in user nickName in the database
-        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("NickName").SetValueAsync(_nickName);
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("name").SetValueAsync(_nickName);
         
         //yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
 
@@ -600,43 +619,77 @@ public class FbManager : MonoBehaviour
             callback(true);
         }
     }
-    #endregion
-    #region -User Info
-    public IEnumerator GetMyUserProfilePhoto(System.Action<Texture> callback)
-    {
-        var request = new UnityWebRequest();
-        var url = "";
-        
-        Debug.Log("test:");
-        StorageReference pathReference = _firebaseStorage.GetReference("ProfilePhoto/"+_firebaseUser.UserId+"/profile.png");
-        Debug.Log("path refrence:" + pathReference);
 
-        pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task => {
-            if (!task.IsFaulted && !task.IsCanceled) {
-                Debug.Log("Download URL: " + task.Result);
-                url = task.Result + "";
-                Debug.Log("Actual  URL: " + url);
-            }
-            else
-            {
-                Debug.Log("task failed:" + task.Result);
-            }
-        });
-        
-        yield return new WaitForSecondsRealtime(1f); //hmm not sure why (needs to wait for GetDownloadUrlAsync to complete)
-        
-        request = UnityWebRequestTexture.GetTexture((url)+"");
-        
-        yield return request.SendWebRequest(); //Wait for the request to complete
-        
-        if (request.isNetworkError || request.isHttpError)
+
+    public IEnumerator UploadProfilePhoto(string _imagePath, System.Action<bool,string> callback)
+    {
+        // Read the image file as a byte array
+        byte[] imageBytes = System.IO.File.ReadAllBytes(_imagePath);
+        print("Is  Null :: "+ _firebaseStorage == null);
+        // Create a reference to the image file in Firebase Storage
+        StorageReference imageRef = _firebaseStorage.GetReference("ProfilePhoto/"+_firebaseUser.UserId+".png");
+
+        // Upload the image file to Firebase Storage
+        var task = imageRef.PutBytesAsync(imageBytes);
+
+        while (task.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+
+        if (task.IsFaulted || task.IsCanceled)
         {
-            Debug.LogError("error:" + request.error);
+            Debug.LogError("Task Faulted Due To :: "+ task.Exception.ToString());
+            callback(false,"");
         }
         else
         {
-            callback(((DownloadHandlerTexture)request.downloadHandler).texture);
+            Debug.LogError("Image Uploaded Successfully");
+            Debug.Log("Download URL: " + task.Result);
+            var url = task.Result.Path + "";
+            Debug.Log("Actual  URL: " + url);
+            callback(true,url);
         }
+    }  
+
+    #endregion
+    #region -User Info
+    public IEnumerator GetProfilePhotoFromFirebaseStorageRoutine(string userId, System.Action<Texture> callback)
+    {
+        // var request = new UnityWebRequest();
+        var url = "";
+        
+        Debug.Log("test:");
+        StorageReference pathReference = _firebaseStorage.GetReference("ProfilePhoto/"+userId+".png");
+        Debug.Log("path refrence:" + pathReference);
+
+        var task = pathReference.GetDownloadUrlAsync();
+
+        while (task.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+
+        if (!task.IsFaulted && !task.IsCanceled) {
+            Debug.Log("Download URL: " + task.Result);
+            url = task.Result + "";
+            Debug.Log("Actual  URL: " + url);
+        }
+        else
+        {
+            Debug.Log("task failed:" + task.Result);
+        }
+
+        DownloadHandler.Instance.DownloadImage(url, callback);
+        
+        // request = UnityWebRequestTexture.GetTexture((url)+"");
+        //
+        // yield return request.SendWebRequest(); //Wait for the request to complete
+        //
+        // if (request.isNetworkError || request.isHttpError)
+        // {
+        //     Debug.LogError("error:" + request.error);
+        // }
+        // else
+        // {
+        //     callback(((DownloadHandlerTexture)request.downloadHandler).texture);
+        // }
     }
     public IEnumerator GetMyUserNickName(System.Action<String> callback)
     {
@@ -687,13 +740,14 @@ public class FbManager : MonoBehaviour
                  var  allUsersSnapshots = snapshot.Children.ToArrayPooled();
                  for (int userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
                  {
+                     string userId = allUsersSnapshots[userIndex].Key; 
                      string email = allUsersSnapshots[userIndex].Child("email").Value.ToString();
                      string frindCount = allUsersSnapshots[userIndex].Child("friendCount").Value.ToString();
                      string displayName = allUsersSnapshots[userIndex].Child("name").Value.ToString();
                      string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
                      string phoneNumber = allUsersSnapshots[userIndex].Child("phone").Value.ToString();
                      string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
-                     UserModel userData = new UserModel(email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
+                     UserModel userData = new UserModel(userId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
                      users.Add(userData);
                      print("Mail  Address :: "+ email);
                  }
@@ -914,6 +968,8 @@ public class FbManager : MonoBehaviour
             callback(callbackObject);
         }
     }
+    
+    // TODO: Redundant function
     public IEnumerator GetUserProfilePhotoByUserID(String userID, System.Action<CallbackObject> callback)
     {
         CallbackObject callbackObject = new CallbackObject();
@@ -957,48 +1013,6 @@ public class FbManager : MonoBehaviour
     //GetFriendshipRequests
     //AcceptFriendshipRequest
     //getPhotos
-
-    public IEnumerator UploadTraceImage(string fileLocation)
-    {
-        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "photo");
-        //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
-        traceReference.PutFileAsync(fileLocation)
-            .ContinueWith((Task<StorageMetadata> task) => {
-                if (task.IsFaulted || task.IsCanceled) {
-                    Debug.Log(task.Exception.ToString());
-                    // Uh-oh, an error occurred!
-                }
-                else {
-                    // Metadata contains file metadata such as size, content-type, and download URL.
-                    StorageMetadata metadata = task.Result;
-                    string md5Hash = metadata.Md5Hash;
-                    Debug.Log("Finished uploading...");
-                    Debug.Log("md5 hash = " + md5Hash);
-                }
-            });
-        yield return new WaitForSeconds(0.1f);
-    }
-    public IEnumerator UploadTraceVideo(string fileLocation)
-    {
-        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "video");
-        //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
-        traceReference.PutFileAsync(fileLocation)
-            .ContinueWith((Task<StorageMetadata> task) => {
-                if (task.IsFaulted || task.IsCanceled) {
-                    Debug.Log(task.Exception.ToString());
-                    // Uh-oh, an error occurred!
-                }
-                else {
-                    // Metadata contains file metadata such as size, content-type, and download URL.
-                    StorageMetadata metadata = task.Result;
-                    string md5Hash = metadata.Md5Hash;
-                    Debug.Log("Finished uploading...");
-                    Debug.Log("md5 hash = " + md5Hash);
-                }
-            });
-        yield return new WaitForSeconds(0.1f);
-    }
-    
     
     public void AddFriend(String _username)
     {
@@ -1019,7 +1033,7 @@ public class FbManager : MonoBehaviour
         StartCoroutine(GetTestImage((myReturnValue) => {
             if (myReturnValue != null)
             {
-                //testRawImage.texture = myReturnValue;
+                testRawImage.texture = myReturnValue;
             }
         }));
     }
@@ -1052,11 +1066,11 @@ public class FbManager : MonoBehaviour
             }
         });
     }
-    public void DownloadImage() {
-        StartCoroutine(GetMyUserProfilePhoto((myReturnValue) => {
+    public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess) {
+        StartCoroutine(GetProfilePhotoFromFirebaseStorageRoutine(userId, (myReturnValue) => {
             if (myReturnValue != null)
             {
-                //rawImage.texture = myReturnValue;
+                onSuccess?.Invoke(myReturnValue);
             }
         }));
     }

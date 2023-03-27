@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UserModel
 {
+    public string userId; 
     public string Email;
     public int FriendCount;
     public string DisplayName;
@@ -11,8 +12,9 @@ public class UserModel
     public string PhoneNumber;
     public string PhotoURL;
     
-    public UserModel(string email, int friendCount, string displayName, string username, string phoneNumber, string photoURL)
+    public UserModel(string _userId, string email, int friendCount, string displayName, string username, string phoneNumber, string photoURL)
     {
+        this.userId = _userId;
         this.Email = email;
         this.FriendCount = friendCount;
         this.DisplayName = displayName;

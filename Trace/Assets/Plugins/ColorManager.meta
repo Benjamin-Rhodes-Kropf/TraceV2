@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Trace/Assets/Plugins/MobileScreenResolutions/Scripts/Domain.meta
+guid: 09ca5af81d8e74bbc935925d8ffbdd39
+========
 guid: 663d66437f2274d9792437fa828326a4
+>>>>>>>> main:Trace/Assets/Plugins/ColorManager.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

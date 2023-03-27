@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Trace/Assets/Plugins/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat.meta
+guid: 97f2cbd7d15654ddba59a09ee3cf498c
+timeCreated: 1484172806
+licenseType: Pro
+========
 guid: 1fd41af20f0ba4658ac2b8814ff18fb0
+>>>>>>>> main:Trace/Assets/Materials/Circle.mat.meta
 NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

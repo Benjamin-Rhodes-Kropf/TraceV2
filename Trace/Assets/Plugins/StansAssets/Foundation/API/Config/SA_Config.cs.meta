@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Trace/Assets/_ThirdParty/Infinity Code/Online maps/Scripts/Plugins/OnlineMapsDynamicTexture.cs.meta
+guid: 08e47c73eba00ad4dbf2bcb984d5eccf
+timeCreated: 1556576343
+========
 guid: 7d5253349105fe841927cc37173ee0e2
 timeCreated: 1496343616
+>>>>>>>> main:Trace/Assets/Plugins/StansAssets/Foundation/API/Config/SA_Config.cs.meta
 licenseType: Store
 MonoImporter:
-  externalObjects: {}
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0
