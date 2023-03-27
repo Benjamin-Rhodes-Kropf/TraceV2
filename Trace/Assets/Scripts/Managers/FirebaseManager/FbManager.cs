@@ -41,10 +41,6 @@ public class FbManager : MonoBehaviour
     [Header("User Data")] 
     public Texture userImageTexture;
     public bool firstTimeUsingTrace;
-    
-    [Header("Database Test Assets")]
-    public RawImage rawImage;
-    public RawImage testRawImage;
 
     public List<UserModel> AllUsers
     {
@@ -961,6 +957,48 @@ public class FbManager : MonoBehaviour
     //GetFriendshipRequests
     //AcceptFriendshipRequest
     //getPhotos
+
+    public IEnumerator UploadTraceImage(string fileLocation)
+    {
+        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "photo");
+        //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
+        traceReference.PutFileAsync(fileLocation)
+            .ContinueWith((Task<StorageMetadata> task) => {
+                if (task.IsFaulted || task.IsCanceled) {
+                    Debug.Log(task.Exception.ToString());
+                    // Uh-oh, an error occurred!
+                }
+                else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    StorageMetadata metadata = task.Result;
+                    string md5Hash = metadata.Md5Hash;
+                    Debug.Log("Finished uploading...");
+                    Debug.Log("md5 hash = " + md5Hash);
+                }
+            });
+        yield return new WaitForSeconds(0.1f);
+    }
+    public IEnumerator UploadTraceVideo(string fileLocation)
+    {
+        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "video");
+        //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
+        traceReference.PutFileAsync(fileLocation)
+            .ContinueWith((Task<StorageMetadata> task) => {
+                if (task.IsFaulted || task.IsCanceled) {
+                    Debug.Log(task.Exception.ToString());
+                    // Uh-oh, an error occurred!
+                }
+                else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    StorageMetadata metadata = task.Result;
+                    string md5Hash = metadata.Md5Hash;
+                    Debug.Log("Finished uploading...");
+                    Debug.Log("md5 hash = " + md5Hash);
+                }
+            });
+        yield return new WaitForSeconds(0.1f);
+    }
+    
     
     public void AddFriend(String _username)
     {
@@ -981,7 +1019,7 @@ public class FbManager : MonoBehaviour
         StartCoroutine(GetTestImage((myReturnValue) => {
             if (myReturnValue != null)
             {
-                testRawImage.texture = myReturnValue;
+                //testRawImage.texture = myReturnValue;
             }
         }));
     }
@@ -1018,7 +1056,7 @@ public class FbManager : MonoBehaviour
         StartCoroutine(GetMyUserProfilePhoto((myReturnValue) => {
             if (myReturnValue != null)
             {
-                rawImage.texture = myReturnValue;
+                //rawImage.texture = myReturnValue;
             }
         }));
     }
