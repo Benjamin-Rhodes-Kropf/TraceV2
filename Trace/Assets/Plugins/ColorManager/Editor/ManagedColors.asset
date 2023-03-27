@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8caa3c30c3cbef541b23c8831c2af361, type: 3}
+  m_Name: ManagedColors
+  m_EditorClassIdentifier: 
+  _categories:
+  - _category: Light Blue
+    _color: {r: 0.5372549, g: 0.7490196, b: 1, a: 1}
+  - _category: Dark Blue
+    _color: {r: 0.4, g: 0.4, b: 1, a: 1}
+  - _category: Dark Red
+    _color: {r: 1, g: 0.38039216, b: 0.38039216, a: 1}
+  - _category: Light Grey
+    _color: {r: 0.9411765, g: 0.9411765, b: 0.9411765, a: 1}
+  - _category: White
+    _color: {r: 1, g: 1, b: 1, a: 1}
+  - _category: Light Red
+    _color: {r: 1, g: 0.5568628, b: 0.5568628, a: 1}
+  - _category: Dark Grey
+    _color: {r: 0.2509804, g: 0.2784314, b: 0.3372549, a: 1}
+  - _category: Medium Dark Grey
+    _color: {r: 0.46666667, g: 0.50980395, b: 0.6, a: 1}

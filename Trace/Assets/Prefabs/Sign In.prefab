@@ -694,7 +694,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &550037733736016006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,6 +952,7 @@ GameObject:
   - component: {fileID: 550037734115226471}
   - component: {fileID: 550037734115226468}
   - component: {fileID: 550037734115226469}
+  - component: {fileID: 8928234349480049426}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1066,6 +1067,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &8928234349480049426
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550037734115226467}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9db352608e0124b37b99ff11c85e4dfa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &550037734192909342
 GameObject:
   m_ObjectHideFlags: 0

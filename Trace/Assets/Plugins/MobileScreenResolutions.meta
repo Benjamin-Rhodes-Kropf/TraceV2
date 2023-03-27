@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Trace/Assets/Plugins/MobileScreenResolutions/Scripts/Editor.meta
+guid: 1df594568ed4f4accb90f11ea4686e96
+========
 guid: 4bdedbdc7e937426699c38cea1ca82dd
+>>>>>>>> main:Trace/Assets/Plugins/MobileScreenResolutions.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
