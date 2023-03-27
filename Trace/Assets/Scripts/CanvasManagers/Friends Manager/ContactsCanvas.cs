@@ -17,6 +17,10 @@ namespace CanvasManagers
         public Transform _displayFrindsParent;
         public List<FriendView> _friendsList;
 
+        [Header("Contacts Info")] 
+        public ContactView _contactPrfab;
+        public Transform _contactParent;
+
 
 
         [Header("Toggle Panels")] 

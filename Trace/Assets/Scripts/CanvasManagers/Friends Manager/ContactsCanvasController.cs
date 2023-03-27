@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SA.iOS.Contacts;
@@ -234,30 +235,41 @@ namespace CanvasManagers
             _previousSelectedButton.color = _selectedButtonColor;
         }
 
+        private bool isLoaded = false;
         private void LoadAllContacts()
         {
-            ISN_CNContactStore.FetchPhoneContacts((result) => {
-                if(result.IsSucceeded) 
+            if (isLoaded)
+                return;
+#if UNITY_EDITOR
+           
+#elif UNITY_IOS
+             ISN_CNContactStore.FetchPhoneContacts((result) => {
+                if(result.IsSucceeded)
                 {
-                    foreach(var contact in result.Contacts)
+                    isLoaded = true;
+                    foreach (var contact in result.Contacts)
                         LogContactInfo(contact);
                 } 
                 else 
                     Debug.Log("Error: " + result.Error.Message);
             });
+#endif            
+            
         }
 
 
 
         private void LogContactInfo(ISN_CNContact contact)
         {
-            Debug.LogError("----  Contact Info ----");
-            Debug.LogError("Name :: "+ contact.GivenName);
-            Debug.LogError("NickName :: "+ contact.Nickname);
-            foreach (var number in contact.Phones)
+            try
             {
-                Debug.LogError("Phone Number  ::" + number);
-            }            
+                ContactView view = GameObject.Instantiate(_view._contactPrfab,_view._contactParent);
+                view.UpdateContactInfo(contact.GivenName,contact.Phones[0].FullNumber);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
