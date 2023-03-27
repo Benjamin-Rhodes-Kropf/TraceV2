@@ -1,66 +1,62 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
-using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR.ARFoundation.Samples;
+using NatML.VideoKit;
+using static NatML.VideoKit.VideoKitRecorder;
 
-public class UIController : PressInputBase
+public class UIController : MonoBehaviour
 {
-
-    public ToggleCameraFacingDirectionOnPress cameraSwitch;
+    public VideoKitAudioManager microPhoneAudioKit;
     public VideoPlayer previewVideoPlayer;
-    
+    public VideoKitCameraManager swapCamera;
+    public VideoKitRecorder vidRecorder;
     bool isVideoPlayerOpenedForRestingTheSceneToClearGarbageValues = false;
     bool isImagePreviewOpenedForRestingTheSceneToClearGarbageValues = false;
-    CameraManager camManger;
+    public CameraManager camManger;
+    string path;
+    public GameObject cameraView;
     // Start is called before the first frame update
     void Start()
     {
-        //asiging the reference from the main scene objects
+        //assigning the ui controller in screenamanet script
+        ScreenManager.instance.uiController = this;
+        //assigning the camera maanager from screenamanet script and other vaiables
         camManger = ScreenManager.instance.camManager;
-        camManger.uiManager = this;
+        camManger.replayCamera.vidRecorder = vidRecorder;
+        //To reduce the vide size we set the video bit rate to half,
+        vidRecorder.videoBitRate = 10000000 / 2;
+        //To show microphone prompt to avoid a conflict whic occurs once in start
+        microPhoneAudioKit.StartRunning();
     }
 
     public void CloseVideoPreview() {
-        // app is reopened after minimising then reload the scene and close the video player and panel
-        if (isVideoPlayerOpenedForRestingTheSceneToClearGarbageValues)
-        {
-            camManger.videoPreviewPanel.SetActive(false);
-            previewVideoPlayer.gameObject.SetActive(false);
-            camManger.cameraPanel.SetActive(true);
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        }
-        // this will simply close the panel
-        else
-        {
-            camManger.videoPreviewPanel.SetActive(false);
-            previewVideoPlayer.gameObject.SetActive(false);
-            camManger.cameraPanel.SetActive(true);
-        }
+        //// this will close the panel preview panel and reopen the camera panel
+        camManger.videoPreviewPanel.SetActive(false);
+        previewVideoPlayer.gameObject.SetActive(false);
+        camManger.cameraPanel.SetActive(true);
+        cameraView.SetActive(true);
     }
     //for switching the camera
     public void SwitchCamera() {
-        cameraSwitch.ToggleCamera();
+        if (swapCamera.facing == VideoKitCameraManager.Facing.PreferUser)
+        {
+            swapCamera.facing = VideoKitCameraManager.Facing.PreferWorld;
+        }
+        else
+        {
+            swapCamera.facing = VideoKitCameraManager.Facing.PreferUser;
+
+        }
     }
     //It will close the image previewer
     public void CloseImagePreview()
     {
-        // app is reopened after minimising then reload the scene and close the panel
-        if (isImagePreviewOpenedForRestingTheSceneToClearGarbageValues)
-        {
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-            camManger.imagePreviewPanel.gameObject.SetActive(false);
-            camManger.cameraPanel.SetActive(true);
-        }
-        // this will simply close the panel
-        else
-        {
-            camManger.imagePreviewPanel.gameObject.SetActive(false);
-            camManger.cameraPanel.SetActive(true);
-        }
+        //// this will close the panel preview panel and reopen the camera panel
+        camManger.imagePreviewPanel.gameObject.SetActive(false);
+        camManger.cameraPanel.SetActive(true);
+        cameraView.SetActive(true);
     }
     //write sharing code here
     public void Share() {
@@ -110,40 +106,68 @@ public class UIController : PressInputBase
         camManger.imagePreview.texture = texture;
         camManger.imagePreviewPanel.SetActive(true);
         camManger.videoPreviewPanel.SetActive(false);
+        cameraView.SetActive(false);
 
         // cleanup
         //Object.Destroy(texture);
     }
+    //This is an event which is handle the video preview work afetr the recording is done
+    public void OnRecordingCompleted(RecordingSession session)
+    {
+        // Get the recording path
+        path = session.path;
+        Debug.Log(path+" This is the temp path");
+        //setting the video player file target path
+        previewVideoPlayer.url = path;
+        //enabling the videoplayer
+        previewVideoPlayer.gameObject.SetActive(true);
+        //diabling the camera panel
+        camManger.cameraPanel.SetActive(false);
+        //enabling the video preview panel UI
+        camManger.videoPreviewPanel.SetActive(true);
+        //playing the video on video player
+        previewVideoPlayer.Play();
+        //disabling the camera view
+        cameraView.SetActive(false);
 
+    }
+    //To save the video in mobile gallery
+    public void SaveVideo() {
+        string imgName = "VID_" + System.DateTime.Now.ToString("yyyymmdd_HHmmss") + ".mp4";
+        NativeGallery.Permission permission = NativeGallery.SaveVideoToGallery(path, "TraceVideo", imgName, null);
+        Debug.Log("Permission result: " + permission);
+    }
+    #region
     //This will reload the AR camera scene so that garbage values can be clean,
     //which was causing jitter in audio after reopening the app on minimising
     private void OnApplicationFocus(bool focus)
     {
 
-        //Check if video was playing or not, if no then reload the camera scene
-        Debug.Log(">>>>> Application Focus Status is " + focus + " <<<<<");
-        if (focus && (!camManger.videoPreviewPanel.activeInHierarchy && !camManger.imagePreviewPanel.activeInHierarchy))
-        {
-            Debug.Log("=========  Scene Reloaded on Focus Changed" + "  =========");
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        }
-        //if video player or image previewer was active last time then some flag
-        //values will be set to reset the scenes on closing of previewers
-        else if (focus && (camManger.videoPreviewPanel.activeInHierarchy || camManger.imagePreviewPanel.activeInHierarchy))
-        {
-            //if video player is active
-            if (camManger.videoPreviewPanel.activeInHierarchy)
-            {
-                isVideoPlayerOpenedForRestingTheSceneToClearGarbageValues = true;
-                Debug.Log(">>>>> Video Player is active and scene will be restrated on closing of player <<<<<");
-                previewVideoPlayer.Play();
-            }
-            //if image previewer is active
-            else if (camManger.imagePreviewPanel.activeInHierarchy)
-            {
-                isImagePreviewOpenedForRestingTheSceneToClearGarbageValues = true;
-                Debug.Log(">>>>> Image Viewer is active and scene will be restrated on closing of viewer <<<<<");
-            }
-        }
+        ////Check if video was playing or not, if no then reload the camera scene
+        //Debug.Log(">>>>> Application Focus Status is " + focus + " <<<<<");
+        //if (focus && (!camManger.videoPreviewPanel.activeInHierarchy && !camManger.imagePreviewPanel.activeInHierarchy))
+        //{
+        //    Debug.Log("=========  Scene Reloaded on Focus Changed" + "  =========");
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //}
+        ////if video player or image previewer was active last time then some flag
+        ////values will be set to reset the scenes on closing of previewers
+        //else if (focus && (camManger.videoPreviewPanel.activeInHierarchy || camManger.imagePreviewPanel.activeInHierarchy))
+        //{
+        //    //if video player is active
+        //    if (camManger.videoPreviewPanel.activeInHierarchy)
+        //    {
+        //        isVideoPlayerOpenedForRestingTheSceneToClearGarbageValues = true;
+        //        Debug.Log(">>>>> Video Player is active and scene will be restrated on closing of player <<<<<");
+        //        previewVideoPlayer.Play();
+        //    }
+        //    //if image previewer is active
+        //    else if (camManger.imagePreviewPanel.activeInHierarchy)
+        //    {
+        //        isImagePreviewOpenedForRestingTheSceneToClearGarbageValues = true;
+        //        Debug.Log(">>>>> Image Viewer is active and scene will be restrated on closing of viewer <<<<<");
+        //    }
+        //}
     }
+    #endregion
 }

@@ -1,42 +1,47 @@
 using System;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR.ARFoundation.Samples;
 
 public class CameraManager : MonoBehaviour//PressInputBase
 {
+    public ReplayCam replayCamera;
     public GameObject cameraPanel;
     public GameObject videoPreviewPanel;
     public GameObject imagePreviewPanel;
     public Image previewImagePlayer;
     public RawImage imagePreview;
 
-    public UIController uiManager;
-    void Awake()
+    //public UIController uiManager;
+    private void OnEnable()
     {
-       
+        cameraPanel.SetActive(true);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-    
-    }
+
+    //for switching between the device cameras
     public void SwitchCamera() {
-        uiManager.SwitchCamera();
+        ScreenManager.instance.uiController.SwitchCamera();
     }
+    //closing the video preview
     public void CloseVideoPreview()
     {
-        uiManager.CloseVideoPreview();
+        ScreenManager.instance.uiController.CloseVideoPreview();
     }
+    //closing the video Image preview
     public void CloseImagePreview()
     {
-        uiManager.CloseImagePreview();
-
+        ScreenManager.instance.uiController.CloseImagePreview();
+    }
+    
+    public void SaveVideo()
+    {
+        ScreenManager.instance.uiController.SaveVideo();
+    }
+    public void BackToMainScene() {
+        //change the bool so that the main canavs can be enabled after the main scene is loaded
+        ScreenManager.instance.isComingFromCameraScene = true;
+        SceneManager.LoadScene(0);
+        ScreenManager.instance.camManager.cameraPanel.SetActive(false);//disabling the camera panel
     }
     //write sharing code here
     public void ShareVideo()
@@ -47,10 +52,19 @@ public class CameraManager : MonoBehaviour//PressInputBase
     {
         Debug.Log("Pass Image To Firebase Manager Here");
     }
-
+    //For capturing the image
     public void CaputureImage()
     {
-        uiManager.CaputureImage();
+        ScreenManager.instance.uiController.CaputureImage();
     }
-    
+    //This was used for testing
+    public void StartRecording() {
+        ScreenManager.instance.uiController.vidRecorder.StartRecording();
+    }
+    //This was used for testing
+    public void StopRecording() {
+        ScreenManager.instance.uiController.vidRecorder.StopRecording();
+
+    }
+
 }
