@@ -17,6 +17,16 @@ public class TookPhotoCanvasController
     {
         _view._doneButton.onClick.AddListener(OnDoneButtonClick);
         _view._moveBack.onClick.AddListener(OnMoveBackClick);
+        LoadImageFromPath();
+    }
+    
+    private void LoadImageFromPath()
+    {
+        Texture2D tex = new Texture2D(2, 2);
+        byte[] imageBytes = System.IO.File.ReadAllBytes(TakePhotoCanvasController.imagePath);
+        tex.LoadImage(imageBytes);
+        var sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width/2, tex.height/2));
+        _view._profilePicture.sprite = sprite;
     }
     
     public void Uninit()
