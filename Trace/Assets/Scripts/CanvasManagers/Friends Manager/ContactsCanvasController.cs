@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using SA.iOS.Contacts;
+// using SA.iOS.Contacts;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -259,18 +259,18 @@ namespace CanvasManagers
 
 
 
-        private void LogContactInfo(ISN_CNContact contact)
-        {
-            try
-            {
-                ContactView view = GameObject.Instantiate(_view._contactPrfab,_view._contactParent);
-                view.UpdateContactInfo(contact.GivenName,contact.Phones[0].FullNumber);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
+        // private void LogContactInfo(ISN_CNContact contact)
+        // {
+        //     try
+        //     {
+        //         ContactView view = GameObject.Instantiate(_view._contactPrfab,_view._contactParent);
+        //         view.UpdateContactInfo(contact.GivenName,contact.Phones[0].FullNumber);
+        //     }
+        //     catch (Exception e)
+        //     {
+        //         Console.WriteLine(e.Message);
+        //     }
+        // }
     }
 }
 
