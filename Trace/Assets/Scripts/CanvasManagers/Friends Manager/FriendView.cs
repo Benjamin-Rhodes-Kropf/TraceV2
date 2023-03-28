@@ -23,10 +23,11 @@ public class FriendView : MonoBehaviour
     [SerializeField] private Image _buttonBackground;
     [SerializeField] private Color[] _colors;
 
-    public string Username {
+    private string _uid = "";
+    public string friendUID {
         get
         {
-            return _userName.text;
+            return _uid;
         }
         
     }
@@ -37,7 +38,7 @@ public class FriendView : MonoBehaviour
     {
         _userName.text = user.Username;
         _nickName.text = user.DisplayName;
-
+        _uid = user.userId;
         FriendButtonType buttonType = FriendButtonType.Add;
 
         var buttonData = GetButtonData(buttonType);

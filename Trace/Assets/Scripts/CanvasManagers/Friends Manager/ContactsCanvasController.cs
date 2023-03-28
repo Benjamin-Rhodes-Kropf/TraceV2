@@ -55,28 +55,28 @@ namespace CanvasManagers
 
         private void SendFriendRequest(FriendView friend)
         {
-            string username = friend.Username;
+            string friendUID = friend.friendUID;
             // username = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform
             //     .GetComponentInParent<FriendView>().Username;
             
             
-            if (username == "")
+            if (friendUID == "")
             {
                 //Todo: update visuals accordingly
                 //return with smth along the lines of "you have to search a valid user first"
                 return;
             }
             //else make friend request
-            _view.StartCoroutine(FbManager.instance.ActionFriendRequest(username,  (callbackObject) => {
-                if (!callbackObject.IsSuccessful)
+            _view.StartCoroutine(FbManager.instance.SendFriendRequest(friendUID,  (IsSuccessful) => {
+                if (!IsSuccessful)
                 {
-                    Debug.LogError("Friend request failed at : "+ username);
+                    Debug.LogError("Friend request failed at : "+ friendUID);
                     //todo: make visual for non-valid return
                     return;
                 }
                 //todo: make visual for valid return
                 friend.UpdateRequestStatus(true);
-                Debug.Log("friend requested at:" + username);
+                Debug.Log("friend requested at:" + friendUID);
             }));
         }
         
