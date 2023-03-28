@@ -262,6 +262,9 @@ public class FbManager : MonoBehaviour
         PlayerPrefs.SetString("Username", "null");
         PlayerPrefs.SetString("Password", "null");
         userImageTexture = null;
+        useAdminForLogin = false;
+        autoLogin = false;
+        useAdminForLogin = false;
         _firebaseAuth.SignOut();
         yield return new WaitForSeconds(0.8f);
         ScreenManager.instance.WelcomeScreen();

@@ -17,7 +17,7 @@ public class SettingsManager : MonoBehaviour
     Action<bool, string> callback;
     Action<Texture> onSuccess;
     private Texture myPicture;
-
+    public GameObject logOutPopUp;
 
     void Start()
     {
@@ -84,4 +84,17 @@ public class SettingsManager : MonoBehaviour
             notificationButton.image.sprite = toggleOn;
         }
     }
+    public void LogOut() {
+        logOutPopUp.SetActive(true);
+    }
+    public void ConfirmationLogOut(bool consent) {
+        if (consent)
+        {
+            FbManager.instance.LogOutOfAccount();
+            logOutPopUp.SetActive(false);
+        }
+        else
+            logOutPopUp.SetActive(false);
+    }
+    
 }
