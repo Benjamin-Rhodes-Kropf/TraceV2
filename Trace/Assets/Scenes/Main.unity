@@ -22193,7 +22193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1023150699719654143, guid: cda54dd8511b84d7c830d16ede7e0a45, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cda54dd8511b84d7c830d16ede7e0a45, type: 3}
@@ -22635,9 +22635,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencyStatus: 0
   firebaseStorageReferenceUrl: gs://geosnapv1.appspot.com
-  autoLogin: 1
+  autoLogin: 0
   forceLogin: 0
-  useAdminForLogin: 1
+  useAdminForLogin: 0
   adminUser: test@gmail.com
   adminPass: test@gmail.com
   resetPlayerPrefs: 0
@@ -61860,17 +61860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f768b7afd4612144a9575c4bfd210796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amap: 
-  arcgisKey: 
-  bingMaps: 
-  googleMaps: 
-  hereApiKey: 
-  hereAppCode: 
-  hereAppID: 
-  mapboxAccessToken: 
-  openRouteService: 
-  qq: 
-  what3Words: 
 --- !u!1 &6068666308761308064
 GameObject:
   m_ObjectHideFlags: 0
@@ -62077,17 +62066,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3c476c58b6b054d9469cbe6c8fa060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customCacheUnloadRate: 0.3
-  maxCustomCacheSize: 100
-  fileCacheLocation: 0
-  fileCacheCustomPath: 
-  fileCacheTilePath: TileCache/{pid}/{mid}/{lbs}/{lng}/{zoom}/{x}/{y}
-  fileCacheUnloadRate: 0.5
-  maxFileCacheSize: 192
-  useFileCache: 1
-  maxMemoryCacheSize: 96
-  memoryCacheUnloadRate: 0.3
-  useMemoryCache: 1
 --- !u!114 &6068666308761308078
 MonoBehaviour:
   m_ObjectHideFlags: 0

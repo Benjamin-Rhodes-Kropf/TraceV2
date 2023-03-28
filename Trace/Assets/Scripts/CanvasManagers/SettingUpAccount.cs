@@ -21,5 +21,6 @@ public class SettingUpAccount : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         ScreenManager.instance.ChangeScreenFade("HomeScreen");
+        print("Called");
     }
 }
