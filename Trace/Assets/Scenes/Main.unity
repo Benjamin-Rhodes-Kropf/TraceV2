@@ -30801,6 +30801,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1703002462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3427427978257581053, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
+  m_PrefabInstance: {fileID: 1667139875}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1703002467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703002462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77bf341413534d0ebfc681f7da3ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects: []
+  imgs: []
+  txts: []
+  initalColor: []
+  targetColor: []
+  fadeDuration: 1
+  startSortOrder: 0
+  endSortOrder: 0
+  moveToDisabledChild: 1
+  disabledParent: {fileID: 906833078}
+  fadeInOnEnabled: 0
+  waitBeforeFade: 0
 --- !u!1 &1706576045
 GameObject:
   m_ObjectHideFlags: 0
