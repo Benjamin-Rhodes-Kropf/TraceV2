@@ -16,6 +16,8 @@ public class CameraManager : MonoBehaviour//PressInputBase
     private void OnEnable()
     {
         cameraPanel.SetActive(true);
+        imagePreviewPanel.SetActive(false);
+        videoPreviewPanel.SetActive(false);
     }
 
     //for switching between the device cameras
@@ -31,8 +33,8 @@ public class CameraManager : MonoBehaviour//PressInputBase
     public void CloseImagePreview()
     {
         ScreenManager.instance.uiController.CloseImagePreview();
-
     }
+    
     public void SaveVideo()
     {
         ScreenManager.instance.uiController.SaveVideo();
@@ -47,10 +49,12 @@ public class CameraManager : MonoBehaviour//PressInputBase
     public void ShareVideo()
     {
         Debug.Log("Pass Video To Firebase Manager Here");
+        ScreenManager.instance.uiController.ShareVideo();
     }
     public void ShareImage()
     {
         Debug.Log("Pass Image To Firebase Manager Here");
+        ScreenManager.instance.uiController.ShareImage();
     }
     //For capturing the image
     public void CaputureImage()

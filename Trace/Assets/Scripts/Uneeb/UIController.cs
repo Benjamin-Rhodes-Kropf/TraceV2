@@ -1,4 +1,5 @@
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.Networking;
@@ -15,8 +16,9 @@ public class UIController : MonoBehaviour
     bool isVideoPlayerOpenedForRestingTheSceneToClearGarbageValues = false;
     bool isImagePreviewOpenedForRestingTheSceneToClearGarbageValues = false;
     public CameraManager camManger;
-    string path;
+    [SerializeField] private string path;
     public GameObject cameraView;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +29,8 @@ public class UIController : MonoBehaviour
         camManger.replayCamera.vidRecorder = vidRecorder;
         //To reduce the vide size we set the video bit rate to half,
         vidRecorder.videoBitRate = 10000000 / 2;
-        //To show microphone prompt to avoid a conflict whic occurs once in start
+        //To show microphone prompt to avoid a conflict which occurs once in start
         microPhoneAudioKit.StartRunning();
-
     }
 
     public void CloseVideoPreview() {
@@ -60,8 +61,18 @@ public class UIController : MonoBehaviour
         cameraView.SetActive(true);
     }
     //write sharing code here
-    public void Share() {
+    public void ShareVideo() {
         Debug.Log("Pass Video To Firebase Manager Here");
+        StartCoroutine(FbManager.instance.UploadTraceVideo(path));
+    }
+
+    public void ShareImage()
+    {
+    #if UNITY_EDITOR
+        StartCoroutine(FbManager.instance.UploadTraceImage( Application.dataPath + "/SaveImages/Traces/Image.png"));
+    #elif UNITY_IPHONE
+        StartCoroutine(FbManager.instance.UploadTrace( Application.persistentDataPath + "/SaveImages/Traces/Image.png"));
+    #endif 
     }
     public void ShowImagePreview(string path) {
         StartCoroutine(path);
@@ -96,22 +107,38 @@ public class UIController : MonoBehaviour
         //turning off the UI so that i won't visible in image.
         camManger.cameraPanel.SetActive(false);
         StartCoroutine(RecordFrame());
-
     }
     IEnumerator RecordFrame()
     {
         yield return new WaitForEndOfFrame();
         var texture = ScreenCapture.CaptureScreenshotAsTexture();
-        // do something with texture
+        
         //Show the image captured
         camManger.imagePreview.texture = texture;
         camManger.imagePreviewPanel.SetActive(true);
         camManger.videoPreviewPanel.SetActive(false);
         cameraView.SetActive(false);
+        
+        //SAVE IMAGE TO DEVICE STORAGE
+        byte[] bytes = texture.EncodeToPNG();
+        var dirPath = "";
 
-        // cleanup
+        #if UNITY_EDITOR
+        dirPath = Application.dataPath + "/SaveImages/Traces/";
+        #elif UNITY_IPHONE
+         dirPath = Application.persistentDataPath + "/SaveImages/Traces/";
+        #endif 
+        
+        if(!Directory.Exists(dirPath)) {
+            Directory.CreateDirectory(dirPath);
+        }
+        File.WriteAllBytes(dirPath + "Image" + ".png", bytes);
+        Debug.Log("file location:" + dirPath + "Image" + ".png");
+        
+        //cleanup
         //Object.Destroy(texture);
     }
+    
     //This is an event which is handle the video preview work afetr the recording is done
     public void OnRecordingCompleted(RecordingSession session)
     {
