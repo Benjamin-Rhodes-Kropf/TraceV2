@@ -1014,7 +1014,7 @@ public class FbManager : MonoBehaviour
     //AcceptFriendshipRequest
     //getPhotos
     
-        public IEnumerator UploadTraceImage(string fileLocation)
+    public IEnumerator UploadTraceImage(string fileLocation)
     {
         StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "photo");
         //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);

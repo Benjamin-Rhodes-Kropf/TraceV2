@@ -8,7 +8,7 @@ public class SelectFriendsCanvas : MonoBehaviour
 {
     private void OnEnable()
     {
-        ScreenManager.instance.uiController.previewVideoPlayer.gameObject.SetActive(false);//disabling the camera panel
+        //ScreenManager.instance.uiController.previewVideoPlayer.gameObject.SetActive(false);//disabling the camera panel
     }
 
     // Start is called before the first frame update
