@@ -14937,7 +14937,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 76185519291063013, guid: 99b12fbce1998456b91b2405784d4f1c, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 76185519291063013, guid: 99b12fbce1998456b91b2405784d4f1c, type: 3}
       propertyPath: m_OverrideSorting
@@ -20413,7 +20413,6 @@ GameObject:
   - component: {fileID: 1063987023}
   - component: {fileID: 1063987025}
   - component: {fileID: 1063987024}
-  - component: {fileID: 1063987026}
   - component: {fileID: 1063987027}
   m_Layer: 5
   m_Name: Sign In Canvas(Achive)
@@ -20481,18 +20480,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
---- !u!114 &1063987026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063987022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c4cbfcecb9842cdb8556f3732eeac9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1063987027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22675,7 +22662,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1023150699719654138, guid: cda54dd8511b84d7c830d16ede7e0a45, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1023150699719654138, guid: cda54dd8511b84d7c830d16ede7e0a45, type: 3}
       propertyPath: m_OverrideSorting
