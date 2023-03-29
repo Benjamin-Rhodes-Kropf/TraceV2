@@ -32929,18 +32929,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1301840576}
     - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1834984688}
+    - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
@@ -32948,8 +32960,16 @@ PrefabInstance:
       value: ChangeScreenForwards
       objectReference: {fileID: 0}
     - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OpenPopOnUserNameEdit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: ScreenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: EditProfileManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -32957,6 +32977,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634947623952408012, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7634947623982455780, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
@@ -33225,6 +33249,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89f0dbe46ab134d3bb77bb491f67cff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1834984688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8972265435487661527, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
+  m_PrefabInstance: {fileID: 1834984684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834984686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab6538e2ae274fd18faa782ead781b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1839810109
@@ -38886,7 +38921,6 @@ MonoBehaviour:
   profilePicture: {fileID: 838396147}
   editableField: {fileID: 7162897695776769979}
   isDisplayNameScreen: 0
-  isUserNameScreen: 0
   isEmailScreen: 0
   isPasswordScreen: 1
 --- !u!114 &485171304988775492

@@ -128,8 +128,7 @@ public class FbManager : MonoBehaviour
         if (!forceLogin)
         { 
             StartCoroutine(AutoLogin());
-        } 
-
+        }
     }
 
     #region Current User
@@ -565,6 +564,43 @@ public class FbManager : MonoBehaviour
             callback(true);
         }
     }
+    public void UpdateUserEmail(string email) {
+        FirebaseUser user = _firebaseAuth.CurrentUser;
+        if (user != null)
+        {
+            user.UpdateEmailAsync(email).ContinueWith(task => {
+                if (task.IsCanceled)
+                {
+                    Debug.LogError("UpdateEmailAsync was canceled.");
+                    return;
+                }
+                if (task.IsFaulted)
+                {
+                    Debug.LogError("UpdateEmailAsync encountered an error: " + task.Exception);
+                    return;
+                }
+
+                Debug.Log("User email updated successfully.");
+            });
+        }
+        //if (user != null)
+        //{
+        //    foreach (var profile in user.ProviderData)
+        //    {
+        //        // Id of the provider (ex: google.com)
+        //        string providerId = profile.ProviderId;
+        //        // UID specific to the provider
+        //        string uid = profile.UserId;
+        //        // Name, email address, and profile photo Url
+        //        string name = profile.DisplayName;
+        //        string email = profile.Email;
+        //        Uri photoUrl = profile.PhotoUrl;
+        //        Debug.Log("providerId=> " + providerId + "\n" +
+        //            "uid=>" + uid + "\n" + "name =>" + name +"\n"+
+        //             "email=> " + email + "\n" + "photoUrl=>" + photoUrl);
+        //    }
+        //}
+    }
     public IEnumerator SetUserProfilePhotoUrl(string _photoUrl, System.Action<bool> callback)
     {
         Debug.Log("Db update photoUrl to :" + _photoUrl);
@@ -595,6 +631,48 @@ public class FbManager : MonoBehaviour
         while (DBTask.IsCompleted is false)
             yield return new WaitForEndOfFrame();
         
+        if (DBTask.Exception != null)
+        {
+            callback(false);
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            callback(true);
+        }
+    }
+    public IEnumerator SetUserEmailAddress(string _email, System.Action<bool> callback)
+    {
+        Debug.Log("Db update email to :" + _email);
+        //Set the currently logged in user email in the database
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("email").SetValueAsync(_email);
+
+        //yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        while (DBTask.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+
+        if (DBTask.Exception != null)
+        {
+            callback(false);
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            callback(true);
+        }
+    }
+    public IEnumerator SetUserPassword(string _password, System.Action<bool> callback)
+    {
+        Debug.Log("Db update password to :" + _password);
+        //Set the currently logged in user email in the database
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("password").SetValueAsync(_password);
+
+        //yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        while (DBTask.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+
         if (DBTask.Exception != null)
         {
             callback(false);
@@ -714,6 +792,21 @@ public class FbManager : MonoBehaviour
             callback(DBTask.Result.ToString());
         }
     }
+    public IEnumerator GetMyEmailAddress(System.Action<String> callback)
+    {
+        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("Friends").Child("nickName").GetValueAsync();
+
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+        if (DBTask.IsFaulted)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            callback(DBTask.Result.ToString());
+        }
+    }
     public IEnumerator GetMyUserPhoneNumber(System.Action<String> callback)
     {
         var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("Friends").Child("nickName").GetValueAsync();
@@ -757,13 +850,9 @@ public class FbManager : MonoBehaviour
 
                     string phoneNumber = allUsersSnapshots[userIndex].Child("phone").Value.ToString();
                     string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
-                    //if (email == _firebaseUser.Email && username != "UserName")
-                    //{
-
-                    //}
+                    
                     UserModel userData = new UserModel(userId, email, int.Parse(frindCount), displayName, username, phoneNumber, photoURL);
-                    //Debug.Log(userData.userId +" "+ userData.Email +" " + userData.Username +" " + userData.DisplayName
-                    //   +" " + userData.PhotoURL);
+                    
                     users.Add(userData);
                     if (userData.Email == _firebaseUser.Email && userData.Username != "UserName")
                     {
@@ -774,6 +863,7 @@ public class FbManager : MonoBehaviour
                         print(thisUserModel.DisplayName + ">>>>>>>>> displayName");
                         print(thisUserModel.PhoneNumber + ">>>>>>>>> phoneNumber");
                         print(thisUserModel.PhotoURL + ">>>>>>>>> photoURL");
+
                     }
                 }
              }
@@ -784,10 +874,53 @@ public class FbManager : MonoBehaviour
              }
         });
     }
-    //callback
-    void CallBackFunctionOnImageRetriveFromDatabase(Texture _profileImage)
+    public void FetchLatestUserDataAndAssign()
     {
-        userImageTexture = _profileImage;
+        bool isUserFound = false;
+        // Create a list to store the usernames
+        users = new List<UserModel>();
+
+        // Get a reference to the "users" node in the database
+        DatabaseReference usersRef = _databaseReference.Child("users");
+
+        // Attach a listener to the "users" node
+        usersRef.GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsCompleted)
+            {
+                // Iterate through the children of the "users" node and add each username to the list
+                DataSnapshot snapshot = task.Result;
+                var allUsersSnapshots = snapshot.Children.ToArrayPooled();
+                for (int userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
+                {
+                    if (!isUserFound)
+                    {
+                        string userId = allUsersSnapshots[userIndex].Key;
+                        string email = allUsersSnapshots[userIndex].Child("email").Value.ToString();
+
+                        string frindCount = allUsersSnapshots[userIndex].Child("friendCount").Value.ToString();
+                        string displayName = allUsersSnapshots[userIndex].Child("name").Value.ToString();
+                        string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
+
+                        string phoneNumber = allUsersSnapshots[userIndex].Child("phone").Value.ToString();
+                        string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
+                        UserModel userData = new UserModel(userId, email, int.Parse(frindCount), displayName, username, phoneNumber, photoURL);
+
+                        if (userData.Email == _firebaseUser.Email && userData.Username != "UserName")
+                        {
+                            thisUserModel = userData;
+                            isUserFound = true;
+                        }
+                    }
+                }
+                isUserFound = false;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError(task.Exception);
+                // Handle the error
+            }
+        });
     }
     public List<string> GetMyFriendShipRequests()
     {
@@ -1143,6 +1276,8 @@ public class FbManager : MonoBehaviour
             {
                 onSuccess?.Invoke(myReturnValue);
             }
+            else
+                Debug.Log("Expection");
         }));
     }
     private IEnumerator TryLoadImage(string MediaUrl, System.Action<Texture> callback) {

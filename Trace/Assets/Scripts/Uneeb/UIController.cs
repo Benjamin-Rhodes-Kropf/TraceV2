@@ -70,9 +70,9 @@ public class UIController : MonoBehaviour
     {
     #if UNITY_EDITOR
         StartCoroutine(FbManager.instance.UploadTraceImage( Application.dataPath + "/SaveImages/Traces/Image.png"));
-    #elif UNITY_IPHONE
-        StartCoroutine(FbManager.instance.UploadTrace( Application.persistentDataPath + "/SaveImages/Traces/Image.png"));
-    #endif 
+#elif UNITY_IPHONE
+        StartCoroutine(FbManager.instance.UploadTraceImage( Application.persistentDataPath + "/SaveImages/Traces/Image.png"));
+#endif
     }
     public void ShowImagePreview(string path) {
         StartCoroutine(path);
