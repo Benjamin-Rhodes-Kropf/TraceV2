@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Trace/Assets/Animations/HomeScreen.meta
 guid: 7cad125a469794602b42ea8b286e4e28
+========
+guid: 126d97057a1c646e5810249acd63cafc
+>>>>>>>> developer_uneeb:Trace/Assets/Animations/HomeScreen/SentReciveSelector.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
