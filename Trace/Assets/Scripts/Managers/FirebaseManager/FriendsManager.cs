@@ -6,24 +6,40 @@ using Firebase.Database;
 
 public partial class FbManager
 {
-
+    private string _previousRequestFrom = "";
+    
     private void HandleFriendRequest(object sender, ChildChangedEventArgs args)
     {
         if (args.Snapshot != null && args.Snapshot.Value != null)
         {
+            string senderId = args.Snapshot.Child("senderId").Value.ToString();
+            if (_previousRequestFrom == senderId)
+            {
+                _databaseReference.Child("allFriendRequests").ChildAdded -= HandleFriendRequest;
+                return;
+            }
             // Get the friend request data
             string requestId = args.Snapshot.Key;
-            string senderId = args.Snapshot.Child("senderId").Value.ToString();
             string receiverId = args.Snapshot.Child("receiverId").Value.ToString();
             string status = args.Snapshot.Child("status").Value.ToString();
 
             // Display the friend request to the user and provide options to accept or decline it
-            Debug.Log("Received friend request from " + senderId);
+            Debug.LogError("Received friend request from " + senderId);
+            _previousRequestFrom = senderId;
             // Display friend request UI here...
         }
     }
-    
-    
+
+
+
+    IEnumerator CheckForFriendRequest()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_timeToRepeatForCheckingRequest);
+            _databaseReference.Child("allFriendRequests").ChildAdded += HandleFriendRequest;
+        }
+    }
     
 
     public IEnumerator SendFriendRequest(string friendId, Action<bool> callback)

@@ -47,6 +47,9 @@ public partial class FbManager : MonoBehaviour
     public RawImage rawImage;
     public RawImage testRawImage;
 
+    [Header("Essential Properties")] 
+    [SerializeField] private float _timeToRepeatForCheckingRequest =   2f;
+
     public List<UserModel> AllUsers
     {
         get { return users; }
@@ -97,8 +100,12 @@ public partial class FbManager : MonoBehaviour
         Debug.Log("initalizing firebase");
         _firebaseAuth = FirebaseAuth.DefaultInstance;
         _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
-        _databaseReference.Child("FriendRequests").ChildAdded += HandleFriendRequest;
+        StartCoroutine(CheckForFriendRequest());
     }
+    
+    
+    
+    
     private void Start()
     {
         if (forceLogin)
@@ -135,6 +142,9 @@ public partial class FbManager : MonoBehaviour
 
     #region Current User
     #region -User Login/Logout
+    
+    
+    
     
     public void LogOutOfAccount()
     {
