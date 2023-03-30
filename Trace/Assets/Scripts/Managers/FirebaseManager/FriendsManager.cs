@@ -6,14 +6,14 @@ using Firebase.Database;
 
 public partial class FbManager
 {
-    private string _previousRequestFrom = "";
+    private List<string> _previousRequestFrom;
     
     private void HandleFriendRequest(object sender, ChildChangedEventArgs args)
     {
         if (args.Snapshot != null && args.Snapshot.Value != null)
         {
             string senderId = args.Snapshot.Child("senderId").Value.ToString();
-            if (_previousRequestFrom == senderId)
+            if (_previousRequestFrom.Contains(senderId))
             {
                 _databaseReference.Child("allFriendRequests").ChildAdded -= HandleFriendRequest;
                 return;
@@ -25,7 +25,7 @@ public partial class FbManager
 
             // Display the friend request to the user and provide options to accept or decline it
             Debug.LogError("Received friend request from " + senderId);
-            _previousRequestFrom = senderId;
+            _previousRequestFrom.Add(senderId);
             // Display friend request UI here...
         }
     }

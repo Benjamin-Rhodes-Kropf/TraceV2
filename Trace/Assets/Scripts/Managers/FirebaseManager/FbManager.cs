@@ -100,6 +100,7 @@ public partial class FbManager : MonoBehaviour
         Debug.Log("initalizing firebase");
         _firebaseAuth = FirebaseAuth.DefaultInstance;
         _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+        _previousRequestFrom = new List<string>();
         StartCoroutine(CheckForFriendRequest());
     }
     
