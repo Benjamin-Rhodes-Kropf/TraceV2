@@ -451,13 +451,15 @@ GameObject:
   - component: {fileID: 7678111119471680166}
   - component: {fileID: 7678111119471680167}
   - component: {fileID: 7678111119471680164}
+  - component: {fileID: 1482409322}
+  - component: {fileID: 1482409323}
   m_Layer: 5
   m_Name: Setting Up Account Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7678111119471680161
 RectTransform:
   m_ObjectHideFlags: 0
@@ -467,7 +469,7 @@ RectTransform:
   m_GameObject: {fileID: 7678111119471680165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7678111117935032041}
@@ -497,12 +499,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &7678111119471680167
 MonoBehaviour:
@@ -534,7 +536,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7678111119471680165}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
@@ -544,3 +546,46 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &1482409322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678111119471680165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77bf341413534d0ebfc681f7da3ade1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects: []
+  imgs:
+  - {fileID: 7678111117935032040}
+  - {fileID: 7678111118521596882}
+  - {fileID: 3971432066338492994}
+  - {fileID: 3971432067155791327}
+  - {fileID: 3971432067155791327}
+  txts:
+  - {fileID: 3971432065848803358}
+  initalColor: []
+  targetColor: []
+  fadeDuration: 1
+  startSortOrder: 0
+  endSortOrder: 0
+  moveToDisabledChild: 1
+  disabledParent: {fileID: 0}
+  fadeInOnEnabled: 0
+  waitBeforeFade: 0
+--- !u!114 &1482409323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678111119471680165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8a3d78ddc1414979ba96d531130902b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _screenManager: {fileID: 0}
