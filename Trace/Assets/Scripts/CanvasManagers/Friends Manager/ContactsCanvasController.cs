@@ -95,7 +95,7 @@ namespace CanvasManagers
         {
 
             if (inputText.Length <= 0)
-                PopulateFriendsList(0,null);
+                ClearFriendList();
             
             var canUpdate = inputText.Length > 2;
             
@@ -115,6 +115,15 @@ namespace CanvasManagers
             PopulateFriendsList(allUsersCount, users);
         }
 
+        private void ClearFriendList()
+        {
+            foreach (var friend in _view._friendsList)
+            {
+                friend.gameObject.SetActive(false);
+            }
+        }
+        
+        
         // TODO: Need to refactor this method
         private void PopulateFriendsList(int allUsersCount, List<UserModel> users)
         {
