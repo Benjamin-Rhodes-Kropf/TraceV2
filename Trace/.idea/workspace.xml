@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5fe41c51-35f7-4209-a441-efe0568605df" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/profileimage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/profileimage.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/EditProfileDetailsManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/EditProfileManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SettingsManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/chat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/chat.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/HomeScreen.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/HomeScreen.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/HomeScreen/SentReciveSelector.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/HomeScreen/SentReciveSelector.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Menu Animations/Button.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Menu Animations/Button.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Android.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NativeGallery/Android.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Android/NGCallbackHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Android/NGCallbackHelper.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/EditProfileManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Android/NGMediaReceiveCallbackAndroid.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Android/NGMediaReceiveCallbackAndroid.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/EditProfileDetailsManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Android/NGPermissionCallbackAndroid.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Android/NGPermissionCallbackAndroid.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/SettingsManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Android/NativeGallery.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Android/NativeGallery.aar.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NativeGallery/Android/NativeGallery.aar.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Editor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NativeGallery/Editor.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Editor/NGPostProcessBuild.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Editor/NGPostProcessBuild.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NativeGallery/Editor/NGPostProcessBuild.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Editor/NativeGallery.Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/Editor/NativeGallery.Editor.asmdef.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/NativeGallery.Runtime.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/NativeGallery.Runtime.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/NativeGallery.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/NativeGallery.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NativeGallery/NativeGallery.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/README.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NativeGallery/README.txt.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/iOS.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NativeGallery/iOS.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/iOS/NGMediaReceiveCallbackiOS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/iOS/NGMediaReceiveCallbackiOS.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NativeGallery/iOS/NGMediaReceiveCallbackiOS.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/iOS/NGMediaSaveCallbackiOS.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/iOS/NGMediaSaveCallbackiOS.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NativeGallery/iOS/NGMediaSaveCallbackiOS.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/iOS/NativeGallery.mm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/NativeGallery/iOS/NativeGallery.mm.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NativeGallery/iOS/NativeGallery.mm.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Settings.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Settings.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/StansAssets/Foundation/Editor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/StansAssets/Foundation/Editor.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/StansAssets/NativePlugins/IOSNativePro/MacOS/ISN_CloudKit.bundle/Contents/Info.plist.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/StansAssets/NativePlugins/IOSNativePro/MacOS/ISN_CloudKit.bundle/Contents/Info.plist.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/StansAssets/NativePlugins/IOSNativePro/Samples/CoreLocationUseExamples/ISN_CoreLocationExampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/StansAssets/NativePlugins/IOSNativePro/Samples/CoreLocationUseExamples/ISN_CoreLocationExampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/StansAssets/com.stansassets.plugins-dev-kit/Editor/Art/Icons/Generic/expand.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/StansAssets/com.stansassets.plugins-dev-kit/Editor/Art/Icons/Generic/expand.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Edit Profile 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Edit Profile 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Edit Profile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Edit Profile.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI/FriendsPopUp.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI/FriendsPopUp.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/UI/Popup.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/UI/Popup.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CanvasManagers/SelectFriends/SelectFriendsCanvas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CanvasManagers/SelectFriends/SelectFriendsCanvas.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/FirebaseManager/FbManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/FirebaseManager/FbManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/ScreenManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/ScreenManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Images/copy.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/Reporter/Images/copy.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/ReporterDocumentation/style.css.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unity-Logs-Viewer/ReporterDocumentation/style.css.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_ThirdParty/Infinity Code/Online maps/Textures/Markers/DefaultMarker.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_ThirdParty/Infinity Code/Online maps/Textures/Markers/DefaultMarker.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2NiJ3ZEXHNZijZLKWdpQ3N121sA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5fe41c51-35f7-4209-a441-efe0568605df" name="Changes" comment="" />
+      <created>1680140772687</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680140772687</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
