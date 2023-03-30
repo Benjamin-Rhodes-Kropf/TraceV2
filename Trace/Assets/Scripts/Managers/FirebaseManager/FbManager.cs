@@ -17,7 +17,7 @@ using DownloadHandler = Networking.DownloadHandler;
 using Object = System.Object;
 
 
-public class FbManager : MonoBehaviour
+public partial class FbManager : MonoBehaviour
 {
     [Header("Dont Destroy")]
     public static FbManager instance;
@@ -91,12 +91,14 @@ public class FbManager : MonoBehaviour
                 Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
             }
         });
+        
     }
     private void InitializeFirebase()
     {
         Debug.Log("initalizing firebase");
         _firebaseAuth = FirebaseAuth.DefaultInstance;
         _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+        _databaseReference.Child("FriendRequests").ChildAdded += HandleFriendRequest;
     }
     private void Start()
     {
