@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Trace/Assets/Unity-Logs-Viewer/ReporterDocumentation/style.css.meta
 guid: 2fe284c4cad97754296ef1bb99985423
+========
+guid: a8269f132ff2940f8a2190f72791bff3
+>>>>>>>> developer_uneeb:Trace/Assets/StreamingAssets/build_info.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

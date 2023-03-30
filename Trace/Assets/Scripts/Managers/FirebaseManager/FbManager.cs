@@ -26,7 +26,7 @@ public class FbManager : MonoBehaviour
     [SerializeField] private DependencyStatus dependencyStatus;
     [SerializeField] private String firebaseStorageReferenceUrl;
     [SerializeField] private FirebaseAuth _firebaseAuth;    
-    [SerializeField] private FirebaseUser _firebaseUser;
+    [HideInInspector] public FirebaseUser _firebaseUser;
     [SerializeField] private DatabaseReference _databaseReference;
     [SerializeField] private FirebaseStorage _firebaseStorage;
     [SerializeField] private StorageReference _firebaseStorageReference;
@@ -51,8 +51,9 @@ public class FbManager : MonoBehaviour
     {
         get { return users; }
     }
-
+    
     private List<UserModel> users;
+    [HideInInspector] public UserModel thisUserModel;
     void Awake()
     {
         if (resetPlayerPrefs)
@@ -228,7 +229,11 @@ public class FbManager : MonoBehaviour
 
         _firebaseUser = LoginTask.Result;
         Debug.LogFormat("User signed in successfully: {0} ({1})", _firebaseUser.DisplayName, _firebaseUser.Email);
+        Debug.Log("logged In: user profile ID is: " + _firebaseUser.UserId);
+        Debug.Log("logged In: user profile DisplayName is: " + _firebaseUser.DisplayName);
+        Debug.Log("logged In: user profile phone is: " + _firebaseUser.PhoneNumber);
         Debug.Log("logged In: user profile photo is: " + _firebaseUser.PhotoUrl);
+        Debug.Log(_firebaseUser.PhotoUrl + "        Photo ULR");
         callbackObject.IsSuccessful = true;
         //Load User Profile Texture
         /*StartCoroutine(FbManager.instance.GetMyUserProfilePhoto((myReturnValue) => {
@@ -738,19 +743,36 @@ public class FbManager : MonoBehaviour
                  // Iterate through the children of the "users" node and add each username to the list
                  DataSnapshot snapshot = task.Result;
                  var  allUsersSnapshots = snapshot.Children.ToArrayPooled();
-                 for (int userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
-                 {
-                     string userId = allUsersSnapshots[userIndex].Key; 
-                     string email = allUsersSnapshots[userIndex].Child("email").Value.ToString();
-                     string frindCount = allUsersSnapshots[userIndex].Child("friendCount").Value.ToString();
-                     string displayName = allUsersSnapshots[userIndex].Child("name").Value.ToString();
-                     string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
-                     string phoneNumber = allUsersSnapshots[userIndex].Child("phone").Value.ToString();
-                     string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
-                     UserModel userData = new UserModel(userId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
-                     users.Add(userData);
-                     print("Mail  Address :: "+ email);
-                 }
+                for (int userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
+                {
+                    string userId = allUsersSnapshots[userIndex].Key;
+                    string email = allUsersSnapshots[userIndex].Child("email").Value.ToString();
+
+                    string frindCount = allUsersSnapshots[userIndex].Child("friendCount").Value.ToString();
+                    string displayName = allUsersSnapshots[userIndex].Child("name").Value.ToString();
+                    string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
+
+                    string phoneNumber = allUsersSnapshots[userIndex].Child("phone").Value.ToString();
+                    string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
+                    //if (email == _firebaseUser.Email && username != "UserName")
+                    //{
+
+                    //}
+                    UserModel userData = new UserModel(userId, email, int.Parse(frindCount), displayName, username, phoneNumber, photoURL);
+                    //Debug.Log(userData.userId +" "+ userData.Email +" " + userData.Username +" " + userData.DisplayName
+                    //   +" " + userData.PhotoURL);
+                    users.Add(userData);
+                    if (userData.Email == _firebaseUser.Email && userData.Username != "UserName")
+                    {
+                        thisUserModel = userData;
+                        print(thisUserModel.userId + ">>>>>>>>> userId");
+                        print(thisUserModel.Email + ">>>>>>>>> email");
+                        print(thisUserModel.FriendCount + ">>>>>>>>> frindCount");
+                        print(thisUserModel.DisplayName + ">>>>>>>>> displayName");
+                        print(thisUserModel.PhoneNumber + ">>>>>>>>> phoneNumber");
+                        print(thisUserModel.PhotoURL + ">>>>>>>>> photoURL");
+                    }
+                }
              }
              if (task.IsFaulted)
              {
@@ -759,7 +781,11 @@ public class FbManager : MonoBehaviour
              }
         });
     }
-
+    //callback
+    void CallBackFunctionOnImageRetriveFromDatabase(Texture _profileImage)
+    {
+        userImageTexture = _profileImage;
+    }
     public List<string> GetMyFriendShipRequests()
     {
         List<string> listOfFriends = new List<string>();
@@ -1014,7 +1040,7 @@ public class FbManager : MonoBehaviour
     //AcceptFriendshipRequest
     //getPhotos
     
-    public IEnumerator UploadTraceImage(string fileLocation)
+        public IEnumerator UploadTraceImage(string fileLocation)
     {
         StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "photo");
         //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
