@@ -50,6 +50,7 @@ public partial class FbManager : MonoBehaviour
     [Header("Essential Properties")] 
     [SerializeField] private float _timeToRepeatForCheckingRequest =   2f;
 
+    public UserModel _currentUser;
     public List<UserModel> AllUsers
     {
         get { return users; }
@@ -260,10 +261,40 @@ public partial class FbManager : MonoBehaviour
         PlayerPrefs.SetString("Password", _password);
         PlayerPrefs.Save();
         
-       GetAllUserNames();
-
+        GetAllUserNames();
+        GetCurrentUserData(_password);
         callback(callbackObject);
     }
+
+    private void GetCurrentUserData(string password)
+    {
+       
+        // Get a reference to the "users" node in the database
+        DatabaseReference usersRef = _databaseReference.Child("users");
+        
+        // Attach a listener to the "users" node
+        usersRef.Child(_firebaseUser.UserId).GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsCompleted)
+            {
+                // Iterate through the children of the "users" node and add each username to the list
+                DataSnapshot snapshot = task.Result;
+                    string email = snapshot.Child("email").Value.ToString();
+                    string frindCount = snapshot.Child("friendCount").Value.ToString();
+                    string displayName = snapshot.Child("name").Value.ToString();
+                    string username = snapshot.Child("username").Value.ToString();
+                    string phoneNumber = snapshot.Child("phone").Value.ToString();
+                    string photoURL = snapshot.Child("userPhotoUrl").Value.ToString();
+                    _currentUser = new UserModel(_firebaseUser.UserId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL, password);
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError(task.Exception);
+                // Handle the error
+            }
+        });
+    }
+    
     private IEnumerator LogOut()
     {
         Debug.Log("FBManager: logging out");
@@ -762,7 +793,7 @@ public partial class FbManager : MonoBehaviour
                      string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
                      UserModel userData = new UserModel(userId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
                      users.Add(userData);
-                     print("Mail  Address :: "+ email);
+                     // print("Mail  Address :: "+ email);
                  }
              }
              if (task.IsFaulted)
