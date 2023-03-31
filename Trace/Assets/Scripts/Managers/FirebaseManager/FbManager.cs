@@ -617,6 +617,7 @@ public partial class FbManager : MonoBehaviour
         }
         else
         {
+            GetCurrentUserData("**********");
             callback(true);
         }
     }
