@@ -196,21 +196,33 @@ namespace CanvasManagers
 
         private void OnRequestsSelection()
         {
+            LoadAllRequests();
             SelectionPanelClick("Requests");
         }
+
+        private void LoadAllRequests()
+        {
+            var users = UserDataManager.Instance.GetFriendRequested();
+            _view._requestText.text = $"Requests ({users.Count})";
+            
+            foreach (var user in users)
+                UpdateRequestInfo(user);
+        }
+
+        private void UpdateRequestInfo(UserModel _user)
+        {
+            RequestView view = GameObject.Instantiate(_view._requestPrefab,_view._requestParent);
+            view.UpdateRequestView(_user);
+        }
+        
+        
+        
 
         private void OnFriendsSelection()
         {
             SelectionPanelClick("Friends");
         }
 
-        private void OnContactsSelection()
-        {
-            LoadAllContacts();
-            SelectionPanelClick("Contacts");
-        }
-        
-        
 
 
         private void SelectionPanelClick(string _selectedButton)
@@ -244,7 +256,14 @@ namespace CanvasManagers
             _previousSelectedButton.color = _selectedButtonColor;
         }
 
+
         private bool isLoaded = false;
+        private void OnContactsSelection()
+        {
+            LoadAllContacts();
+            SelectionPanelClick("Contacts");
+        }
+        
         private void LoadAllContacts()
         {
             if (isLoaded)
@@ -265,9 +284,6 @@ namespace CanvasManagers
 #endif            
             
         }
-
-
-
         private void LogContactInfo(ISN_CNContact contact)
         {
             try
@@ -281,5 +297,6 @@ namespace CanvasManagers
             }
         }
     }
+
 }
 
