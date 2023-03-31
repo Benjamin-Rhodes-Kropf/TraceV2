@@ -20,7 +20,10 @@ namespace CanvasManagers
         [Header("Contacts Info")] 
         public ContactView _contactPrfab;
         public Transform _contactParent;
-
+        [Header("Requests Info")] 
+        public RequestView _requestPrefab;
+        public Transform _requestParent;
+        public TMP_Text _requestText;
 
 
         [Header("Toggle Panels")] 

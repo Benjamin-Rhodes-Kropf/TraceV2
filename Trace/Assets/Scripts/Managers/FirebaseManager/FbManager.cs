@@ -263,6 +263,7 @@ public partial class FbManager : MonoBehaviour
         
         GetAllUserNames();
         GetCurrentUserData(_password);
+        StartCoroutine(RetrieveFriendRequests());
         callback(callbackObject);
     }
 

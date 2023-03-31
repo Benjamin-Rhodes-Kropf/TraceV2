@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,4 +48,21 @@ public class UserDataManager
         var users = GetUsersByLetters(userName);
         return users.Count < 1;
     }
+
+
+    public List<UserModel> GetFriendRequested()
+    {
+        List<UserModel> users = new List<UserModel>();
+        foreach (var id in FbManager.instance._previousRequestFrom)
+        {
+                var _userSearchQuery =
+                from user in FbManager.instance.AllUsers
+                where string.Equals(user.userId, id, StringComparison.Ordinal)
+                select user;
+                
+                users.AddRange(_userSearchQuery.ToArray());
+        }
+        return users;
+    }
+    
 }
