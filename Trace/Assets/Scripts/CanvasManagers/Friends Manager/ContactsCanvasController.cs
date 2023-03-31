@@ -193,7 +193,7 @@ namespace CanvasManagers
         }
 
 
-
+        private List<RequestView> _allRequests;
         private void OnRequestsSelection()
         {
             LoadAllRequests();
@@ -204,25 +204,44 @@ namespace CanvasManagers
         {
             var users = UserDataManager.Instance.GetFriendRequested();
             _view._requestText.text = $"Requests ({users.Count})";
-            
+            ClearRequestView();
+            _allRequests = new List<RequestView>();
             foreach (var user in users)
                 UpdateRequestInfo(user);
         }
 
+        private void ClearRequestView()
+        {
+            if (_allRequests == null)
+                return;
+            if (_allRequests.Count <= 0)
+                return;
+            foreach (var request in _allRequests)
+                GameObject.Destroy(request.gameObject);
+        }
         private void UpdateRequestInfo(UserModel _user)
         {
             RequestView view = GameObject.Instantiate(_view._requestPrefab,_view._requestParent);
             view.UpdateRequestView(_user);
+            _allRequests.Add(view);
         }
-        
-        
         
 
         private void OnFriendsSelection()
         {
+            LoadAllFriends();
             SelectionPanelClick("Friends");
         }
 
+        private void LoadAllFriends()
+        {
+            foreach (var friend in FbManager.instance._allFriends)
+            {
+                Debug.Log("Friend 1 ID :: "+ friend.friend1);
+                Debug.Log("Friend 2 ID :: "+ friend.friend2);
+                Debug.Log("Friends ID :: "+ friend.friendsID);
+            }
+        }
 
 
         private void SelectionPanelClick(string _selectedButton)
