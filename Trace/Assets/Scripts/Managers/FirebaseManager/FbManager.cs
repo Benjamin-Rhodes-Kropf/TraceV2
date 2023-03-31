@@ -102,6 +102,8 @@ public partial class FbManager : MonoBehaviour
         _firebaseAuth = FirebaseAuth.DefaultInstance;
         _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
         _previousRequestFrom = new List<string>();
+        _allRequests = new List<FriendRequests>();
+        _allFriends = new List<FriendModel>();
         StartCoroutine(CheckForFriendRequest());
     }
     
@@ -260,11 +262,12 @@ public partial class FbManager : MonoBehaviour
         PlayerPrefs.SetString("Username", _email);
         PlayerPrefs.SetString("Password", _password);
         PlayerPrefs.Save();
+        callback(callbackObject);
         
         GetAllUserNames();
         GetCurrentUserData(_password);
         StartCoroutine(RetrieveFriendRequests());
-        callback(callbackObject);
+        StartCoroutine(RetrieveFriends());
     }
 
     private void GetCurrentUserData(string password)

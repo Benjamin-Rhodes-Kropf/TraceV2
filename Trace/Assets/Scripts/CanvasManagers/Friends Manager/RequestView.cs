@@ -14,12 +14,13 @@ public class RequestView : MonoBehaviour
     public Button _removeButton;
 
 
-    private UserModel user;
-
+    private string requestId = "";
+    private string senderId = "";
 
     public void UpdateRequestView(UserModel user)
     {
-        this.user = user;
+        requestId = FriendRequestManager.Instance.GetRequestID(user.userId);
+        senderId = user.userId;
         user.ProfilePicture((sprite =>
         {
             _profilePicture.sprite = sprite;
@@ -32,16 +33,32 @@ public class RequestView : MonoBehaviour
         _removeButton.onClick.AddListener(OnClickRemove);
     }
 
-
+    //  TODO: i.  Remove Request From Local List
+    //  TODO: ii. Remove Request From Firebase
+    //  Todo: iii. Add User To Local and Firebase Friends List
     public void OnClickAccept()
     {
+        print("Accept Function Called");
+        StartCoroutine(
+        FbManager.instance.AcceptFriendRequest(requestId,senderId,(isUpdated =>
+        {
+            if (isUpdated)
+            {
+                FriendRequestManager.Instance.RemoveRequestFromList(senderId);
+                GameObject.Destroy(this);
+            }
+        })));
         
     }
 
-
+    //  TODO: i.  Remove Request From Local List
+    //  TODO: ii. Remove Request From Firebase
     public void OnClickRemove()
     {
-        
+        FbManager.instance.CancelFriendRequest(requestId);        
+        FriendRequestManager.Instance.RemoveRequestFromList(senderId);
+        GameObject.Destroy(this);
+
     }
     
 }

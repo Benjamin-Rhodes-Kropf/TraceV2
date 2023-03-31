@@ -53,11 +53,11 @@ public class UserDataManager
     public List<UserModel> GetFriendRequested()
     {
         List<UserModel> users = new List<UserModel>();
-        foreach (var id in FbManager.instance._previousRequestFrom)
+        foreach (var request in FbManager.instance._allRequests)
         {
                 var _userSearchQuery =
                 from user in FbManager.instance.AllUsers
-                where string.Equals(user.userId, id, StringComparison.Ordinal)
+                where string.Equals(user.userId, request.SenderID, StringComparison.Ordinal)
                 select user;
                 
                 users.AddRange(_userSearchQuery.ToArray());
