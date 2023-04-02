@@ -20,7 +20,8 @@ public class SettingsCanvas : MonoBehaviour
       if (_controller == null)
          _controller = new SettingCanvasController();
             
-      _controller.Init(this);
+      if (FbManager.instance.IsFirebaseUserInitialised)
+         _controller.Init(this);
    }
 
    private void OnDisable()

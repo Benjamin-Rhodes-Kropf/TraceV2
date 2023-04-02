@@ -51,6 +51,12 @@ public partial class FbManager : MonoBehaviour
     [SerializeField] private float _timeToRepeatForCheckingRequest =   2f;
 
     public UserModel _currentUser;
+
+    public bool IsFirebaseUserInitialised
+    {
+        get;
+        private set;
+    }
     public List<UserModel> AllUsers
     {
         get { return users; }
@@ -63,6 +69,8 @@ public partial class FbManager : MonoBehaviour
         {
             PlayerPrefs.DeleteAll();
         }
+
+        IsFirebaseUserInitialised = false;
         
         PlayerPrefs.SetInt("NumberOfTimesLoggedIn", PlayerPrefs.GetInt("NumberOfTimesLoggedIn")+1);
         if (PlayerPrefs.GetInt("NumberOfTimesLoggedIn") == 1)
@@ -290,6 +298,8 @@ public partial class FbManager : MonoBehaviour
                     string phoneNumber = snapshot.Child("phone").Value.ToString();
                     string photoURL = snapshot.Child("userPhotoUrl").Value.ToString();
                     _currentUser = new UserModel(_firebaseUser.UserId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL, password);
+
+                    IsFirebaseUserInitialised = true;
             }
             if (task.IsFaulted)
             {
