@@ -27,6 +27,4 @@ public class SettingCanvasController
             _view._profileImage.sprite = sprite;
         });
     }
-
-   
 }
