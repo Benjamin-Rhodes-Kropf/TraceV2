@@ -22,6 +22,9 @@ public class TookPhotoCanvasController
     
     private void LoadImageFromPath()
     {
+        if (TakePhotoCanvasController.imagePath == "")
+            return;
+        
         Texture2D tex = new Texture2D(2, 2);
         byte[] imageBytes = System.IO.File.ReadAllBytes(TakePhotoCanvasController.imagePath);
         tex.LoadImage(imageBytes);

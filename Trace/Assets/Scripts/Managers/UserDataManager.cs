@@ -65,4 +65,20 @@ public class UserDataManager
         return users;
     }
     
+    
+    public List<UserModel> GetAllFriends()
+    {
+        List<UserModel> users = new List<UserModel>();
+        foreach (var request in FbManager.instance._allFriends)
+        {
+            var _userSearchQuery =
+                from user in FbManager.instance.AllUsers
+                where string.Equals(user.userId, request.friend2, StringComparison.Ordinal)
+                select user;
+                
+            users.AddRange(_userSearchQuery.ToArray());
+        }
+        return users;
+    }
+    
 }
