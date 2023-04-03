@@ -204,7 +204,7 @@ public partial class FbManager
         }
         else
         {
-            DataSnapshot snapshot = task.Result;
+            DataSnapshot snapshot = task.Result; 
             foreach (var friend in snapshot.Children)
             {
                 string friend2 = friend.Child("friend2").Value.ToString();
@@ -218,6 +218,13 @@ public partial class FbManager
                 }
             }
         }
+    }
+
+
+    public void RemoveFriends(string friendshipId)
+    {
+        // Delete the friend request node
+        _databaseReference.Child("Friends").Child(friendshipId).RemoveValueAsync();
     }
 
     #endregion

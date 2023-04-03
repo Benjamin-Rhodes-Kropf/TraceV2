@@ -29,35 +29,28 @@ public class FriendView : MonoBehaviour
         {
             return _uid;
         }
-        
     }
     
     
 
-    public void UpdateFrindData(UserModel user)
+    public void UpdateFrindData(UserModel user, bool isFriendAdd = false)
     {
         _userName.text = user.Username;
         _nickName.text = user.DisplayName;
         _uid = user.userId;
         FriendButtonType buttonType = FriendButtonType.Add;
-
+        buttonType = isFriendAdd ? FriendButtonType.Remove : FriendButtonType.Add;
         var buttonData = GetButtonData(buttonType);
         _buttonBackground.color = _colors[buttonData.colorIndex];
         _buttonText.text = buttonData.buttonText;
+        
+        _addRemoveButton.onClick.RemoveAllListeners();
+        _addRemoveButton.onClick.AddListener(isFriendAdd ? RemoveFriends :  SendFriendRequest);
         
         FbManager.instance.GetProfilePhotoFromFirebaseStorage(user.userId, (texture) =>
         {
             _profilePic.texture = texture;
         });
-        
-        
-        // DownloadHandler.Instance.DownloadImage(user.PhotoURL, (texture) =>
-        // {
-        //     _profilePic.texture = texture;
-        // }, () =>
-        // {
-        //     Debug.Log("Error");
-        // });
 
     }
 
@@ -87,5 +80,32 @@ public class FriendView : MonoBehaviour
             _buttonBackground.color = _colors[buttonData.colorIndex];
             _buttonText.text = buttonData.buttonText;
         }
+    }
+    
+    
+    private void SendFriendRequest()
+    {
+        string friendUID = this.friendUID;
+            
+        if (friendUID == "")
+            return;
+        
+        StartCoroutine(FbManager.instance.SendFriendRequest(friendUID,  (IsSuccessful) => {
+            if (!IsSuccessful)
+            {
+                Debug.LogError("Friend request failed at : "+ friendUID);
+                return;
+            }
+            UpdateRequestStatus(true);
+            Debug.Log("friend requested at:" + friendUID);
+        }));
+    }
+
+    private void RemoveFriends()
+    {
+        string friendshipId = FriendsModelManager.Instance.GetFriendsID(_uid);
+        FriendsModelManager.Instance.RemoveFriendFromList(_uid);
+        FbManager.instance.RemoveFriends(friendshipId);
+        gameObject.SetActive(false);
     }
 }

@@ -45,7 +45,7 @@ public class RequestView : MonoBehaviour
             if (isUpdated)
             {
                 FriendRequestManager.Instance.RemoveRequestFromList(senderId);
-                GameObject.Destroy(this);
+                this.gameObject.SetActive(false);
             }
         })));
         

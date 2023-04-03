@@ -111,8 +111,7 @@ namespace CanvasManagers
                 return;
             }
 
-            int allUsersCount = users.Count;
-            PopulateFriendsList(allUsersCount, users);
+            PopulateFriendsList(users);
         }
 
         private void ClearFriendList()
@@ -125,10 +124,10 @@ namespace CanvasManagers
         
         
         // TODO: Need to refactor this method
-        private void PopulateFriendsList(int allUsersCount, List<UserModel> users)
+        private void PopulateFriendsList(List<UserModel> users, bool IsFriendsList = false)
         {
             int allFrindsTileCount = _view._friendsList.Count;
-
+            int allUsersCount = users.Count;
             bool isNeedToAddMoreTiles = allUsersCount > allFrindsTileCount;
 
             int totalUsers = isNeedToAddMoreTiles ? allUsersCount : allFrindsTileCount;
@@ -140,24 +139,16 @@ namespace CanvasManagers
                     if (userIndex < _view._friendsList.Count)
                     {
                         var friend = _view._friendsList[userIndex];
-                        friend.UpdateFrindData(users[userIndex]);
+                        friend.UpdateFrindData(users[userIndex], IsFriendsList);
                         friend.gameObject.SetActive(true);
-                        friend._addRemoveButton.onClick.RemoveAllListeners();
-                        friend._addRemoveButton.onClick.AddListener(() =>
-                        {
-                            SendFriendRequest(friend);
-                        });
+                        
                     }
                     else
                     {
                         FriendView friend = GameObject.Instantiate(_view.friendViewPrefab, _view._displayFrindsParent);
                         _view._friendsList.Add(friend);
-                        friend.UpdateFrindData(users[userIndex]);
-                        friend._addRemoveButton.onClick.RemoveAllListeners();
-                        friend._addRemoveButton.onClick.AddListener(() =>
-                        {
-                            SendFriendRequest(friend);
-                        });
+                        friend.UpdateFrindData(users[userIndex], IsFriendsList);
+                       
                     }
                 }
                 else
@@ -165,19 +156,14 @@ namespace CanvasManagers
                     if (userIndex < users.Count)
                     {
                         var friend = _view._friendsList[userIndex];
-                        friend.UpdateFrindData(users[userIndex]);
+                        friend.UpdateFrindData(users[userIndex], IsFriendsList);
                         friend.gameObject.SetActive(true);
-                        friend._addRemoveButton.onClick.RemoveAllListeners();
-                        friend._addRemoveButton.onClick.AddListener(() =>
-                        {
-                            SendFriendRequest(friend);
-                        });
+                        
                     }
                     else
                     {
                         var friend = _view._friendsList[userIndex];
                         friend.gameObject.SetActive(false);
-                        friend._addRemoveButton.onClick.RemoveAllListeners();
                     }
                 }
             }
@@ -235,12 +221,8 @@ namespace CanvasManagers
 
         private void LoadAllFriends()
         {
-            foreach (var friend in FbManager.instance._allFriends)
-            {
-                Debug.Log("Friend 1 ID :: "+ friend.friend1);
-                Debug.Log("Friend 2 ID :: "+ friend.friend2);
-                Debug.Log("Friends ID :: "+ friend.friendsID);
-            }
+            var users = UserDataManager.Instance.GetAllFriends();
+            PopulateFriendsList(users, true);
         }
 
 
