@@ -81,7 +81,11 @@ public partial class FbManager
         Dictionary<string, object> friendsData = new Dictionary<string, object>();
         friendsData["friend1"] = _firebaseUser.UserId;
         friendsData["friend2"] = senderId;
-        
+
+        FriendModel friend = new FriendModel();
+        friend.friendsID = friendId;
+        friend.friend1 = _firebaseUser.UserId;
+        friend.friend2 = senderId;
         
         var task = _databaseReference.Child("Friends").Child(friendId).SetValueAsync(friendsData);
 
@@ -95,9 +99,8 @@ public partial class FbManager
         }
         else
         {
-            // Add friends to each other's friend list
-            // _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(requestId).SetValueAsync(true);
-            // _databaseReference.Child("Friends").Child(requestId).Child(_firebaseUser.UserId).SetValueAsync(true);
+           
+            _allFriends.Add(friend);
             callback(true);
         }
         

@@ -32,10 +32,7 @@ public class RequestView : MonoBehaviour
         _removeButton.onClick.RemoveAllListeners();
         _removeButton.onClick.AddListener(OnClickRemove);
     }
-
-    //  TODO: i.  Remove Request From Local List
-    //  TODO: ii. Remove Request From Firebase
-    //  Todo: iii. Add User To Local and Firebase Friends List
+  
     public void OnClickAccept()
     {
         print("Accept Function Called");

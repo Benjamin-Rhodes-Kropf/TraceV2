@@ -6,20 +6,22 @@ using System.Linq;
 public class FriendRequestManager
 {
     private static FriendRequestManager instance = null;
-
+    public List<FriendRequests> sentRequests;
     public static FriendRequestManager Instance
     {
         get
         {
             if (instance == null)
+            {
                 instance = new FriendRequestManager();
+            }
 
             return instance;
         }
     }
     private FriendRequestManager()
-    {
-        
+    { 
+        sentRequests = new List<FriendRequests>();
     }
 
     public FriendRequests GetRequestBySenderID(string senderId)
