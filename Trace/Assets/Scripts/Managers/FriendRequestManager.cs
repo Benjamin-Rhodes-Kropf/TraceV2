@@ -24,11 +24,13 @@ public class FriendRequestManager
         sentRequests = new List<FriendRequests>();
     }
 
-    public FriendRequests GetRequestBySenderID(string senderId)
+    public FriendRequests GetRequestBySenderID(string senderId, bool isReceivedRequest = true)
     {
+        
+        
         FriendRequests friendRequest =
             
-            (from request in FbManager.instance._allRequests
+            (from request in FbManager.instance._allReceivedRequests
             where request.SenderID.Equals(senderId)
             select request).First();
 
@@ -52,7 +54,7 @@ public class FriendRequestManager
     public void RemoveRequestFromList(string senderId)
     {
         var request = GetRequestBySenderID(senderId);
-        FbManager.instance._allRequests.Remove(request);
+        FbManager.instance._allReceivedRequests.Remove(request);
     }
 
 

@@ -110,7 +110,7 @@ public partial class FbManager : MonoBehaviour
         _firebaseAuth = FirebaseAuth.DefaultInstance;
         _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
         _previousRequestFrom = new List<string>();
-        _allRequests = new List<FriendRequests>();
+        _allReceivedRequests = new List<FriendRequests>();
         _allFriends = new List<FriendModel>();
         StartCoroutine(CheckForFriendRequest());
     }
@@ -448,9 +448,9 @@ public partial class FbManager : MonoBehaviour
         //     yield return new WaitForEndOfFrame();
         // // yield return new WaitUntil(predicate: () => DBTaskSetPhoneNumberLinkToId.IsCompleted);
         //
-        var DBTaskSetUserFriends = _databaseReference.Child("friendRequests").Child(_firebaseUser.UserId).Child("null").SetValueAsync("null");
-        while (DBTaskSetUserFriends.IsCompleted is false)
-            yield return new WaitForEndOfFrame();
+        // var DBTaskSetUserFriends = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child("null").SetValueAsync("null");
+        // while (DBTaskSetUserFriends.IsCompleted is false)
+        //     yield return new WaitForEndOfFrame();
         
         // yield return new WaitUntil(predicate: () => DBTaskSetUserFriends.IsCompleted);
         
@@ -808,7 +808,7 @@ public partial class FbManager : MonoBehaviour
                      string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
                      UserModel userData = new UserModel(userId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
                      users.Add(userData);
-                     // print("Mail  Address :: "+ email);
+                     print("Mail  Address :: "+ email);
                  }
              }
              if (task.IsFaulted)

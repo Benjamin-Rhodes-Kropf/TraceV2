@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class FriendModel
 {
-    public string friend1;
-    public string friend2;
-    public string friendsID;
+    public string friend;
 }

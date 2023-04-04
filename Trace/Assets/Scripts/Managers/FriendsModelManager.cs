@@ -27,7 +27,7 @@ public class FriendsModelManager
         var friend =
             
             (from fri in FbManager.instance._allFriends
-                where fri.friend2.Equals(otherFriend)
+                where fri.friend.Equals(otherFriend)
                 select fri).First();
 
         return friend;
@@ -53,12 +53,5 @@ public class FriendsModelManager
         FbManager.instance._allFriends.Remove(friend);
     }
 
-
-    public string GetFriendsID(string otherFriend)
-    {
-        string friendsID = "";
-        var friend = GetFriendModelByOtherFriendID(otherFriend);
-        friendsID = friend.friendsID;
-        return friendsID;
-    }
+  
 }
