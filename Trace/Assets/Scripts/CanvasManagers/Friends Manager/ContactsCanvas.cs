@@ -37,6 +37,11 @@ namespace CanvasManagers
         public Button _contactsButton;
         public Button _friendsButton;
         public Button _requestsButton;
+
+
+        [Header("Search Bar Content")] 
+        public Transform _searchscrollParent;
+        public TMP_Text _searchTabTextPrefab;
         
         
         private ContactsCanvasController _controller;

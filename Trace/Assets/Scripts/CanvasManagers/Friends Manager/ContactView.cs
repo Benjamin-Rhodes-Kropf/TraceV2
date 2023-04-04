@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CanvasManagers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,10 +14,10 @@ public class ContactView : MonoBehaviour
    public Button _removeButton;
 
 
-   public void UpdateContactInfo(string name, string phoneNumber)
+   public void UpdateContactInfo(Contact contact)
    {
-      _givenName.text = name;
-      _phoneNumber.text = phoneNumber;
+      _givenName.text = contact.givenName;
+      _phoneNumber.text = contact.phoneNumber;
       _addButton.onClick.RemoveAllListeners();
       _addButton.onClick.AddListener(OnAddClick);
       _removeButton.onClick.RemoveAllListeners();
