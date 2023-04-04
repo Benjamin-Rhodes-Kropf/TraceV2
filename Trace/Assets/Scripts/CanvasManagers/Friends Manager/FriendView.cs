@@ -46,12 +46,11 @@ public class FriendView : MonoBehaviour
         
         _addRemoveButton.onClick.RemoveAllListeners();
         _addRemoveButton.onClick.AddListener(isFriendAdd ? RemoveFriends :  SendFriendRequest);
-        
-        FbManager.instance.GetProfilePhotoFromFirebaseStorage(user.userId, (texture) =>
-        {
-            _profilePic.texture = texture;
-        });
 
+        user.ProfilePicture((sprite =>
+        {
+            _profilePic.texture = sprite.texture;
+        }));
     }
 
 
