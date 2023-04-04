@@ -53,7 +53,7 @@ public class UserDataManager
     public List<UserModel> GetFriendRequested()
     {
         List<UserModel> users = new List<UserModel>();
-        foreach (var request in FbManager.instance._allRequests)
+        foreach (var request in FbManager.instance._allReceivedRequests)
         {
                 var _userSearchQuery =
                 from user in FbManager.instance.AllUsers
@@ -69,11 +69,11 @@ public class UserDataManager
     public List<UserModel> GetAllFriends()
     {
         List<UserModel> users = new List<UserModel>();
-        foreach (var request in FbManager.instance._allFriends)
+        foreach (var friendModel in FbManager.instance._allFriends)
         {
             var _userSearchQuery =
                 from user in FbManager.instance.AllUsers
-                where string.Equals(user.userId, request.friend2, StringComparison.Ordinal)
+                where string.Equals(user.userId, friendModel.friend, StringComparison.Ordinal)
                 select user;
                 
             users.AddRange(_userSearchQuery.ToArray());

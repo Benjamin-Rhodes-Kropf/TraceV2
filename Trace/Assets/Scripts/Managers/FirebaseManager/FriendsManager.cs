@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Firebase.Database;
 using Unity.VisualScripting;
+using Object = System.Object;
 
 public partial class FbManager
 {
     [HideInInspector] public List<string> _previousRequestFrom;
-    public List<FriendRequests> _allRequests;
+    public List<FriendRequests> _allReceivedRequests;
     public List<FriendModel> _allFriends;
 
     private void HandleFriendRequest(object sender, ChildChangedEventArgs args)
@@ -33,7 +34,7 @@ public partial class FbManager
             request.RequestID = requestId;
             request.ReceiverId = receiverId;
             request.SenderID = senderId;
-            _allRequests.Add(request);
+            _allReceivedRequests.Add(request);
             // Display friend request UI here...
         }
     }
@@ -75,20 +76,14 @@ public partial class FbManager
 
     public IEnumerator AcceptFriendRequest(string requestId, string senderId, Action<bool> callback)
     {
-        // Update the friend request status to accepted
         _databaseReference.Child("allFriendRequests").Child(requestId).RemoveValueAsync();
-        string friendId = _databaseReference.Child("Friends").Push().Key;
-        Dictionary<string, object> friendsData = new Dictionary<string, object>();
-        friendsData["friend1"] = _firebaseUser.UserId;
-        friendsData["friend2"] = senderId;
-
-        FriendModel friend = new FriendModel();
-        friend.friendsID = friendId;
-        friend.friend1 = _firebaseUser.UserId;
-        friend.friend2 = senderId;
         
-        var task = _databaseReference.Child("Friends").Child(friendId).SetValueAsync(friendsData);
-
+        FriendModel friend = new FriendModel();
+        friend.friend = senderId;
+        
+        // var task = _databaseReference.Child("Friends").Child(friendId).SetValueAsync(friendsData);
+        var task = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(senderId).SetValueAsync(true);
+        _databaseReference.Child("Friends").Child(senderId).Child(_firebaseUser.UserId).SetValueAsync(true);
         while (task.IsCompleted is false)
             yield return new WaitForEndOfFrame();
 
@@ -140,7 +135,40 @@ public partial class FbManager
                     req.SenderID = senderId;
                     req.ReceiverId = request.Child("receiverId").Value.ToString();
                     req.RequestID = request.Key;
-                    _allRequests.Add(req);
+                    print("Request ID :: "+ req.RequestID);
+                    _allReceivedRequests.Add(req);
+                }
+            }
+        }
+    }
+    
+    public IEnumerator RetrieveSentFriendRequests()
+    {
+        // Get the current user's ID
+        string userId = _firebaseUser.UserId;
+        DatabaseReference friendRequestsRef = _databaseReference.Child("allFriendRequests");
+
+        var task = friendRequestsRef.OrderByChild("senderId").EqualTo(userId).GetValueAsync();
+        while (task.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+
+        if (task.IsCanceled || task.IsFaulted)
+        {
+            print(task.Exception.Message);
+        }
+        else
+        {
+            DataSnapshot snapshot = task.Result;
+            foreach (var request in snapshot.Children)
+            {
+                string receiverId = request.Child("receiverId").Value.ToString();
+                if (FriendRequestManager.Instance.IsRequestAllReadyInList(receiverId) is false)
+                {
+                    FriendRequests req = new FriendRequests();
+                    req.SenderID = request.Child("senderId").Value.ToString();;
+                    req.ReceiverId = receiverId;
+                    req.RequestID = request.Key;
+                    _allReceivedRequests.Add(req);
                 }
             }
         }
@@ -197,7 +225,7 @@ public partial class FbManager
         string userId = _firebaseUser.UserId;
         DatabaseReference friendRequestsRef = _databaseReference.Child("Friends");
 
-        var task = friendRequestsRef.OrderByChild("friend1").EqualTo(userId).GetValueAsync();
+        var task = friendRequestsRef.Child(userId).GetValueAsync();
         while (task.IsCompleted is false)
             yield return new WaitForEndOfFrame();
 
@@ -210,13 +238,11 @@ public partial class FbManager
             DataSnapshot snapshot = task.Result; 
             foreach (var friend in snapshot.Children)
             {
-                string friend2 = friend.Child("friend2").Value.ToString();
-                if (FriendsModelManager.Instance.IsAlreadyFriend(friend2) is false)
+                string friendID = friend.Key.ToString();
+                if (FriendsModelManager.Instance.IsAlreadyFriend(friendID) is false)
                 {
                     FriendModel fri = new FriendModel();
-                    fri.friend1 = _firebaseUser.UserId;
-                    fri.friend2 = friend.Child("friend2").Value.ToString();
-                    fri.friendsID = friend.Key;
+                    fri.friend = friendID;
                     _allFriends.Add(fri);
                 }
             }
@@ -227,7 +253,7 @@ public partial class FbManager
     public void RemoveFriends(string friendshipId)
     {
         // Delete the friend request node
-        _databaseReference.Child("Friends").Child(friendshipId).RemoveValueAsync();
+        _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(friendshipId).RemoveValueAsync();
     }
 
     #endregion
