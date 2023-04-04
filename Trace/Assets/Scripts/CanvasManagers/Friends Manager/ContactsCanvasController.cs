@@ -28,11 +28,7 @@ namespace CanvasManagers
 
             OnFriendsSelection();
             
-            
             FrindsListInit();
-
-            _view._numberOfFriendsCountTitle.text = "0 Friends";
-            _view._numberOfFriendsCountScroll.text = "My Friends (0)";
         }
 
         public void UnInitialize()
@@ -51,46 +47,6 @@ namespace CanvasManagers
                 friend.gameObject.SetActive(false);
             }
         }
-
-
-        private void SendFriendRequest(FriendView friend)
-        {
-            string friendUID = friend.friendUID;
-            // username = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.transform
-            //     .GetComponentInParent<FriendView>().Username;
-            
-            
-            if (friendUID == "")
-            {
-                //Todo: update visuals accordingly
-                //return with smth along the lines of "you have to search a valid user first"
-                return;
-            }
-            //else make friend request
-            _view.StartCoroutine(FbManager.instance.SendFriendRequest(friendUID,  (IsSuccessful) => {
-                if (!IsSuccessful)
-                {
-                    Debug.LogError("Friend request failed at : "+ friendUID);
-                    //todo: make visual for non-valid return
-                    return;
-                }
-                //todo: make visual for valid return
-                friend.UpdateRequestStatus(true);
-                Debug.Log("friend requested at:" + friendUID);
-            }));
-        }
-        
-        // public void SendFriendRequest(string friendId)
-        // {
-        //     // Send push notification to friend
-        //     string title = "New Friend Request";
-        //     string body = "You have a new friend request from " + friendId;
-        //     string topic = friendId; // Send the notification to the friend's device
-        //
-        //     // FirebaseMessage message = new FirebaseMessage();
-        //
-        // }
-        
         private void OnInputValueChange(string inputText)
         {
 
@@ -110,8 +66,6 @@ namespace CanvasManagers
                 Debug.LogError("No Users Exist");
                 return;
             }
-
-            PopulateFriendsList(users);
         }
 
         private void ClearFriendList()
@@ -211,8 +165,8 @@ namespace CanvasManagers
             view.UpdateRequestView(_user);
             _allRequests.Add(view);
         }
-        
 
+        private List<FriendView> _allFriendsView;
         private void OnFriendsSelection()
         {
             LoadAllFriends();
@@ -222,9 +176,36 @@ namespace CanvasManagers
         private void LoadAllFriends()
         {
             var users = UserDataManager.Instance.GetAllFriends();
-            PopulateFriendsList(users, true);
+            
+            ClearFriendsView();
+            
+            _view._numberOfFriendsCountTitle.text = $"{users.Count} Friends";
+            _view._numberOfFriendsCountScroll.text = $"My Friends ({users.Count})";
+            _allFriendsView = new List<FriendView>();
+            foreach (var user in users)
+                UpdateFriendViewInfo(user);
         }
 
+
+        private void UpdateFriendViewInfo(UserModel user)
+        {
+            FriendView view = GameObject.Instantiate(_view.friendViewPrefab, _view._displayFrindsParent);
+            view.UpdateFrindData(user,true);
+            _allFriendsView.Add(view);
+        }
+        private void ClearFriendsView()
+        {
+            if (_allFriendsView == null)
+            {
+                _allRequests = new List<RequestView>();
+                return;
+            }
+            
+            if(_allFriendsView.Count <= 0)
+                return;
+            foreach (var view in _allFriendsView)
+                GameObject.Destroy(view.gameObject);
+        }
 
         private void SelectionPanelClick(string _selectedButton)
         {
