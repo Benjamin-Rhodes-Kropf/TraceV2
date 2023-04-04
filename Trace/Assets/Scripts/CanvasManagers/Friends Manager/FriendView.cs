@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Networking;
@@ -49,7 +50,14 @@ public class FriendView : MonoBehaviour
 
         user.ProfilePicture((sprite =>
         {
-            _profilePic.texture = sprite.texture;
+            try
+            {
+                _profilePic.texture = sprite.texture;
+            }
+            catch (Exception e)
+            {
+                print(e.Message);
+            }
         }));
     }
 

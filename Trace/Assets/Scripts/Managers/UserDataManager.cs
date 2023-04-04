@@ -41,7 +41,7 @@ public class UserDataManager
         return selectedUsers;
     }
 
-
+    
 
     public bool IsUsernameAvailable(string userName)
     {
@@ -64,7 +64,23 @@ public class UserDataManager
         }
         return users;
     }
-    
+    public List<UserModel> GetRequestsByName(string name)
+    {
+        var users = GetFriendRequested();
+        List<UserModel> selectedUsers = new List<UserModel>();
+        if (string.IsNullOrEmpty(name) is false && users.Count > 0)
+        {
+            // Query Syntax
+            IEnumerable<UserModel> _userSearchQuery =
+                from user in users
+                where user.Username.Contains(name)
+                orderby user.Username
+                select user;
+        
+            selectedUsers.AddRange(_userSearchQuery);
+        }
+        return selectedUsers;
+    }
     
     public List<UserModel> GetAllFriends()
     {
@@ -79,6 +95,35 @@ public class UserDataManager
             users.AddRange(_userSearchQuery.ToArray());
         }
         return users;
+    }
+
+    public List<UserModel> GetFriendsByName(string name)
+    {
+        var users = GetAllFriends();
+            List<UserModel> selectedUsers = new List<UserModel>();
+        if (string.IsNullOrEmpty(name) is false && users.Count > 0)
+        {
+            // Query Syntax
+            IEnumerable<UserModel> _userSearchQuery =
+                from user in users
+                where user.Username.Contains(name)
+                orderby user.Username
+                select user;
+        
+            selectedUsers.AddRange(_userSearchQuery);
+        }
+        return selectedUsers;
+    }
+
+    public void GetAllUsersBySearch(string name, out List<UserModel> friends, out List<UserModel> requests, out List<UserModel> others)
+    {
+        friends = new List<UserModel>();
+        requests = new List<UserModel>();
+        others = new List<UserModel>();
+
+        friends = GetFriendsByName(name);
+        requests = GetRequestsByName(name);
+        others = GetUsersByLetters(name);
     }
     
 }
