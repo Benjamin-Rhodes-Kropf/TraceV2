@@ -15,7 +15,7 @@ public class SelectRadiusCanvas : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         ScreenManager.instance.isComingFromCameraScene = true;
-        SceneManager.LoadScene(0);
+        SceneManager.UnloadSceneAsync(1);
     }
 
     // Start is called before the first frame update

@@ -77539,7 +77539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraManager: {fileID: 2355076385525282639}
-  isSendingPhoto: 0
+  isSendingPhoto: 1
   initailYVal: 0
   changeInYVal: 0
   Dy: 0
