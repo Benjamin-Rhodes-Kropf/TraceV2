@@ -355,7 +355,7 @@ namespace CanvasManagers
                 ContactView view = GameObject.Instantiate(_view._contactPrfab,_view._contactParent);
                 Contact cont = new Contact
                 {
-                    givenName = contact.GivenNames,
+                    givenName = contact.GivenName,
                     phoneNumber = contact.Phones[0].FullNumber
                 };
                 _allContacts.Add(cont);
