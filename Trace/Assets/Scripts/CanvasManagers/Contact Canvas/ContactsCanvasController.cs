@@ -70,7 +70,7 @@ namespace CanvasManagers
             SelectionPanelClick("SearchBar");
             searchList = new List<GameObject>();
             
-            UserDataManager.Instance.GetAllUsersBySearch(inputText, out List<UserModel> friends, out List<UserModel> requests, out List<UserModel> others);
+            UserDataManager.Instance.GetAllUsersBySearch(inputText, out List<UserModel> friends, out List<UserModel> requests,out List<UserModel> requestsSent, out List<UserModel> others);
             TryGetContactsByName(inputText, out List<Contact> contacts);
             if (friends.Count > 0)
             {
@@ -89,7 +89,7 @@ namespace CanvasManagers
             if (requests.Count > 0)
             {
                 var text = GameObject.Instantiate(_view._searchTabTextPrefab, _view._searchscrollParent);
-                text.text = "Requests";
+                text.text = "Requests Received";
                 searchList.Add(text.gameObject);
                 foreach (var request in requests)
                 {
@@ -98,6 +98,20 @@ namespace CanvasManagers
                     searchList.Add(view.gameObject);
                 }
             }
+            
+            if (requestsSent.Count > 0)
+            {
+                var text = GameObject.Instantiate(_view._searchTabTextPrefab, _view._searchscrollParent);
+                text.text = "Requests Sent";
+                searchList.Add(text.gameObject);
+                foreach (var request in requestsSent)
+                {
+                    var view = GameObject.Instantiate(_view._requestPrefab, _view._searchscrollParent);
+                    view.UpdateRequestView(request,false);
+                    searchList.Add(view.gameObject);
+                }
+            }
+            
 
             if (contacts.Count > 0)
             {
@@ -120,6 +134,8 @@ namespace CanvasManagers
                 foreach (var other in others)
                 {
                     if (friends.Contains(other)) continue;
+                    if (requestsSent.Contains(other)) continue;
+                    if (requests.Contains(other)) continue;
                     var view = GameObject.Instantiate(_view.friendViewPrefab, _view._searchscrollParent);
                     view.UpdateFrindData(other);
                     searchList.Add(view.gameObject);
@@ -211,11 +227,23 @@ namespace CanvasManagers
         private void LoadAllRequests()
         {
             var users = UserDataManager.Instance.GetFriendRequested();
-            _view._requestText.text = $"Requests ({users.Count})";
             ClearRequestView();
             _allRequests = new List<RequestView>();
-            foreach (var user in users)
-                UpdateRequestInfo(user);
+            if (users.Count > 0)
+            {
+                foreach (var user in users)
+                    UpdateRequestInfo(user);
+            }
+            
+            var sentRequests = UserDataManager.Instance.GetSentFriendRequests();
+            
+            if (sentRequests.Count > 0)
+            {                
+                foreach (var user in sentRequests)
+                    UpdateRequestInfo(user, false);
+            }
+            
+            _view._requestText.text = $"Requests ({users.Count + sentRequests.Count})";
         }
 
         private void ClearRequestView()
@@ -224,13 +252,14 @@ namespace CanvasManagers
                 return;
             if (_allRequests.Count <= 0)
                 return;
+            
             foreach (var request in _allRequests)
                 GameObject.Destroy(request.gameObject);
         }
-        private void UpdateRequestInfo(UserModel _user)
+        private void UpdateRequestInfo(UserModel _user, bool isReceivedRequest = true)
         {
             RequestView view = GameObject.Instantiate(_view._requestPrefab,_view._requestParent);
-            view.UpdateRequestView(_user);
+            view.UpdateRequestView(_user, isReceivedRequest);
             _allRequests.Add(view);
         }
 

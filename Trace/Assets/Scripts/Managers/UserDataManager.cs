@@ -57,16 +57,30 @@ public class UserDataManager
         {
                 var _userSearchQuery =
                 from user in FbManager.instance.AllUsers
-                where string.Equals(user.userId, request.SenderID, StringComparison.Ordinal)
+                where string.Equals(user.userId, request.SenderID)
                 select user;
-                
                 users.AddRange(_userSearchQuery.ToArray());
         }
         return users;
     }
-    public List<UserModel> GetRequestsByName(string name)
+    
+    public List<UserModel> GetSentFriendRequests()
     {
-        var users = GetFriendRequested();
+        List<UserModel> users = new List<UserModel>();
+        foreach (var request in FbManager.instance._allSentRequests)
+        {
+            var _userSearchQuery =
+                from user in FbManager.instance.AllUsers
+                where string.Equals(user.userId, request.ReceiverId, StringComparison.Ordinal)
+                select user;
+                
+            users.AddRange(_userSearchQuery.ToArray());
+        }
+        return users;
+    }
+    public List<UserModel> GetRequestsByName(string name, bool isReceived =  true)
+    {
+        var users = isReceived ? GetFriendRequested() : GetSentFriendRequests();
         List<UserModel> selectedUsers = new List<UserModel>();
         if (string.IsNullOrEmpty(name) is false && users.Count > 0)
         {
@@ -115,14 +129,16 @@ public class UserDataManager
         return selectedUsers;
     }
 
-    public void GetAllUsersBySearch(string name, out List<UserModel> friends, out List<UserModel> requests, out List<UserModel> others)
+    public void GetAllUsersBySearch(string name, out List<UserModel> friends, out List<UserModel> requests, out List<UserModel> requestsSent, out List<UserModel> others)
     {
         friends = new List<UserModel>();
         requests = new List<UserModel>();
+        requestsSent = new List<UserModel>();
         others = new List<UserModel>();
 
         friends = GetFriendsByName(name);
         requests = GetRequestsByName(name);
+        requestsSent = GetRequestsByName(name, false);
         others = GetUsersByLetters(name);
     }
     

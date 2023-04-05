@@ -823,6 +823,8 @@ MonoBehaviour:
   _profilePicture: {fileID: 6774183338346303374}
   _acceptButton: {fileID: 6695936799387143818}
   _removeButton: {fileID: 6695936798472229197}
+  _buttonText: {fileID: 6695936799017762762}
+  _buttonImage: {fileID: 6695936799387143813}
 --- !u!1 &6695936799872808986
 GameObject:
   m_ObjectHideFlags: 0
