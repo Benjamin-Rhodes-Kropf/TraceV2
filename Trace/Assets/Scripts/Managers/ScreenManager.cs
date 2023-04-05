@@ -38,7 +38,7 @@ public class ScreenManager : MonoBehaviour
     public bool isComingFromCameraScene = false;
     public string currentScreenName = null;
     //Reset Hierarchy
-    void Awake()
+    void OnEnable()
     {
         Debug.Log("ScreenManager:" + "Awake");
         //dont destroy
@@ -65,9 +65,13 @@ public class ScreenManager : MonoBehaviour
             s.ScreenObject.transform.SetParent(inactiveParent, false);
         }
 
-        if (!isComingFromCameraScene)
+        if (isComingFromCameraScene == false)
         {
             LoadingScreen();
+        }
+        else
+        {
+            isComingFromCameraScene = false;
         }
         
         activeParent.gameObject.SetActive(true);
@@ -105,7 +109,7 @@ public class ScreenManager : MonoBehaviour
     public void LoadingScreen()
     {
         // clear history
-        history = new List<UIScreen>();
+       history = new List<UIScreen>();
         UIScreen screen = ScreenFromID("Loading");
         current = screen;
         current.ScreenObject.SetParent(activeParent, false); // set current screen parent for animation
@@ -135,7 +139,7 @@ public class ScreenManager : MonoBehaviour
     //load camera scene
     public void LoadArScene() {
         ChangeScreenNoAnim("Camera Screen");
-        SceneManager.LoadScene("CemraWork");
+        SceneManager.LoadScene("CemraWork", LoadSceneMode.Additive);
     }
     //load main scene, used by the camera scene
     public void LoadMainMenuScene()

@@ -46,7 +46,6 @@ public partial class FbManager : MonoBehaviour
     [Header("Database Test Assets")]
     public RawImage rawImage;
     public RawImage testRawImage;
-
     public List<UserModel> AllUsers
     {
         get { return users; }
@@ -54,6 +53,12 @@ public partial class FbManager : MonoBehaviour
     
     private List<UserModel> users;
     [HideInInspector] public UserModel thisUserModel;
+
+    private void OnEnable()
+    {
+        
+    }
+
     void Awake()
     {
         if (resetPlayerPrefs)
@@ -129,6 +134,7 @@ public partial class FbManager : MonoBehaviour
 
         if (!forceLogin)
         { 
+            Debug.Log("Auto Login");
             StartCoroutine(AutoLogin());
         } 
 
