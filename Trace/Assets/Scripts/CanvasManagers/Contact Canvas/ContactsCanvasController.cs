@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using SA.iOS.Contacts;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +17,9 @@ namespace CanvasManagers
         private Color32 _selectedButtonColor = new Color32(128, 128, 128, 255);
         private Color32 _unSelectedButtonColor = new Color32(128, 128, 128, 0);
         private List<Contact> _allContacts;
+        
+        private static Regex _compiledUnicodeRegex = new Regex(@"[^\u0000-\u007F]", RegexOptions.Compiled);
+        
         public void Init(ContactsCanvas view)
         {
             this._view = view;
@@ -324,6 +329,7 @@ namespace CanvasManagers
 #if UNITY_EDITOR
 
 #elif UNITY_IOS
+                _allContacts = new List<Contact>();
              ISN_CNContactStore.FetchPhoneContacts((result) => {
                 if(result.IsSucceeded)
                 {
@@ -337,15 +343,19 @@ namespace CanvasManagers
 #endif            
             
         }
+        private String StripUnicodeCharactersFromString(string inputValue)
+        {
+            return _compiledUnicodeRegex.Replace(inputValue, String.Empty);
+        }
+
         private void LogContactInfo(ISN_CNContact contact)
         {
             try
             {
-                _allContacts = new List<Contact>();
                 ContactView view = GameObject.Instantiate(_view._contactPrfab,_view._contactParent);
                 Contact cont = new Contact
                 {
-                    givenName = contact.GivenName,
+                    givenName = contact.GivenNames,
                     phoneNumber = contact.Phones[0].FullNumber
                 };
                 _allContacts.Add(cont);
@@ -370,12 +380,19 @@ namespace CanvasManagers
             
             if (string.IsNullOrEmpty(name) is false )
             {
-                var list = _allContacts.Where(contact => contact.givenName.Contains(name)).ToList();
+                var list = _allContacts.Where(contact => contact.givenName.Contains(name, StringComparison.InvariantCultureIgnoreCase)).ToList();
                 // Query Syntax
                
                 Debug.Log("Total Contacts with :: " + list.Count);
                 selectedContacts.AddRange(list);
             }
+
+            foreach (var contact in _allContacts)
+            {
+                Debug.Log("Contact Name : "+ contact.givenName);
+                Debug.Log("Contact Number : "+ contact.phoneNumber);
+            }
+            
         }
     }
 
