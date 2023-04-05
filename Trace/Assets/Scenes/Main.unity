@@ -22635,9 +22635,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencyStatus: 0
   firebaseStorageReferenceUrl: gs://geosnapv1.appspot.com
-  autoLogin: 0
+  autoLogin: 1
   forceLogin: 0
-  useAdminForLogin: 0
+  useAdminForLogin: 1
   adminUser: test@gmail.com
   adminPass: test@gmail.com
   resetPlayerPrefs: 0
@@ -36854,6 +36854,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079585982}
   m_CullTransparentMesh: 1
+--- !u!1 &2089400299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4151876929245920457, guid: 38531ce1a214c4f0b90db688ef70173f, type: 3}
+  m_PrefabInstance: {fileID: 1612828927}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2089400303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089400299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272f7d700e88049afa75f5040e310efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2094547716
 GameObject:
   m_ObjectHideFlags: 0
@@ -61873,7 +61890,6 @@ GameObject:
   - component: {fileID: 6068666308761308067}
   - component: {fileID: 6068666308761308078}
   - component: {fileID: 6068666308761308076}
-  - component: {fileID: 6068666308761308077}
   - component: {fileID: 6068666308761308079}
   - component: {fileID: 6068666308761308073}
   - component: {fileID: 6068666308761308080}
@@ -62054,18 +62070,6 @@ MonoBehaviour:
   defaultScale: 1
   allowAddMarker3DByN: 1
   defaultPrefab: {fileID: 0}
---- !u!114 &6068666308761308077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6068666308761308064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed3c476c58b6b054d9469cbe6c8fa060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6068666308761308078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77534,6 +77538,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28afa40f4037446b912680d89eb8718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraManager: {fileID: 2355076385525282639}
+  isSendingPhoto: 0
   initailYVal: 0
   changeInYVal: 0
   Dy: 0
