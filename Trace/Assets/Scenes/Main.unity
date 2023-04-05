@@ -23025,7 +23025,7 @@ MonoBehaviour:
   autoLogin: 0
   forceLogin: 0
   useAdminForLogin: 0
-  adminUser: asodesk@gmail.com
+  adminUser: suttaparty@gmail.com
   adminPass: Abcd@123
   resetPlayerPrefs: 0
   userImageTexture: {fileID: 0}

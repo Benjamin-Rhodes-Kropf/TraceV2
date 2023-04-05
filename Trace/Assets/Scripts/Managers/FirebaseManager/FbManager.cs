@@ -111,6 +111,7 @@ public partial class FbManager : MonoBehaviour
         _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
         _previousRequestFrom = new List<string>();
         _allReceivedRequests = new List<FriendRequests>();
+        _allSentRequests = new List<FriendRequests>();
         _allFriends = new List<FriendModel>();
         StartCoroutine(CheckForFriendRequest());
     }
@@ -275,6 +276,7 @@ public partial class FbManager : MonoBehaviour
         GetAllUserNames();
         GetCurrentUserData(_password);
         StartCoroutine(RetrieveFriendRequests());
+        StartCoroutine(RetrieveSentFriendRequests());
         StartCoroutine(RetrieveFriends());
     }
 
@@ -808,7 +810,7 @@ public partial class FbManager : MonoBehaviour
                      string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
                      UserModel userData = new UserModel(userId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
                      users.Add(userData);
-                     print("Mail  Address :: "+ email);
+                     // print("Mail  Address :: "+ email);
                  }
              }
              if (task.IsFaulted)

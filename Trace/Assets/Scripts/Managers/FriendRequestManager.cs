@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class FriendRequestManager
 {
@@ -26,22 +28,32 @@ public class FriendRequestManager
 
     public FriendRequests GetRequestBySenderID(string senderId, bool isReceivedRequest = true)
     {
-        
-        
-        FriendRequests friendRequest =
-            
-            (from request in FbManager.instance._allReceivedRequests
-            where request.SenderID.Equals(senderId)
-            select request).First();
+        if (isReceivedRequest)
+        {
+                FriendRequests friendRequest =
 
-        return friendRequest;
+                    (from request in FbManager.instance._allReceivedRequests
+                        where request.SenderID.Equals(senderId)
+                        select request).First();
+
+                return friendRequest;
+        }
+        else
+        {
+                FriendRequests friendRequest =
+                    (from request in FbManager.instance._allSentRequests
+                        where request.ReceiverId.Equals(senderId)
+                        select request).First();
+                return friendRequest;
+        }
     }
+    
 
-    public bool IsRequestAllReadyInList(string senderId)
+    public bool IsRequestAllReadyInList(string senderId, bool isReceivedRequest = true)
     {
         try
         {
-            GetRequestBySenderID(senderId);
+            GetRequestBySenderID(senderId, isReceivedRequest);
             return true;
         }
         catch
@@ -58,10 +70,10 @@ public class FriendRequestManager
     }
 
 
-    public string GetRequestID(string senderId)
+    public string GetRequestID(string senderId, bool isReceivedRequest = true)
     {
         string requestID = "";
-        var request = GetRequestBySenderID(senderId);
+        var request = GetRequestBySenderID(senderId,  isReceivedRequest);
         requestID = request.RequestID;
         return requestID;
     }

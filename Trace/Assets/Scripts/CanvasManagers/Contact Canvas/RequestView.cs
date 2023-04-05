@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,23 +12,43 @@ public class RequestView : MonoBehaviour
     public Image _profilePicture;
     public Button _acceptButton;
     public Button _removeButton;
-
+    public TMP_Text _buttonText;
+    public Image _buttonImage;
 
     private string requestId = "";
     private string senderId = "";
 
-    public void UpdateRequestView(UserModel user)
+    public void UpdateRequestView(UserModel user, bool isReceivedRequest  = true)
     {
-        requestId = FriendRequestManager.Instance.GetRequestID(user.userId);
+        requestId = FriendRequestManager.Instance.GetRequestID(user.userId, isReceivedRequest);
         senderId = user.userId;
         user.ProfilePicture((sprite =>
         {
-            _profilePicture.sprite = sprite;
+            try
+            {
+                _profilePicture.sprite = sprite;
+            }
+            catch (Exception e)
+            {
+                
+            }
         }));
         _userName.text = user.Username;
         _displayName.text = user.DisplayName;
+
         _acceptButton.onClick.RemoveAllListeners();
-        _acceptButton.onClick.AddListener(OnClickAccept);
+        if (isReceivedRequest is false)
+        {
+            _acceptButton.onClick.AddListener(OnCancelClick);
+            _buttonText.text = "Sent";
+            _buttonImage.color = Color.red;
+        }
+        else
+        {
+            _buttonText.text = "Accept";
+            _acceptButton.onClick.AddListener(OnClickAccept);
+        }
+        
         _removeButton.onClick.RemoveAllListeners();
         _removeButton.onClick.AddListener(OnClickRemove);
     }
@@ -55,6 +76,12 @@ public class RequestView : MonoBehaviour
         FriendRequestManager.Instance.RemoveRequestFromList(senderId);
         GameObject.Destroy(this);
 
+    }
+
+
+    public void OnCancelClick()
+    {
+        
     }
     
 }
