@@ -1076,20 +1076,21 @@ public partial class FbManager : MonoBehaviour
     //getPhotos
     public IEnumerator UploadTraceImage(string fileLocation)
     {
+        
         StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "photo");
         //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
         traceReference.PutFileAsync(fileLocation)
             .ContinueWith((Task<StorageMetadata> task) => {
                 if (task.IsFaulted || task.IsCanceled) {
-                    Debug.Log(task.Exception.ToString());
+                    Debug.Log("FB Error:" + task.Exception.ToString());
                     // Uh-oh, an error occurred!
                 }
                 else {
                     // Metadata contains file metadata such as size, content-type, and download URL.
                     StorageMetadata metadata = task.Result;
                     string md5Hash = metadata.Md5Hash;
-                    Debug.Log("Finished uploading...");
-                    Debug.Log("md5 hash = " + md5Hash);
+                    Debug.Log("FB: Finished uploading...");
+                    Debug.Log("FB: md5 hash = " + md5Hash);
                 }
             });
         yield return new WaitForSeconds(0.1f);
