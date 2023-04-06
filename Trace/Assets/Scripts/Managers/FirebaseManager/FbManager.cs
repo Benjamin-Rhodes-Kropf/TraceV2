@@ -50,7 +50,7 @@ public partial class FbManager : MonoBehaviour
     [Header("Essential Properties")] 
     [SerializeField] private float _timeToRepeatForCheckingRequest =   2f;
 
-    public UserModel _currentUser;
+    public UserModel thisUserModel;
 
     public bool IsFirebaseUserInitialised
     {
@@ -299,7 +299,7 @@ public partial class FbManager : MonoBehaviour
                     string username = snapshot.Child("username").Value.ToString();
                     string phoneNumber = snapshot.Child("phone").Value.ToString();
                     string photoURL = snapshot.Child("userPhotoUrl").Value.ToString();
-                    _currentUser = new UserModel(_firebaseUser.UserId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL, password);
+                    thisUserModel = new UserModel(_firebaseUser.UserId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL, password);
 
                     IsFirebaseUserInitialised = true;
             }
@@ -1074,7 +1074,46 @@ public partial class FbManager : MonoBehaviour
     //GetFriendshipRequests
     //AcceptFriendshipRequest
     //getPhotos
-    
+    public IEnumerator UploadTraceImage(string fileLocation)
+    {
+        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "photo");
+        //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
+        traceReference.PutFileAsync(fileLocation)
+            .ContinueWith((Task<StorageMetadata> task) => {
+                if (task.IsFaulted || task.IsCanceled) {
+                    Debug.Log(task.Exception.ToString());
+                    // Uh-oh, an error occurred!
+                }
+                else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    StorageMetadata metadata = task.Result;
+                    string md5Hash = metadata.Md5Hash;
+                    Debug.Log("Finished uploading...");
+                    Debug.Log("md5 hash = " + md5Hash);
+                }
+            });
+        yield return new WaitForSeconds(0.1f);
+    }
+    public IEnumerator UploadTraceVideo(string fileLocation)
+    {
+        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "video");
+        //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
+        traceReference.PutFileAsync(fileLocation)
+            .ContinueWith((Task<StorageMetadata> task) => {
+                if (task.IsFaulted || task.IsCanceled) {
+                    Debug.Log(task.Exception.ToString());
+                    // Uh-oh, an error occurred!
+                }
+                else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    StorageMetadata metadata = task.Result;
+                    string md5Hash = metadata.Md5Hash;
+                    Debug.Log("Finished uploading...");
+                    Debug.Log("md5 hash = " + md5Hash);
+                }
+            });
+        yield return new WaitForSeconds(0.1f);
+    }
     public void AddFriend(String _username)
     {
         String _nickName = "null";
