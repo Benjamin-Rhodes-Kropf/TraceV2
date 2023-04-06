@@ -233,7 +233,7 @@ public class OnlineMapsTileSetControl : OnlineMapsControlBaseDynamicMesh
 
     protected override bool GetCoordsInternal(out double lng, out double lat)
     {
-        Debug.Log("Fetching coordinates");
+        // Debug.Log("Fetching coordinates");
         Vector2 position = GetInputPosition();
         if (dragPlane == null) return GetCoords(position, out lng, out lat);
 

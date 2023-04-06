@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: b28bbd01bd2e449d4a436077d652ce2f
-  - enabled: 1
-    path: Assets/Scenes/CemraWork.unity
-    guid: 36bffb7f707534c12a2221f92f7317db
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: d8493d7946776431b87f6a3d55343699, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 6ca9fa5fd5b26479c8c9eec34a00d4e2, type: 2}

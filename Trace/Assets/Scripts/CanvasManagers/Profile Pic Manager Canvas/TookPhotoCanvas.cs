@@ -15,8 +15,8 @@ public class TookPhotoCanvas : MonoBehaviour
     {
         if (_controller is null)
             _controller = new TookPhotoCanvasController(this);
-      
-        _controller.Init();
+        
+            _controller.Init();
     }
 
     private void OnDisable()
