@@ -158,11 +158,6 @@ public partial class FbManager : MonoBehaviour
     
     
     
-    
-    public void LogOutOfAccount()
-    {
-        StartCoroutine(LogOut());
-    }
     public IEnumerator ForceLogin()
     {
         //Todo: figure out which wait until to use...
@@ -194,7 +189,7 @@ public partial class FbManager : MonoBehaviour
                 else
                 {
                     Debug.LogError("FbManager: failed to auto login");
-                    StartCoroutine(LogOut());
+                    LogOut();
                 }
             }));
         }
@@ -311,15 +306,15 @@ public partial class FbManager : MonoBehaviour
         });
     }
     
-    private IEnumerator LogOut()
+    public void LogOut()
     {
         Debug.Log("FBManager: logging out");
         PlayerPrefs.SetString("Username", "null");
         PlayerPrefs.SetString("Password", "null");
         userImageTexture = null;
         _firebaseAuth.SignOut();
-        yield return new WaitForSeconds(0.8f);
-        ScreenManager.instance.WelcomeScreen();
+        ScreenManager.instance.ChangeScreenForwards("Welcome");
+        //ScreenManager.instance.WelcomeScreen();
     }
     #endregion
     #region -User Registration
