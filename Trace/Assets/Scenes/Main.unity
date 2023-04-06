@@ -30077,7 +30077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7719770423004558420, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LogOutOfAccount
+      value: LogOut
       objectReference: {fileID: 0}
     - target: {fileID: 7719770423004558420, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
