@@ -106,14 +106,14 @@ public partial class FbManager : MonoBehaviour
     }
     private void InitializeFirebase()
     {
-        Debug.Log("initalizing firebase");
+        Debug.Log("initializing firebase");
         _firebaseAuth = FirebaseAuth.DefaultInstance;
         _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
         _previousRequestFrom = new List<string>();
         _allReceivedRequests = new List<FriendRequests>();
         _allSentRequests = new List<FriendRequests>();
         _allFriends = new List<FriendModel>();
-        StartCoroutine(CheckForFriendRequest());
+        
     }
     
     
@@ -278,6 +278,8 @@ public partial class FbManager : MonoBehaviour
         StartCoroutine(RetrieveFriendRequests());
         StartCoroutine(RetrieveSentFriendRequests());
         StartCoroutine(RetrieveFriends());
+        StartCoroutine(CheckForFriendRequest());
+        StartCoroutine(CheckForNewFriends());
     }
 
     private void GetCurrentUserData(string password)
@@ -734,10 +736,21 @@ public partial class FbManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("task failed:" + task.Result);
-        }
+            try
+            {
+                Debug.Log("task failed:" + task.Result);
+            }
+            catch (Exception e)
+            {
+                
+            }
+        
+    }
 
-        DownloadHandler.Instance.DownloadImage(url, callback);
+        DownloadHandler.Instance.DownloadImage(url, callback, () =>
+        {
+            callback(null);
+        });
         
         // request = UnityWebRequestTexture.GetTexture((url)+"");
         //
@@ -1127,11 +1140,15 @@ public partial class FbManager : MonoBehaviour
             }
         });
     }
-    public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess) {
+    public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess, Action<string> onFailed) {
         StartCoroutine(GetProfilePhotoFromFirebaseStorageRoutine(userId, (myReturnValue) => {
             if (myReturnValue != null)
             {
                 onSuccess?.Invoke(myReturnValue);
+            }
+
+            {
+                onFailed?.Invoke("Image not Found");
             }
         }));
     }

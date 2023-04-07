@@ -93,6 +93,9 @@ public class FriendView : MonoBehaviour
     private void SendFriendRequest()
     {
         string friendUID = this.friendUID;
+
+        if (FriendRequestManager.Instance.IsRequestAllReadyInList(friendUID,false))
+            return;
             
         if (friendUID == "")
             return;
