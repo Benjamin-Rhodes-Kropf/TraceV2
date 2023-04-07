@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CanvasManagers;
 using UnityEngine;
 using Firebase.Database;
-using Unity.VisualScripting;
-using Object = System.Object;
+
 
 public partial class FbManager
 {
@@ -16,31 +16,76 @@ public partial class FbManager
 
     private void HandleFriendRequest(object sender, ChildChangedEventArgs args)
     {
-        if (args.Snapshot != null && args.Snapshot.Value != null)
+        try
         {
-            string senderId = args.Snapshot.Child("senderId").Value.ToString();
-            if (FriendRequestManager.Instance.IsRequestAllReadyInList(senderId))
+            
+            if (args.Snapshot != null && args.Snapshot.Value != null)
             {
-                _databaseReference.Child("allFriendRequests").ChildAdded -= HandleFriendRequest;
-                return;
+                string senderId = args.Snapshot.Child("senderId").Value.ToString();
+                
+                if (FriendRequestManager.Instance.IsRequestAllReadyInList(senderId) || senderId == _firebaseUser.UserId)
+                {
+                    _databaseReference.Child("allFriendRequests").ChildAdded -= HandleFriendRequest;
+                    return;
+                }
+
+                // Get the friend request data
+                string requestId = args.Snapshot.Key;
+                string receiverId = args.Snapshot.Child("receiverId").Value.ToString();
+                string status = args.Snapshot.Child("status").Value.ToString();
+
+                // Display the friend request to the user and provide options to accept or decline it
+                var request = new FriendRequests
+                {
+                    RequestID = requestId,
+                    ReceiverId = receiverId,
+                    SenderID = senderId
+                };
+                
+                _allReceivedRequests.Add(request);
+                
+                if (ContactsCanvas.UpdateRequestView != null)
+                    ContactsCanvas.UpdateRequestView?.Invoke();
+                // Display friend request UI here...
             }
-
-            // Get the friend request data
-            string requestId = args.Snapshot.Key;
-            string receiverId = args.Snapshot.Child("receiverId").Value.ToString();
-            string status = args.Snapshot.Child("status").Value.ToString();
-
-            // Display the friend request to the user and provide options to accept or decline it
-            Debug.LogError("Received friend request from " + senderId);
-            FriendRequests request = new FriendRequests();
-            request.RequestID = requestId;
-            request.ReceiverId = receiverId;
-            request.SenderID = senderId;
-            _allReceivedRequests.Add(request);
-            // Display friend request UI here...
+        
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
         }
     }
 
+    private void HandleFriends(object sender, ChildChangedEventArgs args)
+    {
+        try
+        {
+            if (args.Snapshot == null || args.Snapshot.Value == null) return;
+            var friendId = args.Snapshot.Value.ToString();
+
+            if (string.IsNullOrEmpty(friendId)) return;
+            
+            if (FriendsModelManager.Instance.IsAlreadyFriend(friendId))
+            {
+                _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded -= HandleFriends;
+                return;
+            }
+
+            // Display the friend request to the user and provide options to accept or decline it
+            Debug.LogError("New Friend Added " + friendId);
+            var friend = new FriendModel
+            {
+                friend = friendId
+            };
+            _allFriends.Add(friend);
+            if (ContactsCanvas.UpdateFriendsView != null)
+                ContactsCanvas.UpdateFriendsView?.Invoke();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
 
     IEnumerator CheckForFriendRequest()
     {
@@ -48,6 +93,16 @@ public partial class FbManager
         {
             yield return new WaitForSeconds(_timeToRepeatForCheckingRequest);
             _databaseReference.Child("allFriendRequests").ChildAdded += HandleFriendRequest;
+        }
+    }
+
+
+    IEnumerator CheckForNewFriends()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_timeToRepeatForCheckingRequest);
+            _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded += HandleFriends;
         }
     }
 
@@ -153,6 +208,9 @@ public partial class FbManager
                     req.SenderID = senderId;
                     req.ReceiverId = request.Child("receiverId").Value.ToString();
                     req.RequestID = request.Key;
+                    print("Request ID :: "+ req.RequestID);
+                    print("Sender ID :: "+ req.SenderID);
+                    print("Receiver ID :: "+ req.ReceiverId);
                     _allReceivedRequests.Add(req);
                 }
             }
@@ -243,6 +301,7 @@ public partial class FbManager
         DatabaseReference friendRequestsRef = _databaseReference.Child("Friends");
 
         var task = friendRequestsRef.Child(userId).GetValueAsync();
+
         while (task.IsCompleted is false)
             yield return new WaitForEndOfFrame();
 
@@ -264,6 +323,8 @@ public partial class FbManager
                 }
             }
         }
+
+        
     }
 
 
@@ -271,6 +332,7 @@ public partial class FbManager
     {
         // Delete the friend request node
         _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(friendshipId).RemoveValueAsync();
+        _databaseReference.Child("Friends").Child(friendshipId).Child(_firebaseUser.UserId).RemoveValueAsync();
     }
 
     #endregion

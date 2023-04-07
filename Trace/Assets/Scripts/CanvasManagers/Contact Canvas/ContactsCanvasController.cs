@@ -218,12 +218,20 @@ namespace CanvasManagers
 
 
         private List<RequestView> _allRequests;
+
+        public void UpdateRequestLayout()
+        {
+            if ( _view._requestsScroll.activeInHierarchy)
+                LoadAllRequests();
+        }
+        
         private void OnRequestsSelection()
         {
             LoadAllRequests();
             SelectionPanelClick("Requests");
         }
 
+     
         private void LoadAllRequests()
         {
             var users = UserDataManager.Instance.GetFriendRequested();
@@ -264,6 +272,12 @@ namespace CanvasManagers
         }
 
         private List<FriendView> _allFriendsView;
+
+        public void UpdateFriendsLayout()
+        {
+            if (_view._friendsScroll.activeInHierarchy)
+                LoadAllFriends();
+        }
         private void OnFriendsSelection()
         {
             LoadAllFriends();
