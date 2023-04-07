@@ -63,10 +63,14 @@ public class FriendRequestManager
     }
 
 
-    public void RemoveRequestFromList(string senderId)
+    public void RemoveRequestFromList(string senderId, bool isReceivedRequest  = true)
     {
-        var request = GetRequestBySenderID(senderId);
-        FbManager.instance._allReceivedRequests.Remove(request);
+        var request = GetRequestBySenderID(senderId, isReceivedRequest);
+        
+        if (isReceivedRequest)
+            FbManager.instance._allReceivedRequests.Remove(request);
+        else
+            FbManager.instance._allSentRequests.Remove(request);
     }
 
 
