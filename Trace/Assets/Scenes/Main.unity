@@ -77568,8 +77568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28afa40f4037446b912680d89eb8718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraManager: {fileID: 0}
-  isSendingPhoto: 0
+  cameraManager: {fileID: 2355076385525282639}
+  isSendingPhoto: 1
   initailYVal: 0
   changeInYVal: 0
   Dy: 0
