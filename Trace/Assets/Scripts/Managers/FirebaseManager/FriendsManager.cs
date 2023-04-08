@@ -58,7 +58,7 @@ public partial class FbManager
         catch (Exception e)
         {
             _databaseReference.Child("allFriendRequests").ChildAdded -= HandleFriendRequest;
-            Debug.Log("Exception From HandleFriendRequest");
+            // Debug.Log("Exception From HandleFriendRequest");
         }
     }
 
