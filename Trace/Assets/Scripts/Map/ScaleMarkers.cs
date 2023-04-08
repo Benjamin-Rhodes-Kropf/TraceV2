@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,11 @@ public class ScaleMarkers : MonoBehaviour
         OnChangeZoom();
     }
 
+    private void Update()
+    {
+        markerManager.items[0].scale = 0.1f;
+    }
+
     /// <summary>
     /// On change zoom.
     /// </summary>
@@ -35,9 +41,13 @@ public class ScaleMarkers : MonoBehaviour
         float originalScale = 1 << defaultZoom;
         float currentScale = 1 << OnlineMaps.instance.zoom;
 
-        foreach (var marker in markerManager.items)
+        for (int i = 1; i < markerManager.items.Count; i++)
+        {
+            markerManager.items[i].scale = currentScale / originalScale;
+        }
+        /*foreach (var marker in markerManager.items)
         {
             marker.scale = currentScale / originalScale;
-        }
+        }*/
     }
 }
