@@ -73,7 +73,7 @@ public class RequestView : MonoBehaviour
     public void OnClickRemove()
     {
         FbManager.instance.CancelFriendRequest(requestId);        
-        FriendRequestManager.Instance.RemoveRequestFromList(senderId, _buttonText.text != "Sent");
+        FriendRequestManager.Instance.RemoveRequestFromList(requestId, _buttonText.text != "Sent");
         gameObject.SetActive(false);
 
     }

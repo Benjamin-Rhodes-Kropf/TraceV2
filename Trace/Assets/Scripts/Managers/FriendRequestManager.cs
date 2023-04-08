@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Security.Principal;
+using CanvasManagers;
 using Unity.VisualScripting;
 
 public class FriendRequestManager
 {
     private static FriendRequestManager instance = null;
-    public List<FriendRequests> sentRequests;
+    public Dictionary<string, FriendRequests> _allSentRequests;
+
+
     public static FriendRequestManager Instance
     {
         get
@@ -16,6 +20,7 @@ public class FriendRequestManager
             if (instance == null)
             {
                 instance = new FriendRequestManager();
+                
             }
 
             return instance;
@@ -23,11 +28,13 @@ public class FriendRequestManager
     }
     private FriendRequestManager()
     { 
-        sentRequests = new List<FriendRequests>();
+        _allSentRequests = new Dictionary<string, FriendRequests>();
     }
 
-    public FriendRequests GetRequestBySenderID(string senderId, bool isReceivedRequest = true)
+
+    private FriendRequests GetRequestBySenderID(string senderId, bool isReceivedRequest = true)
     {
+        RemoveDuplicates();
         if (isReceivedRequest)
         {
                 FriendRequests friendRequest =
@@ -40,24 +47,48 @@ public class FriendRequestManager
         }
         else
         {
-                FriendRequests friendRequest =
-                    (from request in FbManager.instance._allSentRequests
-                        where request.ReceiverId.Equals(senderId)
-                        select request).First();
-                return friendRequest;
+                foreach (var id in _allSentRequests.Keys)
+                {
+                    var isExist = _allSentRequests[id].ReceiverId == senderId;
+                    if (isExist)
+                        return _allSentRequests[id];
+                }
+                return null;
         }
     }
-    
+
+    private FriendRequests GetRequestByRequestID(string requestId, bool isRecievedRequest = true)
+    {
+        if (isRecievedRequest)
+        {
+            FriendRequests friendRequest =
+                (from request in FbManager.instance._allReceivedRequests
+                    where request.RequestID.Equals(requestId)
+                    select request).FirstOrDefault();
+            return friendRequest;
+        }
+        else
+        {
+            if (_allSentRequests.ContainsKey(requestId))
+                return _allSentRequests[requestId];
+            else
+                return null;
+        }
+    }
 
     public bool IsRequestAllReadyInList(string senderId, bool isReceivedRequest = true)
     {
         try
         {
-            GetRequestBySenderID(senderId, isReceivedRequest);
+            var request = GetRequestBySenderID(senderId, isReceivedRequest);
+            if (request.RequestID.Equals(""))
+                return false;
+
             return true;
         }
-        catch
+        catch(Exception e)
         {
+            Debug.Log("Exception Caught in FriendsRequestManager.IsRequestAllReadyInList "+ e.Message);
             return false;
         }        
     }
@@ -66,11 +97,11 @@ public class FriendRequestManager
     public void RemoveRequestFromList(string senderId, bool isReceivedRequest  = true)
     {
         var request = GetRequestBySenderID(senderId, isReceivedRequest);
-        
+
         if (isReceivedRequest)
             FbManager.instance._allReceivedRequests.Remove(request);
         else
-            FbManager.instance._allSentRequests.Remove(request);
+            _allSentRequests.Remove(senderId);
     }
 
 
@@ -80,6 +111,44 @@ public class FriendRequestManager
         var request = GetRequestBySenderID(senderId,  isReceivedRequest);
         requestID = request.RequestID;
         return requestID;
+    }
+
+    public void RemoveRequest(string requestId)
+    {
+        var receivedRequest = GetRequestByRequestID(requestId);
+        if (receivedRequest != null)
+            FbManager.instance._allReceivedRequests.Remove(receivedRequest);
+        else
+        {
+            _allSentRequests.Remove(requestId);
+        }
+        if (ContactsCanvas.UpdateRequestView != null)
+            ContactsCanvas.UpdateRequestView?.Invoke();
+
+    }
+
+    public void RemoveRequestByUserID(string userId)
+    {
+        var receivedRequest = GetRequestBySenderID(userId);
+        if (receivedRequest != null)
+            FbManager.instance._allReceivedRequests.Remove(receivedRequest);
+        else
+        {
+            _allSentRequests.Remove(receivedRequest.RequestID);
+        }
+        if (ContactsCanvas.UpdateRequestView != null)
+            ContactsCanvas.UpdateRequestView?.Invoke();
+    }
+    
+
+    private void RemoveDuplicates()
+    {
+        List<FriendRequests> distinctList1 = FbManager.instance._allReceivedRequests.Distinct().ToList();
+        if (distinctList1.Count() != FbManager.instance._allReceivedRequests.Count())
+        {
+            FriendRequests duplicateItem = FbManager.instance._allReceivedRequests.Except(distinctList1).FirstOrDefault();
+            FbManager.instance._allReceivedRequests.RemoveAll(item => item.Equals(duplicateItem));
+        }
     }
     
 }

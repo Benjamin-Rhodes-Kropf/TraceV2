@@ -10712,7 +10712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4786457636958048647, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -124.50549
+      value: -124.50537
       objectReference: {fileID: 0}
     - target: {fileID: 4786457637030040451, guid: bc94b37cf3afc449f81c3ee156a4c390, type: 3}
       propertyPath: m_AnchorMax.y
@@ -23061,7 +23061,7 @@ MonoBehaviour:
   autoLogin: 1
   forceLogin: 0
   useAdminForLogin: 1
-  adminUser: suttaparty@gmail.com
+  adminUser: trace@gmail.com
   adminPass: Abcd@123
   resetPlayerPrefs: 0
   userImageTexture: {fileID: 0}

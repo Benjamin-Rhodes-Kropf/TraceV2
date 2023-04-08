@@ -14,6 +14,10 @@ public partial class FbManager
 
     public List<FriendModel> _allFriends;
 
+    #region Continues Listners 
+
+    
+
     private void HandleFriendRequest(object sender, ChildChangedEventArgs args)
     {
         try
@@ -46,6 +50,8 @@ public partial class FbManager
                 
                 if (ContactsCanvas.UpdateRequestView != null)
                     ContactsCanvas.UpdateRequestView?.Invoke();
+                
+                _databaseReference.Child("allFriendRequests").ChildAdded -= HandleFriendRequest;
                 // Display friend request UI here...
             }
         
@@ -56,30 +62,50 @@ public partial class FbManager
         }
     }
 
+    private void HandleRemovedRequests(object sender, ChildChangedEventArgs args)
+    {
+        try
+        {
+            if (args.Snapshot is not { Value: { } }) return;
+            
+            string requestId = args.Snapshot.Key;
+            
+            FriendRequestManager.Instance.RemoveRequest(requestId);
+          
+            _databaseReference.Child("allFriendRequests").ChildRemoved -= HandleRemovedRequests;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
     private void HandleFriends(object sender, ChildChangedEventArgs args)
     {
         try
         {
             if (args.Snapshot == null || args.Snapshot.Value == null) return;
-            var friendId = args.Snapshot.Value.ToString();
+            var friendId = args.Snapshot.Key.ToString();
 
             if (string.IsNullOrEmpty(friendId)) return;
             
-            if (FriendsModelManager.Instance.IsAlreadyFriend(friendId))
+            if (FriendsModelManager.Instance.IsAlreadyFriend(friendId) || friendId == _firebaseUser.UserId)
             {
                 _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded -= HandleFriends;
                 return;
             }
-
             // Display the friend request to the user and provide options to accept or decline it
-            Debug.LogError("New Friend Added " + friendId);
             var friend = new FriendModel
             {
                 friend = friendId
             };
+            
+         
             _allFriends.Add(friend);
             if (ContactsCanvas.UpdateFriendsView != null)
                 ContactsCanvas.UpdateFriendsView?.Invoke();
+            
+            _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded -= HandleFriends;
+
         }
         catch (Exception e)
         {
@@ -87,12 +113,39 @@ public partial class FbManager
         }
     }
 
+    private void HandleRemovedFriends(object sender, ChildChangedEventArgs args)
+    {
+        try
+        {
+            if (args.Snapshot == null || args.Snapshot.Value == null) return;
+            var friendId = args.Snapshot.Key.ToString();
+            FriendsModelManager.Instance.RemoveFriendFromList(friendId);
+            
+           
+            
+            _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildRemoved -= HandleRemovedFriends;
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
     IEnumerator CheckForFriendRequest()
     {
         while (true)
         {
             yield return new WaitForSeconds(_timeToRepeatForCheckingRequest);
             _databaseReference.Child("allFriendRequests").ChildAdded += HandleFriendRequest;
+        }
+    }
+
+    IEnumerator CheckIfFriendRequestRemoved()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_timeToRepeatForCheckingRequest);
+            _databaseReference.Child("allFriendRequests").ChildRemoved += HandleRemovedRequests;
         }
     }
 
@@ -105,16 +158,20 @@ public partial class FbManager
             _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded += HandleFriends;
         }
     }
+    
+    IEnumerator CheckIfFriendRemoved()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_timeToRepeatForCheckingRequest);
+            _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildRemoved += HandleRemovedFriends;
+        }
+    }
 
+    #endregion
 
     public IEnumerator SendFriendRequest(string friendId, Action<bool> callback)
     {
-        if (FriendRequestManager.Instance.IsRequestAllReadyInList(friendId,false))
-        {
-            callback(false);
-            yield break;
-        }
-        
         string requestId = _databaseReference.Child("allFriendRequests").Push().Key;
         Dictionary<string, object> requestData = new Dictionary<string, object>();
         requestData["senderId"] = _firebaseUser.UserId;
@@ -141,7 +198,7 @@ public partial class FbManager
         }
         else
         {
-            _allSentRequests.Add(request);
+            FriendRequestManager.Instance._allSentRequests.Add(requestId,request);
             callback(true);
         }
     }
@@ -168,7 +225,7 @@ public partial class FbManager
         else
         {
            
-            _allFriends.Add(friend);
+            // _allFriends.Add(friend);
             callback(true);
         }
         
@@ -243,7 +300,7 @@ public partial class FbManager
                     req.SenderID = request.Child("senderId").Value.ToString();;
                     req.ReceiverId = receiverId;
                     req.RequestID = request.Key;
-                    _allSentRequests.Add(req);
+                    FriendRequestManager.Instance._allSentRequests.Add(req.RequestID,req);
                 }
             }
         }

@@ -278,13 +278,19 @@ public partial class FbManager : MonoBehaviour
         StartCoroutine(RetrieveFriendRequests());
         StartCoroutine(RetrieveSentFriendRequests());
         StartCoroutine(RetrieveFriends());
+        ContinuesListners();
+    }
+
+    private void ContinuesListners()
+    {
         StartCoroutine(CheckForFriendRequest());
         StartCoroutine(CheckForNewFriends());
+        StartCoroutine(CheckIfFriendRequestRemoved());
+        StartCoroutine(CheckIfFriendRemoved());
     }
 
     private void GetCurrentUserData(string password)
     {
-       
         // Get a reference to the "users" node in the database
         DatabaseReference usersRef = _databaseReference.Child("users");
         
@@ -397,64 +403,12 @@ public partial class FbManager : MonoBehaviour
             print("User Email :: "+_firebaseUser.Email);
         }
         
-        
-        
-        // //Create a user profile and set the username todo: set user profile image dynamically
-        // UserProfile profile = new UserProfile{DisplayName = _username, PhotoUrl = new Uri("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/ProfilePhotos%2FEmptyPhoto.jpg?alt=media&token=fbc8b18c-4bdf-44fd-a4ba-7ae881d3f063")};
-        // var ProfileTask = _firebaseUser.UpdateUserProfileAsync(profile);
-        // yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
-        //
-        // if (ProfileTask.Exception != null)
-        // {
-        //     Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
-        //     Debug.LogWarning("Username Set Failed!");
-        //     callback("Something Went Wrong, Sorry", errorCode);
-        //     yield break;
-        // }
-        //
-        // var user = _firebaseAuth.CurrentUser;
-        // if (user == null)
-        // {
-        //     Debug.LogWarning("User Null");
-        //     yield break;
-        // }
-        //
-        // Firebase.Auth.UserProfile userProfile = new Firebase.Auth.UserProfile
-        // {
-        //     DisplayName = user.DisplayName,
-        // };
-        //
-        // user.UpdateUserProfileAsync(userProfile).ContinueWith(task =>
-        // {
-        //     if (task.IsCanceled)
-        //     {
-        //         Debug.LogError("UpdateUserProfileAsync was canceled.");
-        //         return;
-        //     }
-        //
-        //     if (task.IsFaulted)
-        //     {
-        //         Debug.LogError("UpdateUserProfileAsync encountered an error: " + task.Exception);
-        //     }
-        // });
-        
         var json = GenerateUserProfileJson( _username, "null", "null",_email, _phoneNumber);
         _databaseReference.Child("users").Child(_firebaseUser.UserId.ToString()).SetRawJsonValueAsync(json);
-        //
-        // var DBTaskSetUsernameLinkToId = _databaseReference.Child("usernames").Child(_username).SetValueAsync(_firebaseUser.UserId);
-        // while (DBTaskSetUsernameLinkToId.IsCompleted is false)
-        //     yield return new WaitForEndOfFrame();
-        //
-        // // yield return new WaitUntil(predicate: () => DBTaskSetUsernameLinkToId.IsCompleted);
-        //
-        // var DBTaskSetPhoneNumberLinkToId = _databaseReference.Child("phoneNumbers").Child(_firebaseUser.UserId).Child(_phoneNumber).SetValueAsync(_firebaseUser.UserId);
-        // while (DBTaskSetPhoneNumberLinkToId.IsCompleted is false)
-        //     yield return new WaitForEndOfFrame();
-        // // yield return new WaitUntil(predicate: () => DBTaskSetPhoneNumberLinkToId.IsCompleted);
-        //
-        // var DBTaskSetUserFriends = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child("null").SetValueAsync("null");
-        // while (DBTaskSetUserFriends.IsCompleted is false)
-        //     yield return new WaitForEndOfFrame();
+       
+        var DBTaskSetUserFriends = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child("Don't Delete This Child").SetValueAsync("*");
+        while (DBTaskSetUserFriends.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
         
         // yield return new WaitUntil(predicate: () => DBTaskSetUserFriends.IsCompleted);
         
@@ -473,128 +427,6 @@ public partial class FbManager : MonoBehaviour
         }));
         callback(null, errorCode);
     }
-
-
-   #region Old Register Method
-
-   
-
-    // public IEnumerator RegisterNewUser(string _email, string _password, string _username, string _phoneNumber,  System.Action<String> callback)
-    // {
-    //     if (_username == "")
-    //     {
-    //         callback("Missing Username"); //having a blank nickname is not really a DB error so I return a error here
-    //         yield break;
-    //     }
-    //
-    //     //Call the Firebase auth signin function passing the email and password
-    //     var RegisterTask = _firebaseAuth.CreateUserWithEmailAndPasswordAsync(_email, _password);
-    //     
-    //     //Wait until the task completes
-    //     //yield return new WaitUntil(predicate: () => RegisterTask.IsCompleted);
-    //
-    //     if (RegisterTask.Exception != null)
-    //     {
-    //         //If there are errors handle them
-    //         Debug.LogWarning(message: $"Failed to register task with {RegisterTask.Exception}");
-    //         FirebaseException firebaseEx = RegisterTask.Exception.GetBaseException() as FirebaseException;
-    //         AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
-    //         Debug.LogError(" What is the error code message ?? " + errorCode);
-    //         string message = "Register Failed!";
-    //         switch (errorCode)
-    //         {
-    //             case AuthError.MissingEmail:
-    //                 message = "Missing Email";
-    //                 break;
-    //             case AuthError.MissingPassword:
-    //                 message = "Missing Password";
-    //                 break;
-    //             case AuthError.WeakPassword:
-    //                 message = "Weak Password";
-    //                 break;
-    //             case AuthError.EmailAlreadyInUse:
-    //                 message = "Email Already In Use";
-    //                 break;
-    //         }
-    //         Debug.LogWarning(message);
-    //         callback(message);
-    //         yield break;
-    //     }
-    //
-    //     //User has now been created
-    //     // _firebaseUser = RegisterTask.Result;
-    //
-    //     if (_firebaseUser == null)
-    //     {
-    //         Debug.LogWarning("User Null");
-    //         yield break;
-    //     }
-    //
-    //     //Create a user profile and set the username todo: set user profile image dynamically
-    //     UserProfile profile = new UserProfile{DisplayName = _username, PhotoUrl = new Uri("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/ProfilePhotos%2FEmptyPhoto.jpg?alt=media&token=fbc8b18c-4bdf-44fd-a4ba-7ae881d3f063")};
-    //     var ProfileTask = _firebaseUser.UpdateUserProfileAsync(profile);
-    //     yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
-    //
-    //     if (ProfileTask.Exception != null)
-    //     {
-    //         Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
-    //         Debug.LogWarning("Username Set Failed!");
-    //         callback("Something Went Wrong, Sorry");
-    //         yield break;
-    //     }
-    //
-    //     var user = _firebaseAuth.CurrentUser;
-    //     if (user == null)
-    //     {
-    //         Debug.LogWarning("User Null");
-    //         yield break;
-    //     }
-    //
-    //     Firebase.Auth.UserProfile userProfile = new Firebase.Auth.UserProfile
-    //     {
-    //         DisplayName = user.DisplayName,
-    //     };
-    //    
-    //     user.UpdateUserProfileAsync(userProfile).ContinueWith(task =>
-    //     {
-    //         if (task.IsCanceled)
-    //         {
-    //             Debug.LogError("UpdateUserProfileAsync was canceled.");
-    //             return;
-    //         }
-    //
-    //         if (task.IsFaulted)
-    //         {
-    //             Debug.LogError("UpdateUserProfileAsync encountered an error: " + task.Exception);
-    //         }
-    //     });
-    //
-    //     var json = GenerateUserProfileJson( _username, "null", "null",_email, _phoneNumber);
-    //     _databaseReference.Child("users").Child(_firebaseUser.UserId.ToString()).SetRawJsonValueAsync(json);
-    //     
-    //     var DBTaskSetUsernameLinkToId = _databaseReference.Child("usernames").Child(_username).SetValueAsync(_firebaseUser.UserId);
-    //     yield return new WaitUntil(predicate: () => DBTaskSetUsernameLinkToId.IsCompleted);
-    //     
-    //     var DBTaskSetPhoneNumberLinkToId = _databaseReference.Child("phoneNumbers").Child(_firebaseUser.UserId).Child(_phoneNumber).SetValueAsync(_firebaseUser.UserId);
-    //     yield return new WaitUntil(predicate: () => DBTaskSetPhoneNumberLinkToId.IsCompleted);
-    //
-    //     var DBTaskSetUserFriends = _databaseReference.Child("friendRequests").Child(_firebaseUser.UserId).Child("null").SetValueAsync("null");
-    //     yield return new WaitUntil(predicate: () => DBTaskSetUserFriends.IsCompleted);
-    //     
-    //     //if nothing has gone wrong try logging in with new users information
-    //     StartCoroutine(Login(_email, _password, (myReturnValue) => {
-    //         if (myReturnValue != null)
-    //         {
-    //             Debug.LogWarning("failed to login");
-    //         }
-    //         else
-    //         {
-    //             Debug.Log("Logged In!");
-    //         }
-    //     }));
-    //     callback(null);
-    // }
-    #endregion
 
     #endregion
     #region -User Edit Information
