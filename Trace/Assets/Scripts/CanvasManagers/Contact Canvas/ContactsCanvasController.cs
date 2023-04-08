@@ -136,6 +136,7 @@ namespace CanvasManagers
                     if (friends.Contains(other)) continue;
                     if (requestsSent.Contains(other)) continue;
                     if (requests.Contains(other)) continue;
+                    if (other.userId == FbManager.instance._currentUser.userId) continue;
                     var view = GameObject.Instantiate(_view.friendViewPrefab, _view._searchscrollParent);
                     view.UpdateFrindData(other);
                     searchList.Add(view.gameObject);
@@ -218,12 +219,20 @@ namespace CanvasManagers
 
 
         private List<RequestView> _allRequests;
+
+        public void UpdateRequestLayout()
+        {
+            if ( _view._requestsScroll.activeInHierarchy)
+                LoadAllRequests();
+        }
+        
         private void OnRequestsSelection()
         {
             LoadAllRequests();
             SelectionPanelClick("Requests");
         }
 
+     
         private void LoadAllRequests()
         {
             var users = UserDataManager.Instance.GetFriendRequested();
@@ -264,6 +273,12 @@ namespace CanvasManagers
         }
 
         private List<FriendView> _allFriendsView;
+
+        public void UpdateFriendsLayout()
+        {
+            if (_view._friendsScroll.activeInHierarchy)
+                LoadAllFriends();
+        }
         private void OnFriendsSelection()
         {
             LoadAllFriends();
@@ -273,7 +288,7 @@ namespace CanvasManagers
         private void LoadAllFriends()
         {
             var users = UserDataManager.Instance.GetAllFriends();
-            
+            Debug.LogError("Update Layout Called");
             ClearFriendsView();
             
             _view._numberOfFriendsCountTitle.text = $"{users.Count} Friends";
