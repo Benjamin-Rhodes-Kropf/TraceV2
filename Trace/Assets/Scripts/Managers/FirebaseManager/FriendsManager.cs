@@ -51,14 +51,14 @@ public partial class FbManager
                 if (ContactsCanvas.UpdateRequestView != null)
                     ContactsCanvas.UpdateRequestView?.Invoke();
                 
-                _databaseReference.Child("allFriendRequests").ChildAdded -= HandleFriendRequest;
                 // Display friend request UI here...
             }
         
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            _databaseReference.Child("allFriendRequests").ChildAdded -= HandleFriendRequest;
+            Debug.Log("Exception From HandleFriendRequest");
         }
     }
 
