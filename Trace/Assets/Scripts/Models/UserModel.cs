@@ -38,7 +38,7 @@ public class UserModel
         {
            profilePicture = Sprite.Create(ChangeTextureType(tex), new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);;
            callback(profilePicture);
-        });
+        }, Debug.Log);
     }
 
 

@@ -46,6 +46,8 @@ namespace CanvasManagers
         
         private ContactsCanvasController _controller;
 
+        public static Action UpdateRequestView;
+        public static Action UpdateFriendsView;
 
         #region UnityEvents
 
@@ -53,14 +55,19 @@ namespace CanvasManagers
         {
             if (_controller == null)
                 _controller = new ContactsCanvasController();
-            
             _controller.Init(this);
+            UpdateRequestView += _controller.UpdateRequestLayout;
+            UpdateFriendsView += _controller.UpdateFriendsLayout;
         }
 
         private void OnDisable()
         {
             _controller.UnInitialize();
+            UpdateRequestView -= _controller.UpdateRequestLayout;
+            UpdateFriendsView -= _controller.UpdateFriendsLayout;
+
         }
+
 
         #endregion
         

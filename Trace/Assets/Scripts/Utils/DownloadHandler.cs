@@ -73,15 +73,21 @@ namespace Networking
             else if (www != null)
             {
                 Texture tempTexture = ((DownloadHandlerTexture) www.downloadHandler).texture;
-
-                float hToWRatio = (float) tempTexture.height / (float) tempTexture.width;
-
-                if (enqueueRequest)
-                    _enquedRequestsList.Remove(www);
                 
-                www.Dispose();
+                if (tempTexture == null)
+                    onFailed?.Invoke();
+                else
+                {
+                
+                    // float hToWRatio = (float) tempTexture.height / (float) tempTexture.width;
+                    
+                    if (enqueueRequest)
+                        _enquedRequestsList.Remove(www);
 
-                onCompleted?.Invoke(tempTexture);
+                    www.Dispose();
+
+                    onCompleted?.Invoke(tempTexture);
+                }
             }
         }
         

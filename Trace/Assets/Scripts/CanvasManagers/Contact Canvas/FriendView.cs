@@ -46,6 +46,7 @@ public class FriendView : MonoBehaviour
         _buttonText.text = buttonData.buttonText;
         
         _addRemoveButton.onClick.RemoveAllListeners();
+        
         _addRemoveButton.onClick.AddListener(isFriendAdd ? RemoveFriends :  SendFriendRequest);
 
         user.ProfilePicture((sprite =>
@@ -92,11 +93,17 @@ public class FriendView : MonoBehaviour
     
     private void SendFriendRequest()
     {
+        _addRemoveButton.interactable = false;
         string friendUID = this.friendUID;
-            
+        
         if (friendUID == "")
             return;
-        
+
+        Debug.LogError("Here after Checking friend ID "+  friendUID);
+        if (FriendRequestManager.Instance.IsRequestAllReadyInList(friendUID,false))
+            return;
+            
+        Debug.LogError("Here after Checking List");
         StartCoroutine(FbManager.instance.SendFriendRequest(friendUID,  (IsSuccessful) => {
             if (!IsSuccessful)
             {
@@ -104,13 +111,14 @@ public class FriendView : MonoBehaviour
                 return;
             }
             UpdateRequestStatus(true);
+            _addRemoveButton.interactable = true;
             Debug.Log("friend requested at:" + friendUID);
         }));
     }
 
     private void RemoveFriends()
     {
-        FriendsModelManager.Instance.RemoveFriendFromList(_uid);
+        // FriendsModelManager.Instance.RemoveFriendFromList(_uid);
         FbManager.instance.RemoveFriends(_uid);
         gameObject.SetActive(false);
     }
