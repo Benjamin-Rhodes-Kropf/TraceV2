@@ -93,6 +93,7 @@ public class FriendView : MonoBehaviour
     
     private void SendFriendRequest()
     {
+        _addRemoveButton.interactable = false;
         string friendUID = this.friendUID;
         
         if (friendUID == "")
@@ -110,6 +111,7 @@ public class FriendView : MonoBehaviour
                 return;
             }
             UpdateRequestStatus(true);
+            _addRemoveButton.interactable = true;
             Debug.Log("friend requested at:" + friendUID);
         }));
     }
