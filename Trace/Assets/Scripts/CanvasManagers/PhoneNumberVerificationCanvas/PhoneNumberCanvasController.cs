@@ -77,9 +77,10 @@ namespace CanvasManagers
         public void Varify_OTP()
         {
             Debug.LogError("Verify_OTP Called");
-            Credential credential = provider.GetCredential(_verficationId, _view._numberValidationView._verificationCode.text);
-            
-            var  isValid = credential.IsValid();
+            Credential credential =
+                provider.GetCredential(_verficationId, _view._numberValidationView._verificationCode.text);
+
+            var isValid = credential.IsValid();
             if (isValid)
             {
                 _view.StartCoroutine(FbManager.instance.SetUserPhoneNumber(phoneNumber, (isSuccess) =>
@@ -91,11 +92,8 @@ namespace CanvasManagers
                 }));
                 Debug.LogError("Valid Credentials");
             }
-            
-            
         }
-        
-        
+
         private void ActiveValidationWindow(string number)
         {
             _view.validationScreen.SetActive(true);
