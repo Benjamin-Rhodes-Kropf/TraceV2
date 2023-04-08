@@ -172,12 +172,6 @@ public partial class FbManager
 
     public IEnumerator SendFriendRequest(string friendId, Action<bool> callback)
     {
-        if (FriendRequestManager.Instance.IsRequestAllReadyInList(friendId,false))
-        {
-            callback(false);
-            yield break;
-        }
-        
         string requestId = _databaseReference.Child("allFriendRequests").Push().Key;
         Dictionary<string, object> requestData = new Dictionary<string, object>();
         requestData["senderId"] = _firebaseUser.UserId;

@@ -86,8 +86,9 @@ public class FriendRequestManager
 
             return true;
         }
-        catch
+        catch(Exception e)
         {
+            Debug.Log("Exception Caught in FriendsRequestManager.IsRequestAllReadyInList "+ e.Message);
             return false;
         }        
     }
@@ -148,14 +149,6 @@ public class FriendRequestManager
             FriendRequests duplicateItem = FbManager.instance._allReceivedRequests.Except(distinctList1).FirstOrDefault();
             FbManager.instance._allReceivedRequests.RemoveAll(item => item.Equals(duplicateItem));
         }
-        
-        List<FriendRequests> distinctList2 = FbManager.instance._allSentRequests.Distinct().ToList();
-        if (distinctList2.Count() != FbManager.instance._allSentRequests.Count())
-        {
-            FriendRequests duplicateItem = FbManager.instance._allSentRequests.Except(distinctList2).FirstOrDefault();
-            FbManager.instance._allSentRequests.RemoveAll(item => item.Equals(duplicateItem));
-        }
-        
     }
     
 }
