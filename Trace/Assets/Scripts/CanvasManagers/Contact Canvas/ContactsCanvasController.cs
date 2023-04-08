@@ -136,7 +136,7 @@ namespace CanvasManagers
                     if (friends.Contains(other)) continue;
                     if (requestsSent.Contains(other)) continue;
                     if (requests.Contains(other)) continue;
-                    if (other.userId == FbManager.instance._currentUser.userId) continue;
+                    if (other.userId == FbManager.instance.thisUserModel.userId) continue;
                     var view = GameObject.Instantiate(_view.friendViewPrefab, _view._searchscrollParent);
                     view.UpdateFrindData(other);
                     searchList.Add(view.gameObject);

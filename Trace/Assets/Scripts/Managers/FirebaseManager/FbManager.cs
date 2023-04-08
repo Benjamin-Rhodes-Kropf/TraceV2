@@ -1007,16 +1007,16 @@ public partial class FbManager : MonoBehaviour
             }
         });
     }
-    public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess, Action<string> onFailed) {
+    public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess) {
         StartCoroutine(GetProfilePhotoFromFirebaseStorageRoutine(userId, (myReturnValue) => {
             if (myReturnValue != null)
             {
                 onSuccess?.Invoke(myReturnValue);
             }
 
-            {
-                onFailed?.Invoke("Image not Found");
-            }
+            // {
+            //     onFailed?.Invoke("Image not Found");
+            // }
         }));
     }
     private IEnumerator TryLoadImage(string MediaUrl, System.Action<Texture> callback) {
