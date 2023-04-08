@@ -23058,9 +23058,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencyStatus: 0
   firebaseStorageReferenceUrl: gs://geosnapv1.appspot.com
-  autoLogin: 0
+  autoLogin: 1
   forceLogin: 0
-  useAdminForLogin: 0
+  useAdminForLogin: 1
   adminUser: trace@gmail.com
   adminPass: Abcd@123
   resetPlayerPrefs: 0
@@ -61920,7 +61920,6 @@ GameObject:
   - component: {fileID: 6068666308761308067}
   - component: {fileID: 6068666308761308078}
   - component: {fileID: 6068666308761308076}
-  - component: {fileID: 6068666308761308077}
   - component: {fileID: 6068666308761308079}
   - component: {fileID: 6068666308761308073}
   - component: {fileID: 6068666308761308080}
@@ -62071,7 +62070,7 @@ MonoBehaviour:
   markerTooltip: 
   markerType: 0
   marker2DAlign: 4
-  marker2DTexture: {fileID: 2800000, guid: 4d1c0cb4cbed344318c4503d36e001d3, type: 3}
+  marker2DTexture: {fileID: 2800000, guid: e1dafb22e41ab4f079fa8f62d2a45338, type: 3}
   marker3DPrefab: {fileID: 100000, guid: a85f02af30f3b1e4ba8512858f9c4316, type: 3}
   marker3DSizeType: 0
   maxPositionCount: 3
@@ -62101,18 +62100,6 @@ MonoBehaviour:
   defaultScale: 1
   allowAddMarker3DByN: 1
   defaultPrefab: {fileID: 0}
---- !u!114 &6068666308761308077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6068666308761308064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed3c476c58b6b054d9469cbe6c8fa060, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6068666308761308078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77581,6 +77568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28afa40f4037446b912680d89eb8718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraManager: {fileID: 0}
+  isSendingPhoto: 0
   initailYVal: 0
   changeInYVal: 0
   Dy: 0
