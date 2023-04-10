@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using System.Security.Principal;
 using CanvasManagers;
-using Unity.VisualScripting;
 
 public class FriendRequestManager
 {
@@ -40,7 +37,7 @@ public class FriendRequestManager
 
                     (from request in FbManager.instance._allReceivedRequests
                         where request.SenderID.Equals(senderId)
-                        select request).First();
+                        select request).FirstOrDefault();
 
                 return friendRequest;
         }
@@ -80,7 +77,7 @@ public class FriendRequestManager
         try
         {
             var request = GetRequestBySenderID(senderId, isReceivedRequest);
-            if (request.RequestID.Equals(""))
+            if (request == null)
                 return false;
 
             return true;
@@ -108,7 +105,10 @@ public class FriendRequestManager
     {
         string requestID = "";
         var request = GetRequestBySenderID(senderId,  isReceivedRequest);
-        requestID = request.RequestID;
+        
+        if (request != null)
+            requestID = request.RequestID;
+        
         return requestID;
     }
 
