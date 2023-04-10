@@ -23058,10 +23058,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencyStatus: 0
   firebaseStorageReferenceUrl: gs://geosnapv1.appspot.com
-  autoLogin: 0
+  autoLogin: 1
   forceLogin: 0
-  useAdminForLogin: 0
-  adminUser: trace@gmail.com
+  useAdminForLogin: 1
+  adminUser: mirza@gmail.com
   adminPass: Abcd@123
   resetPlayerPrefs: 0
   userImageTexture: {fileID: 0}

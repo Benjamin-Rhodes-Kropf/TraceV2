@@ -26,6 +26,13 @@ public partial class FbManager
             if (args.Snapshot != null && args.Snapshot.Value != null)
             {
                 string senderId = args.Snapshot.Child("senderId").Value.ToString();
+                string receiverId = args.Snapshot.Child("receiverId").Value.ToString();
+
+                if (receiverId != _firebaseUser.UserId)
+                {
+                    _databaseReference.Child("allFriendRequests").ChildAdded -= HandleFriendRequest;
+                    return;
+                }
                 
                 if (FriendRequestManager.Instance.IsRequestAllReadyInList(senderId) || senderId == _firebaseUser.UserId)
                 {
@@ -35,7 +42,6 @@ public partial class FbManager
 
                 // Get the friend request data
                 string requestId = args.Snapshot.Key;
-                string receiverId = args.Snapshot.Child("receiverId").Value.ToString();
                 string status = args.Snapshot.Child("status").Value.ToString();
 
                 // Display the friend request to the user and provide options to accept or decline it
