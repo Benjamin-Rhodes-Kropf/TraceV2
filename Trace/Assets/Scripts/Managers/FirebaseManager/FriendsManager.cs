@@ -188,6 +188,8 @@ public partial class FbManager
         // Create a new friend request node
         var task = _databaseReference.Child("allFriendRequests").Child(requestId).SetValueAsync(requestData);
 
+        //        var task = _databaseReference.Child("allFriendRequests").Child(friendId).Child(_firebaseUser.UserId).SetValueAsync(requestData);
+
         while (task.IsCompleted is false)
             yield return new WaitForEndOfFrame();
 

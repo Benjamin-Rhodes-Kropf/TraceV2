@@ -1013,10 +1013,6 @@ public partial class FbManager : MonoBehaviour
             {
                 onSuccess?.Invoke(myReturnValue);
             }
-
-            // {
-            //     onFailed?.Invoke("Image not Found");
-            // }
         }));
     }
     private IEnumerator TryLoadImage(string MediaUrl, System.Action<Texture> callback) {
