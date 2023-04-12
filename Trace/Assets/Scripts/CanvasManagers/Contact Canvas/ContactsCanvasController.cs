@@ -162,8 +162,7 @@ namespace CanvasManagers
             }
         }
         
-        
-        // TODO: Need to refactor this method
+        // TODO: Delete These Functions
         private void PopulateFriendsList(List<UserModel> users, bool IsFriendsList = false)
         {
             int allFrindsTileCount = _view._friendsList.Count;
@@ -208,8 +207,6 @@ namespace CanvasManagers
                 }
             }
         }
-
-        // TODO: Refactor it later
         private void PopulateFriendUIObject(FriendView friendView, UserModel data)
         {
             friendView.UpdateFrindData(data);
