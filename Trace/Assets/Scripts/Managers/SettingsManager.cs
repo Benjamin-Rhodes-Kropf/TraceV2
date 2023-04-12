@@ -16,6 +16,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Button notificationButton;
     Action<bool, string> callback;
     Action<Texture> onSuccess;
+    private Action<string> onFailed;
     private Texture myPicture;
 
 
@@ -30,9 +31,10 @@ public class SettingsManager : MonoBehaviour
 
         callback += CallBackFunction;
         onSuccess += CallBackFunctionOnImageRetriveFromDatabase;
+        onFailed += CallBackFunctionOnImageRetriveFailedFromDatabase;
         profileName.text = FbManager.instance.thisUserModel.DisplayName;
         userName.text = FbManager.instance.thisUserModel.Username;
-        FbManager.instance.GetProfilePhotoFromFirebaseStorage(FbManager.instance.thisUserModel.userId, onSuccess);
+        FbManager.instance.GetProfilePhotoFromFirebaseStorage(FbManager.instance.thisUserModel.userId, onSuccess,onFailed);
     }
 
     public void OpenGalleryForProfilePictureSelection() {
@@ -50,6 +52,11 @@ public class SettingsManager : MonoBehaviour
         profileImage.texture = FbManager.instance.userImageTexture;
 
         //return _profileImage;
+    }
+
+    void CallBackFunctionOnImageRetriveFailedFromDatabase(string message)
+    {
+        Debug.Log(message);
     }
     public void About() {
         Application.OpenURL("https://www.leaveatrace.app/");

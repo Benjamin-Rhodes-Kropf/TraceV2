@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 using System;
-=======
->>>>>>> 5e09c71 (Profile Screen Managers)
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+
 public class UserDataManager
 {
     private static UserDataManager instance = null;
@@ -43,18 +41,13 @@ public class UserDataManager
         return selectedUsers;
     }
 
-<<<<<<< HEAD
     
-=======
-
->>>>>>> 5e09c71 (Profile Screen Managers)
 
     public bool IsUsernameAvailable(string userName)
     {
         var users = GetUsersByLetters(userName);
         return users.Count < 1;
     }
-<<<<<<< HEAD
 
 
     public List<UserModel> GetFriendRequested()
@@ -149,6 +142,4 @@ public class UserDataManager
         others = GetUsersByLetters(name);
     }
     
-=======
->>>>>>> 5e09c71 (Profile Screen Managers)
 }
