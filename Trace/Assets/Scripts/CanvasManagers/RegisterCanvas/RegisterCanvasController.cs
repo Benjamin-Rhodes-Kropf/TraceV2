@@ -66,7 +66,6 @@ namespace CanvasManagers
                 }
                 else
                 {
-                    // ScreenManager.instance.ChangeScreenForwards("Username");
                     ScreenManager.instance.ChangeScreenForwards("PhoneNumber");
                 }
             }));
