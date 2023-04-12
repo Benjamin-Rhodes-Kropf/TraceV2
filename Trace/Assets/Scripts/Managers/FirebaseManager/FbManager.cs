@@ -573,9 +573,10 @@ public partial class FbManager : MonoBehaviour
             }
             catch (Exception e)
             {
-
+                
             }
-        }
+        
+    }
 
         DownloadHandler.Instance.DownloadImage(url, callback, () =>
         {
@@ -612,6 +613,7 @@ public partial class FbManager : MonoBehaviour
             callback(DBTask.Result.ToString());
         }
     }
+
     private void GetAllUserNames()
     {
         // Create a list to store the usernames
@@ -649,6 +651,7 @@ public partial class FbManager : MonoBehaviour
              }
         });
     }
+
     public List<string> GetMyFriendShipRequests()
     {
         List<string> listOfFriends = new List<string>();
@@ -959,6 +962,7 @@ public partial class FbManager : MonoBehaviour
             callback(callbackObject);
         }
     }
+    
     // TODO: Redundant function
     public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess) {
         StartCoroutine(GetProfilePhotoFromFirebaseStorageRoutine(userId, (myReturnValue) => {
