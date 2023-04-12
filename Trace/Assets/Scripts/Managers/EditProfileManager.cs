@@ -12,16 +12,19 @@ public class EditProfileManager : MonoBehaviour
     public RawImage profileImage;
     void Start()
     {
-        profileImage.texture = FbManager.instance.userImageTexture;
+        FbManager.instance.thisUserModel.ProfilePicture((sprite =>
+        {
+            profileImage.texture = sprite.texture;
+        }));
         foreach (var item in displayName)
         {
-            item.text = FbManager.instance._currentUser.DisplayName;
+            item.text = FbManager.instance.thisUserModel.DisplayName;
         }
         foreach (var item in userName)
         {
-            item.text = FbManager.instance._currentUser.Username;
+            item.text = FbManager.instance.thisUserModel.Username;
         }
-        emailId.text = FbManager.instance._currentUser.Email;
+        emailId.text = FbManager.instance.thisUserModel.Email;
 
     }
 
