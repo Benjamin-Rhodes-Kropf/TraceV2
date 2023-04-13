@@ -20,19 +20,18 @@ namespace CanvasManagers
         [Header("Contacts Info")] 
         public ContactView _contactPrfab;
         public Transform _contactParent;
+        
         [Header("Requests Info")] 
         public RequestView _requestPrefab;
         public Transform _requestParent;
         public TMP_Text _requestText;
-
 
         [Header("Toggle Panels")] 
         public GameObject _contactsScroll;
         public GameObject _friendsScroll;
         public GameObject _requestsScroll;
         public GameObject _searchScroll;
-
-
+        
         [Header("Panel Toggle Buttons")] 
         public Button _contactsButton;
         public Button _friendsButton;
@@ -65,7 +64,6 @@ namespace CanvasManagers
             _controller.UnInitialize();
             UpdateRequestView -= _controller.UpdateRequestLayout;
             UpdateFriendsView -= _controller.UpdateFriendsLayout;
-
         }
 
 
