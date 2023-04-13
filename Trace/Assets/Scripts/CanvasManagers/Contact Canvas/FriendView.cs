@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class FriendView : MonoBehaviour
 {
+    
     public enum FriendButtonType
     {
         Add,
