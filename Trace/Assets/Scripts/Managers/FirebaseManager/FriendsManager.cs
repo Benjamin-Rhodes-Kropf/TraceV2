@@ -40,6 +40,9 @@ public partial class FbManager
                     return;
                 }
 
+                print("Receiver ID : "+ receiverId);
+                print("Sender ID : "+ senderId);
+                
                 // Get the friend request data
                 string requestId = args.Snapshot.Key;
                 string status = args.Snapshot.Child("status").Value.ToString();
@@ -105,7 +108,7 @@ public partial class FbManager
                 friend = friendId
             };
             
-         
+            print("New Friend Added :: "+ friendId);
             _allFriends.Add(friend);
             if (ContactsCanvas.UpdateFriendsView != null)
                 ContactsCanvas.UpdateFriendsView?.Invoke();
@@ -213,11 +216,13 @@ public partial class FbManager
     {
         _databaseReference.Child("allFriendRequests").Child(requestId).RemoveValueAsync();
         
-        var friend = new FriendModel
-        {
-            friend = senderId
-        };
+        // var friend = new FriendModel
+        // {
+        //     friend = senderId
+        // };
 
+        print("Friend Request Accept Called With  SenderID ::  "+ senderId);
+        
         var task = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(senderId).SetValueAsync(true);
         _databaseReference.Child("Friends").Child(senderId).Child(_firebaseUser.UserId).SetValueAsync(true);
         while (task.IsCompleted is false)
