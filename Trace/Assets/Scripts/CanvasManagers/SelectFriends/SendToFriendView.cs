@@ -17,6 +17,7 @@ public class SendToFriendView : MonoBehaviour
 
     [SerializeField] private RawImage _profilePic;
     [SerializeField] private TMP_Text _nickName;
+    public bool sendToThisFriend = false;
     //[SerializeField] private TMP_Text _userName;
     //[SerializeField] private TMP_Text _buttonText;
     //[SerializeField] public Button _addRemoveButton;
@@ -59,6 +60,18 @@ public class SendToFriendView : MonoBehaviour
                 print(e.Message);
             }
         }));
+    }
+
+    public void friendPressed()
+    {
+        if (sendToThisFriend)
+        {
+            sendToThisFriend = false;
+        }
+        else
+        {
+            sendToThisFriend = true;
+        }
     }
 
 
