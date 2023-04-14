@@ -295,7 +295,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 389651761264416052}
+        m_TargetAssemblyTypeName: SendToFriendView, Assembly-CSharp
+        m_MethodName: friendPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &930913082545164555
 GameObject:
@@ -469,11 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _profilePic: {fileID: 6787435730439471094}
   _nickName: {fileID: 930913082205093117}
-  _userName: {fileID: 0}
-  _buttonText: {fileID: 0}
-  _addRemoveButton: {fileID: 0}
-  _buttonBackground: {fileID: 0}
-  _colors: []
+  sendToThisFriend: 1
 --- !u!1 &930913082832265698
 GameObject:
   m_ObjectHideFlags: 0

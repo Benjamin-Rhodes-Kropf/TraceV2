@@ -15,8 +15,9 @@ public class SelectFriendsCanvas : MonoBehaviour{
     
     private SelectFriendsControler _controller;
     
-    public static Action UpdateRequestView;
     public static Action UpdateFriendsView;
+    public static Action UpdateFriendsSendTo;
+
 
     #region UnityEvents
 
@@ -26,12 +27,20 @@ public class SelectFriendsCanvas : MonoBehaviour{
             _controller = new SelectFriendsControler();
         _controller.Init(this);
         UpdateFriendsView += _controller.UpdateFriendsLayout;
+        //UpdateFriendsSendTo += _controller.UpdateFriendsSendTo;
+    }
+    
+    public void SendButtonPressed()
+    {
+        Debug.Log("SendButtonPressed()");
+        _controller.UpdateFriendsSendTo();
     }
 
     private void OnDisable()
     {
         _controller.UnInitialize();
         UpdateFriendsView -= _controller.UpdateFriendsLayout;
+        //UpdateFriendsSendTo -= _controller.UpdateFriendsSendTo;
     }
     
     #endregion

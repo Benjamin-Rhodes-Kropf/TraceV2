@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,12 +7,12 @@ public class SelectFriendsControler : MonoBehaviour
 {
     private SelectFriendsCanvas _view;
     private List<SendToFriendView> _allFriendsView;
-    
+    private List<string> _SendToUIDs;
     public void Init(SelectFriendsCanvas view)
     {
         this._view = view;
-        
         LoadAllFriends();
+        _SendToUIDs = new List<string>();
     }
     public void UnInitialize()
     {
@@ -21,7 +22,6 @@ public class SelectFriendsControler : MonoBehaviour
     private void LoadAllFriends()
     {
         var users = UserDataManager.Instance.GetAllFriends();
-        Debug.LogError("Update Layout Called");
         //ClearFriendsView();
         _allFriendsView = new List<SendToFriendView>();
         foreach (var user in users)
@@ -44,8 +44,7 @@ public class SelectFriendsControler : MonoBehaviour
         view.UpdateFrindData(user,true);
         _allFriendsView.Add(view);
     }
-    
-    
+
     private void ClearFriendsView()
     {
         if(_allFriendsView.Count <= 0)
@@ -58,6 +57,20 @@ public class SelectFriendsControler : MonoBehaviour
     {
         if (_view._friendsScroll.activeInHierarchy)
             LoadAllFriends();
+    }
+    
+    public void UpdateFriendsSendTo()
+    {
+        Debug.Log("UpdateFriendsSendTo()");
+        foreach (var view in _allFriendsView)
+        {
+            if (view.sendToThisFriend)
+            {
+                Debug.Log("UpdateFriendsSendTo:" + view.friendUID);
+                _SendToUIDs.Add(view.friendUID);
+            }
+        }
+        
     }
 
     
