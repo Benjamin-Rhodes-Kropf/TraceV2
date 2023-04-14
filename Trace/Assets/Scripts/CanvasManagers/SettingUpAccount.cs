@@ -8,19 +8,28 @@ public class SettingUpAccount : MonoBehaviour
     [SerializeField] private ScreenManager _screenManager;
     private void OnEnable()
     {
-        StartCoroutine(fakeSetupTime());
+        UploadProfilePicture();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    IEnumerator fakeSetupTime()
+    private void UploadProfilePicture()
     {
-        yield return new WaitForSeconds(2f);
-        ScreenManager.instance.ChangeScreenFade("HomeScreen");
-        print("Called");
+        var bytes = TookPhotoCanvasController._profilePicture.texture.EncodeToPNG();
+        StartCoroutine(FbManager.instance.UploadProfilePhoto(bytes, (isUploaded, url) =>
+        {
+            if (isUploaded)
+            {
+                StartCoroutine(FbManager.instance.SetUserProfilePhotoUrl(url,
+                    (isUrlSet) =>
+                    {
+                        if (isUrlSet)
+                        {
+                            ScreenManager.instance.ChangeScreenFade("HomeScreen");
+                            print("Called");
+                        }
+                    }));
+            }
+        }));
     }
+    
 }

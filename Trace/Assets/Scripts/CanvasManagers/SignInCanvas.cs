@@ -9,6 +9,7 @@ public class SignInCanvas : MonoBehaviour
     [Header("Canvas Components")]
     [SerializeField] private TMP_InputField username;
     [SerializeField] private TMP_InputField password;
+    [SerializeField] private TMP_Text errorText;
     
     private void OnEnable()
     {
@@ -19,15 +20,22 @@ public class SignInCanvas : MonoBehaviour
     {
         StartCoroutine(FbManager.instance.Login(username.text, password.text, (myReturnValue) => {
             if (myReturnValue.IsSuccessful)
-            {
-                Debug.Log("FbManager: Logged in!");
-                //could be changeScreenDown
                 ScreenManager.instance.ChangeScreenNoAnim("HomeScreen");
-            }
             else
-            {
-                Debug.LogError("FbManager: failed to auto login");
-            }
+                ShowMessage("Your Email or Password is incorrect !");
+        }));
+    }
+
+
+    private void ShowMessage(string message)
+    {
+        errorText.text = message;
+        errorText.gameObject.SetActive(true);
+            
+        StartCoroutine(HelperMethods.TimedActionFunction(3f, ()=>
+        {
+            errorText.text = "";
+            errorText.gameObject.SetActive(false);
         }));
     }
 }

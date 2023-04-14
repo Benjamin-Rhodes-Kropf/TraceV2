@@ -81,7 +81,7 @@ namespace CanvasManagers
                 foreach (var friend in friends)
                 {
                     var view = GameObject.Instantiate(_view.friendViewPrefab, _view._searchscrollParent);
-                    view.UpdateFrindData(friend,true);
+                    view.UpdateFriendData(friend,true, FriendsModelManager.Instance.IsBestFriend(friend.userId));
                     searchList.Add(view.gameObject);
                 }
             }
@@ -138,7 +138,7 @@ namespace CanvasManagers
                     if (requests.Contains(other)) continue;
                     if (other.userId == FbManager.instance._currentUser.userId) continue;
                     var view = GameObject.Instantiate(_view.friendViewPrefab, _view._searchscrollParent);
-                    view.UpdateFrindData(other);
+                    view.UpdateFriendData(other);
                     searchList.Add(view.gameObject);
                 }
             }
@@ -179,7 +179,7 @@ namespace CanvasManagers
                     if (userIndex < _view._friendsList.Count)
                     {
                         var friend = _view._friendsList[userIndex];
-                        friend.UpdateFrindData(users[userIndex], IsFriendsList);
+                        friend.UpdateFriendData(users[userIndex], IsFriendsList);
                         friend.gameObject.SetActive(true);
                         
                     }
@@ -187,7 +187,7 @@ namespace CanvasManagers
                     {
                         FriendView friend = GameObject.Instantiate(_view.friendViewPrefab, _view._displayFrindsParent);
                         _view._friendsList.Add(friend);
-                        friend.UpdateFrindData(users[userIndex], IsFriendsList);
+                        friend.UpdateFriendData(users[userIndex], IsFriendsList);
                        
                     }
                 }
@@ -196,7 +196,7 @@ namespace CanvasManagers
                     if (userIndex < users.Count)
                     {
                         var friend = _view._friendsList[userIndex];
-                        friend.UpdateFrindData(users[userIndex], IsFriendsList);
+                        friend.UpdateFriendData(users[userIndex], IsFriendsList);
                         friend.gameObject.SetActive(true);
                         
                     }
@@ -212,7 +212,7 @@ namespace CanvasManagers
         // TODO: Refactor it later
         private void PopulateFriendUIObject(FriendView friendView, UserModel data)
         {
-            friendView.UpdateFrindData(data);
+            friendView.UpdateFriendData(data);
             friendView.gameObject.SetActive(true);
             friendView._addRemoveButton.onClick.RemoveAllListeners();
         }
@@ -303,7 +303,7 @@ namespace CanvasManagers
         private void UpdateFriendViewInfo(UserModel user)
         {
             FriendView view = GameObject.Instantiate(_view.friendViewPrefab, _view._displayFrindsParent);
-            view.UpdateFrindData(user,true);
+            view.UpdateFriendData(user,true, FriendsModelManager.Instance.IsBestFriend(user.userId));
             _allFriendsView.Add(view);
         }
         private void ClearFriendsView()

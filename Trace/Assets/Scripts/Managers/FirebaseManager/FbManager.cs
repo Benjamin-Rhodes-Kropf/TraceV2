@@ -516,16 +516,11 @@ public partial class FbManager : MonoBehaviour
     }
 
 
-    public IEnumerator UploadProfilePhoto(string _imagePath, System.Action<bool,string> callback)
+    public IEnumerator UploadProfilePhoto(byte[] _picBytes, System.Action<bool,string> callback)
     {
-        // Read the image file as a byte array
-        byte[] imageBytes = System.IO.File.ReadAllBytes(_imagePath);
-        print("Is  Null :: "+ _firebaseStorage == null);
-        // Create a reference to the image file in Firebase Storage
         StorageReference imageRef = _firebaseStorage.GetReference("ProfilePhoto/"+_firebaseUser.UserId+".png");
 
-        // Upload the image file to Firebase Storage
-        var task = imageRef.PutBytesAsync(imageBytes);
+        var task = imageRef.PutBytesAsync(_picBytes);
 
         while (task.IsCompleted is false)
             yield return new WaitForEndOfFrame();

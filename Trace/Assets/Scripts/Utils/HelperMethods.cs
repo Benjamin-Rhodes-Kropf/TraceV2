@@ -184,7 +184,7 @@ public static class HelperMethods
         }
         else
         {
-            stringToReturn = "Length minimum 6 characters";
+            stringToReturn = "Length minimum 8 characters";
         }
 
         return stringToReturn;

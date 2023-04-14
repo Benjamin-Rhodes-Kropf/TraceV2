@@ -223,8 +223,8 @@ public partial class FbManager
 
         print("Friend Request Accept Called With  SenderID ::  "+ senderId);
         
-        var task = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(senderId).SetValueAsync(true);
-        _databaseReference.Child("Friends").Child(senderId).Child(_firebaseUser.UserId).SetValueAsync(true);
+        var task = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(senderId).SetValueAsync(false);
+        _databaseReference.Child("Friends").Child(senderId).Child(_firebaseUser.UserId).SetValueAsync(false);
         while (task.IsCompleted is false)
             yield return new WaitForEndOfFrame();
 
@@ -241,7 +241,27 @@ public partial class FbManager
         }
         
     }
+    
+    
+    public IEnumerator SetBestFriend( string friendID, bool isBestFriend, Action<bool> callback)
+    {
+        var task = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(friendID).SetValueAsync(isBestFriend);
 
+        while (task.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+
+        if (task.IsCanceled || task.IsFaulted)
+        {
+            print("False Called");
+            callback(false);
+        }
+        else
+        {
+            print("True Called");
+            callback(true);
+        }
+    }
+    
     public void CancelFriendRequest(string requestId)
     {
         // Delete the friend request node
@@ -382,11 +402,20 @@ public partial class FbManager
             DataSnapshot snapshot = task.Result; 
             foreach (var friend in snapshot.Children)
             {
-                string friendID = friend.Key.ToString();
+                var friendID = friend.Key.ToString();
+                // print("IsBest Friends :: " + friend.Value.ToString());
+                var isBestFriend = false;
+    
+                if (friend.Value.ToString().Equals("*") is false)
+                    isBestFriend= System.Convert.ToBoolean(friend.Value.ToString());
+                
                 if (FriendsModelManager.Instance.IsAlreadyFriend(friendID) is false)
                 {
-                    FriendModel fri = new FriendModel();
-                    fri.friend = friendID;
+                    var fri = new FriendModel
+                    {
+                        friend = friendID,
+                        isBestFriend = isBestFriend
+                    };
                     _allFriends.Add(fri);
                 }
             }

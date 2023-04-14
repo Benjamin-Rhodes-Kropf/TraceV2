@@ -5,7 +5,6 @@ using UnityEngine;
 public class TakePhotoCanvasController
 {
     private TakePhotoCanvas _view;
-    public static string photoUrl =  "";
     public static string imagePath = "";
     
     
@@ -35,15 +34,6 @@ public class TakePhotoCanvasController
     {
         string path = Application.dataPath+"/chat.png";
         Debug.LogError("Path :: "+ path);
-        _view.StartCoroutine(FbManager.instance.UploadProfilePhoto(path, (isSuccess, url) =>
-        {
-            if (isSuccess)
-            {
-                Debug.LogError("URL :: "+ url);
-                photoUrl = url;
-                ScreenManager.instance.ChangeScreenForwards("TookPhoto");
-            }
-        }));
     }
 
 
@@ -59,22 +49,15 @@ public class TakePhotoCanvasController
     
     private void TakePictureFromGallery(string path)
     {
-        // string path = Application.dataPath+"/chat.png";
         Debug.LogError("Path :: "+ path);
 
         if (string.IsNullOrEmpty(path))
             return;
         
-        _view.StartCoroutine(FbManager.instance.UploadProfilePhoto(path, (isSuccess, url) =>
-        {
-            if (isSuccess)
-            {
-                Debug.LogError("URL :: "+ url);
-                photoUrl = url;                
-                imagePath = path;
-                ScreenManager.instance.ChangeScreenForwards("TookPhoto");
-            }
-        }));
+        imagePath = path;
+        ScreenManager.instance.ChangeScreenForwards("TookPhoto");
+
+       
     }
 
 }

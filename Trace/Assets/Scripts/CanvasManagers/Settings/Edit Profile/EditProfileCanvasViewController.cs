@@ -26,7 +26,7 @@ public class EditProfileCanvasViewController
         _view._usernameLarge.text = FbManager.instance._currentUser.Username;
         _view._profileName.text = FbManager.instance._currentUser.DisplayName;
         _view._profileNameLarge.text = FbManager.instance._currentUser.DisplayName;
-        _view._password.text = FbManager.instance._currentUser.Password;
+        _view._password.text = "***********";
         FbManager.instance._currentUser.ProfilePicture(sprite =>
         {
             _view._profilePicture.sprite = sprite;

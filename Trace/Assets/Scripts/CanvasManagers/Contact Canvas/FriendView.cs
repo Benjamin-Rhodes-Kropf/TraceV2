@@ -22,9 +22,14 @@ public class FriendView : MonoBehaviour
     [SerializeField] private TMP_Text _buttonText;
     [SerializeField] public Button _addRemoveButton;
     [SerializeField] private Image _buttonBackground;
+    [SerializeField] private Image _bestFriend;
+    [SerializeField] private Button _bestFriendButton;
     [SerializeField] private Color[] _colors;
+    [SerializeField] private Sprite[] _heartSprite;
 
     private string _uid = "";
+    private bool isBestFriend = false;
+    private bool isFriend = false;
     public string friendUID {
         get
         {
@@ -34,8 +39,12 @@ public class FriendView : MonoBehaviour
     
     
 
-    public void UpdateFrindData(UserModel user, bool isFriendAdd = false)
+    public void UpdateFriendData(UserModel user, bool isFriendAdd = false, bool isBestOne = false)
     {
+        isFriend = isFriendAdd;
+        isBestFriend = isBestOne;
+        
+        
         _userName.text = user.Username;
         _nickName.text = user.DisplayName;
         _uid = user.userId;
@@ -44,11 +53,14 @@ public class FriendView : MonoBehaviour
         var buttonData = GetButtonData(buttonType);
         _buttonBackground.color = _colors[buttonData.colorIndex];
         _buttonText.text = buttonData.buttonText;
+        _bestFriend.sprite = isBestFriend ? _heartSprite[0] : _heartSprite[1];
         
+        _bestFriendButton.onClick.RemoveAllListeners();
         _addRemoveButton.onClick.RemoveAllListeners();
         
         _addRemoveButton.onClick.AddListener(isFriendAdd ? RemoveFriends :  SendFriendRequest);
-
+        _bestFriendButton.onClick.AddListener(OnBestFriendButtonClick);
+        
         user.ProfilePicture((sprite =>
         {
             try
@@ -121,5 +133,25 @@ public class FriendView : MonoBehaviour
         // FriendsModelManager.Instance.RemoveFriendFromList(_uid);
         FbManager.instance.RemoveFriends(_uid);
         gameObject.SetActive(false);
+    }
+
+
+    private void OnBestFriendButtonClick()
+    {
+        if (isFriend is false)
+            return;
+        _bestFriendButton.interactable = false;
+        // Todo : Call FbManager Function To Update Database
+        StartCoroutine(FbManager.instance.SetBestFriend(friendUID, !isBestFriend, (isSuccess) =>
+        {
+            if (isSuccess)
+            {
+                isBestFriend = !isBestFriend;
+                _bestFriend.sprite = isBestFriend ? _heartSprite[0] : _heartSprite[1];
+                FriendsModelManager.Instance.SetBestFriend(friendUID, isBestFriend);
+            }
+
+            _bestFriendButton.interactable = true;
+        }));
     }
 }

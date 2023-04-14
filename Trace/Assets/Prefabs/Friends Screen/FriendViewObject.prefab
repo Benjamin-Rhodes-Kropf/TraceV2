@@ -247,8 +247,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 230, y: -33}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 291.99387, y: -33}
+  m_SizeDelta: {x: 323.9877, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8066319867657968190
 CanvasRenderer:
@@ -305,12 +305,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.8
+  m_fontSize: 32
   m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 12
-  m_fontSizeMax: 72
+  m_fontSizeMax: 32
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -34.634796, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.8
+  m_fontSize: 33
   m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -34.634796, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -582,10 +582,15 @@ MonoBehaviour:
   _buttonText: {fileID: 8066319868174260801}
   _addRemoveButton: {fileID: 8066319868614208703}
   _buttonBackground: {fileID: 8066319868614208700}
+  _bestFriend: {fileID: 8066319867609727473}
+  _bestFriendButton: {fileID: 8066319867609727472}
   _colors:
   - {r: 0.5411765, g: 0.74509805, b: 0.98823535, a: 1}
   - {r: 1, g: 0.051886797, b: 0.051886797, a: 1}
   - {r: 1, g: 0.60204166, b: 0.062745094, a: 1}
+  _heartSprite:
+  - {fileID: 21300000, guid: 92b89f780cd63498cb2eb7502aa85c98, type: 3}
+  - {fileID: 21300000, guid: ccc8605046f624166b584390cfbff907, type: 3}
 --- !u!1 &8066319868174260803
 GameObject:
   m_ObjectHideFlags: 0
