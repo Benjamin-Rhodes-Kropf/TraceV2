@@ -42,9 +42,6 @@ public partial class FbManager : MonoBehaviour
     [Header("User Data")] 
     public Texture userImageTexture;
     public bool firstTimeUsingTrace;
-    
-    [Header("Database Test Assets")]
-    public RawImage rawImage;
     public RawImage testRawImage;
 
     [Header("Essential Properties")] 
@@ -149,8 +146,7 @@ public partial class FbManager : MonoBehaviour
         if (!forceLogin)
         { 
             StartCoroutine(AutoLogin());
-        } 
-
+        }
     }
 
     #region Current User
@@ -509,8 +505,6 @@ public partial class FbManager : MonoBehaviour
             callback(true);
         }
     }
-
-
     public IEnumerator UploadProfilePhoto(string _imagePath, System.Action<bool,string> callback)
     {
         // Read the image file as a byte array
@@ -524,7 +518,6 @@ public partial class FbManager : MonoBehaviour
 
         while (task.IsCompleted is false)
             yield return new WaitForEndOfFrame();
-
         if (task.IsFaulted || task.IsCanceled)
         {
             Debug.LogError("Task Faulted Due To :: "+ task.Exception.ToString());
@@ -538,8 +531,7 @@ public partial class FbManager : MonoBehaviour
             Debug.Log("Actual  URL: " + url);
             callback(true,url);
         }
-    }  
-
+    }
     #endregion
     #region -User Info
     public IEnumerator GetProfilePhotoFromFirebaseStorageRoutine(string userId, System.Action<Texture> callback)
@@ -622,7 +614,6 @@ public partial class FbManager : MonoBehaviour
             callback(DBTask.Result.ToString());
         }
     }
-
     private void GetAllUserNames()
     {
         // Create a list to store the usernames
@@ -914,10 +905,40 @@ public partial class FbManager : MonoBehaviour
     //GetFriendshipRequests
     //AcceptFriendshipRequest
     //getPhotos
-    public IEnumerator UploadTraceImage(string fileLocation)
+    public IEnumerator UploadTraceImage(string fileLocation, float radius, Vector2 location, List<string> users)
     {
+        //PUSH DATA TO REAL TIME DB
+        string key = _databaseReference.Child("Traces").Push().Key;
+        Dictionary<string, Object> childUpdates = new Dictionary<string, Object>();
         
-        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "photo");
+        childUpdates["Traces/" + key + "/sender"] = _firebaseUser.UserId;
+        childUpdates["Traces/" + key + "/sendTime"] = DateTime.UtcNow.ToString();
+        childUpdates["Traces/" + key + "/DurationHrs"] = 24;
+        childUpdates["Traces/" + key + "/lat"] = location.x;
+        childUpdates["Traces/" + key + "/long"] = location.y;
+        childUpdates["Traces/" + key + "/radius"] = radius;
+        if (PlayerPrefs.GetInt("LeaveTraceIsVisable") == 1)
+        {
+            childUpdates["Traces/" + key + "/isVisable"] = true;
+        }
+        else
+        {
+            childUpdates["Traces/" + key + "/isVisable"] = false;
+        }
+        
+        foreach (var user in users)
+        {
+            //update data for within trace
+            childUpdates["Traces/" + key + "/Reciver/" + user + "/HasViewed"] = false;
+            childUpdates["Traces/" + key + "/Reciver/" + user + "/ProfilePhoto"] = "null";
+            
+            //update data for each user
+            childUpdates["RecivedTraces/" + user +"/"+ key + "/From"] = _firebaseUser.UserId.ToString();
+        }
+        _databaseReference.UpdateChildrenAsync(childUpdates);
+        
+        //UPLOAD IMAGE
+        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + key);
         //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
         traceReference.PutFileAsync(fileLocation)
             .ContinueWith((Task<StorageMetadata> task) => {

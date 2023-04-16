@@ -66,10 +66,11 @@ public class UIController : MonoBehaviour
         StartCoroutine(FbManager.instance.UploadTraceVideo(path));
     }
 
-    public void ShareImage()
+    public void SaveImageLocation()
     {
     #if UNITY_EDITOR
-        StartCoroutine(FbManager.instance.UploadTraceImage( Application.dataPath + "/SaveImages/Traces/Image.png"));
+        SendTraceManager.instance.fileLocation = Application.dataPath + "/SaveImages/Traces/Image.png";
+        //StartCoroutine(FbManager.instance.UploadTraceImage( Application.dataPath + "/SaveImages/Traces/Image.png"));
     #elif UNITY_IPHONE
         StartCoroutine(FbManager.instance.UploadTrace( Application.persistentDataPath + "/SaveImages/Traces/Image.png"));
     #endif 

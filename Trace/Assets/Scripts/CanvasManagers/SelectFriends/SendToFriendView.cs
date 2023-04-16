@@ -32,8 +32,6 @@ public class SendToFriendView : MonoBehaviour
         }
     }
     
-    
-
     public void UpdateFrindData(UserModel user, bool isFriendAdd = false)
     {
         //_userName.text = user.Username;
@@ -74,7 +72,11 @@ public class SendToFriendView : MonoBehaviour
         }
     }
 
-
+    public void DestroySelf()
+    {
+        Destroy(this.gameObject);
+    }
+    
     private (string buttonText, int colorIndex) GetButtonData(FriendView.FriendButtonType buttonType)
     {
         switch (buttonType)
@@ -102,7 +104,6 @@ public class SendToFriendView : MonoBehaviour
         }
     }
     
-    
     private void SendFriendRequest()
     {
         //_addRemoveButton.interactable = false;
@@ -127,11 +128,13 @@ public class SendToFriendView : MonoBehaviour
             Debug.Log("friend requested at:" + friendUID);
         }));
     }
-
     private void RemoveFriends()
     {
         // FriendsModelManager.Instance.RemoveFriendFromList(_uid);
         FbManager.instance.RemoveFriends(_uid);
         gameObject.SetActive(false);
     }
+    
+    
+    
 }

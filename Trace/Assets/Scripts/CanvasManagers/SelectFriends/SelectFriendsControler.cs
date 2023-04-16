@@ -1,48 +1,45 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class SelectFriendsControler : MonoBehaviour
 {
     private SelectFriendsCanvas _view;
     private List<SendToFriendView> _allFriendsView;
-    private List<string> _SendToUIDs;
     public void Init(SelectFriendsCanvas view)
     {
         this._view = view;
+        _allFriendsView = new List<SendToFriendView>();
         LoadAllFriends();
-        _SendToUIDs = new List<string>();
     }
     public void UnInitialize()
     {
+        _allFriendsView.Clear();
         Debug.Log("SelectFriendsControler: UnInitialize()");
     }
     
     private void LoadAllFriends()
     {
         var users = UserDataManager.Instance.GetAllFriends();
-        //ClearFriendsView();
-        _allFriendsView = new List<SendToFriendView>();
         foreach (var user in users)
         {
-            Debug.Log("SelectFriendsControler: LoadAllFriends:" + user.DisplayName);
+            //Debug.Log("SelectFriendsControler: LoadAllFriends:" + user.DisplayName);
             UpdateFriendViewInfo(user);
         }
     }
     
     private void FrindsListInit()
     {
-        foreach (var friend in _view._friendsList)
-        {
-            friend.gameObject.SetActive(false);
-        }
+        
     }
     private void UpdateFriendViewInfo(UserModel user)
     {
         SendToFriendView view = GameObject.Instantiate(_view.friendViewPrefab, _view._displayFrindsParent);
         view.UpdateFrindData(user,true);
         _allFriendsView.Add(view);
+        _view._friendsList.Add(view);
     }
 
     private void ClearFriendsView()
@@ -61,13 +58,15 @@ public class SelectFriendsControler : MonoBehaviour
     
     public void UpdateFriendsSendTo()
     {
+        SendTraceManager.instance.users.Clear();
         Debug.Log("UpdateFriendsSendTo()");
         foreach (var view in _allFriendsView)
         {
             if (view.sendToThisFriend)
             {
                 Debug.Log("UpdateFriendsSendTo:" + view.friendUID);
-                _SendToUIDs.Add(view.friendUID);
+                //_SendToUIDs.Add(view.friendUID);
+                SendTraceManager.instance.users.Add(view.friendUID);
             }
         }
         
