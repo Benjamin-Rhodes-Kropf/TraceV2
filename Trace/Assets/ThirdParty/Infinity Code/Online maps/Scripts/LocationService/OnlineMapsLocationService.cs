@@ -43,6 +43,20 @@ public class OnlineMapsLocationService : OnlineMapsLocationServiceGenericBase<On
         get { return _distance; }
     }
 
+    public Vector2 GetUserLocation()
+    {
+#if UNITY_IPHONE 
+        LocationInfo data = Input.location.lastData;
+        float longitude = data.longitude;
+        float latitude = data.latitude;
+#endif
+        
+#if UNITY_EDITOR
+        longitude = emulatorPosition.x;
+        latitude = emulatorPosition.y;
+#endif
+        return new Vector2(latitude, longitude);
+    }
     protected override void GetLocationFromSensor(out float longitude, out float latitude)
     {
         LocationInfo data = Input.location.lastData;

@@ -54,7 +54,7 @@ public class CameraManager : MonoBehaviour//PressInputBase
     public void ShareImage()
     {
         Debug.Log("Pass Image To Firebase Manager Here");
-        ScreenManager.instance.uiController.ShareImage();
+        ScreenManager.instance.uiController.SaveImageLocation();
     }
     //For capturing the image
     public void CaputureImage()
