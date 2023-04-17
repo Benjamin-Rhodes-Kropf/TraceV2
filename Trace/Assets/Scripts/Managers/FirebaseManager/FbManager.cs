@@ -859,8 +859,15 @@ public partial class FbManager : MonoBehaviour
             callback(callbackObject);
         }
     }
-    
     // TODO: Redundant function
+    public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess) {
+        StartCoroutine(GetProfilePhotoFromFirebaseStorageRoutine(userId, (myReturnValue) => {
+            if (myReturnValue != null)
+            {
+                onSuccess?.Invoke(myReturnValue);
+            }
+        }));
+    }
     public IEnumerator GetUserProfilePhotoByUserID(String userID, System.Action<CallbackObject> callback)
     {
         CallbackObject callbackObject = new CallbackObject();
@@ -899,7 +906,7 @@ public partial class FbManager : MonoBehaviour
     #endregion
     #endregion
     
-    public IEnumerator UploadTraceImage(string fileLocation, float radius, Vector2 location, List<string> users)
+    public IEnumerator UploadTrace(string fileLocation, float radius, Vector2 location, List<string> users)
     {
         //PUSH DATA TO REAL TIME DB
         string key = _databaseReference.Child("Traces").Push().Key;
@@ -950,7 +957,7 @@ public partial class FbManager : MonoBehaviour
             });
         yield return new WaitForSeconds(0.1f);
     }
-    public IEnumerator UploadTraceVideo(string fileLocation)
+    /*public IEnumerator UploadTraceVideo(string fileLocation)
     {
         StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "video");
         //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
@@ -969,7 +976,7 @@ public partial class FbManager : MonoBehaviour
                 }
             });
         yield return new WaitForSeconds(0.1f);
-    }
+    }*/
     
     private void DeleteFile(String _location) 
     { 
@@ -982,26 +989,5 @@ public partial class FbManager : MonoBehaviour
                 // Uh-oh, an error occurred!
             }
         });
-    }
-    public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess) {
-        StartCoroutine(GetProfilePhotoFromFirebaseStorageRoutine(userId, (myReturnValue) => {
-            if (myReturnValue != null)
-            {
-                onSuccess?.Invoke(myReturnValue);
-            }
-        }));
-    }
-    private IEnumerator TryLoadImage(string MediaUrl, System.Action<Texture> callback) {
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/"+ _firebaseUser.UserId +"%2FnewFile.jpeg?alt=media"); //Create a request
-
-        yield return request.SendWebRequest(); //Wait for the request to complete
-        if (request.isNetworkError || request.isHttpError)
-        {
-            Debug.LogWarning(request.error);
-        }
-        else
-        {
-            callback(((DownloadHandlerTexture)request.downloadHandler).texture);
-        }
     }
 }

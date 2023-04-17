@@ -62,8 +62,8 @@ public class UIController : MonoBehaviour
     }
     //write sharing code here
     public void ShareVideo() {
-        Debug.Log("Pass Video To Firebase Manager Here");
-        StartCoroutine(FbManager.instance.UploadTraceVideo(path));
+        //Pass Video To Send Trace Manager Here
+        SendTraceManager.instance.fileLocation = path;
     }
 
     public void SaveImageLocation()
