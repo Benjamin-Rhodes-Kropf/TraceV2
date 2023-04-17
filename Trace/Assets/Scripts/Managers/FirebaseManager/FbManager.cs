@@ -651,7 +651,6 @@ public partial class FbManager : MonoBehaviour
              }
         });
     }
-
     public List<string> GetMyFriendShipRequests()
     {
         List<string> listOfFriends = new List<string>();
@@ -900,11 +899,6 @@ public partial class FbManager : MonoBehaviour
     #endregion
     #endregion
     
-    //TESTING
-    //Future Functions
-    //GetFriendshipRequests
-    //AcceptFriendshipRequest
-    //getPhotos
     public IEnumerator UploadTraceImage(string fileLocation, float radius, Vector2 location, List<string> users)
     {
         //PUSH DATA TO REAL TIME DB
@@ -976,46 +970,7 @@ public partial class FbManager : MonoBehaviour
             });
         yield return new WaitForSeconds(0.1f);
     }
-    public void AddFriend(String _username)
-    {
-        String _nickName = "null";
-        StartCoroutine(FbManager.instance.ActionAcceptFriend(_username, _nickName, (myReturnValue) => {
-            if (myReturnValue != "Success")
-            {
-                Debug.LogError("failed to update freinds");
-            }
-            else
-            {
-                Debug.Log("updated friends");
-            }
-        }));
-    }
-    public void getTestImage()
-    {
-        StartCoroutine(GetTestImage((myReturnValue) => {
-            if (myReturnValue != null)
-            {
-                testRawImage.texture = myReturnValue;
-            }
-        }));
-    }
-    private IEnumerator GetTestImage(System.Action<Texture> callback)
-    {
-        var request = new UnityWebRequest();
-        
-        request = UnityWebRequestTexture.GetTexture("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/ProfilePhoto%2FPVNKPFYFrWVRoPdhsTs0aAYH5cA3%2Fprofile.png?alt=media&token=894e50e6-7a46-4dec-aca7-20945d1bca58"); //Create a request
-
-        yield return request.SendWebRequest(); //Wait for the request to complete
-        
-        if (request.isNetworkError || request.isHttpError)
-        {
-            Debug.LogError("error:" + request.error);
-        }
-        else
-        {
-            callback(((DownloadHandlerTexture)request.downloadHandler).texture);
-        }
-    }
+    
     private void DeleteFile(String _location) 
     { 
         _firebaseStorageReference = _firebaseStorageReference.Child(_location);
