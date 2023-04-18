@@ -54,7 +54,7 @@ public class FriendView : MonoBehaviour
         _buttonBackground.color = _colors[buttonData.colorIndex];
         _buttonText.text = buttonData.buttonText;
         _bestFriend.sprite = isBestFriend ? _heartSprite[0] : _heartSprite[1];
-        
+        _bestFriendButton.gameObject.SetActive(isFriendAdd);
         _bestFriendButton.onClick.RemoveAllListeners();
         _addRemoveButton.onClick.RemoveAllListeners();
         

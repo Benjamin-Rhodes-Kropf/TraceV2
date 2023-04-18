@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class SettingUpAccount : MonoBehaviour
 {
-    [SerializeField] private ScreenManager _screenManager;
     private void OnEnable()
     {
-        UploadProfilePicture();
+        if (FbManager.instance.IsFirebaseUserInitialised)
+            UploadProfilePicture();
     }
 
 

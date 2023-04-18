@@ -11941,7 +11941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &788658248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19435,6 +19435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1196670845}
   - component: {fileID: 1196670846}
+  - component: {fileID: 1196670847}
   m_Layer: 0
   m_Name: FirebaseManager
   m_TagString: Untagged
@@ -19471,9 +19472,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dependencyStatus: 0
   firebaseStorageReferenceUrl: gs://geosnapv1.appspot.com
-  autoLogin: 0
+  autoLogin: 1
   forceLogin: 0
-  useAdminForLogin: 0
+  useAdminForLogin: 1
   adminUser: nadeemshahzad@gmail.com
   adminPass: Abcd@123
   resetPlayerPrefs: 0
@@ -19483,6 +19484,18 @@ MonoBehaviour:
   testRawImage: {fileID: 0}
   _timeToRepeatForCheckingRequest: 2
   _previousRequestFrom: []
+--- !u!114 &1196670847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196670843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d284919d286c459dae40f2926c8bcd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1197118202
 GameObject:
   m_ObjectHideFlags: 0
@@ -26163,6 +26176,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7719770422452353511, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
+      propertyPath: m_fontSize
+      value: 179.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719770422452353511, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719770422452353511, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7719770422581248920, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -26246,6 +26271,18 @@ PrefabInstance:
     - target: {fileID: 7719770422962132487, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719770422962132504, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719770422962132504, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719770422962132504, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7719770423004558419, guid: 7fcc94f8f5854482fa95bf0df983a1fa, type: 3}
       propertyPath: m_AnchorMax.y
@@ -28282,7 +28319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a3d78ddc1414979ba96d531130902b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _screenManager: {fileID: 1301840576}
 --- !u!114 &1802508908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28750,6 +28786,18 @@ PrefabInstance:
     - target: {fileID: 7634947624408419963, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634947624545596420, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
+      propertyPath: m_fontSize
+      value: 179.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634947624545596420, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634947624545596420, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7634947624545596421, guid: a1330c0b556b6411ea3a51a6068f0fc5, type: 3}
       propertyPath: m_AnchorMax.y
