@@ -423,11 +423,20 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 11400000, guid: cd7e7262cfa2944f9801de0b46fc9776, type: 2}
-  - {fileID: 11400000, guid: f3503e9847410477a9b5fe4f3f89dde5, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 0e2a6f5f6cc8946c69f730bc1bb1dfa9, type: 2}
+  - {fileID: 11400000, guid: 38d1e5311fe6b495aac526bb10ccac5b, type: 2}
   - {fileID: 8456736684650657537, guid: 4cc24b4e70c6f49dbae02f68da29824a, type: 2}
-  - {fileID: 11400000, guid: 159ced8b0c52442509e9d16fec711996, type: 2}
-  - {fileID: 11400000, guid: c09e31bcbc1224cc7b880beccc1e29a7, type: 2}
+  - {fileID: 11400000, guid: 16e1b5bab951c4c5aa4f9c25e9bd82e3, type: 2}
+  - {fileID: 11400000, guid: ed47b981386ad4a498ed6d6a2e1c4589, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -450,7 +459,7 @@ PlayerSettings:
     iPhone: com.traceco.tracesamplelocation
   buildNumber:
     Standalone: 0
-    iPhone: 12
+    iPhone: 13
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1

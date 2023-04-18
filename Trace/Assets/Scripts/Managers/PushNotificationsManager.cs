@@ -9,7 +9,18 @@ public class PushNotificationsManager : UnitySingleton<PushNotificationsManager>
 {
     private void OnEnable()
     {
-        Init();
+        FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task =>
+        {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == DependencyStatus.Available)
+            {
+                Init();
+            }
+            else
+            {
+                Debug.LogError($"Firebase dependencies not available: {dependencyStatus}");
+            }
+        });
     }
 
     private void Init()
