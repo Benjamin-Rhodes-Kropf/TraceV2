@@ -288,7 +288,7 @@ namespace CanvasManagers
         private void LoadAllFriends()
         {
             var users = UserDataManager.Instance.GetAllFriends();
-            Debug.LogError("Update Layout Called");
+            Debug.Log("Update Layout Called");
             ClearFriendsView();
             
             _view._numberOfFriendsCountTitle.text = $"{users.Count} Friends";

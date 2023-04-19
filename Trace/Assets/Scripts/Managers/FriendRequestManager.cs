@@ -20,7 +20,6 @@ public class FriendRequestManager
             if (instance == null)
             {
                 instance = new FriendRequestManager();
-                
             }
 
             return instance;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1526980366}
-  m_IndirectSpecularColor: {r: 0.44391298, g: 0.49315572, b: 0.5722092, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -428,6 +428,7 @@ MonoBehaviour:
   swapCamera: {fileID: 429262142}
   vidRecorder: {fileID: 1170218936}
   camManger: {fileID: 0}
+  path: 
   cameraView: {fileID: 1199973735}
 --- !u!1 &1033501163
 GameObject:
@@ -689,7 +690,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 8400000, guid: 8de107f22a691fe45ab79c4fc198397a, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
