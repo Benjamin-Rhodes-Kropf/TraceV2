@@ -102,7 +102,7 @@ public partial class FbManager : MonoBehaviour
                 Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
             }
         });
-        
+
     }
     private void InitializeFirebase()
     {
@@ -279,6 +279,7 @@ public partial class FbManager : MonoBehaviour
         StartCoroutine(RetrieveSentFriendRequests());
         StartCoroutine(RetrieveFriends());
         ContinuesListners();
+        InitializeFCMService();
     }
 
     private void ContinuesListners()

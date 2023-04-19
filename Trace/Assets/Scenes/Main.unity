@@ -19435,7 +19435,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1196670845}
   - component: {fileID: 1196670846}
-  - component: {fileID: 1196670847}
   m_Layer: 0
   m_Name: FirebaseManager
   m_TagString: Untagged
@@ -19484,18 +19483,6 @@ MonoBehaviour:
   testRawImage: {fileID: 0}
   _timeToRepeatForCheckingRequest: 2
   _previousRequestFrom: []
---- !u!114 &1196670847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1196670843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d284919d286c459dae40f2926c8bcd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1197118202
 GameObject:
   m_ObjectHideFlags: 0

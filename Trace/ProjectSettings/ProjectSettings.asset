@@ -432,6 +432,19 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 0e2a6f5f6cc8946c69f730bc1bb1dfa9, type: 2}
   - {fileID: 11400000, guid: 38d1e5311fe6b495aac526bb10ccac5b, type: 2}
   - {fileID: 8456736684650657537, guid: 4cc24b4e70c6f49dbae02f68da29824a, type: 2}
@@ -459,7 +472,7 @@ PlayerSettings:
     iPhone: com.traceco.tracesamplelocation
   buildNumber:
     Standalone: 0
-    iPhone: 13
+    iPhone: 14
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
