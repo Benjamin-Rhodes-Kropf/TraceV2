@@ -12,9 +12,14 @@ public class SelectRadiusCanvas : MonoBehaviour
     [SerializeField]private bool _isTraceVisable;
     [SerializeField]private GameObject traceIsVisable;
     [SerializeField]private GameObject traceIsHidden;
-
+    [SerializeField]private bool firstTimeEnabled;
     private void OnEnable()
     {
+        if (!firstTimeEnabled)
+        {
+            firstTimeEnabled = true;
+            return;
+        }
         StartCoroutine(LoadMap());
         
         if (PlayerPrefs.GetFloat("LeaveTraceSliderRadiusValue") != 0)

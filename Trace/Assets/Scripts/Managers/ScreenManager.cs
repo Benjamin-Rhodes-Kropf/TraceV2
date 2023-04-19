@@ -146,7 +146,7 @@ public class ScreenManager : MonoBehaviour
     //load camera scene
     public void LoadArScene() {
         ChangeScreenNoAnim("Camera Screen");
-        SceneManager.LoadScene("CemraWork", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Camera", LoadSceneMode.Additive);
     }
     //load main scene, used by the camera scene
     public void LoadMainMenuScene()

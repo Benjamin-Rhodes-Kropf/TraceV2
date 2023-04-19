@@ -26,7 +26,7 @@ public class SelectFriendsCanvas : MonoBehaviour{
         if (_friendsList == null)
             _friendsList = new List<SendToFriendView>();
         if (_controller == null)
-            _controller = new SelectFriendsControler();
+            _controller = gameObject.AddComponent<SelectFriendsControler>();
         _controller.Init(this);
         UpdateFriendsView += _controller.UpdateFriendsLayout;
 
