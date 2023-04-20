@@ -425,18 +425,8 @@ namespace CanvasManagers
             if (string.IsNullOrEmpty(name) is false )
             {
                 var list = _allContacts.Where(contact => contact.givenName.Contains(name, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                // Query Syntax
-               
-                Debug.Log("Total Contacts with :: " + list.Count);
                 selectedContacts.AddRange(list);
             }
-
-            foreach (var contact in _allContacts)
-            {
-                Debug.Log("Contact Name : "+ contact.givenName);
-                Debug.Log("Contact Number : "+ contact.phoneNumber);
-            }
-            
         }
     }
 
