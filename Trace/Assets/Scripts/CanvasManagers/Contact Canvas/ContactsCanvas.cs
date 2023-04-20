@@ -24,6 +24,7 @@ namespace CanvasManagers
         public RequestView _requestPrefab;
         public Transform _requestParent;
         public TMP_Text _requestText;
+        public GameObject _redRequestMark;
 
 
         [Header("Toggle Panels")] 

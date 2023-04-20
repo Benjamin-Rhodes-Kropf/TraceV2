@@ -43,6 +43,11 @@ namespace CanvasManagers
             _view._requestsButton.onClick.RemoveAllListeners();
         }
 
+
+        public void UpdateSelectionPanelView()
+        {
+            // _view._redRequestMark.SetActive();
+        }
         private void FrindsListInit()
         {
             foreach (var friend in _view._friendsList)

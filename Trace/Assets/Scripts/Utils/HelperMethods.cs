@@ -6,7 +6,7 @@ using System;
 using UnityEngine.Networking;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
-
+using MoreMountains.NiceVibrations;
 public static class HelperMethods
 {
     public static Sprite LoadSprite(string path, string filename, string fallBackFile = "")
@@ -247,6 +247,11 @@ public static class HelperMethods
 		_scrollRect.verticalNormalizedPosition = target;
 	}
 
+    public static void PlayHeptics()
+    {
+        MMVibrationManager.Haptic(HapticTypes.LightImpact);
+    }
+    
     public static void OpenLink(string _Link)
     {
 #if UNITY_WEBGL

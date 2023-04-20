@@ -56,6 +56,8 @@ public partial class FbManager
                 };
                 
                 _allReceivedRequests.Add(request);
+                SoundManager.instance.PlaySound(SoundManager.SoundType.Notification);
+                HelperMethods.PlayHeptics();
                 
                 if (ContactsCanvas.UpdateRequestView != null)
                     ContactsCanvas.UpdateRequestView?.Invoke();
