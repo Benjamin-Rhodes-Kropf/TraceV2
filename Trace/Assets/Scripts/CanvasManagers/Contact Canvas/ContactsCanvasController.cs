@@ -31,7 +31,7 @@ namespace CanvasManagers
             _view._requestsButton.onClick.AddListener(OnRequestsSelection);
 
             OnFriendsSelection();
-            
+            UpdateSelectionPanelView();
         }
 
         public void UnInitialize()
@@ -46,7 +46,7 @@ namespace CanvasManagers
 
         public void UpdateSelectionPanelView()
         {
-            // _view._redRequestMark.SetActive();
+            _view._redRequestMark.SetActive(FbManager.instance._allReceivedRequests.Count > 0);
         }
         private void FrindsListInit()
         {

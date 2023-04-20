@@ -49,6 +49,7 @@ namespace CanvasManagers
 
         public static Action UpdateRequestView;
         public static Action UpdateFriendsView;
+        public static Action UpdateRedMarks;
 
         #region UnityEvents
 
@@ -59,6 +60,7 @@ namespace CanvasManagers
             _controller.Init(this);
             UpdateRequestView += _controller.UpdateRequestLayout;
             UpdateFriendsView += _controller.UpdateFriendsLayout;
+            UpdateRedMarks += _controller.UpdateSelectionPanelView;
         }
 
         private void OnDisable()
@@ -66,6 +68,7 @@ namespace CanvasManagers
             _controller.UnInitialize();
             UpdateRequestView -= _controller.UpdateRequestLayout;
             UpdateFriendsView -= _controller.UpdateFriendsLayout;
+            UpdateRedMarks -= _controller.UpdateSelectionPanelView;
 
         }
 
