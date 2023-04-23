@@ -170,8 +170,8 @@ public class TraceManager : MonoBehaviour
             traceObjectsByDistanceToUser = OrderTracesByDistanceToUser().ToList();
         }
         
-        var currentLatitude = Input.location.lastData.latitude;
-        var currentLongitude = Input.location.lastData.longitude;
+        var currentLatitude = userLocation.x;
+        var currentLongitude = userLocation.y;
 
         // Showing current updated coordinates
 
