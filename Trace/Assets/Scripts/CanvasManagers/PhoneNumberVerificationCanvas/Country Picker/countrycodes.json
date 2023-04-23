@@ -1,5 +1,10 @@
 [
   {
+    "countryCode": "US",
+    "countryName": "United States",
+    "phoneCode": "+1"
+  },
+  {
     "countryCode": "AF",
     "countryName": "Afghanistan",
     "phoneCode": "+93"
@@ -873,11 +878,6 @@
     "countryCode": "GB",
     "countryName": "United Kingdom",
     "phoneCode": "+44"
-  },
-  {
-    "countryCode": "US",
-    "countryName": "United States",
-    "phoneCode": "+1"
   },
   {
     "countryCode": "UY",
