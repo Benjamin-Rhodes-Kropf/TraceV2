@@ -173,8 +173,8 @@ public class TraceManager : MonoBehaviour
             traceObjectsByDistanceToUser = OrderTracesByDistanceToUser().ToList();
         }
         
-        var currentLatitude = userLocation.x;
-        var currentLongitude = userLocation.y;
+        var currentLatitude = userLocation.y;
+        var currentLongitude = userLocation.x;
 
         // Showing current updated coordinates
 
@@ -195,13 +195,24 @@ public class TraceManager : MonoBehaviour
             UpdateNotificationsForNext10Traces();
         }
 
-        if (!sentRecivedToggle.selectorInUpPosition)
+        if (sentRecivedToggle.selectorInUpPosition)
         {
             foreach (var traceobject in FbManager.instance.receivedTraces)
             {
+                var dist = CalculateTheDistanceBetweenCoordinatesAndCurrentCoordinates((float)traceobject.lat, (float)traceobject.lng, currentLatitude, currentLongitude, (float)(traceobject.radius*1000));
                 if (!traceobject.hasBeenAdded)
                 {
-                    drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius/100));
+                    Debug.Log("Dist is: " + dist);
+                    if (dist < 0)
+                    {
+                        drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius), Color.green);
+                        traceobject.canBeOpened = true;
+                    }
+                    else
+                    {
+                        drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius), Color.white);
+                        traceobject.canBeOpened = false;
+                    }
                     traceobject.hasBeenAdded = true;
                 }
             }
@@ -212,7 +223,7 @@ public class TraceManager : MonoBehaviour
             {
                 if (!traceobject.hasBeenAdded)
                 {
-                    drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius/100));
+                    drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius), Color.white);
                     traceobject.hasBeenAdded = true;
                 }
             }
@@ -241,21 +252,27 @@ public class TraceManager : MonoBehaviour
 [Serializable]
 public class TraceObject
 {
+    public string id;
     public double lat;
     public double lng;
     public float radius;
     public double distanceToUser;
     public string text;
+    public string sender;
     public bool hasBeenAdded;
+    public bool canBeOpened = false;
+    public bool hasBeenOpened = false;
     public double startTimeStamp;
     public double endTimeStamp;
     
-    public TraceObject(double longitude, double latitude, float radius, double startTimeStamp, double endTimeStamp)
+    public TraceObject(double longitude, double latitude, float radius, string sender, double startTimeStamp, double endTimeStamp, string id)
     {
         lng = longitude;
         lat = latitude;
         this.radius = radius;
+        this.sender = sender;
         this.startTimeStamp = startTimeStamp;
         this.endTimeStamp = endTimeStamp;
+        this.id = id;
     }
 }

@@ -23161,7 +23161,67 @@ MonoBehaviour:
   userImageTexture: {fileID: 0}
   firstTimeUsingTrace: 0
   userId: 
-  receivedTraces: []
+  receivedTraces:
+  - id: 
+    lat: 41.89
+    lng: 12.46
+    radius: 1.2
+    distanceToUser: 0
+    text: 
+    sender: 
+    hasBeenAdded: 0
+    canBeOpened: 0
+    hasBeenOpened: 0
+    startTimeStamp: 0
+    endTimeStamp: 0
+  - id: 
+    lat: 41.89
+    lng: 12.47
+    radius: 0.9
+    distanceToUser: 0
+    text: 
+    sender: 
+    hasBeenAdded: 0
+    canBeOpened: 0
+    hasBeenOpened: 0
+    startTimeStamp: 0
+    endTimeStamp: 0
+  - id: 
+    lat: 41.8988037295194
+    lng: 12.466664751143
+    radius: 0.3
+    distanceToUser: 0
+    text: 
+    sender: 
+    hasBeenAdded: 0
+    canBeOpened: 0
+    hasBeenOpened: 0
+    startTimeStamp: 0
+    endTimeStamp: 0
+  - id: 
+    lat: 41.8988037295194
+    lng: 12.468
+    radius: 0.3
+    distanceToUser: 0
+    text: 
+    sender: 
+    hasBeenAdded: 0
+    canBeOpened: 0
+    hasBeenOpened: 0
+    startTimeStamp: 0
+    endTimeStamp: 0
+  - id: 
+    lat: 41.898803729519
+    lng: 12.468
+    radius: 0.1
+    distanceToUser: 0
+    text: 
+    sender: 
+    hasBeenAdded: 0
+    canBeOpened: 0
+    hasBeenOpened: 0
+    startTimeStamp: 0
+    endTimeStamp: 0
   sentTraces: []
   _timeToRepeatForCheckingRequest: 100
   traceManager: {fileID: 6068666308761308086}

@@ -54,6 +54,8 @@ public partial class FbManager : MonoBehaviour
     [Header("Refrences")] 
     [SerializeField] private TraceManager traceManager;
 
+    [Header("Testing")] 
+    [SerializeField] private Texture test;
     public bool IsFirebaseUserInitialised
     {
         get;
@@ -273,6 +275,15 @@ public partial class FbManager : MonoBehaviour
         StartCoroutine(RetrieveSentFriendRequests());
         StartCoroutine(RetrieveFriends());
         ContinuesListners();
+        
+        //TEST GET IMAGE
+        StartCoroutine(GetTracePhotoByUrl("-NT9b3LkZjutw6zEV9b9", (texture) =>
+        {
+            if (texture != null)
+                test = texture;
+            else
+                Debug.LogError("LoadTraceImage Failed");
+        }));
     }
 
     private void ContinuesListners()
@@ -339,8 +350,7 @@ public partial class FbManager : MonoBehaviour
         string json = JsonUtility.ToJson(traceUserInfoStructure);
         return json;
     }
-
-   public IEnumerator RegisterNewUser(string _email, string _password, string _username, string _phoneNumber,  System.Action<String,AuthError> callback)
+    public IEnumerator RegisterNewUser(string _email, string _password, string _username, string _phoneNumber,  System.Action<String,AuthError> callback)
     {
         if (_username == "")
         {
@@ -573,28 +583,14 @@ public partial class FbManager : MonoBehaviour
             }
             catch (Exception e)
             {
-                
+
             }
-        
-    }
+        }
 
         DownloadHandler.Instance.DownloadImage(url, callback, () =>
         {
             callback(null);
         });
-        
-        // request = UnityWebRequestTexture.GetTexture((url)+"");
-        //
-        // yield return request.SendWebRequest(); //Wait for the request to complete
-        //
-        // if (request.isNetworkError || request.isHttpError)
-        // {
-        //     Debug.LogError("error:" + request.error);
-        // }
-        // else
-        // {
-        //     callback(((DownloadHandlerTexture)request.downloadHandler).texture);
-        // }
     }
     public IEnumerator GetMyUserNickName(System.Action<String> callback)
     {
@@ -865,7 +861,6 @@ public partial class FbManager : MonoBehaviour
     }
     #endregion
     #endregion
-
     #region Other User
     #region -Search for User
     public IEnumerator SearchForUserIDByUsername(String username, System.Action<CallbackObject> callback)
@@ -1071,7 +1066,6 @@ public partial class FbManager : MonoBehaviour
             });
         yield return new WaitForSeconds(0.1f);
     }
-
     public IEnumerator GetTrace(string traceID)
     {
         var DBTask = _databaseReference.Child("Traces").Child(traceID).GetValueAsync();
@@ -1096,8 +1090,8 @@ public partial class FbManager : MonoBehaviour
                 {
                     case "lat":
                     {
-                        Debug.Log(traceID + "lat: " + thing.Value);
-                        Debug.Log(thing.Value);
+                        //Debug.Log(traceID + "lat: " + thing.Value);
+                        //Debug.Log(thing.Value);
                         try
                         {
                             lat = (double)thing.Value;
@@ -1110,7 +1104,7 @@ public partial class FbManager : MonoBehaviour
                     }
                     case "long":
                     {
-                        Debug.Log(traceID + "long: " + thing.Value);
+                        //Debug.Log(traceID + "long: " + thing.Value);
                         try
                         {
                             lng = (double)thing.Value;
@@ -1124,8 +1118,8 @@ public partial class FbManager : MonoBehaviour
                     }
                     case "radius":
                     {
-                        Debug.Log(traceID + "radius: " + thing.Value);
-                        Debug.Log(traceID + "radius: " + thing.Value);
+                        //Debug.Log(traceID + "radius: " + thing.Value);
+                        //Debug.Log(traceID + "radius: " + thing.Value);
                         try
                         {
                             radius = float.Parse(thing.Value.ToString());
@@ -1138,19 +1132,19 @@ public partial class FbManager : MonoBehaviour
                     }
                     case "sender":
                     {
-                        Debug.Log(traceID + "sender: " + thing.Value);
+                        //Debug.Log(traceID + "sender: " + thing.Value);
                         sender = thing.Value.ToString();
                         break;
                     }
                     case "sendTime":
                     {
-                        Debug.Log(traceID + "sendTime: " + thing.Value);
+                        //Debug.Log(traceID + "sendTime: " + thing.Value);
                         sendTime = thing.Value.ToString();
                         break;
                     }
                     case "durationHours":
                     {
-                        Debug.Log(traceID + "durationHours: " + thing.Value);
+                        //Debug.Log(traceID + "durationHours: " + thing.Value);
                         durationHours = (float)thing.Value;
                         break;
                     }
@@ -1159,12 +1153,10 @@ public partial class FbManager : MonoBehaviour
 
             if (lat != 0 && lng != 0 && radius != 0)
             {
-                var trace = new TraceObject(lng, lat, radius, 10, 20);
+                var trace = new TraceObject(lng, lat, radius, sender, 10, 20, traceID);
                 receivedTraces.Add(trace);
             }
         }
-
-        
     }
     public IEnumerator GetSentTrace(string traceID)
     {
@@ -1204,7 +1196,7 @@ public partial class FbManager : MonoBehaviour
                     }
                     case "long":
                     {
-                        Debug.Log(traceID + "long: " + thing.Value);
+                        //Debug.Log(traceID + "long: " + thing.Value);
                         try
                         {
                             lng = (double)thing.Value;
@@ -1231,47 +1223,75 @@ public partial class FbManager : MonoBehaviour
                     }
                     case "sender":
                     {
-                        Debug.Log(traceID + "sender: " + thing.Value);
+                        //Debug.Log(traceID + "sender: " + thing.Value);
                         sender = thing.Value.ToString();
                         break;
                     }
                     case "sendTime":
                     {
-                        Debug.Log(traceID + "sendTime: " + thing.Value);
+                        //Debug.Log(traceID + "sendTime: " + thing.Value);
                         sendTime = thing.Value.ToString();
                         break;
                     }
                     case "durationHours":
                     {
-                        Debug.Log(traceID + "durationHours: " + thing.Value);
+                        //Debug.Log(traceID + "durationHours: " + thing.Value);
                         durationHours = (float)thing.Value;
                         break;
                     }
                 }
             }
             
-            Debug.Log("attemptingToAddSentTrace");
-            Debug.Log("SentTrace" + lat + ", " + lng+ ", " + radius);
+            //Debug.Log("attemptingToAddSentTrace");
+            //Debug.Log("SentTrace" + lat + ", " + lng+ ", " + radius);
             if (lat != 0 && lng != 0 && radius != 0)
             {
-                Debug.Log("SuccsefullyAddedSentTrace");
-                var trace = new TraceObject(lng, lat, radius, 10, 20);
+                //Debug.Log("SuccsefullyAddedSentTrace");
+                var trace = new TraceObject(lng, lat, radius,sender, 10, 20, traceID);
                 sentTraces.Add(trace);
             }
         }
 
         
     }
-
-    //todo:get users traces
-    public IEnumerator GetUsersTraces()
+    public IEnumerator GetTracePhotoByUrl(string _url, System.Action<Texture> callback)
     {
-        yield return null;
-    }
-    
-    #endregion
-    
+        CallbackObject callbackObject = new CallbackObject();
+        var request = new UnityWebRequest();
+        var url = "";
+        
+        Debug.Log("test:");
+        StorageReference pathReference = _firebaseStorage.GetReference("Traces/"+_url);
+        Debug.Log("path refrence:" + pathReference);
 
+        pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task => {
+            if (!task.IsFaulted && !task.IsCanceled) {
+                Debug.Log("Download URL: " + task.Result);
+                url = task.Result + "";
+                Debug.Log("Actual  URL: " + url);
+            }
+            else
+            {
+                Debug.Log("task failed:" + task.Result);
+            }
+        });
+        
+        yield return new WaitForSecondsRealtime(0.5f); //hmm not sure why (needs to wait for GetDownloadUrlAsync to complete)
+        
+        request = UnityWebRequestTexture.GetTexture((url)+"");
+        
+        yield return request.SendWebRequest(); //Wait for the request to complete
+        
+        if (request.isNetworkError || request.isHttpError)
+        {
+            Debug.LogError("error:" + request.error);
+        }
+        else
+        {
+            callback(((DownloadHandlerTexture)request.downloadHandler).texture);
+        }
+    }
+    #endregion
     private void DeleteFile(String _location) 
     { 
         _firebaseStorageReference = _firebaseStorageReference.Child(_location);
