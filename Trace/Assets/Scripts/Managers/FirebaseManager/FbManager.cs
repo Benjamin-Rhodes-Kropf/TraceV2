@@ -15,7 +15,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using DownloadHandler = Networking.DownloadHandler;
 using Object = System.Object;
-
+using UnityEngine.iOS;
 
 public partial class FbManager : MonoBehaviour
 {
@@ -42,12 +42,15 @@ public partial class FbManager : MonoBehaviour
     [Header("User Data")] 
     public Texture userImageTexture;
     public bool firstTimeUsingTrace;
-    public RawImage testRawImage;
-
+    public string userId;
+    public List<TraceObject> receivedTraces;
+    
     [Header("Essential Properties")] 
     [SerializeField] private float _timeToRepeatForCheckingRequest =   2f;
-
     public UserModel thisUserModel;
+
+    [Header("Refrences")] 
+    [SerializeField] private TraceManager traceManager;
 
     public bool IsFirebaseUserInitialised
     {
@@ -147,13 +150,12 @@ public partial class FbManager : MonoBehaviour
         { 
             StartCoroutine(AutoLogin());
         }
+        
+        Application.runInBackground = true;
     }
 
     #region Current User
     #region -User Login/Logout
-    
-    
-    
     public IEnumerator ForceLogin()
     {
         //Todo: figure out which wait until to use...
@@ -180,7 +182,7 @@ public partial class FbManager : MonoBehaviour
                 {
                     Debug.Log("FbManager: Logged in!");
                     ScreenManager.instance.ChangeScreenFade("HomeScreen");
-                    // _screenManager.ChangeScreenDown("HomeScreen");
+                    userId = _firebaseUser.UserId;
                 }
                 else
                 {
@@ -264,6 +266,8 @@ public partial class FbManager : MonoBehaviour
         PlayerPrefs.Save();
         callback(callbackObject);
         
+        //once user is logged in
+        SubscribeToReceivingTraces();
         GetAllUserNames();
         GetCurrentUserData(_password);
         StartCoroutine(RetrieveFriendRequests());
@@ -274,10 +278,18 @@ public partial class FbManager : MonoBehaviour
 
     private void ContinuesListners()
     {
-        StartCoroutine(CheckForFriendRequest());
-        StartCoroutine(CheckForNewFriends());
-        StartCoroutine(CheckIfFriendRequestRemoved());
-        StartCoroutine(CheckIfFriendRemoved());
+        //all friend requests todo: move to sep function
+        _databaseReference.Child("allFriendRequests").ChildAdded += HandleFriendRequest;
+        _databaseReference.Child("allFriendRequests").ChildRemoved += HandleRemovedRequests;
+        _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded += HandleFriends;
+        _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildRemoved += HandleRemovedFriends;
+        
+        SubscribeToReceivingTraces();
+        //these are obsolete because you only need to subscribe to an event once
+        //StartCoroutine(CheckForFriendRequest());
+        //StartCoroutine(CheckForNewFriends());
+        //StartCoroutine(CheckIfFriendRequestRemoved());
+        //StartCoroutine(CheckIfFriendRemoved());
     }
 
     private void GetCurrentUserData(string password)
@@ -317,8 +329,8 @@ public partial class FbManager : MonoBehaviour
         PlayerPrefs.SetString("Password", "null");
         userImageTexture = null;
         _firebaseAuth.SignOut();
+        receivedTraces.Clear();
         ScreenManager.instance.ChangeScreenForwards("Welcome");
-        //ScreenManager.instance.WelcomeScreen();
     }
     #endregion
     #region -User Registration
@@ -755,6 +767,54 @@ public partial class FbManager : MonoBehaviour
             Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
         }
     }
+    public void SubscribeToReceivingTraces()
+    {
+        var refrence = FirebaseDatabase.DefaultInstance.GetReference("RecivedTraces").Child(_firebaseUser.UserId);
+        refrence.ChildAdded += HandleChildAdded;
+        refrence.ChildChanged += HandleChildChanged;
+        refrence.ChildRemoved += HandleChildRemoved;
+        refrence.ChildMoved += HandleChildMoved;
+
+        void HandleChildAdded(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            StartCoroutine(GetTrace(args.Snapshot.Key));
+            //Debug.Log("Trace:" +args.Snapshot.Key);
+            //Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+
+        void HandleChildChanged(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            // Do something with the data in args.Snapshot
+            Debug.Log("child changed:" +args.Snapshot);
+            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+
+        void HandleChildRemoved(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            // Do something with the data in args.Snapshot
+            Debug.Log("child removed:" +args.Snapshot);
+            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+
+        void HandleChildMoved(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            // Do something with the data in args.Snapshot
+            Debug.Log("child moved:" +args.Snapshot);
+            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+    }
     #endregion
     #endregion
 
@@ -905,7 +965,8 @@ public partial class FbManager : MonoBehaviour
     }
     #endregion
     #endregion
-    
+
+    #region Sending And Reciving Traces
     public IEnumerator UploadTrace(string fileLocation, float radius, Vector2 location, List<string> users)
     {
         //PUSH DATA TO REAL TIME DB
@@ -957,27 +1018,109 @@ public partial class FbManager : MonoBehaviour
             });
         yield return new WaitForSeconds(0.1f);
     }
-    /*public IEnumerator UploadTraceVideo(string fileLocation)
+
+    public IEnumerator GetTrace(string traceID)
     {
-        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + "video");
-        //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
-        traceReference.PutFileAsync(fileLocation)
-            .ContinueWith((Task<StorageMetadata> task) => {
-                if (task.IsFaulted || task.IsCanceled) {
-                    Debug.Log(task.Exception.ToString());
-                    // Uh-oh, an error occurred!
+        var DBTask = _databaseReference.Child("Traces").Child(traceID).GetValueAsync();
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        
+        if (DBTask.IsFaulted)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            double lat = 0;
+            double lng = 0;
+            float radius = 0;
+            string sender = "";
+            string sendTime = "";
+            float durationHours = 0;
+
+            foreach (var thing in DBTask.Result.Children)
+            {
+                switch (thing.Key.ToString())
+                {
+                    case "lat":
+                    {
+                        Debug.Log(traceID + "lat: " + thing.Value);
+                        Debug.Log(thing.Value);
+                        try
+                        {
+                            lat = (double)thing.Value;
+                        }
+                        catch (Exception e)
+                        {
+                            lat = 0;
+                        }
+                        break;
+                    }
+                    case "long":
+                    {
+                        Debug.Log(traceID + "long: " + thing.Value);
+                        try
+                        {
+                            lng = (double)thing.Value;
+                        }
+                        catch (Exception e)
+                        {
+                            lng = 0;
+                        }
+                        
+                        break;
+                    }
+                    case "radius":
+                    {
+                        Debug.Log(traceID + "radius: " + thing.Value);
+                        try
+                        {
+                            radius = (float)(double)thing.Value;
+                        }
+                        catch (Exception e)
+                        {
+                            radius = 0;
+                        }
+                        break;
+                    }
+                    case "sender":
+                    {
+                        Debug.Log(traceID + "sender: " + thing.Value);
+                        sender = thing.Value.ToString();
+                        break;
+                    }
+                    case "sendTime":
+                    {
+                        Debug.Log(traceID + "sendTime: " + thing.Value);
+                        sendTime = thing.Value.ToString();
+                        break;
+                    }
+                    case "durationHours":
+                    {
+                        Debug.Log(traceID + "durationHours: " + thing.Value);
+                        durationHours = (float)thing.Value;
+                        break;
+                    }
                 }
-                else {
-                    // Metadata contains file metadata such as size, content-type, and download URL.
-                    StorageMetadata metadata = task.Result;
-                    string md5Hash = metadata.Md5Hash;
-                    Debug.Log("Finished uploading...");
-                    Debug.Log("md5 hash = " + md5Hash);
-                }
-            });
-        yield return new WaitForSeconds(0.1f);
-    }*/
+            }
+
+            if (lat != 0 && lng != 0 && radius != 0)
+            {
+                var trace = new TraceObject(lng, lat, radius, 10, 20);
+                receivedTraces.Add(trace);
+            }
+        }
+
+        
+    }
+    //todo:get users traces
+    public IEnumerator GetUsersTraces()
+    {
+        yield return null;
+    }
     
+    #endregion
+    
+
     private void DeleteFile(String _location) 
     { 
         _firebaseStorageReference = _firebaseStorageReference.Child(_location);
