@@ -7,7 +7,7 @@ public class DrawTraceOnMap : MonoBehaviour
     /// </summary>
     public int segments = 240;
     
-    public void DrawCirlce(double lat, double lng, float radius)
+    public void DrawCirlce(double lat, double lng, float radius, Color color)
     {
         OnlineMapsMarkerManager.CreateItem(lng, lat, "Marker " + OnlineMapsMarkerManager.CountItems);
         OnlineMaps map = OnlineMaps.instance;
@@ -42,7 +42,7 @@ public class DrawTraceOnMap : MonoBehaviour
         }
 
         // Create a new polygon to draw a circle
-        OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingPoly(points, Color.white, 3));
+        OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingPoly(points, color, 3));
     }
 
     public void Clear()
