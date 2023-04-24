@@ -44,6 +44,8 @@ public partial class FbManager : MonoBehaviour
     public bool firstTimeUsingTrace;
     public string userId;
     public List<TraceObject> receivedTraces;
+    public List<TraceObject> sentTraces;
+
     
     [Header("Essential Properties")] 
     [SerializeField] private float _timeToRepeatForCheckingRequest =   2f;
@@ -972,7 +974,9 @@ public partial class FbManager : MonoBehaviour
         //PUSH DATA TO REAL TIME DB
         string key = _databaseReference.Child("Traces").Push().Key;
         Dictionary<string, Object> childUpdates = new Dictionary<string, Object>();
-        
+
+
+        //update global traces
         childUpdates["Traces/" + key + "/sender"] = _firebaseUser.UserId;
         childUpdates["Traces/" + key + "/sendTime"] = DateTime.UtcNow.ToString();
         childUpdates["Traces/" + key + "/DurationHrs"] = 24;
@@ -997,7 +1001,10 @@ public partial class FbManager : MonoBehaviour
             //update data for each user
             childUpdates["RecivedTraces/" + user +"/"+ key + "/From"] = _firebaseUser.UserId.ToString();
         }
+        childUpdates["SentTraces/" + _firebaseUser.UserId.ToString() +"/" + key] = "null";
         _databaseReference.UpdateChildrenAsync(childUpdates);
+        
+        
         
         //UPLOAD IMAGE
         StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + key);
