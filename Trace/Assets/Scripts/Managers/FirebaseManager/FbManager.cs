@@ -269,7 +269,6 @@ public partial class FbManager : MonoBehaviour
         callback(callbackObject);
         
         //once user is logged in
-        SubscribeToReceivingTraces();
         GetAllUserNames();
         GetCurrentUserData(_password);
         StartCoroutine(RetrieveFriendRequests());
@@ -287,6 +286,7 @@ public partial class FbManager : MonoBehaviour
         _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildRemoved += HandleRemovedFriends;
         
         SubscribeToReceivingTraces();
+        SubscribeToSentTraces();
         //these are obsolete because you only need to subscribe to an event once
         //StartCoroutine(CheckForFriendRequest());
         //StartCoroutine(CheckForNewFriends());
@@ -817,6 +817,54 @@ public partial class FbManager : MonoBehaviour
             Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
         }
     }
+    public void SubscribeToSentTraces()
+    {
+        var refrence = FirebaseDatabase.DefaultInstance.GetReference("SentTraces").Child(_firebaseUser.UserId);
+        refrence.ChildAdded += HandleChildAdded;
+        refrence.ChildChanged += HandleChildChanged;
+        refrence.ChildRemoved += HandleChildRemoved;
+        refrence.ChildMoved += HandleChildMoved;
+
+        void HandleChildAdded(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            StartCoroutine(GetSentTrace(args.Snapshot.Key));
+            //Debug.Log("Trace:" +args.Snapshot.Key);
+            //Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+
+        void HandleChildChanged(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            // Do something with the data in args.Snapshot
+            Debug.Log("child changed:" +args.Snapshot);
+            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+
+        void HandleChildRemoved(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            // Do something with the data in args.Snapshot
+            Debug.Log("child removed:" +args.Snapshot);
+            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+
+        void HandleChildMoved(object sender, ChildChangedEventArgs args) {
+            if (args.DatabaseError != null) {
+                Debug.LogError(args.DatabaseError.Message);
+                return;
+            }
+            // Do something with the data in args.Snapshot
+            Debug.Log("child moved:" +args.Snapshot);
+            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
+        }
+    }
     #endregion
     #endregion
 
@@ -1119,6 +1167,100 @@ public partial class FbManager : MonoBehaviour
 
         
     }
+    public IEnumerator GetSentTrace(string traceID)
+    {
+        var DBTask = _databaseReference.Child("Traces").Child(traceID).GetValueAsync();
+        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+        
+        if (DBTask.IsFaulted)
+        {
+            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+        }
+        else
+        {
+            double lat = 0;
+            double lng = 0;
+            float radius = 0;
+            string sender = "";
+            string sendTime = "";
+            float durationHours = 0;
+
+            foreach (var thing in DBTask.Result.Children)
+            {
+                switch (thing.Key.ToString())
+                {
+                    case "lat":
+                    {
+                        Debug.Log(traceID + "lat: " + thing.Value);
+                        Debug.Log(thing.Value);
+                        try
+                        {
+                            lat = (double)thing.Value;
+                        }
+                        catch (Exception e)
+                        {
+                            lat = 0;
+                        }
+                        break;
+                    }
+                    case "long":
+                    {
+                        Debug.Log(traceID + "long: " + thing.Value);
+                        try
+                        {
+                            lng = (double)thing.Value;
+                        }
+                        catch (Exception e)
+                        {
+                            lng = 0;
+                        }
+                        
+                        break;
+                    }
+                    case "radius":
+                    {
+                        Debug.Log(traceID + "radius: " + thing.Value);
+                        try
+                        {
+                            radius = (float)(double)thing.Value;
+                        }
+                        catch (Exception e)
+                        {
+                            radius = 0;
+                        }
+                        break;
+                    }
+                    case "sender":
+                    {
+                        Debug.Log(traceID + "sender: " + thing.Value);
+                        sender = thing.Value.ToString();
+                        break;
+                    }
+                    case "sendTime":
+                    {
+                        Debug.Log(traceID + "sendTime: " + thing.Value);
+                        sendTime = thing.Value.ToString();
+                        break;
+                    }
+                    case "durationHours":
+                    {
+                        Debug.Log(traceID + "durationHours: " + thing.Value);
+                        durationHours = (float)thing.Value;
+                        break;
+                    }
+                }
+            }
+
+            if (lat != 0 && lng != 0 && radius != 0)
+            {
+                var trace = new TraceObject(lng, lat, radius, 10, 20);
+                sentTraces.Add(trace);
+            }
+        }
+
+        
+    }
+
     //todo:get users traces
     public IEnumerator GetUsersTraces()
     {
