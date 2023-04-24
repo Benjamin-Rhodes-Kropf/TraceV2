@@ -13,6 +13,7 @@ public class TraceManager : MonoBehaviour
     
     [SerializeField] private OnlineMapsLocationService onlineMapsLocationService;
     [SerializeField] private DrawTraceOnMap drawTraceOnMap;
+    [SerializeField] private SelectorManager sentRecivedToggle;
     [SerializeField] private Vector2 userLocation;
     public List<TraceObject> traceObjects;
     public List<TraceObject> traceObjectsByDistanceToUser;
@@ -193,13 +194,45 @@ public class TraceManager : MonoBehaviour
             // Add Notifications for the Next 10 Distance Filtered Traces
             UpdateNotificationsForNext10Traces();
         }
-        
-        foreach (var traceobject in FbManager.instance.receivedTraces)
+
+        if (!sentRecivedToggle.selectorInUpPosition)
         {
-            if (!traceobject.hasBeenAdded)
+            foreach (var traceobject in FbManager.instance.receivedTraces)
             {
-                drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius/100));
-                traceobject.hasBeenAdded = true;
+                if (!traceobject.hasBeenAdded)
+                {
+                    drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius/100));
+                    traceobject.hasBeenAdded = true;
+                }
+            }
+        }
+        else
+        {
+            foreach (var traceobject in FbManager.instance.sentTraces)
+            {
+                if (!traceobject.hasBeenAdded)
+                {
+                    drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius/100));
+                    traceobject.hasBeenAdded = true;
+                }
+            }
+        }
+    }
+
+    public void TraceViewSwitched()
+    {
+        if (sentRecivedToggle.selectorInUpPosition)
+        {
+            foreach (var traceobject in FbManager.instance.receivedTraces)
+            {
+                traceobject.hasBeenAdded = false;
+            }
+        }
+        else
+        {
+            foreach (var traceobject in FbManager.instance.sentTraces)
+            {
+                traceobject.hasBeenAdded = false;
             }
         }
     }

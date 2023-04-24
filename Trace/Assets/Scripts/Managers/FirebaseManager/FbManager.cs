@@ -152,8 +152,6 @@ public partial class FbManager : MonoBehaviour
         { 
             StartCoroutine(AutoLogin());
         }
-        
-        Application.runInBackground = true;
     }
 
     #region Current User
@@ -831,7 +829,7 @@ public partial class FbManager : MonoBehaviour
                 return;
             }
             StartCoroutine(GetSentTrace(args.Snapshot.Key));
-            //Debug.Log("Trace:" +args.Snapshot.Key);
+            Debug.Log("SentTraceAdded:" + args.Snapshot.Key);
             //Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
         }
 
@@ -1127,13 +1125,14 @@ public partial class FbManager : MonoBehaviour
                     case "radius":
                     {
                         Debug.Log(traceID + "radius: " + thing.Value);
+                        Debug.Log(traceID + "radius: " + thing.Value);
                         try
                         {
-                            radius = (float)(double)thing.Value;
+                            radius = float.Parse(thing.Value.ToString());
                         }
                         catch (Exception e)
                         {
-                            radius = 0;
+                            Debug.LogError("failed to parse string to float");
                         }
                         break;
                     }
@@ -1222,11 +1221,11 @@ public partial class FbManager : MonoBehaviour
                         Debug.Log(traceID + "radius: " + thing.Value);
                         try
                         {
-                            radius = (float)(double)thing.Value;
+                            radius = float.Parse(thing.Value.ToString());
                         }
                         catch (Exception e)
                         {
-                            radius = 0;
+                            Debug.LogError("failed to parse string to float");
                         }
                         break;
                     }
@@ -1250,9 +1249,12 @@ public partial class FbManager : MonoBehaviour
                     }
                 }
             }
-
+            
+            Debug.Log("attemptingToAddSentTrace");
+            Debug.Log("SentTrace" + lat + ", " + lng+ ", " + radius);
             if (lat != 0 && lng != 0 && radius != 0)
             {
+                Debug.Log("SuccsefullyAddedSentTrace");
                 var trace = new TraceObject(lng, lat, radius, 10, 20);
                 sentTraces.Add(trace);
             }
