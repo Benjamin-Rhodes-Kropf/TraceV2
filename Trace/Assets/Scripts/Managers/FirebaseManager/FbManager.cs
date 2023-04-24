@@ -1001,7 +1001,7 @@ public partial class FbManager : MonoBehaviour
             //update data for each user
             childUpdates["RecivedTraces/" + user +"/"+ key + "/From"] = _firebaseUser.UserId.ToString();
         }
-        childUpdates["SentTraces/" + _firebaseUser.UserId.ToString() +"/" + key] = "null";
+        childUpdates["SentTraces/" + _firebaseUser.UserId.ToString() +"/" + key] = DateTime.UtcNow.ToString();
         _databaseReference.UpdateChildrenAsync(childUpdates);
         
         
