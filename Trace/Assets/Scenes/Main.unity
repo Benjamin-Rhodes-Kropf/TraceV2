@@ -23082,13 +23082,15 @@ MonoBehaviour:
   autoLogin: 1
   forceLogin: 0
   useAdminForLogin: 1
-  adminUser: trace@gmail.com
-  adminPass: Abcd@123
+  adminUser: benrk100@gmail.com
+  adminPass: Bark2004!
   resetPlayerPrefs: 0
   userImageTexture: {fileID: 0}
   firstTimeUsingTrace: 0
-  testRawImage: {fileID: 0}
-  _timeToRepeatForCheckingRequest: 2
+  userId: 
+  receivedTraces: []
+  _timeToRepeatForCheckingRequest: 100
+  traceManager: {fileID: 6068666308761308086}
   _previousRequestFrom: []
 --- !u!1 &1197118202
 GameObject:
@@ -62366,16 +62368,16 @@ GameObject:
   - component: {fileID: 6068666308761308065}
   - component: {fileID: 6068666308761308066}
   - component: {fileID: 6068666308761308067}
+  - component: {fileID: 6068666308761308083}
   - component: {fileID: 6068666308761308078}
   - component: {fileID: 6068666308761308076}
   - component: {fileID: 6068666308761308079}
   - component: {fileID: 6068666308761308073}
   - component: {fileID: 6068666308761308080}
-  - component: {fileID: 6068666308761308081}
   - component: {fileID: 6068666308761308082}
-  - component: {fileID: 6068666308761308083}
-  - component: {fileID: 6068666308761308084}
   - component: {fileID: 6068666308761308085}
+  - component: {fileID: 6068666308761308087}
+  - component: {fileID: 6068666308761308086}
   m_Layer: 5
   m_Name: Map
   m_TagString: Untagged
@@ -62562,7 +62564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items: []
   defaultScale: 1
-  defaultTexture: {fileID: 2800000, guid: ea7eb0aa8eaab054a91d4219f9719f63, type: 3}
+  defaultTexture: {fileID: 2800000, guid: bda7c4a237e2b4f969a7e57bf6234fad, type: 3}
   defaultAlign: 4
   allowAddMarkerByM: 0
 --- !u!114 &6068666308761308079
@@ -62592,29 +62594,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raduis: 10
---- !u!114 &6068666308761308081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6068666308761308064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbd45b893a9ce4dfa8d438a344293ee5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  colorPaterns:
-  - Name: CircleOne
-    borderColor: {r: 0.764151, g: 0.11894804, b: 0.11894804, a: 0}
-    bgColor: {r: 0.6415094, g: 0.52954787, b: 0.52954787, a: 0}
-    borderSize: 5
-  radiusKM: 1
-  numOfCircles: 1
-  segments: 500
-  circlePoint:
-  - {x: 0, y: 0}
-  drawCircle: 1
 --- !u!114 &6068666308761308082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62636,7 +62615,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6068666308761308064}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b34f698a97add4f88b9be4506a1a4847, type: 3}
   m_Name: 
@@ -62649,62 +62628,8 @@ MonoBehaviour:
   - Name: BlueCircle
     circles: {fileID: 2800000, guid: 0c5f518d1723f4f79b902589665df8c3, type: 3}
   markerManager: {fileID: 6068666308761308078}
-  circleDrawingManager: {fileID: 6068666308761308081}
+  circleDrawingManager: {fileID: 0}
   radiusKM: 0.3
---- !u!114 &6068666308761308084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6068666308761308064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d893786372564ab59b5ece4717121fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onlineMapsLocationService: {fileID: 6068666308761308073}
-  userLocation: {x: 0, y: 0}
-  traceObjects:
-  - lat: 42.25594
-    lng: -71.07047
-    radius: 30
-    distanceToUser: 0
-    text: Cox
-    startTimeStamp: 0
-    endTimeStamp: 0
-  - lat: 42.25612
-    lng: -71.06938
-    radius: 30
-    distanceToUser: 0
-    text: ware
-    startTimeStamp: 0
-    endTimeStamp: 0
-  - lat: 42.25564
-    lng: -71.06999
-    radius: 30
-    distanceToUser: 0
-    text: AMC
-    startTimeStamp: 0
-    endTimeStamp: 0
-  - lat: 42.25418
-    lng: -71.0695
-    radius: 100
-    distanceToUser: 0
-    text: Pool Lot
-    startTimeStamp: 0
-    endTimeStamp: 0
-  - lat: 42.2555
-    lng: -71.07197
-    radius: 100
-    distanceToUser: 0
-    text: Pritsker
-    startTimeStamp: 0
-    endTimeStamp: 0
-  traceObjectsByDistanceToUser: []
-  startingPointLatitude: 0
-  startingPointLongitude: 0
-  maxDist: 0
 --- !u!114 &6068666308761308085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62719,6 +62644,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultZoom: 14
   markerManager: {fileID: 6068666308761308078}
+--- !u!114 &6068666308761308086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068666308761308064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d893786372564ab59b5ece4717121fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onlineMapsLocationService: {fileID: 6068666308761308073}
+  drawTraceOnMap: {fileID: 6068666308761308087}
+  userLocation: {x: 0, y: 0}
+  traceObjects: []
+  traceObjectsByDistanceToUser: []
+  startingPointLatitude: 0
+  startingPointLongitude: 0
+  maxDist: 0
+--- !u!114 &6068666308761308087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068666308761308064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb9a714301954e8f8e2c82b769fea96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  segments: 240
 --- !u!1 &6102808264268529458
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,6 +32,11 @@ public class ScaleMarkers : MonoBehaviour
     {
         //set user marker to not scale
         markerManager.items[0].scale = 0.1f;
+        for (int i = 0; i < markerManager.items.Count; i++)
+        {
+            markerManager.items[i].label = "";
+        }
+
     }
 
     /// <summary>

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using InfinityCode.OnlineMapsExamples;
 using Unity.Notifications.iOS;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class TraceManager : MonoBehaviour
     // Required package "com.unity.mobile.notifications": "2.1.1",
     
     [SerializeField] private OnlineMapsLocationService onlineMapsLocationService;
+    [SerializeField] private DrawTraceOnMap drawTraceOnMap;
     [SerializeField] private Vector2 userLocation;
     public List<TraceObject> traceObjects;
     public List<TraceObject> traceObjectsByDistanceToUser;
@@ -69,7 +71,7 @@ public class TraceManager : MonoBehaviour
         foreach (var traceObject in traceObjects)
         {
             traceObject.distanceToUser = CalculateTheDistanceBetweenCoordinatesAndCurrentCoordinates(
-                userLocation.x,userLocation.y,traceObject.lat, traceObject.lng, traceObject.radius);
+                userLocation.x,userLocation.y,(float)traceObject.lat, (float)traceObject.lng, traceObject.radius);
         }
         var traceObjectsInOrderOfDistance = traceObjects.OrderBy(f => f.distanceToUser);
         return traceObjectsInOrderOfDistance;
@@ -102,7 +104,7 @@ public class TraceManager : MonoBehaviour
         for (var i = 0; i < traceObjects.Count && i < 10; i++)
         {
             var trace = traceObjects[i];
-            ScheduleNotificationOnEnterInARadius(trace.lat, trace.lng,trace.radius, trace.text);
+            ScheduleNotificationOnEnterInARadius((float)trace.lat, (float)trace.lng,trace.radius, trace.text);
             //ScheduleNotificationOnExitFromARadius(trace.lat, trace.lng, trace.text);
         }
     }
@@ -143,7 +145,7 @@ public class TraceManager : MonoBehaviour
         }
 
         var trace = traceObjects[0];
-        ScheduleNotificationOnEnterInARadius(trace.lat, trace.lng, trace.radius, trace.text);
+        ScheduleNotificationOnEnterInARadius((float)trace.lat, (float)trace.lng, trace.radius, trace.text);
         //ScheduleNotificationOnExitFromARadius(trace.lat, trace.lng, trace.text);
     }
 
@@ -191,21 +193,31 @@ public class TraceManager : MonoBehaviour
             // Add Notifications for the Next 10 Distance Filtered Traces
             UpdateNotificationsForNext10Traces();
         }
+        
+        foreach (var traceobject in FbManager.instance.receivedTraces)
+        {
+            if (!traceobject.hasBeenAdded)
+            {
+                drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius/100));
+                traceobject.hasBeenAdded = true;
+            }
+        }
     }
 }
 
 [Serializable]
 public class TraceObject
 {
-    public float lat;
-    public float lng;
+    public double lat;
+    public double lng;
     public float radius;
     public double distanceToUser;
     public string text;
+    public bool hasBeenAdded;
     public double startTimeStamp;
     public double endTimeStamp;
     
-    public TraceObject(float longitude, float latitude, float radius, double startTimeStamp, double endTimeStamp)
+    public TraceObject(double longitude, double latitude, float radius, double startTimeStamp, double endTimeStamp)
     {
         lng = longitude;
         lat = latitude;

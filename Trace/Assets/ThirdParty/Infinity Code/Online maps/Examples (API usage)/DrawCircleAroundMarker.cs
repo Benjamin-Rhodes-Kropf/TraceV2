@@ -20,26 +20,15 @@ namespace InfinityCode.OnlineMapsExamples
         /// <summary>
         /// Number of segments
         /// </summary>
-        public int segments = 32;
-
-        /// <summary>
-        /// This method is called when a user clicks on a map
-        /// </summary>
-        private void OnMapClick()
+        public int segments = 240;
+        
+        public void DrawCirlce(double lat, double lng, float radius)
         {
-            // Get the coordinates under cursor
-            double lng, lat;
-            OnlineMapsControlBase.instance.GetCoords(out lng, out lat);
-
-            // Create a new marker under cursor
             OnlineMapsMarkerManager.CreateItem(lng, lat, "Marker " + OnlineMapsMarkerManager.CountItems);
-
             OnlineMaps map = OnlineMaps.instance;
-
-            // Get the coordinate at the desired distance
             double nlng, nlat;
-            OnlineMapsUtils.GetCoordinateInDistance(lng, lat, radiusKM, 90, out nlng, out nlat);
-
+            OnlineMapsUtils.GetCoordinateInDistance(lng, lat, radius, 90, out nlng, out nlat);
+            
             double tx1, ty1, tx2, ty2;
 
             // Convert the coordinate under cursor to tile position
@@ -47,7 +36,8 @@ namespace InfinityCode.OnlineMapsExamples
 
             // Convert remote coordinate to tile position
             map.projection.CoordinatesToTile(nlng, nlat, 20, out tx2, out ty2);
-
+            
+            
             // Calculate radius in tiles
             double r = tx2 - tx1;
 
@@ -67,16 +57,7 @@ namespace InfinityCode.OnlineMapsExamples
             }
 
             // Create a new polygon to draw a circle
-            OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingPoly(points, Color.red, 3));
-        }
-
-        /// <summary>
-        /// This method is called when the script starts
-        /// </summary>
-        private void Start()
-        {
-            // Subscribe to click on map event
-            OnlineMapsControlBase.instance.OnMapClick += OnMapClick;
+            OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingPoly(points, Color.white, 3));
         }
     }
 }

@@ -11,18 +11,13 @@ public partial class FbManager
     [HideInInspector] public List<string> _previousRequestFrom;
     public List<FriendRequests> _allReceivedRequests;
     public List<FriendRequests> _allSentRequests;
-
     public List<FriendModel> _allFriends;
 
-    #region Continues Listners 
-
-    
-
+    #region Continues Listners
     private void HandleFriendRequest(object sender, ChildChangedEventArgs args)
     {
         try
         {
-            
             if (args.Snapshot != null && args.Snapshot.Value != null)
             {
                 string senderId = args.Snapshot.Child("senderId").Value.ToString();
@@ -61,7 +56,6 @@ public partial class FbManager
             // Debug.Log("Exception From HandleFriendRequest");
         }
     }
-
     private void HandleRemovedRequests(object sender, ChildChangedEventArgs args)
     {
         try
@@ -112,7 +106,6 @@ public partial class FbManager
             Console.WriteLine(e);
         }
     }
-
     private void HandleRemovedFriends(object sender, ChildChangedEventArgs args)
     {
         try
@@ -131,6 +124,8 @@ public partial class FbManager
             Console.WriteLine(e);
         }
     }
+   
+    //todo: these are obsolete, you only need to subscribe once
     IEnumerator CheckForFriendRequest()
     {
         while (true)
@@ -139,7 +134,6 @@ public partial class FbManager
             _databaseReference.Child("allFriendRequests").ChildAdded += HandleFriendRequest;
         }
     }
-
     IEnumerator CheckIfFriendRequestRemoved()
     {
         while (true)
@@ -148,8 +142,6 @@ public partial class FbManager
             _databaseReference.Child("allFriendRequests").ChildRemoved += HandleRemovedRequests;
         }
     }
-
-
     IEnumerator CheckForNewFriends()
     {
         while (true)
@@ -158,7 +150,6 @@ public partial class FbManager
             _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded += HandleFriends;
         }
     }
-    
     IEnumerator CheckIfFriendRemoved()
     {
         while (true)
@@ -204,7 +195,6 @@ public partial class FbManager
             callback(true);
         }
     }
-
     public IEnumerator AcceptFriendRequest(string requestId, string senderId, Action<bool> callback)
     {
         _databaseReference.Child("allFriendRequests").Child(requestId).RemoveValueAsync();
@@ -232,7 +222,6 @@ public partial class FbManager
         }
         
     }
-
     public void CancelFriendRequest(string requestId)
     {
         // Delete the friend request node
@@ -240,7 +229,6 @@ public partial class FbManager
     }
 
     #region Query Functions
-
     private IEnumerator RetrieveFriendRequests()
     {
         // Get the current user's ID
@@ -275,7 +263,6 @@ public partial class FbManager
             }
         }
     }
-
     private IEnumerator RetrieveSentFriendRequests()
     {
         // Get the current user's ID
@@ -307,13 +294,10 @@ public partial class FbManager
             }
         }
     }
-
     public void GetSpecificUserData(string userId, Action<UserModel> callBack)
     {
         StartCoroutine(GetSpecificUserDataCoroutine(userId, callBack));
     }
-
-
     private IEnumerator GetSpecificUserDataCoroutine(string userId, Action<UserModel> callBack)
     {
         // Get a reference to the "users" node in the database
@@ -344,13 +328,8 @@ public partial class FbManager
             Debug.LogError(task.Exception);
         }
     }
-
     #endregion
-
-
-
-
-
+    
     #region Friendship
 
     public IEnumerator RetrieveFriends()
