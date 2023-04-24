@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class HomeScreenManager : MonoBehaviour
 {
+    public bool isInSentMode;
+
+
+
+    public void ToggleisInSentMode()
+    {
+        isInSentMode = !isInSentMode;
+    }
+    
     // Start is called before the first frame update
     void Start()
     {

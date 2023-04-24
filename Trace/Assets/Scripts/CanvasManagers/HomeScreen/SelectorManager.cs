@@ -6,7 +6,7 @@ using UnityEngine;
 public class SelectorManager : MonoBehaviour
 {
     [SerializeField] private Animator selectorAnimator;
-    [SerializeField] private bool selectorInUpPosition;
+    public bool selectorInUpPosition;
     public void OnEnable()
     {
         

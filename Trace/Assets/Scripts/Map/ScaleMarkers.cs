@@ -36,7 +36,6 @@ public class ScaleMarkers : MonoBehaviour
         {
             markerManager.items[i].label = "";
         }
-
     }
 
     /// <summary>

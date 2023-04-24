@@ -44,4 +44,16 @@ public class DrawTraceOnMap : MonoBehaviour
         // Create a new polygon to draw a circle
         OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingPoly(points, Color.white, 3));
     }
+
+    public void Clear()
+    {
+        for (int i = OnlineMapsDrawingElementManager.CountItems; i >=  0; i--)
+        {
+            OnlineMapsDrawingElementManager.RemoveItemAt(i);
+        }
+        for (int i = OnlineMapsMarkerManager.CountItems; i >  0; i--)
+        {
+            OnlineMapsMarkerManager.RemoveItemAt(i);
+        }
+    }
 }
