@@ -200,7 +200,7 @@ public class TraceManager : MonoBehaviour
             foreach (var traceobject in FbManager.instance.receivedTraces)
             {
                 var dist = CalculateTheDistanceBetweenCoordinatesAndCurrentCoordinates((float)traceobject.lat, (float)traceobject.lng, currentLatitude, currentLongitude, (float)(traceobject.radius*1000));
-                if (!traceobject.hasBeenAdded)
+                if (!traceobject.hasBeenAdded && !traceobject.hasBeenOpened)
                 {
                     Debug.Log("Dist is: " + dist);
                     if (dist < 0)
@@ -245,6 +245,15 @@ public class TraceManager : MonoBehaviour
             {
                 traceobject.hasBeenAdded = false;
             }
+        }
+    }
+
+    public void UpdateTracesOnMap()
+    {
+        drawTraceOnMap.Clear();
+        foreach (var traceobject in FbManager.instance.receivedTraces)
+        {
+            traceobject.hasBeenAdded = false;
         }
     }
 }
