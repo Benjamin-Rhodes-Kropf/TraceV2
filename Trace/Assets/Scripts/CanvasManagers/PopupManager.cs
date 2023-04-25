@@ -13,6 +13,7 @@ public class PopupManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     [SerializeField]private bool onDeploy, onFold = false;
     public bool isDeployed = false;
     public bool isFolded = true;
+    public bool startDeployed;
     [SerializeField]public float homePositionOffset = 1f;
     [SerializeField]public bool disableOnFold = true;
     [SerializeField]private RectTransform inactiveParent;
@@ -31,8 +32,16 @@ public class PopupManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     {
         // panelSpeed = canvasRectTransform.rect.height * 0.025f;
         threshold = canvasRectTransform.rect.height * 0.10f;
+        
         //make y value a decimal to show on enabled
-        panelRectTransform.localPosition = new Vector3(panelRectTransform.localPosition.x,-homePositionOffset * canvasRectTransform.rect.height, panelRectTransform.localPosition.z);
+        if (!startDeployed)
+        {
+            panelRectTransform.localPosition = new Vector3(panelRectTransform.localPosition.x,-homePositionOffset * canvasRectTransform.rect.height, panelRectTransform.localPosition.z);
+        }
+        else
+        {
+            panelRectTransform.localPosition = new Vector3(panelRectTransform.localPosition.x,0, panelRectTransform.localPosition.z);
+        }
         onDeploy = true;
     }
     void Update()
