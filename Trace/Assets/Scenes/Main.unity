@@ -2371,13 +2371,14 @@ MonoBehaviour:
   pointerOffset: {x: 0, y: 0}
   pointerDownPosition: {x: 0, y: 0}
   threshold: 0
-  panelSpeed: 200
+  panelSpeed: 140
   canvasRectTransform: {fileID: 1301840575}
   panelRectTransform: {fileID: 194426315}
   onDeploy: 0
   onFold: 0
   isDeployed: 0
   isFolded: 1
+  startDeployed: 0
   homePositionOffset: 1
   disableOnFold: 1
   inactiveParent: {fileID: 1279216834}
@@ -2519,6 +2520,7 @@ MonoBehaviour:
   onFold: 0
   isDeployed: 0
   isFolded: 1
+  startDeployed: 0
   homePositionOffset: 1
   disableOnFold: 1
   inactiveParent: {fileID: 1279216834}
@@ -6972,6 +6974,7 @@ MonoBehaviour:
   onFold: 0
   isDeployed: 0
   isFolded: 1
+  startDeployed: 0
   homePositionOffset: 1
   disableOnFold: 1
   inactiveParent: {fileID: 1279216834}
@@ -7419,6 +7422,7 @@ MonoBehaviour:
   onFold: 0
   isDeployed: 0
   isFolded: 1
+  startDeployed: 0
   homePositionOffset: 1
   disableOnFold: 1
   inactiveParent: {fileID: 1279216834}
@@ -18771,6 +18775,7 @@ MonoBehaviour:
   onFold: 0
   isDeployed: 0
   isFolded: 1
+  startDeployed: 0
   homePositionOffset: 1
   disableOnFold: 1
   inactiveParent: {fileID: 1279216834}
@@ -23426,6 +23431,7 @@ MonoBehaviour:
   onFold: 0
   isDeployed: 0
   isFolded: 1
+  startDeployed: 0
   homePositionOffset: 1
   disableOnFold: 1
   inactiveParent: {fileID: 1279216834}
@@ -24634,6 +24640,7 @@ MonoBehaviour:
   onFold: 0
   isDeployed: 0
   isFolded: 1
+  startDeployed: 0
   homePositionOffset: 1
   disableOnFold: 1
   inactiveParent: {fileID: 1279216834}
@@ -24923,6 +24930,7 @@ MonoBehaviour:
   onFold: 0
   isDeployed: 0
   isFolded: 1
+  startDeployed: 0
   homePositionOffset: 1
   disableOnFold: 1
   inactiveParent: {fileID: 1279216834}
@@ -34997,6 +35005,7 @@ MonoBehaviour:
   onFold: 0
   isDeployed: 0
   isFolded: 1
+  startDeployed: 0
   homePositionOffset: 1
   disableOnFold: 1
   inactiveParent: {fileID: 1279216834}
