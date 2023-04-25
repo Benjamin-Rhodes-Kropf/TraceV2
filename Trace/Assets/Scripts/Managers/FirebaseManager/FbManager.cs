@@ -1040,7 +1040,7 @@ public partial class FbManager : MonoBehaviour
             childUpdates["Traces/" + key + "/Reciver/" + user + "/ProfilePhoto"] = "null";
             
             //update data for each user
-            childUpdates["RecivedTraces/" + user +"/"+ key + "/From"] = _firebaseUser.UserId.ToString();
+            childUpdates["RecivedTraces/" + user +"/"+ key + "/Opened"] = false;
         }
         childUpdates["SentTraces/" + _firebaseUser.UserId.ToString() +"/" + key] = DateTime.UtcNow.ToString();
         _databaseReference.UpdateChildrenAsync(childUpdates);
@@ -1291,6 +1291,19 @@ public partial class FbManager : MonoBehaviour
             callback(((DownloadHandlerTexture)request.downloadHandler).texture);
         }
     }
+
+    public TraceObject GetTraceToOpen() {
+        foreach (var trace in receivedTraces)
+        {
+            if (trace.canBeOpened && !trace.hasBeenOpened)
+            {
+                trace.hasBeenOpened = true;
+                return trace;
+            }
+        }
+        return null;
+    }
+    
     #endregion
     private void DeleteFile(String _location) 
     { 

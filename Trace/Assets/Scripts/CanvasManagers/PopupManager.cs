@@ -29,7 +29,7 @@ public class PopupManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
  
     void OnEnable()
     {
-        panelSpeed = canvasRectTransform.rect.height * 0.025f;
+        // panelSpeed = canvasRectTransform.rect.height * 0.025f;
         threshold = canvasRectTransform.rect.height * 0.10f;
         //make y value a decimal to show on enabled
         panelRectTransform.localPosition = new Vector3(panelRectTransform.localPosition.x,-homePositionOffset * canvasRectTransform.rect.height, panelRectTransform.localPosition.z);
