@@ -205,12 +205,12 @@ public class TraceManager : MonoBehaviour
                     Debug.Log("Dist is: " + dist);
                     if (dist < 0)
                     {
-                        drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius), Color.green);
+                        drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius), Color.green, traceobject.id);
                         traceobject.canBeOpened = true;
                     }
                     else
                     {
-                        drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius), Color.white);
+                        drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius), Color.white, traceobject.id);
                         traceobject.canBeOpened = false;
                     }
                     traceobject.hasBeenAdded = true;
@@ -223,12 +223,13 @@ public class TraceManager : MonoBehaviour
             {
                 if (!traceobject.hasBeenAdded)
                 {
-                    drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius), Color.white);
+                    drawTraceOnMap.DrawCirlce(traceobject.lat, traceobject.lng, (traceobject.radius), Color.white, traceobject.id);
                     traceobject.hasBeenAdded = true;
                 }
             }
         }
     }
+    
 
     public void TraceViewSwitched()
     {

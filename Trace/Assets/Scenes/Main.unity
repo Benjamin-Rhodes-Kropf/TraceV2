@@ -63223,6 +63223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   segments: 240
+  scaleAmount: 150
 --- !u!1 &6102808264268529458
 GameObject:
   m_ObjectHideFlags: 0

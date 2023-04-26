@@ -6,8 +6,20 @@ public class DrawTraceOnMap : MonoBehaviour
     /// Number of segments
     /// </summary>
     public int segments = 240;
+
+    [SerializeField] private int scaleAmount;
+    private void Start()
+    {
+        // Create new event OnDrawTooltip for all markers.
+        OnlineMapsMarkerBase.OnMarkerDrawTooltip += OnMarkerDrawTooltip;
+    }
     
-    public void DrawCirlce(double lat, double lng, float radius, Color color)
+    private void OnMarkerDrawTooltip(OnlineMapsMarkerBase marker)
+    {
+        // Here you draw the tooltip for the marker.
+    }
+
+    public void DrawCirlce(double lat, double lng, float radius, Color color, string markerID)
     {
         OnlineMapsMarkerManager.CreateItem(lng, lat, "Marker " + OnlineMapsMarkerManager.CountItems);
         OnlineMaps map = OnlineMaps.instance;
@@ -43,6 +55,57 @@ public class DrawTraceOnMap : MonoBehaviour
 
         // Create a new polygon to draw a circle
         OnlineMapsDrawingElementManager.AddItem(new OnlineMapsDrawingPoly(points, color, 3));
+
+        // Add OnClick events to static markers
+        ModifyTraceToBeClickable(OnlineMapsMarkerManager.instance[OnlineMapsMarkerManager.instance.Count-1], (int)radius, markerID);
+    }
+    
+    public static Texture2D DrawCircleOnMap(Texture2D tex, Color color, int x, int y, int radius)
+    {
+        float rSquared = radius * radius;
+        for (int u = x - radius; u < x + radius + 1; u++)
+        for (int v = y - radius; v < y + radius + 1; v++)
+            if ((x - u) * (x - u) + (y - v) * (y - v) < rSquared)
+            {
+                
+            }
+            else
+            {
+                tex.SetPixel(u, v, Color.clear);
+            }
+        tex.Apply();
+        return tex;
+    }
+    
+    
+    public void ModifyTraceToBeClickable(OnlineMapsMarker marker, int radius, string markerID)
+    {
+        Debug.Log("Modifying Marker");
+        marker.OnClick += OnMarkerClick;
+        
+        var tex = new Texture2D(radius*2*scaleAmount,radius*2*scaleAmount);
+        //var tex = new Texture2D(radius*2*scaleAmount,radius*2*scaleAmount, TextureFormat.ARGB32, false);
+         Color fillColor = Color.clear;
+         Color[] fillPixels = new Color[tex.width * tex.height];
+         for (int i = 0; i < fillPixels.Length; i++)
+         {
+             fillPixels[i] = fillColor;
+         }
+         tex.SetPixels(fillPixels);
+        
+         tex.Apply();
+        
+        //marker.texture = DrawCircleOnMap(tex, new Color(100,250,100,100), radius*scaleAmount, radius*scaleAmount, radius*scaleAmount);
+        //tex = DrawCircleOnMap(tex, Color.green, 300, 300, 100);
+
+        marker.texture = tex;
+        marker.label = markerID;
+    }
+    
+    private void OnMarkerClick(OnlineMapsMarkerBase marker)
+    {
+        //todo: check if click was actually indside the circle
+        Debug.Log(marker.label);
     }
 
     public void Clear()

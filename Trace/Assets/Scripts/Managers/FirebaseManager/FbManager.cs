@@ -288,19 +288,9 @@ public partial class FbManager : MonoBehaviour
 
     private void ContinuesListners()
     {
-        //all friend requests todo: move to sep function
-        _databaseReference.Child("allFriendRequests").ChildAdded += HandleFriendRequest;
-        _databaseReference.Child("allFriendRequests").ChildRemoved += HandleRemovedRequests;
-        _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded += HandleFriends;
-        _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildRemoved += HandleRemovedFriends;
-        
+        SubscribeToFriendRequests();
         SubscribeToReceivingTraces();
         SubscribeToSentTraces();
-        //these are obsolete because you only need to subscribe to an event once
-        //StartCoroutine(CheckForFriendRequest());
-        //StartCoroutine(CheckForNewFriends());
-        //StartCoroutine(CheckIfFriendRequestRemoved());
-        //StartCoroutine(CheckIfFriendRemoved());
     }
 
     private void GetCurrentUserData(string password)
@@ -859,6 +849,13 @@ public partial class FbManager : MonoBehaviour
             Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
         }
     }
+    public void SubscribeToFriendRequests()
+    {
+        _databaseReference.Child("allFriendRequests").ChildAdded += HandleFriendRequest;
+        _databaseReference.Child("allFriendRequests").ChildRemoved += HandleRemovedRequests;
+        _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded += HandleFriends;
+        _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildRemoved += HandleRemovedFriends;
+    }
     #endregion
     #endregion
     #region Other User
@@ -1292,11 +1289,21 @@ public partial class FbManager : MonoBehaviour
         }
     }
 
+    //Todo:
+    public void MarkTraceAsOpened(string traceID)
+    {
+        Dictionary<string, Object> childUpdates = new Dictionary<string, Object>();
+        childUpdates["RecivedTraces/" + _firebaseUser.UserId + "/" + traceID] = null;
+        childUpdates["Traces/" + traceID + "/Reciver/"+ _firebaseUser.UserId +"/HasViewed"] = true;
+        _databaseReference.UpdateChildrenAsync(childUpdates);
+    }
+    
     public TraceObject GetTraceToOpen() {
         foreach (var trace in receivedTraces)
         {
             if (trace.canBeOpened && !trace.hasBeenOpened)
             {
+                MarkTraceAsOpened(trace.id);
                 trace.hasBeenOpened = true;
                 return trace;
             }
