@@ -42,7 +42,7 @@ public class SendTraceManager : MonoBehaviour
     {
         Vector2 location = _onlineMapsLocationService.GetUserLocation();
         Debug.Log("SendTraceImage Lat:" + location.x);
-        StartCoroutine(FbManager.instance.UploadTrace(fileLocation, radius, location, users));
+        // StartCoroutine(FbManager.instance.UploadTrace(fileLocation, radius, location, users));
     }
     
     

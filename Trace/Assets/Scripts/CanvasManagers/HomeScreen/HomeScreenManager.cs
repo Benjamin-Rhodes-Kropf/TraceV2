@@ -16,22 +16,22 @@ public class HomeScreenManager : MonoBehaviour
 
     public void OpenTrace()
     {
-        var trace = FbManager.instance.GetTraceToOpen();
-        if(trace == null)
-            return;
-        
-        StartCoroutine(FbManager.instance.GetTracePhotoByUrl(trace.id, (texture) =>
-        {
-            if (texture != null)
-            {
-                displayTrace.texture = texture;
-                ScreenManager.instance.OpenPopup("Trace");
-            }
-            else
-            {
-                Debug.LogError("LoadTraceImage Failed");
-            }
-        }));
+        // var trace = FbManager.instance.GetTraceToOpen();
+        // if(trace == null)
+        //     return;
+        //
+        // StartCoroutine(FbManager.instance.GetTracePhotoByUrl(trace.id, (texture) =>
+        // {
+        //     if (texture != null)
+        //     {
+        //         displayTrace.texture = texture;
+        //         ScreenManager.instance.OpenPopup("Trace");
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("LoadTraceImage Failed");
+        //     }
+        // }));
     }
     
     // Start is called before the first frame update

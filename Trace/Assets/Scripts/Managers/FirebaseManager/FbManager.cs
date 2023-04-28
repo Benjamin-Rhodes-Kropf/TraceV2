@@ -15,7 +15,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using DownloadHandler = Networking.DownloadHandler;
 using Object = System.Object;
-using UnityEngine.iOS;
+
 
 public partial class FbManager : MonoBehaviour
 {
@@ -106,7 +106,7 @@ public partial class FbManager : MonoBehaviour
                 Debug.LogError("Could not resolve all Firebase dependencies: " + dependencyStatus);
             }
         });
-        
+
     }
     private void InitializeFirebase()
     {
@@ -275,22 +275,15 @@ public partial class FbManager : MonoBehaviour
         StartCoroutine(RetrieveSentFriendRequests());
         StartCoroutine(RetrieveFriends());
         ContinuesListners();
-        
-        //TEST GET IMAGE
-        StartCoroutine(GetTracePhotoByUrl("-NT9b3LkZjutw6zEV9b9", (texture) =>
-        {
-            if (texture != null)
-                test = texture;
-            else
-                Debug.LogError("LoadTraceImage Failed");
-        }));
+        InitializeFCMService();
     }
 
     private void ContinuesListners()
     {
-        SubscribeToFriendRequests();
-        SubscribeToReceivingTraces();
-        SubscribeToSentTraces();
+        StartCoroutine(CheckForFriendRequest());
+        StartCoroutine(CheckForNewFriends());
+        StartCoroutine(CheckIfFriendRequestRemoved());
+        StartCoroutine(CheckIfFriendRemoved());
     }
 
     private void GetCurrentUserData(string password)
@@ -409,21 +402,10 @@ public partial class FbManager : MonoBehaviour
         
         var json = GenerateUserProfileJson( _username, "null", "null",_email, _phoneNumber);
         _databaseReference.Child("users").Child(_firebaseUser.UserId.ToString()).SetRawJsonValueAsync(json);
-        //
-        // var DBTaskSetUsernameLinkToId = _databaseReference.Child("usernames").Child(_username).SetValueAsync(_firebaseUser.UserId);
-        // while (DBTaskSetUsernameLinkToId.IsCompleted is false)
-        //     yield return new WaitForEndOfFrame();
-        //
-        // // yield return new WaitUntil(predicate: () => DBTaskSetUsernameLinkToId.IsCompleted);
-        //
-        // var DBTaskSetPhoneNumberLinkToId = _databaseReference.Child("phoneNumbers").Child(_firebaseUser.UserId).Child(_phoneNumber).SetValueAsync(_firebaseUser.UserId);
-        // while (DBTaskSetPhoneNumberLinkToId.IsCompleted is false)
-        //     yield return new WaitForEndOfFrame();
-        // // yield return new WaitUntil(predicate: () => DBTaskSetPhoneNumberLinkToId.IsCompleted);
-        //
-        // var DBTaskSetUserFriends = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child("null").SetValueAsync("null");
-        // while (DBTaskSetUserFriends.IsCompleted is false)
-        //     yield return new WaitForEndOfFrame();
+       
+        var DBTaskSetUserFriends = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child("Don't Delete This Child").SetValueAsync("*");
+        while (DBTaskSetUserFriends.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
         
         // yield return new WaitUntil(predicate: () => DBTaskSetUserFriends.IsCompleted);
         
@@ -442,128 +424,6 @@ public partial class FbManager : MonoBehaviour
         }));
         callback(null, errorCode);
     }
-
-
-   #region Old Register Method
-
-   
-
-    // public IEnumerator RegisterNewUser(string _email, string _password, string _username, string _phoneNumber,  System.Action<String> callback)
-    // {
-    //     if (_username == "")
-    //     {
-    //         callback("Missing Username"); //having a blank nickname is not really a DB error so I return a error here
-    //         yield break;
-    //     }
-    //
-    //     //Call the Firebase auth signin function passing the email and password
-    //     var RegisterTask = _firebaseAuth.CreateUserWithEmailAndPasswordAsync(_email, _password);
-    //     
-    //     //Wait until the task completes
-    //     //yield return new WaitUntil(predicate: () => RegisterTask.IsCompleted);
-    //
-    //     if (RegisterTask.Exception != null)
-    //     {
-    //         //If there are errors handle them
-    //         Debug.LogWarning(message: $"Failed to register task with {RegisterTask.Exception}");
-    //         FirebaseException firebaseEx = RegisterTask.Exception.GetBaseException() as FirebaseException;
-    //         AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
-    //         Debug.LogError(" What is the error code message ?? " + errorCode);
-    //         string message = "Register Failed!";
-    //         switch (errorCode)
-    //         {
-    //             case AuthError.MissingEmail:
-    //                 message = "Missing Email";
-    //                 break;
-    //             case AuthError.MissingPassword:
-    //                 message = "Missing Password";
-    //                 break;
-    //             case AuthError.WeakPassword:
-    //                 message = "Weak Password";
-    //                 break;
-    //             case AuthError.EmailAlreadyInUse:
-    //                 message = "Email Already In Use";
-    //                 break;
-    //         }
-    //         Debug.LogWarning(message);
-    //         callback(message);
-    //         yield break;
-    //     }
-    //
-    //     //User has now been created
-    //     // _firebaseUser = RegisterTask.Result;
-    //
-    //     if (_firebaseUser == null)
-    //     {
-    //         Debug.LogWarning("User Null");
-    //         yield break;
-    //     }
-    //
-    //     //Create a user profile and set the username todo: set user profile image dynamically
-    //     UserProfile profile = new UserProfile{DisplayName = _username, PhotoUrl = new Uri("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/ProfilePhotos%2FEmptyPhoto.jpg?alt=media&token=fbc8b18c-4bdf-44fd-a4ba-7ae881d3f063")};
-    //     var ProfileTask = _firebaseUser.UpdateUserProfileAsync(profile);
-    //     yield return new WaitUntil(predicate: () => ProfileTask.IsCompleted);
-    //
-    //     if (ProfileTask.Exception != null)
-    //     {
-    //         Debug.LogWarning(message: $"Failed to register task with {ProfileTask.Exception}");
-    //         Debug.LogWarning("Username Set Failed!");
-    //         callback("Something Went Wrong, Sorry");
-    //         yield break;
-    //     }
-    //
-    //     var user = _firebaseAuth.CurrentUser;
-    //     if (user == null)
-    //     {
-    //         Debug.LogWarning("User Null");
-    //         yield break;
-    //     }
-    //
-    //     Firebase.Auth.UserProfile userProfile = new Firebase.Auth.UserProfile
-    //     {
-    //         DisplayName = user.DisplayName,
-    //     };
-    //    
-    //     user.UpdateUserProfileAsync(userProfile).ContinueWith(task =>
-    //     {
-    //         if (task.IsCanceled)
-    //         {
-    //             Debug.LogError("UpdateUserProfileAsync was canceled.");
-    //             return;
-    //         }
-    //
-    //         if (task.IsFaulted)
-    //         {
-    //             Debug.LogError("UpdateUserProfileAsync encountered an error: " + task.Exception);
-    //         }
-    //     });
-    //
-    //     var json = GenerateUserProfileJson( _username, "null", "null",_email, _phoneNumber);
-    //     _databaseReference.Child("users").Child(_firebaseUser.UserId.ToString()).SetRawJsonValueAsync(json);
-    //     
-    //     var DBTaskSetUsernameLinkToId = _databaseReference.Child("usernames").Child(_username).SetValueAsync(_firebaseUser.UserId);
-    //     yield return new WaitUntil(predicate: () => DBTaskSetUsernameLinkToId.IsCompleted);
-    //     
-    //     var DBTaskSetPhoneNumberLinkToId = _databaseReference.Child("phoneNumbers").Child(_firebaseUser.UserId).Child(_phoneNumber).SetValueAsync(_firebaseUser.UserId);
-    //     yield return new WaitUntil(predicate: () => DBTaskSetPhoneNumberLinkToId.IsCompleted);
-    //
-    //     var DBTaskSetUserFriends = _databaseReference.Child("friendRequests").Child(_firebaseUser.UserId).Child("null").SetValueAsync("null");
-    //     yield return new WaitUntil(predicate: () => DBTaskSetUserFriends.IsCompleted);
-    //     
-    //     //if nothing has gone wrong try logging in with new users information
-    //     StartCoroutine(Login(_email, _password, (myReturnValue) => {
-    //         if (myReturnValue != null)
-    //         {
-    //             Debug.LogWarning("failed to login");
-    //         }
-    //         else
-    //         {
-    //             Debug.Log("Logged In!");
-    //         }
-    //     }));
-    //     callback(null);
-    // }
-    #endregion
 
     #endregion
     #region -User Edit Information
@@ -651,16 +511,13 @@ public partial class FbManager : MonoBehaviour
             callback(true);
         }
     }
-    public IEnumerator UploadProfilePhoto(string _imagePath, System.Action<bool,string> callback)
+
+
+    public IEnumerator UploadProfilePhoto(byte[] _picBytes, System.Action<bool,string> callback)
     {
-        // Read the image file as a byte array
-        byte[] imageBytes = System.IO.File.ReadAllBytes(_imagePath);
-        print("Is  Null :: "+ _firebaseStorage == null);
-        // Create a reference to the image file in Firebase Storage
         StorageReference imageRef = _firebaseStorage.GetReference("ProfilePhoto/"+_firebaseUser.UserId+".png");
 
-        // Upload the image file to Firebase Storage
-        var task = imageRef.PutBytesAsync(imageBytes);
+        var task = imageRef.PutBytesAsync(_picBytes);
 
         while (task.IsCompleted is false)
             yield return new WaitForEndOfFrame();
@@ -890,109 +747,6 @@ public partial class FbManager : MonoBehaviour
             Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
         }
     }
-    public void SubscribeToReceivingTraces()
-    {
-        var refrence = FirebaseDatabase.DefaultInstance.GetReference("RecivedTraces").Child(_firebaseUser.UserId);
-        refrence.ChildAdded += HandleChildAdded;
-        refrence.ChildChanged += HandleChildChanged;
-        refrence.ChildRemoved += HandleChildRemoved;
-        refrence.ChildMoved += HandleChildMoved;
-
-        void HandleChildAdded(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            StartCoroutine(GetTrace(args.Snapshot.Key));
-            //Debug.Log("Trace:" +args.Snapshot.Key);
-            //Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-
-        void HandleChildChanged(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            // Do something with the data in args.Snapshot
-            Debug.Log("child changed:" +args.Snapshot);
-            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-
-        void HandleChildRemoved(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            // Do something with the data in args.Snapshot
-            Debug.Log("child removed:" +args.Snapshot);
-            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-
-        void HandleChildMoved(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            // Do something with the data in args.Snapshot
-            Debug.Log("child moved:" +args.Snapshot);
-            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-    }
-    public void SubscribeToSentTraces()
-    {
-        var refrence = FirebaseDatabase.DefaultInstance.GetReference("SentTraces").Child(_firebaseUser.UserId);
-        refrence.ChildAdded += HandleChildAdded;
-        refrence.ChildChanged += HandleChildChanged;
-        refrence.ChildRemoved += HandleChildRemoved;
-        refrence.ChildMoved += HandleChildMoved;
-
-        void HandleChildAdded(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            StartCoroutine(GetSentTrace(args.Snapshot.Key));
-            Debug.Log("SentTraceAdded:" + args.Snapshot.Key);
-            //Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-
-        void HandleChildChanged(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            // Do something with the data in args.Snapshot
-            Debug.Log("child changed:" +args.Snapshot);
-            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-
-        void HandleChildRemoved(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            // Do something with the data in args.Snapshot
-            Debug.Log("child removed:" +args.Snapshot);
-            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-
-        void HandleChildMoved(object sender, ChildChangedEventArgs args) {
-            if (args.DatabaseError != null) {
-                Debug.LogError(args.DatabaseError.Message);
-                return;
-            }
-            // Do something with the data in args.Snapshot
-            Debug.Log("child moved:" +args.Snapshot);
-            Debug.Log("value:" +  args.Snapshot.GetRawJsonValue());
-        }
-    }
-    public void SubscribeToFriendRequests()
-    {
-        _databaseReference.Child("allFriendRequests").ChildAdded += HandleFriendRequest;
-        _databaseReference.Child("allFriendRequests").ChildRemoved += HandleRemovedRequests;
-        _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded += HandleFriends;
-        _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildRemoved += HandleRemovedFriends;
-    }
     #endregion
     #endregion
     #region Other User
@@ -1098,14 +852,6 @@ public partial class FbManager : MonoBehaviour
     }
     
     // TODO: Redundant function
-    public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess) {
-        StartCoroutine(GetProfilePhotoFromFirebaseStorageRoutine(userId, (myReturnValue) => {
-            if (myReturnValue != null)
-            {
-                onSuccess?.Invoke(myReturnValue);
-            }
-        }));
-    }
     public IEnumerator GetUserProfilePhotoByUserID(String userID, System.Action<CallbackObject> callback)
     {
         CallbackObject callbackObject = new CallbackObject();
@@ -1143,278 +889,42 @@ public partial class FbManager : MonoBehaviour
     }
     #endregion
     #endregion
-
-    #region Sending And Reciving Traces
-    public IEnumerator UploadTrace(string fileLocation, float radius, Vector2 location, List<string> users)
+    
+    //TESTING
+    //Future Functions
+    //GetFriendshipRequests
+    //AcceptFriendshipRequest
+    //getPhotos
+    
+    public void AddFriend(String _username)
     {
-        //PUSH DATA TO REAL TIME DB
-        string key = _databaseReference.Child("Traces").Push().Key;
-        Dictionary<string, Object> childUpdates = new Dictionary<string, Object>();
-
-
-        //update global traces
-        childUpdates["Traces/" + key + "/sender"] = _firebaseUser.UserId;
-        childUpdates["Traces/" + key + "/sendTime"] = DateTime.UtcNow.ToString();
-        childUpdates["Traces/" + key + "/DurationHrs"] = 24;
-        childUpdates["Traces/" + key + "/lat"] = location.x;
-        childUpdates["Traces/" + key + "/long"] = location.y;
-        childUpdates["Traces/" + key + "/radius"] = radius;
-        if (PlayerPrefs.GetInt("LeaveTraceIsVisable") == 1)
-        {
-            childUpdates["Traces/" + key + "/isVisable"] = true;
-        }
-        else
-        {
-            childUpdates["Traces/" + key + "/isVisable"] = false;
-        }
-        
-        foreach (var user in users)
-        {
-            //update data for within trace
-            childUpdates["Traces/" + key + "/Reciver/" + user + "/HasViewed"] = false;
-            childUpdates["Traces/" + key + "/Reciver/" + user + "/ProfilePhoto"] = "null";
-            
-            //update data for each user
-            childUpdates["RecivedTraces/" + user +"/"+ key + "/Opened"] = false;
-        }
-        childUpdates["SentTraces/" + _firebaseUser.UserId.ToString() +"/" + key] = DateTime.UtcNow.ToString();
-        _databaseReference.UpdateChildrenAsync(childUpdates);
-        
-        
-        
-        //UPLOAD IMAGE
-        StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + key);
-        //StorageReference traceReference = _firebaseStorageReference.Child("/Traces/" + _firebaseUser.UserId);
-        traceReference.PutFileAsync(fileLocation)
-            .ContinueWith((Task<StorageMetadata> task) => {
-                if (task.IsFaulted || task.IsCanceled) {
-                    Debug.Log("FB Error:" + task.Exception.ToString());
-                    // Uh-oh, an error occurred!
-                }
-                else {
-                    // Metadata contains file metadata such as size, content-type, and download URL.
-                    StorageMetadata metadata = task.Result;
-                    string md5Hash = metadata.Md5Hash;
-                    Debug.Log("FB: Finished uploading...");
-                    Debug.Log("FB: md5 hash = " + md5Hash);
-                }
-            });
-        yield return new WaitForSeconds(0.1f);
-    }
-    public IEnumerator GetTrace(string traceID)
-    {
-        var DBTask = _databaseReference.Child("Traces").Child(traceID).GetValueAsync();
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
-        
-        if (DBTask.IsFaulted)
-        {
-            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
-        }
-        else
-        {
-            double lat = 0;
-            double lng = 0;
-            float radius = 0;
-            string sender = "";
-            string sendTime = "";
-            float durationHours = 0;
-
-            foreach (var thing in DBTask.Result.Children)
+        String _nickName = "null";
+        StartCoroutine(FbManager.instance.ActionAcceptFriend(_username, _nickName, (myReturnValue) => {
+            if (myReturnValue != "Success")
             {
-                switch (thing.Key.ToString())
-                {
-                    case "lat":
-                    {
-                        //Debug.Log(traceID + "lat: " + thing.Value);
-                        //Debug.Log(thing.Value);
-                        try
-                        {
-                            lat = (double)thing.Value;
-                        }
-                        catch (Exception e)
-                        {
-                            lat = 0;
-                        }
-                        break;
-                    }
-                    case "long":
-                    {
-                        //Debug.Log(traceID + "long: " + thing.Value);
-                        try
-                        {
-                            lng = (double)thing.Value;
-                        }
-                        catch (Exception e)
-                        {
-                            lng = 0;
-                        }
-                        
-                        break;
-                    }
-                    case "radius":
-                    {
-                        //Debug.Log(traceID + "radius: " + thing.Value);
-                        //Debug.Log(traceID + "radius: " + thing.Value);
-                        try
-                        {
-                            radius = float.Parse(thing.Value.ToString());
-                        }
-                        catch (Exception e)
-                        {
-                            Debug.LogError("failed to parse string to float");
-                        }
-                        break;
-                    }
-                    case "sender":
-                    {
-                        //Debug.Log(traceID + "sender: " + thing.Value);
-                        sender = thing.Value.ToString();
-                        break;
-                    }
-                    case "sendTime":
-                    {
-                        //Debug.Log(traceID + "sendTime: " + thing.Value);
-                        sendTime = thing.Value.ToString();
-                        break;
-                    }
-                    case "durationHours":
-                    {
-                        //Debug.Log(traceID + "durationHours: " + thing.Value);
-                        durationHours = (float)thing.Value;
-                        break;
-                    }
-                }
-            }
-
-            if (lat != 0 && lng != 0 && radius != 0)
-            {
-                var trace = new TraceObject(lng, lat, radius, sender, 10, 20, traceID);
-                receivedTraces.Add(trace);
-            }
-        }
-    }
-    public IEnumerator GetSentTrace(string traceID)
-    {
-        var DBTask = _databaseReference.Child("Traces").Child(traceID).GetValueAsync();
-        yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
-        
-        if (DBTask.IsFaulted)
-        {
-            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
-        }
-        else
-        {
-            double lat = 0;
-            double lng = 0;
-            float radius = 0;
-            string sender = "";
-            string sendTime = "";
-            float durationHours = 0;
-
-            foreach (var thing in DBTask.Result.Children)
-            {
-                switch (thing.Key.ToString())
-                {
-                    case "lat":
-                    {
-                        Debug.Log(traceID + "lat: " + thing.Value);
-                        Debug.Log(thing.Value);
-                        try
-                        {
-                            lat = (double)thing.Value;
-                        }
-                        catch (Exception e)
-                        {
-                            lat = 0;
-                        }
-                        break;
-                    }
-                    case "long":
-                    {
-                        //Debug.Log(traceID + "long: " + thing.Value);
-                        try
-                        {
-                            lng = (double)thing.Value;
-                        }
-                        catch (Exception e)
-                        {
-                            lng = 0;
-                        }
-                        
-                        break;
-                    }
-                    case "radius":
-                    {
-                        Debug.Log(traceID + "radius: " + thing.Value);
-                        try
-                        {
-                            radius = float.Parse(thing.Value.ToString());
-                        }
-                        catch (Exception e)
-                        {
-                            Debug.LogError("failed to parse string to float");
-                        }
-                        break;
-                    }
-                    case "sender":
-                    {
-                        //Debug.Log(traceID + "sender: " + thing.Value);
-                        sender = thing.Value.ToString();
-                        break;
-                    }
-                    case "sendTime":
-                    {
-                        //Debug.Log(traceID + "sendTime: " + thing.Value);
-                        sendTime = thing.Value.ToString();
-                        break;
-                    }
-                    case "durationHours":
-                    {
-                        //Debug.Log(traceID + "durationHours: " + thing.Value);
-                        durationHours = (float)thing.Value;
-                        break;
-                    }
-                }
-            }
-            
-            //Debug.Log("attemptingToAddSentTrace");
-            //Debug.Log("SentTrace" + lat + ", " + lng+ ", " + radius);
-            if (lat != 0 && lng != 0 && radius != 0)
-            {
-                //Debug.Log("SuccsefullyAddedSentTrace");
-                var trace = new TraceObject(lng, lat, radius,sender, 10, 20, traceID);
-                sentTraces.Add(trace);
-            }
-        }
-
-        
-    }
-    public IEnumerator GetTracePhotoByUrl(string _url, System.Action<Texture> callback)
-    {
-        CallbackObject callbackObject = new CallbackObject();
-        var request = new UnityWebRequest();
-        var url = "";
-        
-        Debug.Log("test:");
-        StorageReference pathReference = _firebaseStorage.GetReference("Traces/"+_url);
-        Debug.Log("path refrence:" + pathReference);
-
-        pathReference.GetDownloadUrlAsync().ContinueWithOnMainThread(task => {
-            if (!task.IsFaulted && !task.IsCanceled) {
-                Debug.Log("Download URL: " + task.Result);
-                url = task.Result + "";
-                Debug.Log("Actual  URL: " + url);
+                Debug.LogError("failed to update freinds");
             }
             else
             {
-                Debug.Log("task failed:" + task.Result);
+                Debug.Log("updated friends");
             }
-        });
+        }));
+    }
+    public void getTestImage()
+    {
+        StartCoroutine(GetTestImage((myReturnValue) => {
+            if (myReturnValue != null)
+            {
+                // testRawImage.texture = myReturnValue;
+            }
+        }));
+    }
+    private IEnumerator GetTestImage(System.Action<Texture> callback)
+    {
+        var request = new UnityWebRequest();
         
-        yield return new WaitForSecondsRealtime(0.5f); //hmm not sure why (needs to wait for GetDownloadUrlAsync to complete)
-        
-        request = UnityWebRequestTexture.GetTexture((url)+"");
-        
+        request = UnityWebRequestTexture.GetTexture("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/ProfilePhoto%2FPVNKPFYFrWVRoPdhsTs0aAYH5cA3%2Fprofile.png?alt=media&token=894e50e6-7a46-4dec-aca7-20945d1bca58"); //Create a request
+
         yield return request.SendWebRequest(); //Wait for the request to complete
         
         if (request.isNetworkError || request.isHttpError)
@@ -1426,30 +936,6 @@ public partial class FbManager : MonoBehaviour
             callback(((DownloadHandlerTexture)request.downloadHandler).texture);
         }
     }
-
-    //Todo:
-    public void MarkTraceAsOpened(string traceID)
-    {
-        Dictionary<string, Object> childUpdates = new Dictionary<string, Object>();
-        childUpdates["RecivedTraces/" + _firebaseUser.UserId + "/" + traceID] = null;
-        childUpdates["Traces/" + traceID + "/Reciver/"+ _firebaseUser.UserId +"/HasViewed"] = true;
-        _databaseReference.UpdateChildrenAsync(childUpdates);
-    }
-    
-    public TraceObject GetTraceToOpen() {
-        foreach (var trace in receivedTraces)
-        {
-            if (trace.canBeOpened && !trace.hasBeenOpened)
-            {
-                MarkTraceAsOpened(trace.id);
-                trace.hasBeenOpened = true;
-                return trace;
-            }
-        }
-        return null;
-    }
-    
-    #endregion
     private void DeleteFile(String _location) 
     { 
         _firebaseStorageReference = _firebaseStorageReference.Child(_location);
@@ -1461,5 +947,30 @@ public partial class FbManager : MonoBehaviour
                 // Uh-oh, an error occurred!
             }
         });
+    }
+    public void GetProfilePhotoFromFirebaseStorage(string userId, Action<Texture> onSuccess, Action<string> onFailed) {
+        StartCoroutine(GetProfilePhotoFromFirebaseStorageRoutine(userId, (myReturnValue) => {
+            if (myReturnValue != null)
+            {
+                onSuccess?.Invoke(myReturnValue);
+            }
+
+            {
+                onFailed?.Invoke("Image not Found");
+            }
+        }));
+    }
+    private IEnumerator TryLoadImage(string MediaUrl, System.Action<Texture> callback) {
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture("https://firebasestorage.googleapis.com/v0/b/geosnapv1.appspot.com/o/"+ _firebaseUser.UserId +"%2FnewFile.jpeg?alt=media"); //Create a request
+
+        yield return request.SendWebRequest(); //Wait for the request to complete
+        if (request.isNetworkError || request.isHttpError)
+        {
+            Debug.LogWarning(request.error);
+        }
+        else
+        {
+            callback(((DownloadHandlerTexture)request.downloadHandler).texture);
+        }
     }
 }

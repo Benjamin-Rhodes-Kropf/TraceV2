@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 public class FriendModel : IEquatable<FriendModel>
 {
+    public bool isBestFriend = false;
     public string friend;
     public bool Equals(FriendModel other)
     {

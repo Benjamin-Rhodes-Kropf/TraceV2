@@ -20,11 +20,11 @@ namespace CanvasManagers
         [Header("Contacts Info")] 
         public ContactView _contactPrfab;
         public Transform _contactParent;
-        
         [Header("Requests Info")] 
         public RequestView _requestPrefab;
         public Transform _requestParent;
         public TMP_Text _requestText;
+        public GameObject _redRequestMark;
 
         [Header("Toggle Panels")] 
         public GameObject _contactsScroll;
@@ -47,6 +47,7 @@ namespace CanvasManagers
 
         public static Action UpdateRequestView;
         public static Action UpdateFriendsView;
+        public static Action UpdateRedMarks;
 
         #region UnityEvents
 
@@ -57,6 +58,7 @@ namespace CanvasManagers
             _controller.Init(this);
             UpdateRequestView += _controller.UpdateRequestLayout;
             UpdateFriendsView += _controller.UpdateFriendsLayout;
+            UpdateRedMarks += _controller.UpdateSelectionPanelView;
         }
 
         private void OnDisable()
@@ -64,6 +66,8 @@ namespace CanvasManagers
             _controller.UnInitialize();
             UpdateRequestView -= _controller.UpdateRequestLayout;
             UpdateFriendsView -= _controller.UpdateFriendsLayout;
+            UpdateRedMarks -= _controller.UpdateSelectionPanelView;
+
         }
 
 

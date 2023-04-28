@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CanvasManagers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,6 +63,7 @@ public class RequestView : MonoBehaviour
             if (isUpdated)
             {
                 FriendRequestManager.Instance.RemoveRequestFromList(senderId);
+                ContactsCanvas.UpdateRedMarks?.Invoke();
                 this.gameObject.SetActive(false);
             }
         })));
@@ -74,6 +76,7 @@ public class RequestView : MonoBehaviour
     {
         FbManager.instance.CancelFriendRequest(requestId);        
         FriendRequestManager.Instance.RemoveRequestFromList(requestId, _buttonText.text != "Sent");
+        ContactsCanvas.UpdateRedMarks?.Invoke();
         gameObject.SetActive(false);
 
     }

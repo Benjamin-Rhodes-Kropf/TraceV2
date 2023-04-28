@@ -23,7 +23,7 @@ public class FriendsModelManager
         
     }
 
-    public FriendModel GetFriendModelByOtherFriendID(string otherFriend)
+    private FriendModel GetFriendModelByOtherFriendID(string otherFriend)
     {
         RemoveDuplicates();
         var friend =
@@ -48,6 +48,24 @@ public class FriendsModelManager
         }        
     }
 
+    public bool IsBestFriend(string id)
+    {
+       return GetFriendModelByOtherFriendID(id).isBestFriend;
+    }
+
+    public void SetBestFriend(string id, bool isBestFriend)
+    {
+        //Todo : Update Data in Local List
+        for (var i = 0; i < FbManager.instance._allFriends.Count; i++)
+        {
+            if (FbManager.instance._allFriends[i].friend.Equals(id))
+            {
+                FbManager.instance._allFriends[i].isBestFriend = isBestFriend;
+                break;
+            }
+        }
+        
+    }
 
     public void RemoveFriendFromList(string otherFriend)
     {

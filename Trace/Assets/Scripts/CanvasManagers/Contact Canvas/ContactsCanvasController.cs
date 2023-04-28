@@ -31,7 +31,7 @@ namespace CanvasManagers
             _view._requestsButton.onClick.AddListener(OnRequestsSelection);
 
             OnFriendsSelection();
-            
+            UpdateSelectionPanelView();
         }
 
         public void UnInitialize()
@@ -43,6 +43,11 @@ namespace CanvasManagers
             _view._requestsButton.onClick.RemoveAllListeners();
         }
 
+
+        public void UpdateSelectionPanelView()
+        {
+            _view._redRequestMark.SetActive(FbManager.instance._allReceivedRequests.Count > 0);
+        }
         private void FrindsListInit()
         {
             foreach (var friend in _view._friendsList)
@@ -81,7 +86,7 @@ namespace CanvasManagers
                 foreach (var friend in friends)
                 {
                     var view = GameObject.Instantiate(_view.friendViewPrefab, _view._searchscrollParent);
-                    view.UpdateFrindData(friend,true);
+                    view.UpdateFriendData(friend,true, FriendsModelManager.Instance.IsBestFriend(friend.userId));
                     searchList.Add(view.gameObject);
                 }
             }
@@ -138,7 +143,7 @@ namespace CanvasManagers
                     if (requests.Contains(other)) continue;
                     if (other.userId == FbManager.instance.thisUserModel.userId) continue;
                     var view = GameObject.Instantiate(_view.friendViewPrefab, _view._searchscrollParent);
-                    view.UpdateFrindData(other);
+                    view.UpdateFriendData(other);
                     searchList.Add(view.gameObject);
                 }
             }
@@ -178,7 +183,7 @@ namespace CanvasManagers
                     if (userIndex < _view._friendsList.Count)
                     {
                         var friend = _view._friendsList[userIndex];
-                        friend.UpdateFrindData(users[userIndex], IsFriendsList);
+                        friend.UpdateFriendData(users[userIndex], IsFriendsList);
                         friend.gameObject.SetActive(true);
                         
                     }
@@ -186,7 +191,7 @@ namespace CanvasManagers
                     {
                         FriendView friend = GameObject.Instantiate(_view.friendViewPrefab, _view._displayFrindsParent);
                         _view._friendsList.Add(friend);
-                        friend.UpdateFrindData(users[userIndex], IsFriendsList);
+                        friend.UpdateFriendData(users[userIndex], IsFriendsList);
                        
                     }
                 }
@@ -195,7 +200,7 @@ namespace CanvasManagers
                     if (userIndex < users.Count)
                     {
                         var friend = _view._friendsList[userIndex];
-                        friend.UpdateFrindData(users[userIndex], IsFriendsList);
+                        friend.UpdateFriendData(users[userIndex], IsFriendsList);
                         friend.gameObject.SetActive(true);
                         
                     }
@@ -209,7 +214,7 @@ namespace CanvasManagers
         }
         private void PopulateFriendUIObject(FriendView friendView, UserModel data)
         {
-            friendView.UpdateFrindData(data);
+            friendView.UpdateFriendData(data);
             friendView.gameObject.SetActive(true);
             friendView._addRemoveButton.onClick.RemoveAllListeners();
         }
@@ -300,7 +305,7 @@ namespace CanvasManagers
         private void UpdateFriendViewInfo(UserModel user)
         {
             FriendView view = GameObject.Instantiate(_view.friendViewPrefab, _view._displayFrindsParent);
-            view.UpdateFrindData(user,true);
+            view.UpdateFriendData(user,true, FriendsModelManager.Instance.IsBestFriend(user.userId));
             _allFriendsView.Add(view);
         }
         private void ClearFriendsView()
@@ -422,18 +427,8 @@ namespace CanvasManagers
             if (string.IsNullOrEmpty(name) is false )
             {
                 var list = _allContacts.Where(contact => contact.givenName.Contains(name, StringComparison.InvariantCultureIgnoreCase)).ToList();
-                // Query Syntax
-               
-                Debug.Log("Total Contacts with :: " + list.Count);
                 selectedContacts.AddRange(list);
             }
-
-            foreach (var contact in _allContacts)
-            {
-                Debug.Log("Contact Name : "+ contact.givenName);
-                Debug.Log("Contact Number : "+ contact.phoneNumber);
-            }
-            
         }
     }
 

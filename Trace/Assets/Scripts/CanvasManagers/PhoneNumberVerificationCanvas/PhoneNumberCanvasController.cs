@@ -36,26 +36,25 @@ namespace CanvasManagers
         private void OnVerifyNumberClicked()
         {
             phoneNumber = _view._countryCodeDropdown.captionText.text.Trim()+_view._numberInputField.text.Trim();
-            // phoneNumber = _view._countryCodeInputField.text.Trim()+_view._numberInputField.text.Trim();
             
             provider = PhoneAuthProvider.GetInstance(FirebaseAuth.DefaultInstance);
             
             provider.VerifyPhoneNumber(phoneNumber, _autoVerifyTimeOut, null,
                 verificationCompleted: (credential) => {
-                    Debug.LogError(credential.Provider);
+                    Debug.LogError("Credential :: "+ credential.Provider);
                     // Auto-sms-retrieval or instant validation has succeeded (Android only).
                     // There is no need to input the verification code.
                     // `credential` can be used instead of calling GetCredential().
                 },
                 verificationFailed: (error) => {
                     // The verification code was not sent.
-                    Debug.LogError(error);
+                    Debug.LogError("Error :: "+error);
 
                     // `error` contains a human readable explanation of the problem.
                 },
                 codeSent: (id, token) => {
-                    Debug.LogError(id);
-                    Debug.LogError(token);
+                    Debug.LogError("ID ::"+id);
+                    Debug.LogError("Token :: "+token);
                     _verficationId = id;
                     // Verification code was successfully sent via SMS.
                     // `id` contains the verification id that will need to passed in with
@@ -64,7 +63,7 @@ namespace CanvasManagers
                     // tie the two requests together.
                 },
                 codeAutoRetrievalTimeOut: (id) => {
-                    Debug.LogError(id);
+                    Debug.LogError("Time Out ID :: "+id);
 
                     // Called when the auto-sms-retrieval has timed out, based on the given
                     // timeout parameter.

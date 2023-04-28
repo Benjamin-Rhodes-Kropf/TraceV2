@@ -39,7 +39,7 @@ public class SettingsManager : MonoBehaviour
 
     public void OpenGalleryForProfilePictureSelection() {
 #if UNITY_EDITOR
-        StartCoroutine(FbManager.instance.UploadProfilePhoto("Assets/Resources/profileimage.png", callback));
+        // StartCoroutine(FbManager.instance.UploadProfilePhoto("Assets/Resources/profileimage.png", callback));
 #elif UNITY_IOS
         Debug.Log("Assets/Resources/profileimage.png");
 #endif

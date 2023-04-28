@@ -6,7 +6,7 @@ public class TookPhotoCanvasController
 {
     private TookPhotoCanvas _view;
 
-
+    public static Sprite _profilePicture;
 
     public TookPhotoCanvasController(TookPhotoCanvas view)
     {
@@ -28,8 +28,21 @@ public class TookPhotoCanvasController
         Texture2D tex = new Texture2D(2, 2);
         byte[] imageBytes = System.IO.File.ReadAllBytes(TakePhotoCanvasController.imagePath);
         tex.LoadImage(imageBytes);
-        var sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width/2, tex.height/2));
-        _view._profilePicture.sprite = sprite;
+        _profilePicture = CropTexture(tex);
+        _view._profilePicture.sprite = _profilePicture;
+    }
+
+    private Sprite CropTexture(Texture2D texture)
+    {
+        Sprite croppedSprite = null;
+        Texture2D originalTexture = texture;
+        int squareSize = Mathf.Min(originalTexture.width, originalTexture.height);
+        Rect croppingRect = new Rect((originalTexture.width - squareSize) / 2, (originalTexture.height - squareSize) / 2, squareSize, squareSize);
+        Texture2D croppedTexture = new Texture2D((int)croppingRect.width, (int)croppingRect.height);
+        croppedTexture.SetPixels(originalTexture.GetPixels((int)croppingRect.x, (int)croppingRect.y, (int)croppingRect.width, (int)croppingRect.height));
+        croppedTexture.Apply();
+        croppedSprite = Sprite.Create(croppedTexture, new Rect(0, 0, croppedTexture.width, croppedTexture.height), new Vector2(0.5f, 0.5f));
+        return croppedSprite;
     }
     
     public void Uninit()
@@ -40,14 +53,8 @@ public class TookPhotoCanvasController
     
     private void OnDoneButtonClick()
     {
-        _view.StartCoroutine(FbManager.instance.SetUserProfilePhotoUrl(TakePhotoCanvasController.photoUrl,
-            (isSuccess) =>
-            {
-                if (isSuccess)
-                {
                     ScreenManager.instance.ChangeScreenForwards("SettingUpAccount");
-                }
-            }));
+        
     }
 
 

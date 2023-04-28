@@ -35,6 +35,9 @@ public partial class FbManager
                     return;
                 }
 
+                print("Receiver ID : "+ receiverId);
+                print("Sender ID : "+ senderId);
+                
                 // Get the friend request data
                 string requestId = args.Snapshot.Key;
                 string status = args.Snapshot.Child("status").Value.ToString();
@@ -48,7 +51,10 @@ public partial class FbManager
                 };
                 
                 _allReceivedRequests.Add(request);
-                
+                SoundManager.instance.PlaySound(SoundManager.SoundType.Notification);
+                HelperMethods.PlayHeptics();
+                ContactsCanvas.UpdateRedMarks?.Invoke();
+
                 if (ContactsCanvas.UpdateRequestView != null)
                     ContactsCanvas.UpdateRequestView?.Invoke();
                 
@@ -99,7 +105,7 @@ public partial class FbManager
                 friend = friendId
             };
             
-         
+            print("New Friend Added :: "+ friendId);
             _allFriends.Add(friend);
             if (ContactsCanvas.UpdateFriendsView != null)
                 ContactsCanvas.UpdateFriendsView?.Invoke();
@@ -130,8 +136,6 @@ public partial class FbManager
             Console.WriteLine(e);
         }
     }
-   
-    //todo: these are obsolete, you only need to subscribe once
     IEnumerator CheckForFriendRequest()
     {
         while (true)
@@ -140,6 +144,7 @@ public partial class FbManager
             _databaseReference.Child("allFriendRequests").ChildAdded += HandleFriendRequest;
         }
     }
+
     IEnumerator CheckIfFriendRequestRemoved()
     {
         while (true)
@@ -148,6 +153,8 @@ public partial class FbManager
             _databaseReference.Child("allFriendRequests").ChildRemoved += HandleRemovedRequests;
         }
     }
+
+
     IEnumerator CheckForNewFriends()
     {
         while (true)
@@ -156,6 +163,7 @@ public partial class FbManager
             _databaseReference.Child("Friends").Child(_firebaseUser.UserId).ChildAdded += HandleFriends;
         }
     }
+    
     IEnumerator CheckIfFriendRemoved()
     {
         while (true)
@@ -185,8 +193,6 @@ public partial class FbManager
         // Create a new friend request node
         var task = _databaseReference.Child("allFriendRequests").Child(requestId).SetValueAsync(requestData);
 
-        //        var task = _databaseReference.Child("allFriendRequests").Child(friendId).Child(_firebaseUser.UserId).SetValueAsync(requestData);
-
         while (task.IsCompleted is false)
             yield return new WaitForEndOfFrame();
 
@@ -205,13 +211,15 @@ public partial class FbManager
     {
         _databaseReference.Child("allFriendRequests").Child(requestId).RemoveValueAsync();
         
-        var friend = new FriendModel
-        {
-            friend = senderId
-        };
+        // var friend = new FriendModel
+        // {
+        //     friend = senderId
+        // };
 
-        var task = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(senderId).SetValueAsync(true);
-        _databaseReference.Child("Friends").Child(senderId).Child(_firebaseUser.UserId).SetValueAsync(true);
+        print("Friend Request Accept Called With  SenderID ::  "+ senderId);
+        
+        var task = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(senderId).SetValueAsync(false);
+        _databaseReference.Child("Friends").Child(senderId).Child(_firebaseUser.UserId).SetValueAsync(false);
         while (task.IsCompleted is false)
             yield return new WaitForEndOfFrame();
 
@@ -228,6 +236,27 @@ public partial class FbManager
         }
         
     }
+    
+    
+    public IEnumerator SetBestFriend( string friendID, bool isBestFriend, Action<bool> callback)
+    {
+        var task = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(friendID).SetValueAsync(isBestFriend);
+
+        while (task.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
+
+        if (task.IsCanceled || task.IsFaulted)
+        {
+            print("False Called");
+            callback(false);
+        }
+        else
+        {
+            print("True Called");
+            callback(true);
+        }
+    }
+    
     public void CancelFriendRequest(string requestId)
     {
         // Delete the friend request node
@@ -235,6 +264,7 @@ public partial class FbManager
     }
 
     #region Query Functions
+
     private IEnumerator RetrieveFriendRequests()
     {
         // Get the current user's ID
@@ -269,6 +299,7 @@ public partial class FbManager
             }
         }
     }
+
     private IEnumerator RetrieveSentFriendRequests()
     {
         // Get the current user's ID
@@ -300,10 +331,13 @@ public partial class FbManager
             }
         }
     }
+
     public void GetSpecificUserData(string userId, Action<UserModel> callBack)
     {
         StartCoroutine(GetSpecificUserDataCoroutine(userId, callBack));
     }
+
+
     private IEnumerator GetSpecificUserDataCoroutine(string userId, Action<UserModel> callBack)
     {
         // Get a reference to the "users" node in the database
@@ -358,11 +392,20 @@ public partial class FbManager
             DataSnapshot snapshot = task.Result; 
             foreach (var friend in snapshot.Children)
             {
-                string friendID = friend.Key.ToString();
+                var friendID = friend.Key.ToString();
+                // print("IsBest Friends :: " + friend.Value.ToString());
+                var isBestFriend = false;
+    
+                if (friend.Value.ToString().Equals("*") is false)
+                    isBestFriend= System.Convert.ToBoolean(friend.Value.ToString());
+                
                 if (FriendsModelManager.Instance.IsAlreadyFriend(friendID) is false)
                 {
-                    FriendModel fri = new FriendModel();
-                    fri.friend = friendID;
+                    var fri = new FriendModel
+                    {
+                        friend = friendID,
+                        isBestFriend = isBestFriend
+                    };
                     _allFriends.Add(fri);
                 }
             }
