@@ -404,6 +404,7 @@ namespace CanvasManagers
                     givenName = contact.GivenName,
                     phoneNumber = contact.Phones[0].FullNumber
                 };
+
                 _allContacts.Add(cont);
                 cont.givenName.GetType();
                 view.UpdateContactInfo(cont);

@@ -12,11 +12,12 @@ public class TraceUserInfoStructure {
     public bool isOnline;
     public int friendCount;
     public int score;
-
+    public bool isLogedIn;
     
     public TraceUserInfoStructure()
     {
         isOnline = false;
+        isLogedIn = true;
         friendCount = 0;
         score = 0;
     }
@@ -27,5 +28,6 @@ public class TraceUserInfoStructure {
         this.userPhotoUrl = userPhotoLink;
         this.email = email;
         this.phone = phone;
+        isLogedIn = true;
     }
 }
