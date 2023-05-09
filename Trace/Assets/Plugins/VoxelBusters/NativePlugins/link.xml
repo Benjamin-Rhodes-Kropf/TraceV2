@@ -1,0 +1,4 @@
+﻿<linker>
+  <assembly fullname="VoxelBusters.CoreLibrary.NativePlugins.AndroidModule" preserve="all" >
+  </assembly>
+</linker>

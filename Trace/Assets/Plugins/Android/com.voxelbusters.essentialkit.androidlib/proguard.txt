@@ -1,0 +1,11 @@
+# General
+-keepattributes Signature
+-keepattributes Exceptions
+-keepattributes *Annotation*
+-keepattributes EnclosingMethod
+
+
+-keep public class com.voxelbusters.android.essentialkit.features.** {*; }
+-keep public class com.voxelbusters.android.essentialkit.common.** {*; }
+
+-keep  public class com.android.billingclient.api.** {*; }

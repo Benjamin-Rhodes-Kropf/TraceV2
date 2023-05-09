@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.voxelbusters.android.essentialkitplugin" android:versionCode="1" android:versionName="1.0">
+  <application>
+    <provider android:name="com.voxelbusters.android.essentialkit.common.FileProviderExtended" android:authorities="com.voxelbusters.essentialkit.essentialkit.fileprovider" android:exported="false" android:grantUriPermissions="true">
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/essential_kit_file_paths" />
+    </provider>
+  </application>
+  <uses-permission android:name="android.permission.READ_CONTACTS" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+</manifest>
