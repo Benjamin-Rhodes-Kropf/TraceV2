@@ -31,7 +31,14 @@ public class ScaleMarkers : MonoBehaviour
     private void Update()
     {
         //set user marker to not scale
-        markerManager.items[0].scale = 0.1f;
+        try
+        {
+            markerManager.items[0].scale = 0.1f;
+        }
+        catch (Exception e)
+        {
+            print("Scale Marker Error :: "+e.Message);
+        }
     }
 
     /// <summary>

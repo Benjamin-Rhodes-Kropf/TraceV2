@@ -6,6 +6,8 @@ using SA.iOS.Contacts;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.UI;
+using VoxelBusters.CoreLibrary;
+using VoxelBusters.EssentialKit;
 
 namespace CanvasManagers
 {
@@ -16,7 +18,7 @@ namespace CanvasManagers
         private Image _previousSelectedButton;
         private Color32 _selectedButtonColor = new Color32(128, 128, 128, 255);
         private Color32 _unSelectedButtonColor = new Color32(128, 128, 128, 0);
-        private List<Contact> _allContacts;
+        private List<IAddressBookContact> _allContacts;
         
         private static Regex _compiledUnicodeRegex = new Regex(@"[^\u0000-\u007F]", RegexOptions.Compiled);
         
@@ -76,7 +78,7 @@ namespace CanvasManagers
             searchList = new List<GameObject>();
             
             UserDataManager.Instance.GetAllUsersBySearch(inputText, out List<UserModel> friends, out List<UserModel> requests,out List<UserModel> requestsSent, out List<UserModel> others);
-            TryGetContactsByName(inputText, out List<Contact> contacts);
+            TryGetContactsByName(inputText, out List<IAddressBookContact> contacts);
             if (friends.Count > 0)
             {
                 var text = GameObject.Instantiate(_view._searchTabTextPrefab, _view._searchscrollParent);
@@ -364,28 +366,44 @@ namespace CanvasManagers
         private bool isLoaded = false;
         private void OnContactsSelection()
         {
+            AddressBookContactsAccessStatus status = AddressBook.GetContactsAccessStatus();
+            AddressBook.RequestContactsAccess(callback: OnRequestContactsAccessFinish);
             LoadAllContacts();
             SelectionPanelClick("Contacts");
         }
+        private void OnRequestContactsAccessFinish(AddressBookRequestContactsAccessResult result, Error error)
+        {
+            Debug.Log("Request for contacts access finished.");
+            Debug.Log("Address book contacts access status: " + result.AccessStatus);
+        }
         
+        private void OnReadContactsFinish(AddressBookReadContactsResult result, Error error)
+        {
+            if (error == null)
+            {
+                var     contacts    = result.Contacts;
+                Debug.Log("Request to read contacts finished successfully.");
+                Debug.Log("Total contacts fetched: " + contacts.Length);
+                Debug.Log("Below are the contact details (capped to first 10 results only):");
+                isLoaded = true;
+                foreach (var contact in contacts)
+                    LogContactInfo(contact);
+            }
+            else
+            {
+                Debug.Log("Request to read contacts failed with error. Error: " + error);
+            }
+        }
         private void LoadAllContacts()
         {
             if (isLoaded)
                 return;
+
 #if UNITY_EDITOR
 
 #elif UNITY_IOS
-                _allContacts = new List<Contact>();
-             ISN_CNContactStore.FetchPhoneContacts((result) => {
-                if(result.IsSucceeded)
-                {
-                    isLoaded = true;
-                    foreach (var contact in result.Contacts)
-                        LogContactInfo(contact);
-                } 
-                else 
-                    Debug.Log("Error: " + result.Error.Message);
-            });
+            _allContacts = new List<IAddressBookContact>();
+            AddressBook.ReadContactsWithUserPermission(OnReadContactsFinish);
 #endif            
             
         }
@@ -394,20 +412,13 @@ namespace CanvasManagers
             return _compiledUnicodeRegex.Replace(inputValue, String.Empty);
         }
 
-        private void LogContactInfo(ISN_CNContact contact)
+        private void LogContactInfo(IAddressBookContact contact)
         {
             try
             {
                 ContactView view = GameObject.Instantiate(_view._contactPrfab,_view._contactParent);
-                Contact cont = new Contact
-                {
-                    givenName = contact.GivenName,
-                    phoneNumber = contact.Phones[0].FullNumber
-                };
-
-                _allContacts.Add(cont);
-                cont.givenName.GetType();
-                view.UpdateContactInfo(cont);
+                view.UpdateContactInfo(contact);
+                _allContacts.Add(contact);
             }
             catch (Exception e)
             {
@@ -415,9 +426,9 @@ namespace CanvasManagers
             }
         }
 
-        private void TryGetContactsByName(string name, out List<Contact> selectedContacts)
+        private void TryGetContactsByName(string name, out List<IAddressBookContact> selectedContacts)
         {
-            selectedContacts = new List<Contact>();
+            selectedContacts = new List<IAddressBookContact>();
             
             if (_allContacts == null)
                 return;
@@ -427,7 +438,7 @@ namespace CanvasManagers
             
             if (string.IsNullOrEmpty(name) is false )
             {
-                var list = _allContacts.Where(contact => contact.givenName.Contains(name, StringComparison.InvariantCultureIgnoreCase)).ToList();
+                var list = _allContacts.Where(contact => (contact.FirstName + " "+ contact.LastName).Contains(name, StringComparison.InvariantCultureIgnoreCase)).ToList();
                 selectedContacts.AddRange(list);
             }
         }
@@ -437,6 +448,7 @@ namespace CanvasManagers
     {
         public string givenName;
         public string phoneNumber;
+        public Sprite profile;
     }
 }
 

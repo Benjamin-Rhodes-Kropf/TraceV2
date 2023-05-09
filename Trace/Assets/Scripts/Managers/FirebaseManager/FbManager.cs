@@ -267,14 +267,16 @@ public partial class FbManager : MonoBehaviour
         PlayerPrefs.SetString("Password", _password);
         PlayerPrefs.Save();
         callback(callbackObject);
-
-        StartCoroutine(SetUserLoginStatus(true, isSusscess =>
+        if (callbackObject.IsSuccessful == false)
         {
-            if (isSusscess)
+            StartCoroutine(SetUserLoginStatus(true, isSusscess =>
             {
-                print("Done !");
-            }
-        }));
+                if (isSusscess)
+                {
+                    print("Done !");
+                }
+            }));
+        }
         //once user is logged in
         GetAllUserNames();
         GetCurrentUserData(_password);
@@ -335,9 +337,9 @@ public partial class FbManager : MonoBehaviour
         StartCoroutine(SetUserLoginStatus(false, isSusscess =>
         {
             if (isSusscess)
-            {
-                ScreenManager.instance.ChangeScreenForwards("Welcome");
-            }
+                print("Updated Login Status");
+            
+            ScreenManager.instance.ChangeScreenForwards("Welcome");
         }));
     }
     #endregion
@@ -527,22 +529,27 @@ public partial class FbManager : MonoBehaviour
     
     public IEnumerator SetUserLoginStatus(bool _isLoggedIn, System.Action<bool> callback)
     {
-        Debug.LogError("Is Database Reference is Null  ? "+ _databaseReference == null);
-        var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("isLogedIn").SetValueAsync(_isLoggedIn);
-        while (DBTask.IsCompleted is false)
-            yield return new WaitForEndOfFrame();
-        
-        // yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
-
-        if (DBTask.Exception != null)
+        if (_firebaseUser != null)
         {
-            Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
-            callback(false);
+            var DBTask = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("isLogedIn")
+                .SetValueAsync(_isLoggedIn);
+            while (DBTask.IsCompleted is false)
+                yield return new WaitForEndOfFrame();
+
+            // yield return new WaitUntil(predicate: () => DBTask.IsCompleted);
+
+            if (DBTask.Exception != null)
+            {
+                Debug.LogWarning(message: $"Failed to register task with {DBTask.Exception}");
+                callback(false);
+            }
+            else
+            {
+                callback(true);
+            }
         }
         else
-        {
-            callback(true);
-        }
+            callback(false);
     }
 
 
