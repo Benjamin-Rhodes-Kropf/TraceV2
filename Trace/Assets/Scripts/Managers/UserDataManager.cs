@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using NatML.Hub;
 
 public class UserDataManager
 {
@@ -49,7 +50,35 @@ public class UserDataManager
         return users.Count < 1;
     }
 
+    public List<UserModel> GetAllReceivedFriendRequests()
+    {
+        List<UserModel> users = new List<UserModel>();
+        foreach (var request in FbManager.instance._allFriendRequests)
+        {
+            var _userSearchQuery =
+                from user in FbManager.instance.AllUsers
+                where request.Value == eFriendRequestType.Received && string.Equals(user.userId, request.Key)
+                select user;
+            users.AddRange(_userSearchQuery.ToArray());
+        }    
+        return users;
+    }
 
+    public List<UserModel> GetAllSentFriendRequests()
+    {
+        List<UserModel> users = new List<UserModel>();
+        foreach (var request in FbManager.instance._allFriendRequests)
+        {
+            var _userSearchQuery =
+                from user in FbManager.instance.AllUsers
+                where request.Value == eFriendRequestType.Sent && string.Equals(user.userId, request.Key)
+                select user;
+            users.AddRange(_userSearchQuery.ToArray());
+        }    
+        return users;
+    }
+    
+    //Todo : Remove This Function After Completing this Task
     public List<UserModel> GetFriendRequested()
     {
         List<UserModel> users = new List<UserModel>();
@@ -63,7 +92,7 @@ public class UserDataManager
         }
         return users;
     }
-    
+    //Todo : Remove This Function After Completing this Task
     public List<UserModel> GetSentFriendRequests()
     {
         List<UserModel> users = new List<UserModel>();
@@ -78,6 +107,26 @@ public class UserDataManager
         }
         return users;
     }
+    
+    public List<UserModel> GetRequestsByUsername(string name, bool isReceived =  true)
+    {
+        var users = isReceived ? GetAllReceivedFriendRequests() : GetAllSentFriendRequests();
+        List<UserModel> selectedUsers = new List<UserModel>();
+        if (string.IsNullOrEmpty(name) is false && users.Count > 0)
+        {
+            // Query Syntax
+            IEnumerable<UserModel> _userSearchQuery =
+                from user in users
+                where user.Username.Contains(name)
+                orderby user.Username
+                select user;
+        
+            selectedUsers.AddRange(_userSearchQuery);
+        }
+        return selectedUsers;
+    }
+    
+    //Todo: Remove this Function After Completing task
     public List<UserModel> GetRequestsByName(string name, bool isReceived =  true)
     {
         var users = isReceived ? GetFriendRequested() : GetSentFriendRequests();

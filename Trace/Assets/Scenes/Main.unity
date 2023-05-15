@@ -4708,6 +4708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb44c9f62d68849b3bfacd2638439305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTesting: 1
 --- !u!1 &286240504
 GameObject:
   m_ObjectHideFlags: 0
@@ -9639,6 +9640,10 @@ PrefabInstance:
     - target: {fileID: 2882741145954031402, guid: 2e8bc4f99bb4747ebb42d4f3041f9561, type: 3}
       propertyPath: m_Name
       value: Welcome To Trace Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882741145954031402, guid: 2e8bc4f99bb4747ebb42d4f3041f9561, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2882741145954031406, guid: 2e8bc4f99bb4747ebb42d4f3041f9561, type: 3}
       propertyPath: m_Pivot.x

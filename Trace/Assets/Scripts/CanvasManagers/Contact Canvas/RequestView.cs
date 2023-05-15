@@ -21,7 +21,7 @@ public class RequestView : MonoBehaviour
 
     public void UpdateRequestView(UserModel user, bool isReceivedRequest  = true)
     {
-        requestId = FriendRequestManager.Instance.GetRequestID(user.userId, isReceivedRequest);
+        // requestId = FriendRequestManager.Instance.GetRequestID(user.userId, isReceivedRequest);
         senderId = user.userId;
         user.ProfilePicture((sprite =>
         {
@@ -62,7 +62,7 @@ public class RequestView : MonoBehaviour
         {
             if (isUpdated)
             {
-                FriendRequestManager.Instance.RemoveRequestFromList(senderId);
+                // FriendRequestManager.Instance.RemoveRequestFromList(senderId);
                 ContactsCanvas.UpdateRedMarks?.Invoke();
                 this.gameObject.SetActive(false);
             }
@@ -75,7 +75,7 @@ public class RequestView : MonoBehaviour
     public void OnClickRemove()
     {
         FbManager.instance.CancelFriendRequest(requestId);        
-        FriendRequestManager.Instance.RemoveRequestFromList(requestId, _buttonText.text != "Sent");
+        // FriendRequestManager.Instance.RemoveRequestFromList(requestId, _buttonText.text != "Sent");
         ContactsCanvas.UpdateRedMarks?.Invoke();
         gameObject.SetActive(false);
 

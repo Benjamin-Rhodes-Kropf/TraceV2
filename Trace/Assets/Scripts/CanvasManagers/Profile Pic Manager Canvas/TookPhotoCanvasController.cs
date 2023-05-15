@@ -53,8 +53,7 @@ public class TookPhotoCanvasController
     
     private void OnDoneButtonClick()
     {
-                    ScreenManager.instance.ChangeScreenForwards("SettingUpAccount");
-        
+        ScreenManager.instance.ChangeScreenForwards("SettingUpAccount");
     }
 
 

@@ -117,7 +117,7 @@ public partial class FbManager : MonoBehaviour
         _allReceivedRequests = new List<FriendRequests>();
         _allSentRequests = new List<FriendRequests>();
         _allFriends = new List<FriendModel>();
-        
+        _allFriendRequests = new Dictionary<string, eFriendRequestType>();
     }
     
     
@@ -280,8 +280,9 @@ public partial class FbManager : MonoBehaviour
         //once user is logged in
         GetAllUserNames();
         GetCurrentUserData(_password);
-        StartCoroutine(RetrieveFriendRequests());
-        StartCoroutine(RetrieveSentFriendRequests());
+         // StartCoroutine(RetrieveFriendRequests());
+        // StartCoroutine(RetrieveSentFriendRequests());
+        GetAllFriendRequestsFromDatabase();
         StartCoroutine(RetrieveFriends());
         ContinuesListners();
         InitializeFCMService();
@@ -289,10 +290,11 @@ public partial class FbManager : MonoBehaviour
 
     private void ContinuesListners()
     {
-        StartCoroutine(CheckForFriendRequest());
+         // StartCoroutine(CheckForFriendRequest());
+         // StartCoroutine(CheckIfFriendRequestRemoved());
         StartCoroutine(CheckForNewFriends());
-        StartCoroutine(CheckIfFriendRequestRemoved());
         StartCoroutine(CheckIfFriendRemoved());
+        AllRequestListners();
     }
 
     private void GetCurrentUserData(string password)
@@ -422,9 +424,12 @@ public partial class FbManager : MonoBehaviour
         while (DBTaskSetUserFriends.IsCompleted is false)
             yield return new WaitForEndOfFrame();
         
-        // yield return new WaitUntil(predicate: () => DBTaskSetUserFriends.IsCompleted);
         
-        
+        var DBTaskSetUserFriendRequests = _databaseReference.Child("FriendRequests").Child(_firebaseUser.UserId).Child("Sent").Child("Don't Delete This Child").SetValueAsync(true);
+        DBTaskSetUserFriendRequests = _databaseReference.Child("FriendRequests").Child(_firebaseUser.UserId).Child("Received").Child("Don't Delete This Child").SetValueAsync(true);
+
+        while (DBTaskSetUserFriends.IsCompleted is false)
+            yield return new WaitForEndOfFrame();
         
         //if nothing has gone wrong try logging in with new users information
         StartCoroutine(Login(_email, _password, (myReturnValue) => {
@@ -661,7 +666,7 @@ public partial class FbManager : MonoBehaviour
                  // Iterate through the children of the "users" node and add each username to the list
                  DataSnapshot snapshot = task.Result;
                  var  allUsersSnapshots = snapshot.Children.ToArrayPooled();
-                 for (int userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
+                 for (var userIndex = 0; userIndex < allUsersSnapshots.Length; userIndex++)
                  {
                      string userId = allUsersSnapshots[userIndex].Key; 
                      string email = allUsersSnapshots[userIndex].Child("email").Value.ToString();
@@ -670,9 +675,9 @@ public partial class FbManager : MonoBehaviour
                      string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
                      string phoneNumber = allUsersSnapshots[userIndex].Child("phone").Value.ToString();
                      string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
-                     UserModel userData = new UserModel(userId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL);
+                     bool isLoggedin =  Convert.ToBoolean( allUsersSnapshots[userIndex].Child("isLogedIn").Value.ToString());
+                     UserModel userData = new UserModel(userId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL,"",isLoggedin );
                      users.Add(userData);
-                     // print("Mail  Address :: "+ email);
                  }
              }
              if (task.IsFaulted)

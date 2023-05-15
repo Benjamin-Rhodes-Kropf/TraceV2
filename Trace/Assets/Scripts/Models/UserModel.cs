@@ -12,6 +12,7 @@ public class UserModel
     public string PhoneNumber;
     public string PhotoURL;
     public string Password;
+    public bool isLoggedIn = false;
 
     private Sprite profilePicture = null;
     public void ProfilePicture(Action<Sprite> callback)
@@ -54,7 +55,7 @@ public class UserModel
             texture.GetNativeTexturePtr());
     }
 
-    public UserModel(string _userId, string email, int friendCount, string displayName, string username, string phoneNumber, string photoURL, string password = "")
+    public UserModel(string _userId, string email, int friendCount, string displayName, string username, string phoneNumber, string photoURL, string password = "", bool isLoggedIn = false)
     {
         this.userId = _userId;
         this.Email = email;
@@ -64,5 +65,6 @@ public class UserModel
         this.PhoneNumber = phoneNumber;
         this.PhotoURL = photoURL;
         this.Password = password;
+        this.isLoggedIn = isLoggedIn;
     }
 }

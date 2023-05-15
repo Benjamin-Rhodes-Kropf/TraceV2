@@ -53,6 +53,7 @@ public class FriendRequestManager
         }
     }
 
+    // TODO : Check if Requeired Otherwise remove this
     private FriendRequests GetRequestByRequestID(string requestId, bool isRecievedRequest = true)
     {
         if (isRecievedRequest)
@@ -72,6 +73,11 @@ public class FriendRequestManager
         }
     }
 
+    public bool IsRequestSent(string userId)
+    {
+        return FbManager.instance._allFriendRequests.ContainsKey(userId);
+    }
+    
     public bool IsRequestAllReadyInList(string senderId, bool isReceivedRequest = true)
     {
         try

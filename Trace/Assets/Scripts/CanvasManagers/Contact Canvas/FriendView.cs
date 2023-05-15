@@ -113,11 +113,11 @@ public class FriendView : MonoBehaviour
             return;
 
         Debug.LogError("Here after Checking friend ID "+  friendUID);
-        if (FriendRequestManager.Instance.IsRequestAllReadyInList(friendUID,false))
+        if (FriendRequestManager.Instance.IsRequestSent(friendUID))
             return;
             
         Debug.LogError("Here after Checking List");
-        StartCoroutine(FbManager.instance.SendFriendRequest(friendUID,  (IsSuccessful) => {
+        StartCoroutine(FbManager.instance.SendFriendRequestAction(friendUID,  (IsSuccessful) => {
             if (!IsSuccessful)
             {
                 Debug.LogError("Friend request failed at : "+ friendUID);

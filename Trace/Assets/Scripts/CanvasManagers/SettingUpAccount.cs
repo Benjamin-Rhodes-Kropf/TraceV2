@@ -27,6 +27,10 @@ public class SettingUpAccount : MonoBehaviour
                             ScreenManager.instance.ChangeScreenFade("HomeScreen");
                             print("Called");
                         }
+                        else
+                        {
+                            MyDebug.Instance.LogError("URL Off Image is :: "+ url);
+                        }
                     }));
             }
         }));
