@@ -16,13 +16,13 @@ public class RequestView : MonoBehaviour
     public TMP_Text _buttonText;
     public Image _buttonImage;
 
-    private string requestId = "";
     private string senderId = "";
-
+    private bool isReceivedRequest = false;
     public void UpdateRequestView(UserModel user, bool isReceivedRequest  = true)
     {
         // requestId = FriendRequestManager.Instance.GetRequestID(user.userId, isReceivedRequest);
         senderId = user.userId;
+        this.isReceivedRequest = isReceivedRequest;
         user.ProfilePicture((sprite =>
         {
             try
@@ -58,7 +58,7 @@ public class RequestView : MonoBehaviour
     {
         print("Accept Function Called");
         StartCoroutine(
-        FbManager.instance.AcceptFriendRequest(requestId,senderId,(isUpdated =>
+        FbManager.instance.AcceptFriendRequest(senderId,(isUpdated =>
         {
             if (isUpdated)
             {
@@ -74,7 +74,7 @@ public class RequestView : MonoBehaviour
     //  TODO: ii. Remove Request From Firebase
     public void OnClickRemove()
     {
-        FbManager.instance.CancelFriendRequest(requestId);        
+        FbManager.instance.CancelRequestAction(senderId, isReceivedRequest);        
         // FriendRequestManager.Instance.RemoveRequestFromList(requestId, _buttonText.text != "Sent");
         ContactsCanvas.UpdateRedMarks?.Invoke();
         gameObject.SetActive(false);

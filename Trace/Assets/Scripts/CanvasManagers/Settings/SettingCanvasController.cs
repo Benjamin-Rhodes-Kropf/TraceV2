@@ -20,6 +20,7 @@ public class SettingCanvasController
 
     private void UpdateDate()
     {
+        MyDebug.Instance.Log((FbManager.instance.thisUserModel == null).ToString() );
         _view._usernameText.text = FbManager.instance.thisUserModel.Username;
         _view._profileNameText.text = FbManager.instance.thisUserModel.DisplayName;
         FbManager.instance.thisUserModel.ProfilePicture(sprite =>

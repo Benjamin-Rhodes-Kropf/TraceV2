@@ -7,16 +7,20 @@ public class SettingUpAccount : MonoBehaviour
 {
     private void OnEnable()
     {
-        if (FbManager.instance.IsFirebaseUserInitialised)
-            UploadProfilePicture();
+        UploadProfilePicture();
     }
 
 
     private void UploadProfilePicture()
     {
+        if (TookPhotoCanvasController._profilePicture == null)
+            return;
+        
+        MyDebug.Instance.LogError("Upload Image Called");
         var bytes = TookPhotoCanvasController._profilePicture.texture.EncodeToPNG();
         StartCoroutine(FbManager.instance.UploadProfilePhoto(bytes, (isUploaded, url) =>
         {
+            MyDebug.Instance.LogError("Upload Profile Photo Bytes URL :: "+ url);
             if (isUploaded)
             {
                 StartCoroutine(FbManager.instance.SetUserProfilePhotoUrl(url,

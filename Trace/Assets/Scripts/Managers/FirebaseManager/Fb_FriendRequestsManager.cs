@@ -136,7 +136,13 @@ public partial class FbManager
             var requestId = args.Snapshot.Key;
 
             if (_allFriendRequests.ContainsKey(requestId))
+            {
                 _allFriendRequests.Remove(requestId);
+                ContactsCanvas.UpdateRedMarks?.Invoke();
+
+                if (ContactsCanvas.UpdateRequestView != null)
+                    ContactsCanvas.UpdateRequestView?.Invoke();
+            }
           
             _databaseReference.Child("FriendRequests").Child(_firebaseUser.UserId).Child("Received").ChildRemoved -= HandleOnReceivedFriendRequestRemoved;
         }
@@ -162,9 +168,15 @@ public partial class FbManager
             if (args.Snapshot is not { Value: { } }) return;
             
             var requestId = args.Snapshot.Key;
-            
+
             if (_allFriendRequests.ContainsKey(requestId) is false)
+            {
                 _allFriendRequests.Add(requestId, eFriendRequestType.Sent);
+                ContactsCanvas.UpdateRedMarks?.Invoke();
+
+                if (ContactsCanvas.UpdateRequestView != null)
+                    ContactsCanvas.UpdateRequestView?.Invoke();
+            }
           
             _databaseReference.Child("FriendRequests").Child(_firebaseUser.UserId).Child("Sent").ChildAdded -= HandleOnSentFriendRequestAdd;
         }
@@ -186,13 +198,19 @@ public partial class FbManager
         try
         {
             if (args.Snapshot is not { Value: { } }) return;
-            
+
             var requestId = args.Snapshot.Key;
-            
+
             if (_allFriendRequests.ContainsKey(requestId))
+            {
                 _allFriendRequests.Remove(requestId);
-          
-            _databaseReference.Child("FriendRequests").Child(_firebaseUser.UserId).Child("Sent").ChildRemoved -= HandleOnSentFriendRequestRemoved;
+                ContactsCanvas.UpdateRedMarks?.Invoke();
+
+                if (ContactsCanvas.UpdateRequestView != null)
+                    ContactsCanvas.UpdateRequestView?.Invoke();
+            }
+
+        _databaseReference.Child("FriendRequests").Child(_firebaseUser.UserId).Child("Sent").ChildRemoved -= HandleOnSentFriendRequestRemoved;
         }
         catch (Exception e)
         {
@@ -207,6 +225,15 @@ public partial class FbManager
 
         if (ContactsCanvas.UpdateRequestView != null)
             ContactsCanvas.UpdateRequestView?.Invoke();
+    }
+    
+    public void CancelRequestAction(string otherUserID,bool isReceivedRequest)
+    {
+        string receiverId = isReceivedRequest ? _firebaseUser.UserId : otherUserID;
+        string senderId = isReceivedRequest ? otherUserID : _firebaseUser.UserId;
+        // Delete the friend request node
+        _databaseReference.Child("FriendRequests").Child(senderId).Child("Sent").Child(receiverId).RemoveValueAsync();
+        _databaseReference.Child("FriendRequests").Child(receiverId).Child("Received").Child(senderId).RemoveValueAsync();
     }
     #endregion
     

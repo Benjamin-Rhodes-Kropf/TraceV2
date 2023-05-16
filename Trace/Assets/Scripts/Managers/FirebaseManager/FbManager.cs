@@ -309,16 +309,16 @@ public partial class FbManager : MonoBehaviour
             if (task.IsCompleted)
             {
                 // Iterate through the children of the "users" node and add each username to the list
-                DataSnapshot snapshot = task.Result;
+                    IsFirebaseUserInitialised = true;
+                    DataSnapshot snapshot = task.Result;
                     string email = snapshot.Child("email").Value.ToString();
-                    string frindCount = snapshot.Child("friendCount").Value.ToString();
+                    // string frindCount = snapshot.Child("friendCount").Value.ToString();
                     string displayName = snapshot.Child("name").Value.ToString();
                     string username = snapshot.Child("username").Value.ToString();
                     string phoneNumber = snapshot.Child("phone").Value.ToString();
                     string photoURL = snapshot.Child("userPhotoUrl").Value.ToString();
-                    thisUserModel = new UserModel(_firebaseUser.UserId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL, password);
-
-                    IsFirebaseUserInitialised = true;
+                    MyDebug.Instance.LogError("current user email is ? " + email);
+                    thisUserModel = new UserModel(_firebaseUser.UserId,email,0,displayName,username,phoneNumber,photoURL, password, true);
             }
             if (task.IsFaulted)
             {
@@ -670,13 +670,13 @@ public partial class FbManager : MonoBehaviour
                  {
                      string userId = allUsersSnapshots[userIndex].Key; 
                      string email = allUsersSnapshots[userIndex].Child("email").Value.ToString();
-                     string frindCount = allUsersSnapshots[userIndex].Child("friendCount").Value.ToString();
+                     // string frindCount = allUsersSnapshots[userIndex].Child("friendCount").Value.ToString();
                      string displayName = allUsersSnapshots[userIndex].Child("name").Value.ToString();
                      string username = allUsersSnapshots[userIndex].Child("username").Value.ToString();
                      string phoneNumber = allUsersSnapshots[userIndex].Child("phone").Value.ToString();
                      string photoURL = allUsersSnapshots[userIndex].Child("userPhotoUrl").Value.ToString();
                      bool isLoggedin =  Convert.ToBoolean( allUsersSnapshots[userIndex].Child("isLogedIn").Value.ToString());
-                     UserModel userData = new UserModel(userId,email,int.Parse(frindCount),displayName,username,phoneNumber,photoURL,"",isLoggedin );
+                     UserModel userData = new UserModel(userId,email,0,displayName,username,phoneNumber,photoURL,"",isLoggedin );
                      users.Add(userData);
                  }
              }

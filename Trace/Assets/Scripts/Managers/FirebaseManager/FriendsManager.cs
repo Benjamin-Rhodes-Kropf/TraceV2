@@ -212,16 +212,11 @@ public partial class FbManager
             callback(true);
         }
     }
-    public IEnumerator AcceptFriendRequest(string requestId, string senderId, Action<bool> callback)
+    public IEnumerator AcceptFriendRequest(string senderId, Action<bool> callback)
     {
-        _databaseReference.Child("allFriendRequests").Child(requestId).RemoveValueAsync();
-        
-        // var friend = new FriendModel
-        // {
-        //     friend = senderId
-        // };
 
-        print("Friend Request Accept Called With  SenderID ::  "+ senderId);
+        _databaseReference.Child("FriendRequests").Child(_firebaseUser.UserId).Child("Received").Child(senderId).RemoveValueAsync();
+        _databaseReference.Child("FriendRequests").Child(senderId).Child("Sent").Child(_firebaseUser.UserId).RemoveValueAsync();
         
         var task = _databaseReference.Child("Friends").Child(_firebaseUser.UserId).Child(senderId).SetValueAsync(false);
         _databaseReference.Child("Friends").Child(senderId).Child(_firebaseUser.UserId).SetValueAsync(false);

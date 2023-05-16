@@ -239,7 +239,7 @@ namespace CanvasManagers
      
         private void LoadAllRequests()
         {
-            var users = UserDataManager.Instance.GetFriendRequested();
+            var users = UserDataManager.Instance.GetAllReceivedFriendRequests();
             ClearRequestView();
             _allRequests = new List<RequestView>();
             if (users.Count > 0)
@@ -248,7 +248,7 @@ namespace CanvasManagers
                     UpdateRequestInfo(user);
             }
             
-            var sentRequests = UserDataManager.Instance.GetSentFriendRequests();
+            var sentRequests = UserDataManager.Instance.GetAllSentFriendRequests();
             
             if (sentRequests.Count > 0)
             {                
