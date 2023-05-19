@@ -262,10 +262,8 @@ public partial class FbManager : MonoBehaviour
         var DBTaskSetIsOnline = _databaseReference.Child("users").Child(_firebaseUser.UserId).Child("isOnline").SetValueAsync(true);
         yield return new WaitUntil(predicate: () => DBTaskSetIsOnline.IsCompleted);
         
-        //stay logged in
-        PlayerPrefs.SetString("Username", _email);
-        PlayerPrefs.SetString("Password", _password);
-        PlayerPrefs.Save();
+        
+       
         callback(callbackObject);
         if (callbackObject.IsSuccessful == false)
         {
@@ -280,8 +278,21 @@ public partial class FbManager : MonoBehaviour
         //once user is logged in
         GetAllUserNames();
         GetCurrentUserData(_password);
-         // StartCoroutine(RetrieveFriendRequests());
-        // StartCoroutine(RetrieveSentFriendRequests());
+        
+        IsNewUser = !_email.Equals(PlayerPrefs.GetString("Username",""));
+        
+        if (IsNewUser)
+        {
+            UserDataManager.Instance.TryGetUserByEmailId(PlayerPrefs.GetString("Username",""), out UserModel previousUser);
+            if (previousUser != null)
+                StartCoroutine(SetFCMDeviceToken("",previousUser.userId));
+        }
+        //stay logged in
+        PlayerPrefs.SetString("Username", _email);
+        PlayerPrefs.SetString("Password", _password);
+        PlayerPrefs.Save();
+        
+        
         GetAllFriendRequestsFromDatabase();
         StartCoroutine(RetrieveFriends());
         ContinuesListners();
@@ -290,8 +301,6 @@ public partial class FbManager : MonoBehaviour
 
     private void ContinuesListners()
     {
-         // StartCoroutine(CheckForFriendRequest());
-         // StartCoroutine(CheckIfFriendRequestRemoved());
         StartCoroutine(CheckForNewFriends());
         StartCoroutine(CheckIfFriendRemoved());
         AllRequestListners();
@@ -611,8 +620,7 @@ public partial class FbManager : MonoBehaviour
             {
                 
             }
-        
-    }
+        }
 
         DownloadHandler.Instance.DownloadImage(url, callback, () =>
         {

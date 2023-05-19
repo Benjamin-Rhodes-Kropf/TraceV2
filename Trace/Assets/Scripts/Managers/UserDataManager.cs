@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using NatML.Hub;
+using Unity.VisualScripting;
 
 public class UserDataManager
 {
@@ -42,7 +43,21 @@ public class UserDataManager
         return selectedUsers;
     }
 
-    
+    public void TryGetUserByEmailId(string email, out UserModel userModel)
+    {
+        if (email == "" || email == null)
+        {
+            userModel  = null;
+            return;
+        }
+        List<UserModel> selectedUsers = new List<UserModel>();
+        IEnumerable<UserModel> _userSearchQuery =
+            from user in FbManager.instance.AllUsers
+            where user.Email.Equals(email)
+            select user;
+        selectedUsers.AddRange(_userSearchQuery);
+        userModel =  (selectedUsers.Count > 0) ? selectedUsers[0] : null;
+    }
 
     public bool IsUsernameAvailable(string userName)
     {
@@ -78,36 +93,36 @@ public class UserDataManager
         return users;
     }
     
-    //Todo : Remove This Function After Completing this Task
-    public List<UserModel> GetFriendRequested()
-    {
-        List<UserModel> users = new List<UserModel>();
-        foreach (var request in FbManager.instance._allReceivedRequests)
-        {
-                var _userSearchQuery =
-                from user in FbManager.instance.AllUsers
-                where string.Equals(user.userId, request.SenderID)
-                select user;
-                users.AddRange(_userSearchQuery.ToArray());
-        }
-        return users;
-    }
-    //Todo : Remove This Function After Completing this Task
-    public List<UserModel> GetSentFriendRequests()
-    {
-        List<UserModel> users = new List<UserModel>();
-        foreach (var request in FriendRequestManager.Instance._allSentRequests)
-        {
-            var _userSearchQuery =
-                from user in FbManager.instance.AllUsers
-                where string.Equals(user.userId, request.Value.ReceiverId, StringComparison.Ordinal)
-                select user;
-
-            users.AddRange(_userSearchQuery.ToArray());
-        }
-        return users;
-    }
-    
+    // //Todo : Remove This Function After Completing this Task
+    // public List<UserModel> GetFriendRequested()
+    // {
+    //     List<UserModel> users = new List<UserModel>();
+    //     foreach (var request in FbManager.instance._allReceivedRequests)
+    //     {
+    //             var _userSearchQuery =
+    //             from user in FbManager.instance.AllUsers
+    //             where string.Equals(user.userId, request.SenderID)
+    //             select user;
+    //             users.AddRange(_userSearchQuery.ToArray());
+    //     }
+    //     return users;
+    // }
+    // //Todo : Remove This Function After Completing this Task
+    // public List<UserModel> GetSentFriendRequests()
+    // {
+    //     List<UserModel> users = new List<UserModel>();
+    //     foreach (var request in FriendRequestManager.Instance._allSentRequests)
+    //     {
+    //         var _userSearchQuery =
+    //             from user in FbManager.instance.AllUsers
+    //             where string.Equals(user.userId, request.Value.ReceiverId, StringComparison.Ordinal)
+    //             select user;
+    //
+    //         users.AddRange(_userSearchQuery.ToArray());
+    //     }
+    //     return users;
+    // }
+    //
     public List<UserModel> GetRequestsByUsername(string name, bool isReceived =  true)
     {
         var users = isReceived ? GetAllReceivedFriendRequests() : GetAllSentFriendRequests();
@@ -129,7 +144,7 @@ public class UserDataManager
     //Todo: Remove this Function After Completing task
     public List<UserModel> GetRequestsByName(string name, bool isReceived =  true)
     {
-        var users = isReceived ? GetFriendRequested() : GetSentFriendRequests();
+        var users = isReceived ? GetAllReceivedFriendRequests() : GetAllSentFriendRequests();
         List<UserModel> selectedUsers = new List<UserModel>();
         if (string.IsNullOrEmpty(name) is false && users.Count > 0)
         {

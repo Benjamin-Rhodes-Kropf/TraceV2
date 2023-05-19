@@ -40,7 +40,7 @@ public class RequestView : MonoBehaviour
         _acceptButton.onClick.RemoveAllListeners();
         if (isReceivedRequest is false)
         {
-            _acceptButton.onClick.AddListener(OnCancelClick);
+            // _acceptButton.onClick.AddListener(OnCancelClick);
             _buttonText.text = "Sent";
             _buttonImage.color = Color.red;
         }
@@ -75,7 +75,6 @@ public class RequestView : MonoBehaviour
     public void OnClickRemove()
     {
         FbManager.instance.CancelRequestAction(senderId, isReceivedRequest);        
-        // FriendRequestManager.Instance.RemoveRequestFromList(requestId, _buttonText.text != "Sent");
         ContactsCanvas.UpdateRedMarks?.Invoke();
         gameObject.SetActive(false);
 
@@ -84,7 +83,9 @@ public class RequestView : MonoBehaviour
 
     public void OnCancelClick()
     {
-        
+        FbManager.instance.CancelRequestAction(senderId, isReceivedRequest);        
+        ContactsCanvas.UpdateRedMarks?.Invoke();
+        gameObject.SetActive(false);
     }
     
 }

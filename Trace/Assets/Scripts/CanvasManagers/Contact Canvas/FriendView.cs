@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CanvasManagers;
 using Networking;
 using TMPro;
 using UnityEngine;
@@ -100,6 +101,17 @@ public class FriendView : MonoBehaviour
             var buttonData = GetButtonData(buttonType);
             _buttonBackground.color = _colors[buttonData.colorIndex];
             _buttonText.text = buttonData.buttonText;
+            _addRemoveButton.onClick.RemoveAllListeners(); 
+            _addRemoveButton.onClick.AddListener(CancelRequest);
+        }
+        else
+        {
+            FriendButtonType buttonType = FriendButtonType.Add;
+            var buttonData = GetButtonData(buttonType);
+            _buttonBackground.color = _colors[buttonData.colorIndex];
+            _buttonText.text = buttonData.buttonText;
+            _addRemoveButton.onClick.RemoveAllListeners(); 
+            _addRemoveButton.onClick.AddListener(SendFriendRequest);
         }
     }
     
@@ -136,6 +148,12 @@ public class FriendView : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void CancelRequest()
+    {
+        FbManager.instance.CancelRequestAction(_uid, false);        
+        ContactsCanvas.UpdateRedMarks?.Invoke();
+        UpdateRequestStatus(false);
+    }
 
     private void OnBestFriendButtonClick()
     {

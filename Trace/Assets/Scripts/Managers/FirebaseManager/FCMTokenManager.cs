@@ -6,6 +6,8 @@ using UnityEngine;
 
 public partial class FbManager
 {
+
+    private string _fcmToken = "";
     private bool IsApplicationFirstTimeOpened {
         get
         {
@@ -17,7 +19,12 @@ public partial class FbManager
             PlayerPrefs.Save();
         }
     }
-   
+
+    private bool IsNewUser
+    {
+        get;
+        set;
+    }
     
     private void InitializeFCMService()
     {
@@ -40,8 +47,9 @@ public partial class FbManager
 
     private void OnTokenReceived(object sender, Firebase.Messaging.TokenReceivedEventArgs token) {
         UnityEngine.Debug.Log("Received Registration Token: " + token.Token);
+        _fcmToken = token.Token;
         
-        if (!IsApplicationFirstTimeOpened) 
+        if (!IsApplicationFirstTimeOpened && !IsNewUser) 
             return;
 
         StartCoroutine(SetFCMDeviceToken(token.Token));
@@ -52,9 +60,10 @@ public partial class FbManager
         UnityEngine.Debug.Log("Received a new message from: " + e.Message.From);
     }
 
-    IEnumerator SetFCMDeviceToken(string token)
+    IEnumerator SetFCMDeviceToken(string token , string userId ="")
     {
-        var DBTaskSetUserFriends = _databaseReference.Child("FcmTokens").Child(_firebaseUser.UserId).SetValueAsync(token);
+        var _currentUserId = userId.Equals("") ? _firebaseUser.UserId : userId;
+        var DBTaskSetUserFriends = _databaseReference.Child("FcmTokens").Child(_currentUserId).SetValueAsync(token);
         while (DBTaskSetUserFriends.IsCompleted is false)
             yield return new WaitForEndOfFrame();
     }
