@@ -24,10 +24,13 @@ public class TookPhotoCanvasController
     {
         if (TakePhotoCanvasController.imagePath == "")
             return;
-        
-        Texture2D tex = new Texture2D(2, 2);
-        byte[] imageBytes = System.IO.File.ReadAllBytes(TakePhotoCanvasController.imagePath);
-        tex.LoadImage(imageBytes);
+
+
+
+        var  tex = NativeGallery.LoadImageAtPath(TakePhotoCanvasController.imagePath, 1000, false);
+        // Texture2D tex = new Texture2D(2, 2);
+        // byte[] imageBytes = System.IO.File.ReadAllBytes(TakePhotoCanvasController.imagePath);
+        // tex.LoadImage(imageBytes);
         _profilePicture = CropTexture(tex);
         _view._profilePicture.sprite = _profilePicture;
     }
